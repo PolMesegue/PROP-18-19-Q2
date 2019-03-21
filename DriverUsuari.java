@@ -1,0 +1,40 @@
+
+import java.util.*;
+
+import java.lang.Exception;
+import java.util.Vector;
+public class DriverUsuari {
+
+    private static inout io;
+    private static Huma r;
+
+    public static void testConstructor() throws Exception {
+        io.write("Introdueix nom (String): \n");
+        String id = io.readname();
+        io.write("Introdueix PASS (String): \n");
+        String id2 = io.readname();
+        r = new Huma(id,id2);
+    }
+
+    public static void main(String[] args) throws Exception {
+        io = new inout();
+        int s = -1;
+        io.write("Opcions: \n 1.Constructor \n 2.Getters \n 3.Setters \n 5.Exit \n");
+        while (s != 6) {
+            if (s == 1) {
+                io.write("Opcions: 1.Constructora \n ");
+                s = io.readint();
+                if (s == 1) testConstructor();
+                io.write("\n");
+                io.write("Opcions: \n 1.Constructor \n 2.Getters \n 3.Setters \n 5.Exit \n");
+            }
+            if(s == 2){
+
+            }
+            if(s==5){
+                System.exit(0);
+            }
+            }
+
+        }
+}
