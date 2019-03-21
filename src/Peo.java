@@ -7,7 +7,7 @@ public class Peo extends Peça {
         super(x,y,es_blanca);
     }
 
-
+//prova github
     @Override
     public boolean moviment_valid(int desti_x, int desti_y) {
         //codi moviment Peo
