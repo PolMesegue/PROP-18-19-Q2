@@ -7,7 +7,6 @@ public abstract class Peça {
     private int y;
     final private boolean es_blanca;
 
-//prova de que no es pugen merdes2
     public Peça(int x, int y, boolean es_blanca) {
         this.es_blanca = es_blanca;
         this.x = x;
