@@ -16,14 +16,14 @@ public class Alfil extends Peça {
         Peça p_aux = t.getPeça(desti_x, desti_y);
 
         if (p_aux != null) {
-            if ((p_aux.esBlanca() && this.esBlanca()) || (p_aux.esNegra() && this.esNegra())) return false;
+            if (p_aux.esBlanca() && this.esBlanca()) return false;
+            if (p_aux.esNegra() && this.esNegra()) return false;
         }
 
         //No es pot moure ni adalt ni avall ni dreta no esuqerra
         if (this.getX() == desti_x || this.getY() == desti_y) return false;
 
         //No pot saltar peces
-
 
     }
 }
