@@ -23,7 +23,7 @@ public class Alfil extends Peça {
         if (this.getX() == desti_x || this.getY() == desti_y) return false;
 
         //No pot saltar peces
-        
+
 
     }
 }
