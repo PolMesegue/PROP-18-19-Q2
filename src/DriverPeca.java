@@ -5,6 +5,7 @@
 
 class DriverPeça {
 
+    private static inout io;
     private static Peça p;
 
     public void testConstructora();
