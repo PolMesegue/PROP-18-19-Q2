@@ -46,6 +46,7 @@ public class Problema {
                 default:
 
 
+
             }
             ++x;
         }
@@ -53,7 +54,7 @@ public class Problema {
     }
 
     public bool teSolucio() {
-
+//ni idea
     }
 
 
