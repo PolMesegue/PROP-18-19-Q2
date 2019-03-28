@@ -1,12 +1,15 @@
-
-
-
 public class Problema {
 
+    Private String FEN;
+
+
+    Problema (String FEN){
+        this.FEN=FEN;
+    }
 
 
     //aixo passa de FEN a un tauler decente de personas
-    public void conversio(string FEN){
+    public void conversio(){
 
         int tam = FEN.length();
         int x=0, y=0;
@@ -19,36 +22,37 @@ public class Problema {
                     ++y;
                     x = 0;
                 case 'K':
-                    Rey R = Rei(x,y,true);
+                    Rei R = new Rei(x,y,true);
                 case 'k':
-                    Rei r = Rei(x,y,false);
+                    Rei r = new Rei(x,y,false);
                 case 'Q':
-                    Reina re = Reina(x,y,true);
+                    Reina re = new Reina(x,y,true);
                 case 'q':
-                    Reina re = Reina(x,y,false);
+                    Reina re = new Reina(x,y,false);
                 case 'R':
-                    Torre T = Torre(x,y,true);
+                    Torre T = new Torre(x,y,true);
+
                 case 'r':
-                    Torre t = Torre(x,y,false);
+                    Torre t = new Torre(x,y,false);
                 case 'B':
-                    Alfil A = Alfil(x,y,true);
+                    Alfil A = new Alfil(x,y,true);
                 case 'b':
-                    Alfil a = Alfil(x,y,true);
+                    Alfil a = new Alfil(x,y,false);
                 case 'N':
-                    Cavall C = Cavall(x,y,true);
+                    Cavall C = new Cavall(x,y,true);
                 case 'n':
-                    Cavall c = Cavall(x,y,true);
+                    Cavall c = new Cavall(x,y,false);
                 case 'P':
-                    Peo P = Peo(x,y,true);
+                    Peo P = new Peo(x,y,true);
                 case 'p':
-                    Peo p = Peo(x,y,true);
+                    Peo p = new Peo(x,y,false);
 
                 default:
+                    ++x;
 
 
 
             }
-            ++x;
         }
 
     }
