@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Problema {
 
     Private String FEN;
@@ -9,14 +11,15 @@ public class Problema {
 
 
     //aixo passa de FEN a un tauler decente de personas
-    public void conversio(){
+    public void FENtoHuman(){
 
         int tam = FEN.length();
         int x=0, y=0;
         for (int i = 0; i < tam; ++i) {
 
+            char c = FEN.charAt(i);
 
-            switch(FEN[i]) {
+            switch(c) {
 
                 case '/':
                     ++y;
@@ -26,7 +29,7 @@ public class Problema {
                 case 'k':
                     Rei r = new Rei(x,y,false);
                 case 'Q':
-                    Reina re = new Reina(x,y,true);
+                    Reina Re = new Reina(x,y,true);
                 case 'q':
                     Reina re = new Reina(x,y,false);
                 case 'R':
@@ -48,7 +51,10 @@ public class Problema {
                     Peo p = new Peo(x,y,false);
 
                 default:
+                    if (c == '-') break;
                     ++x;
+
+                    //sha de mirar mes casos
 
 
 
@@ -57,9 +63,19 @@ public class Problema {
 
     }
 
+    public void HumantoFEN (ArrayList<Peça> peces_blanques, ArrayList<Peça> peces_negres ){
+
+
+
+    }
+
+/*
     public bool teSolucio() {
 //ni idea
+        bool kek = true;
+        return kek;
     }
+    */
 
 
 }
