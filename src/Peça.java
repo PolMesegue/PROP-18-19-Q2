@@ -7,6 +7,10 @@ public abstract class Peça {
     private int y;
     final private boolean es_blanca;
 
+    //pol: private char tipus;  --> R si es rei, C si es cavall... No se si hauria de anar aqui pero aniria be tenir algo
+    //per saber que es cada peça
+
+
     public Peça(int x, int y, boolean es_blanca) {
         this.es_blanca = es_blanca;
         this.x = x;
@@ -23,6 +27,10 @@ public abstract class Peça {
 
     //public bool hihaPeça(int x, int y);
     //Pol: necessito una funció que em retorni si en una posicio X,Y hi ha una peça o no
+
+    //public char classepeça (int x, int y);
+
+
 
     public void setX(int x) {
         this.x = x;
