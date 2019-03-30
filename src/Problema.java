@@ -9,7 +9,7 @@ public class Problema {
     Problema (char[] FEN){
         this.FEN=FEN;
     }
-
+ //probva
 
     public String getId() { return Id;}
 
