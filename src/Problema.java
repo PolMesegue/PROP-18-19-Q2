@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Problema {
 
     private char[] FEN;
+    private String Id;
 
 
     Problema (char[] FEN){
@@ -10,16 +11,16 @@ public class Problema {
     }
 
 
+    public String getId() { return Id;}
+
     //aixo passa de FEN a un tauler decente de personas
     public void FENtoHuman(){
 
-        int tam = FEN.length();
+        int tam = FEN.size();
         int x=0, y=0;
         for (int i = 0; i < tam; ++i) {
 
-            char c = FEN.charAt(i);
-
-            switch(c) {
+            switch(FEN[i]) {
 
                 case '/':
                     ++y;
@@ -42,16 +43,16 @@ public class Problema {
                 case 'b':
                     Alfil a = new Alfil(x,y,false);
                 case 'N':
-                    Cavall Ca = new Cavall(x,y,true);
+                    Cavall C = new Cavall(x,y,true);
                 case 'n':
-                    Cavall ca = new Cavall(x,y,false);
+                    Cavall c = new Cavall(x,y,false);
                 case 'P':
                     Peo P = new Peo(x,y,true);
                 case 'p':
                     Peo p = new Peo(x,y,false);
 
                 default:
-                    if (c == '-') break;
+                    if (FEN[i] == '-') break;
                     ++x;
 
                     //sha de mirar mes casos
@@ -65,7 +66,7 @@ public class Problema {
 
     public void HumantoFEN (Peça[] peces_blanques, Peça[] peces_negres ){
 
-        Peça[8][8] mapa;
+        Peça[][] mapa = new Peça[8][8];
 
         int whiteX, whiteY, blackX, blackY;
 
@@ -82,8 +83,21 @@ public class Problema {
 
         }
 
+        int iter = 0;
         for (int i = 0; i < 8; ++i) {
+            int buit = 0;
             for (int j = 0; j < 8; ++j) {
+
+                if (!mapa[i][j].hihaPeça()) ++buit;
+                else {
+                    if (tmp != 0) {
+                        FEN[iter] = buit;
+                        ++iter;
+                        FEN[iter] = mapa[i][j].tipus();
+                    }
+                }
+
+
 
 
 
