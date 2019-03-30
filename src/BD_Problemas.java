@@ -32,8 +32,8 @@ public class BD_Problemas {
             }
         }
     }
-    public Collection<Problema> mostrarProblemas(){
+
+    public Collection<Problema> getCollectionProblems() {
         return CollectionProblems;
     }
-
 }

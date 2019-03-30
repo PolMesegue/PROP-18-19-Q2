@@ -20,7 +20,9 @@ public class Partida {
         this.d=d;
     }
 
+
     public void mourePeça(Peça A, int x, int y){
+        char whoStarts = p.whoStarts();
 
 
     }
