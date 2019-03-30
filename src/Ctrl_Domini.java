@@ -7,15 +7,19 @@ public class Ctrl_Domini {
     private BD_Usuaris bdu= new BD_Usuaris();
 
 
-
     public void AddHuma(String nom,String password){
         Huma h= new Huma(nom,password);
-
-
+        if(!bdu.getHuma(nom).equals(h)){
+            bdu.AddHuma(h);
+        }
+        //imprimir error, ya existeix.
     }
 
-    public void AddProblem(){
-
+    public void AddProblem(String fen){
+        Problema p= new Problema(fen);
+        bdp.AddProblem(p);
     }
+
+
 
 }
