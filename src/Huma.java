@@ -1,6 +1,6 @@
 import java.util.*;
 
-
+//proba
 public class Huma extends Usuari {
 
     private String Password;
