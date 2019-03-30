@@ -1,19 +1,28 @@
 
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Partida {
 
-
+    private static Timestamp fecha;
     private Problema p;
     private Tauler t;
     private Atacant a;
     private Defensor d;
 
-    Partida(Problema p, Tauler t, Atacant a, Defensor d){
+    Partida(Timestamp f,Problema p, Tauler t, Atacant a, Defensor d){
+        fecha=f;
         this.p=p;
         this.t=t;
         this.a=a;
         this.d=d;
+    }
+
+    public void mourePeça(Peça A, int x, int y){
+
+
     }
 
     public Atacant getA() {
@@ -46,5 +55,9 @@ public class Partida {
 
     public void setT(Tauler t) {
         this.t = t;
+    }
+
+    public Timestamp getFecha() {
+        return fecha;
     }
 }
