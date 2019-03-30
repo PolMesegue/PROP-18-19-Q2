@@ -5,11 +5,18 @@ public class Problema {
     private char[] FEN;
     private String ID;
 
+    private char whoStarts;
 
     Problema (char[] FEN){
         this.FEN=FEN;
     }
  //probva
+
+    public char whoStarts() {
+
+        return FEN[FEN.size() - 9];
+
+    }
 
     public String getID() { return ID;}
 
