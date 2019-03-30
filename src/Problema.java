@@ -16,7 +16,7 @@ public class Problema {
 
     public char whoStarts() {
 
-        return FEN[FEN.size() - 9];
+        return FEN[FEN.length - 9];
 
     }
 
@@ -27,7 +27,7 @@ public class Problema {
     //aixo passa de FEN a un tauler decente de personas
     public void FENtoHuman(){
 
-        int tam = FEN.size();
+        int tam = FEN.length;
         int x=0, y=0;
         for (int i = 0; i < tam; ++i) {
 
@@ -38,38 +38,46 @@ public class Problema {
                     x = 0;
                 case 'K':
                     Rei R = new Rei(x,y,true);
-
+                    setPeça(R);
                 case 'k':
                     Rei r = new Rei(x,y,false);
+                    setPeça(r);
                 case 'Q':
-                    Reina Re = new Reina(x,y,true);
+                    Reina D = new Reina(x,y,true);
+                    setPeça(D);
                 case 'q':
-                    Reina re = new Reina(x,y,false);
+                    Reina d = new Reina(x,y,false);
+                    setPeça(d);
                 case 'R':
                     Torre T = new Torre(x,y,true);
+                    setPeça(T);
                 case 'r':
                     Torre t = new Torre(x,y,false);
+                    setPeça(T);
                 case 'B':
                     Alfil A = new Alfil(x,y,true);
+                    setPeça(A);
                 case 'b':
                     Alfil a = new Alfil(x,y,false);
+                    setPeça(a);
                 case 'N':
                     Cavall C = new Cavall(x,y,true);
+                    setPeça(R);
                 case 'n':
                     Cavall c = new Cavall(x,y,false);
+                    setPeça(R);
                 case 'P':
                     Peo P = new Peo(x,y,true);
+                    setPeça(R);
                 case 'p':
                     Peo p = new Peo(x,y,false);
+                    setPeça(R);
 
                 default:
                     if (FEN[i] == '-') break;
                     ++x;
 
                     //sha de mirar mes casos
-
-
-
             }
         }
 

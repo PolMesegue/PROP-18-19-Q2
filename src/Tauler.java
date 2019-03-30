@@ -12,7 +12,21 @@ public class Tauler {
     //la graella no és de celes?
     //private Cela[][] Graella = new Cela[8][8];
 
-    public void setPeça(Peça) {
+    public void setPeça(Peça p) {
+
+        if (p.esBlanca()) {
+
+            switch(p.getTipus()) {
+
+                case 'r': 
+
+
+            }
+
+        }
+
+
+
 
     }
 
@@ -65,11 +79,6 @@ public class Tauler {
             }
             FEN[iter] = '/';
         } //falta el i el guionet i bla bla
-
-
-
-
-
 
     }
 
