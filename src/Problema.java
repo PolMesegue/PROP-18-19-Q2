@@ -67,7 +67,7 @@ public class Problema {
 
 
 
-    }
+    } // aa
 
 /*
     public bool teSolucio() {
