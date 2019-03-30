@@ -13,6 +13,8 @@ public class Problema {
 
     public String getID() { return ID;}
 
+    //PeoPeoPeoPeoPeoPeoPeoPeoAlfAlfCavCavTorTorReinaRei;
+
     //aixo passa de FEN a un tauler decente de personas
     public void FENtoHuman(){
 
@@ -27,6 +29,7 @@ public class Problema {
                     x = 0;
                 case 'K':
                     Rei R = new Rei(x,y,true);
+
                 case 'k':
                     Rei r = new Rei(x,y,false);
                 case 'Q':
@@ -35,7 +38,6 @@ public class Problema {
                     Reina re = new Reina(x,y,false);
                 case 'R':
                     Torre T = new Torre(x,y,true);
-
                 case 'r':
                     Torre t = new Torre(x,y,false);
                 case 'B':
@@ -64,47 +66,7 @@ public class Problema {
 
     }
 
-    public void HumantoFEN (Peça[] peces_blanques, Peça[] peces_negres ){
 
-        Peça[][] mapa = new Peça[8][8];
-
-        int whiteX, whiteY, blackX, blackY;
-
-        for (int i = 0; i < 16; ++i) {
-            whiteX = peces_blanques[i].getX();
-            whiteY = peces_blanques[i].getY();
-
-            blackX = peces_negres[i].getX();
-            blackY = peces_negres[i].getY();
-
-            mapa[whiteX][whiteY] = peces_blanques[i];
-            mapa[blackX][blackY] = peces_blanques[i];
-
-
-        }
-
-        int iter = 0;
-        for (int i = 0; i < 8; ++i) {
-            int buit = 0;
-            for (int j = 0; j < 8; ++j) {
-
-                if (!mapa[i][j].hihaPeça()) ++buit;
-                else {
-                    if (tmp != 0) {
-                        FEN[iter] = buit;
-                        ++iter;
-                        FEN[iter] = mapa[i][j].tipus();
-                    }
-                }
-
-
-
-
-
-            }
-
-
-        }
 
 
 
