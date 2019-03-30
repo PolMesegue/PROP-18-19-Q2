@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Problema {
 
     private char[] FEN;
-    private String Id;
+    private String ID;
 
 
     Problema (char[] FEN){
@@ -11,7 +11,7 @@ public class Problema {
     }
  //probva
 
-    public String getId() { return Id;}
+    public String getID() { return ID;}
 
     //aixo passa de FEN a un tauler decente de personas
     public void FENtoHuman(){
