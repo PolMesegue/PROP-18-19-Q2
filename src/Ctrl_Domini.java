@@ -14,6 +14,8 @@ public class Ctrl_Domini {
 
     }
 
-    public void AddProblema()
+    public void AddProblem(){
+
+    }
 
 }
