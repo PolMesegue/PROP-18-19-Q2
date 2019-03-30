@@ -21,6 +21,9 @@ public abstract class Peça {
         return !es_blanca;
     }
 
+  //  public bool hihaPeça(int x, int y)
+    //Pol: necessito una funció que em retorni si en una posicio X,Y hi ha una peça o no
+
     public void setX(int x) {
         this.x = x;
     }

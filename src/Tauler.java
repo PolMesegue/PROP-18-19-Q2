@@ -3,8 +3,8 @@ import java.util.*;
 
 public class Tauler {
     //vector< vector<Cela> > tauler;
-    public ArrayList<Peça> peces_blanques = new ArrayList<>();
-    public ArrayList<Peça> peces_negres = new ArrayList<>();
+    public Peça[] peces_blanques;
+    public Peça[] peces_negres;
     private final int files = 8;
     private final int columnes = 8;
     private Integer[][] Graella;

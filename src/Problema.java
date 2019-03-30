@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Problema {
 
-    Private String FEN;
+    private char[] FEN;
 
 
-    Problema (String FEN){
+    Problema (char[] FEN){
         this.FEN=FEN;
     }
 
@@ -42,9 +42,9 @@ public class Problema {
                 case 'b':
                     Alfil a = new Alfil(x,y,false);
                 case 'N':
-                    Cavall C = new Cavall(x,y,true);
+                    Cavall Ca = new Cavall(x,y,true);
                 case 'n':
-                    Cavall c = new Cavall(x,y,false);
+                    Cavall ca = new Cavall(x,y,false);
                 case 'P':
                     Peo P = new Peo(x,y,true);
                 case 'p':
@@ -63,7 +63,38 @@ public class Problema {
 
     }
 
-    public void HumantoFEN (ArrayList<Peça> peces_blanques, ArrayList<Peça> peces_negres ){
+    public void HumantoFEN (Peça[] peces_blanques, Peça[] peces_negres ){
+
+        Peça[8][8] mapa;
+
+        int whiteX, whiteY, blackX, blackY;
+
+        for (int i = 0; i < 16; ++i) {
+            whiteX = peces_blanques[i].getX();
+            whiteY = peces_blanques[i].getY();
+
+            blackX = peces_negres[i].getX();
+            blackY = peces_negres[i].getY();
+
+            mapa[whiteX][whiteY] = peces_blanques[i];
+            mapa[blackX][blackY] = peces_blanques[i];
+
+
+        }
+
+        for (int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+
+
+
+            }
+
+
+        }
+
+
+
+
 
 
 
