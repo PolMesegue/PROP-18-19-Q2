@@ -3,11 +3,12 @@ import java.util.*;
 
 public class Tauler {
     //vector< vector<Cela> > tauler;
-    public Peça[] peces_blanques;
-    public Peça[] peces_negres;
+    public Peça[16] peces_blanques; // peces_blanques {p,p,p,p,p,p,p,p,a,a,c,c,t,t,d,r}
+    public Peça[16] peces_negres;
     private final int files = 8;
     private final int columnes = 8;
     private Integer[][] Graella;
+    private Integer nT = 0, nC = 0, nA = 0, nP = 0;
 
     //la graella no és de celes?
     //private Cela[][] Graella = new Cela[8][8];
@@ -18,14 +19,43 @@ public class Tauler {
 
             switch(p.getTipus()) {
 
-                case 'r': 
+                case 'r': peces_blanques.add(15,p);
 
+                case 'd': peces_blanques.add(14,p);
 
+                case 't':
+                    if (nT == 0;){
+                    peces_blanques.add(12,p);
+                    ++nT;
+                    }
+                    else {
+                    peces_blanques.add(13,p);
+                    }
+
+                case 'c':;
+                    if (nC == 0;){
+                    peces_blanques.add(10,p);
+                    ++nC;
+                     }
+                    else {
+                    peces_blanques.add(11,p);
+                     }
+
+                case 'a':;
+                    if (nA == 0;){
+                    peces_blanques.add(8,p);
+                    ++nA;
+                     }
+                    else {
+                    peces_blanques.add(9,p);
+                    }
+
+                case 'p':;
+                    peces_blanques.add(nP,p);
+                    ++nP;
             }
 
         }
-
-
 
 
     }
