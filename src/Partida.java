@@ -9,10 +9,11 @@ public class Partida {
     private static Timestamp fecha;
     private Problema p;
     private Tauler t;
-    private Atacant a;
-    private Defensor d;
+    private Usuari a;
+    private Usuari d;
+    Rellotge timer;
 
-    Partida(Timestamp f,Problema p, Tauler t, Atacant a, Defensor d){
+    Partida(Timestamp f,Problema p, Tauler t, Usuari a, Usuari d){
         fecha=f;
         this.p=p;
         this.t=t;
@@ -21,17 +22,42 @@ public class Partida {
     }
 
 
-    public void mourePeça(Peça A, int x, int y){
-        char whoStarts = p.whoStarts();
 
+    public void mourePeça(, int x, int y){
+        //char whoStarts = p.whoStarts();
+
+        //acaba de començar la partida
+        if(timer.getfirst()){
+            timer.startTimer();
+            timer.changePlayer();
+            timer.setFirst(false);
+        }
+
+        t.moure(/*necesitara posicions de la peça i el desti*/);
+
+        //modificar el cambii
+        t.modificar();
+
+        long test = timer.stopTimer();
+        test = test/1000;
+        if (timer.getPlayer()) {
+            timer.decreaseCounterT1((int) test);
+            System.out.println(timer.getT1());
+        }
+        else {
+            timer.decreaseCounterT2((int) test);
+            timer.getT2();
+        }
+        timer.startTimer();
+        timer.changePlayer();
 
     }
 
-    public Atacant getA() {
+    public Usuari getA() {
         return a;
     }
 
-    public Defensor getD() {
+    public Usuari getD() {
         return d;
     }
 
@@ -43,11 +69,11 @@ public class Partida {
         return t;
     }
 
-    public void setA(Atacant a) {
+    public void setA(Usuari a) {
         this.a = a;
     }
 
-    public void setD(Defensor d) {
+    public void setD(Usuari d) {
         this.d = d;
     }
 

@@ -30,6 +30,16 @@ public class BD_Usuaris {
             }
         }
     }
+    public boolean existsHuma(String nom){
+        Iterator<Huma> itr=this.CollectionHumans.iterator();
+        while(itr.hasNext()){
+            if(itr.next().getNom().equals(nom)){
+                return true;
+            }
+        }
+        return false;
+
+    }
 
     public Collection<Huma> getCollectionHumans() {
         return CollectionHumans;

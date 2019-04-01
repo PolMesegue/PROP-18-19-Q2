@@ -14,14 +14,14 @@ public class Ctrl_Domini {
         }
         //imprimir error, ya existeix.
     }
-
     public void AddProblem(String fen){
         Problema p= new Problema(fen);
         bdp.AddProblem(p);
     }
-
-    // this is a test
-
-
-
+    public void crearPartida(String Atacant, String defensor,String problema){
+            Usuari a= bdu.getHuma(Atacant);
+            Usuari d= bdu.getHuma(defensor);
+            Problema p= bdp.getProblema(problema);
+            fa.CrearPartida(a,d,p,p.getTauler());
+    }
 }
