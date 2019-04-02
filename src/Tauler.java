@@ -3,8 +3,8 @@ import java.util.*;
 
 public class Tauler {
     //vector< vector<Cela> > tauler;
-    private Peça[] peces_blanques; // peces_blanques {p,p,p,p,p,p,p,p,a,a,c,c,t,t,d,r}
-    private Peça[] peces_negres;
+    private Peca[] peces_blanques; // peces_blanques {p,p,p,p,p,p,p,p,a,a,c,c,t,t,d,r}
+    private Peca[] peces_negres;
   //  private final int files = 8;
   //  private final int columnes = 8;
   //  private Integer[][] Graella;
@@ -13,8 +13,8 @@ public class Tauler {
 
     public Tauler() {
 
-        peces_blanques = new Peça[16];
-        peces_negres = new Peça[16];
+        peces_blanques = new Peca[16];
+        peces_negres = new Peca[16];
         BnT = 0;
         BnC = 0;
         BnA = 0;
@@ -100,13 +100,13 @@ public class Tauler {
     }
 
 
-    public Peça getPeça(int x, int y) {
-        for (Peça p : peces_blanques) {
+    public Peca getPeca(int x, int y) {
+        for (Peca p : peces_blanques) {
             if (p.getX() == x && p.getY() == y) {
                 return p;
             }
         }
-        for (Peça p : peces_negres) {
+        for (Peca p : peces_negres) {
             if (p.getX() == x && p.getY() == y) {
                 return p;
             }
@@ -114,9 +114,9 @@ public class Tauler {
         return null;
     }
 
-    public char[] HumantoFEN (Peça[] peces_blanques, Peça[] peces_negres ){
+    public char[] HumantoFEN (Peca[] peces_blanques, Peca[] peces_negres ){
 
-        Peça[][] mapa = new Peça[8][8];
+        Peca[][] mapa = new Peca[8][8];
 
         int whiteX, whiteY, blackX, blackY;
 
