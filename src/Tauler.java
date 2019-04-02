@@ -10,10 +10,33 @@ public class Tauler {
     private Integer[][] Graella;
     private Integer nT = 0, nC = 0, nA = 0, nP = 0;
 
+
+    /*
+    private Collection<Problema> CollectionProblems;
+
+    public BD_Problemas(){
+        this.CollectionProblems = new ArrayList<>();
+    } */
+
+    public Tauler() {
+
+
+        
+    }
+
+    //mourePeça
+    //getTauler
+/*
+    public Peça(int x, int y, boolean es_blanca) {
+        this.es_blanca = es_blanca;
+        this.x = x;
+        this.y = y;
+    }
+ */
     //la graella no és de celes?
     //private Cela[][] Graella = new Cela[8][8];
 
-    public void setPeça(Peça p) {
+    public void setPeca(Peça p) {
 
         if (p.esBlanca()) {
 

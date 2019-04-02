@@ -20,6 +20,8 @@ public class Problema {
 
     }
 
+
+
     public String getID() { return ID;}
 
     //PeoPeoPeoPeoPeoPeoPeoPeoAlfAlfCavCavTorTorReinaRei;
@@ -27,6 +29,7 @@ public class Problema {
     //aixo passa de FEN a un tauler decente de personas
     public void FENtoHuman(){
 
+        Tauler T =
         int tam = FEN.length;
         int x=0, y=0;
         for (int i = 0; i < tam; ++i) {
@@ -38,40 +41,40 @@ public class Problema {
                     x = 0;
                 case 'K':
                     Rei R = new Rei(x,y,true);
-                    setPeça(R);
+                    setPeca(R);
                 case 'k':
                     Rei r = new Rei(x,y,false);
-                    setPeça(r);
+                    setPeca(r);
                 case 'Q':
                     Reina D = new Reina(x,y,true);
-                    setPeça(D);
+                    setPeca(D);
                 case 'q':
                     Reina d = new Reina(x,y,false);
-                    setPeça(d);
+                    setPeca(d);
                 case 'R':
                     Torre T = new Torre(x,y,true);
-                    setPeça(T);
+                    setPeca(T);
                 case 'r':
                     Torre t = new Torre(x,y,false);
-                    setPeça(T);
+                    setPeca(T);
                 case 'B':
                     Alfil A = new Alfil(x,y,true);
-                    setPeça(A);
+                    setPeca(A);
                 case 'b':
                     Alfil a = new Alfil(x,y,false);
-                    setPeça(a);
+                    setPeca(a);
                 case 'N':
                     Cavall C = new Cavall(x,y,true);
-                    setPeça(R);
+                    setPeca(R);
                 case 'n':
                     Cavall c = new Cavall(x,y,false);
-                    setPeça(R);
+                    setPeca(R);
                 case 'P':
                     Peo P = new Peo(x,y,true);
-                    setPeça(R);
+                    setPeca(R);
                 case 'p':
                     Peo p = new Peo(x,y,false);
-                    setPeça(R);
+                    setPeca(R);
 
                 default:
                     if (FEN[i] == '-') break;
