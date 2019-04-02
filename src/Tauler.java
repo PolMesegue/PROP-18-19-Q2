@@ -8,7 +8,7 @@ public class Tauler {
   //  private final int files = 8;
   //  private final int columnes = 8;
   //  private Integer[][] Graella;
-    private Integer nT, nC, nA, nP;
+    private Integer BnT, BnC, BnA, BnP, NnT, NnC, NnA, NnP;
 
 
     /*
@@ -22,70 +22,90 @@ public class Tauler {
 
         this.peces_blanques = new Peça[16];
         this.peces_negres = new Peça[16];
-        this.nT = 0;
-        this.nC = 0;
-        this.nA = 0;
-        this.nP = 0;
+        this.BnT = 0;
+        this.BnC = 0;
+        this.BnA = 0;
+        this.BnP = 0;
+        this.NnT = 0;
+        this.NnC = 0;
+        this.NnA = 0;
+        this.NnP = 0;
 
     }
 
     //mourePeça
-    //getTauler
-/*
-    public Peça(int x, int y, boolean es_blanca) {
-        this.es_blanca = es_blanca;
-        this.x = x;
-        this.y = y;
+    public Tauler getTauler() {
+
+        return
+
     }
- */
 
 
-    public void setPeca(Peça p) {
+    public void setRei(Rei R) {
 
-        if (p.esBlanca()) {
+        if (R.esBlanca()) peces_blanques[15] = R;
+        else peces_negres[15] = R;
 
-            switch(p.getTipus()) {
+    }
+    public void setReina(Reina D) {
 
-                case 'r': peces_blanques.add(15,p);
+        if (D.esBlanca()) peces_blanques[14] = D;
+        else peces_negres[14] = D;
 
-                case 'd': peces_blanques.add(14,p);
+    }
 
-                case 't':
-                    if (nT == 0){
-                    peces_blanques.add(12,p);
-                    ++nT;
-                    }
-                    else {
-                    peces_blanques.add(13,p);
-                    }
+    public void setTorre(Torre To) {
 
-                case 'c':;
-                    if (nC == 0){
-                    peces_blanques.add(10,p);
-                    ++nC;
-                     }
-                    else {
-                    peces_blanques.add(11,p);
-                     }
-
-                case 'a':;
-                    if (nA == 0){
-                    peces_blanques.add(8,p);
-                    ++nA;
-                     }
-                    else {
-                    peces_blanques.add(9,p);
-                    }
-
-                case 'p':;
-                    peces_blanques.add(nP,p);
-                    ++nP;
-            }
-
+        if (To.esBlanca()) {
+            peces_blanques[12+BnT] = To;
+            ++BnT;
+        }
+        else {
+            peces_negres[12+NnT] = To;
+            ++NnT;
         }
 
+    }
+
+    public void setCavall(Cavall C) {
+
+        if (C.esBlanca()) {
+            peces_blanques[10+BnC] = C;
+            ++BnC;
+        }
+        else{
+            peces_negres[10+NnC] = C;
+            ++NnC;
+        }
 
     }
+
+    public void setAlfil(Alfil A) {
+
+        if (A.esBlanca()){
+            peces_blanques[8+BnA] = A;
+            ++BnA;
+        }
+        else {
+            peces_negres[8+NnA] = A;
+            ++NnA;
+        }
+
+    }
+
+    public void setPeo(Peo P) {
+
+        if (P.esBlanca()){
+            peces_blanques[BnP] = P;
+            ++BnP;
+        }
+        else {
+            peces_negres[NnP] = P;
+            ++NnP;
+        }
+
+    }
+
 
     public Peça getPeça(int x, int y) {
         for (Peça p : peces_blanques) {
@@ -101,7 +121,7 @@ public class Tauler {
         return null;
     }
 
-    public void HumantoFEN (Peça[] peces_blanques, Peça[] peces_negres ){
+    public char[] HumantoFEN (Peça[] peces_blanques, Peça[] peces_negres ){
 
         Peça[][] mapa = new Peça[8][8];
 
@@ -115,7 +135,7 @@ public class Tauler {
             blackY = peces_negres[i].getY();
 
             mapa[whiteX][whiteY] = peces_blanques[i];
-            mapa[blackX][blackY] = peces_blanques[i];
+            mapa[blackX][blackY] = peces_negres[i];
 
 
         }
@@ -141,15 +161,4 @@ public class Tauler {
 
 
 }
-
-   /*
-    private void removePeça(int x, int y) {
-        Graella[x][y] = Cela::removePeça;
-
-    }
-
-    public void setPeça(Peça p, int x, int y) {
-        Graella[x][y] = Cela::setPeça(p);
-    }
-    */
 
