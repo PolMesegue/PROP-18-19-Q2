@@ -2,7 +2,7 @@
 
 
 
-public class Torre extends Peça {
+public class Torre extends Peca {
 
     public Torre(int x, int y, boolean es_blanca) {
         super(x,y,es_blanca);
@@ -12,7 +12,7 @@ public class Torre extends Peça {
         //Una torre es pot moure tantes cel·les com vulgui en direcció amunt, avall, dreta o esquerra
 
         //Si hi ha una peça aliada a la posició destí, no ens podem moure
-        Peça p_aux = t.getPeça(desti_x,desti_y);
+        Peca p_aux = t.getPeça(desti_x,desti_y);
         if (p_aux != null) {
             if (p_aux.esBlanca() && this.esBlanca()) return false;
             if (p_aux.esNegra() && this.esNegra()) return false;
@@ -25,28 +25,28 @@ public class Torre extends Peça {
         if (desti_y > this.getY()) { //torre es mou avall
             int numero_moviments = Math.abs(desti_y - this.getY());
             for (int i = 0; i < numero_moviments; i++) {
-                Peça p = t.getPeça(this.getX(), this.getY() + i);
+                Peca p = t.getPeça(this.getX(), this.getY() + i);
                 if (p != null) return false;
             }
         }
         if (desti_y < this.getY()) { //torre es mou amunt
             int numero_moviments = Math.abs(desti_y - this.getY());
             for (int i = 0; i < numero_moviments; i++) {
-                Peça p = t.getPeça(this.getX(), this.getY() - i);
+                Peca p = t.getPeça(this.getX(), this.getY() - i);
                 if (p != null) return false;
             }
         }
         if (desti_x > this.getX()) { //torre es mou dreta
             int numero_moviments = Math.abs(desti_x - this.getX());
             for (int i = 0; i < numero_moviments; i++) {
-                Peça p = t.getPeça(this.getX() + i, this.getY());
+                Peca p = t.getPeça(this.getX() + i, this.getY());
                 if (p != null) return false;
             }
         }
         if (desti_x < this.getX()) { //torre es mou esquerra
             int numero_moviments = Math.abs(desti_x - this.getX());
             for (int i = 0; i < numero_moviments; i++) {
-                Peça p = t.getPeça(this.getX() - i, this.getY());
+                Peca p = t.getPeça(this.getX() - i, this.getY());
                 if (p != null) return false;
             }
         }

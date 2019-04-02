@@ -1,6 +1,6 @@
 
 
-public class Reina extends Peça {
+public class Reina extends Peca {
 
 
     public Reina(int x, int y, boolean es_blanca) {
@@ -11,7 +11,7 @@ public class Reina extends Peça {
         //La Reina es pot moure en qualsevol casella en diagonal, horitzontal i vertical
 
         //Si hi ha una peça aliada a la posició destí, no ens podem moure
-        Peça peça_aux = t.getPeça(desti_x,desti_y);
+        Peca peça_aux = t.getPeça(desti_x,desti_y);
         if (peça_aux != null) {
             if (peça_aux.esBlanca() && this.esBlanca()) return false;
             if (peça_aux.esNegra() && this.esNegra()) return false;

@@ -1,7 +1,7 @@
 
 
 
-public class Peo extends Peça {
+public class Peo extends Peca {
 
     public Peo(int x, int y, boolean es_blanca) {
         super(x,y,es_blanca);

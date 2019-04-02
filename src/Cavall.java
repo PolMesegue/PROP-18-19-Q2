@@ -1,7 +1,7 @@
 
 
 
-public class Cavall extends Peça{
+public class Cavall extends Peca{
 
 
     public Cavall(int x, int y, boolean es_blanca) {

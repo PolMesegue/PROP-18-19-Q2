@@ -1,7 +1,7 @@
 
 
 
-public class Alfil extends Peça {
+public class Alfil extends Peca {
 
 
     public Alfil(int x, int y, boolean es_blanca) {
