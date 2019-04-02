@@ -15,8 +15,6 @@ keyboard and disk files. The present version runs on
 Macintosh, Unix, and Windows 95 systems.
 */
 
-package DriverTBC;
-
 import java.io.*;
 
 public class inout
