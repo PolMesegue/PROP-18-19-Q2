@@ -14,7 +14,7 @@ public class Ctrl_Domini {
         }
         //imprimir error, ya existeix.
     }
-    public void AddProblem(String fen){
+    public void AddProblem(char[] fen){
         Problema p= new Problema(fen);
         bdp.AddProblem(p);
     }
