@@ -4,12 +4,18 @@ import java.util.*;
 public class Cavall extends Peca{
 
 
-    public Cavall(int x, int y, boolean es_blanca) {
-        super(x,y,es_blanca);
+    public Cavall(String i, int x, int y, boolean color) {
+        setId(i);
+        setX(x);
+        setY(y);
+        setColor(color);
     }
 
-    public boolean moviment_valid(Tauler t, int desti_x, int desti_y) {
-        //codi moviment Cavall
-        return false;
+    public ArrayList<IntPair> posibles_moviments(Tauler t, int desti_x, int desti_y) {
+
+
+        return null;
+
     }
 }
+

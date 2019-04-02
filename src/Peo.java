@@ -3,14 +3,21 @@ import java.util.*;
 
 public class Peo extends Peca {
 
-    public Peo(int x, int y, boolean es_blanca) {
-        super(x,y,es_blanca);
+    public Peo(String i, int x, int y, boolean color) {
+        setId(i);
+        setX(x);
+        setY(y);
+        setColor(color);
     }
 
-    public boolean moviment_valid(Tauler t, int desti_x, int desti_y) {
-        //codi moviment Peo
-        return false;
+    public ArrayList<IntPair> posibles_moviments(Tauler t, int desti_x, int desti_y) {
+
+
+        return null;
+
     }
+
+
     // mata diferent
     public void matar(){
 

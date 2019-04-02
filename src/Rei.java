@@ -3,17 +3,23 @@ import java.util.*;
 
 public class Rei extends Peca {
 
-    public Rei(int x, int y, boolean es_blanca) {
-        super(x,y,es_blanca);
+    public Rei(String i, int x, int y, boolean color) {
+        setId(i);
+        setX(x);
+        setY(y);
+        setColor(color);
     }
 
-    public void moviments(int posicio){
+    public ArrayList<IntPair> posibles_moviments(Tauler t, int desti_x, int desti_y) {
+
+
+        return null;
 
     }
-    public void cami(int posini, int posfi){
 
-    }
 
+}
+    /*
     public boolean moviment_valid(Tauler t, int desti_x, int desti_y) {
         //El Rei es pot moure a qualsevol cel·la a distancia 1 de la seva posicio actual
 
@@ -32,4 +38,4 @@ public class Rei extends Peca {
         if (dist_x == 0 && dist_y == 1) return true; //moviment vertical
         return false; //qualsevol altre moviment no es valid
     }
-}
+     */

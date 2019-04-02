@@ -3,15 +3,26 @@ import java.util.*;
 
 public class Torre extends Peca {
 
-    public Torre(int x, int y, boolean es_blanca) {
-        super(x,y,es_blanca);
+    public Torre(String i, int x, int y, boolean color) {
+        setId(i);
+        setX(x);
+        setY(y);
+        setColor(color);
     }
 
-    public boolean moviment_valid(Tauler t, int desti_x, int desti_y) {
-        //Una torre es pot moure tantes cel·les com vulgui en direcció amunt, avall, dreta o esquerra
+    public ArrayList<IntPair> posibles_moviments(Tauler t, int desti_x, int desti_y) {
+        //torre nomes es pot moure horitzontalment
+        moviments.clear();
 
-        //Si hi ha una peça aliada a la posició destí, no ens podem moure
-        Peca p_aux = t.getPeca(desti_x,desti_y);
+
+        return null;
+
+    }
+}
+
+
+/*
+Peca p_aux = t.getPeca(desti_x,desti_y);
         if (p_aux != null) {
             if (p_aux.esBlanca() && this.esBlanca()) return false;
             if (p_aux.esNegra() && this.esNegra()) return false;
@@ -52,4 +63,4 @@ public class Torre extends Peca {
 
         return true;
     }
-}
+ */
