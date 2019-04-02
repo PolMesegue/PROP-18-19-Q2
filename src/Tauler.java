@@ -3,40 +3,33 @@ import java.util.*;
 
 public class Tauler {
     //vector< vector<Cela> > tauler;
-    public Peça[] peces_blanques; // peces_blanques {p,p,p,p,p,p,p,p,a,a,c,c,t,t,d,r}
-    public Peça[] peces_negres;
+    private Peça[] peces_blanques; // peces_blanques {p,p,p,p,p,p,p,p,a,a,c,c,t,t,d,r}
+    private Peça[] peces_negres;
   //  private final int files = 8;
   //  private final int columnes = 8;
   //  private Integer[][] Graella;
     private Integer BnT, BnC, BnA, BnP, NnT, NnC, NnA, NnP;
 
 
-    /*
-    private Collection<Problema> CollectionProblems;
-
-    public BD_Problemas(){
-        this.CollectionProblems = new ArrayList<>();
-    } */
-
     public Tauler() {
 
-        this.peces_blanques = new Peça[16];
-        this.peces_negres = new Peça[16];
-        this.BnT = 0;
-        this.BnC = 0;
-        this.BnA = 0;
-        this.BnP = 0;
-        this.NnT = 0;
-        this.NnC = 0;
-        this.NnA = 0;
-        this.NnP = 0;
+        peces_blanques = new Peça[16];
+        peces_negres = new Peça[16];
+        BnT = 0;
+        BnC = 0;
+        BnA = 0;
+        BnP = 0;
+        NnT = 0;
+        NnC = 0;
+        NnA = 0;
+        NnP = 0;
 
     }
 
     //mourePeça
-    public Tauler getTauler() {
+    public Tauler getTauler(char[] FEN) {
 
-        return
+
 
     }
 
