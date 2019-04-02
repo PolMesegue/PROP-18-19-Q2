@@ -1,4 +1,4 @@
-
+import java.util.*;
 
 
 public abstract class Peca {
@@ -7,7 +7,7 @@ public abstract class Peca {
     final private boolean es_blanca;
 
 
-    public Peça(int x, int y, boolean es_blanca) {
+    public Peca(int x, int y, boolean es_blanca) {
         this.es_blanca = es_blanca;
         this.x = x;
         this.y = y;
@@ -20,11 +20,6 @@ public abstract class Peca {
     public boolean esNegra() {
         return !es_blanca;
     }
-
-    public boolean hihaPeça(int x, int y){} {
-
-    }
-
 
     public void setX(int x) {
         this.x = x;

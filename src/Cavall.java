@@ -1,4 +1,4 @@
-
+import java.util.*;
 
 
 public class Cavall extends Peca{
@@ -8,8 +8,7 @@ public class Cavall extends Peca{
         super(x,y,es_blanca);
     }
 
-    @Override
-    public boolean moviment_valid(int desti_x, int desti_y) {
+    public boolean moviment_valid(Tauler t, int desti_x, int desti_y) {
         //codi moviment Cavall
         return false;
     }

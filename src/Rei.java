@@ -1,4 +1,4 @@
-
+import java.util.*;
 
 
 public class Rei extends Peca {
@@ -18,7 +18,7 @@ public class Rei extends Peca {
         //El Rei es pot moure a qualsevol cel·la a distancia 1 de la seva posicio actual
 
         //Si hi ha una peça aliada a la posició destí, no ens podem moure
-        Peca p_aux = t.getPeça(desti_x,desti_y);
+        Peca p_aux = t.getPeca(desti_x,desti_y);
         if (p_aux != null) {
             if (p_aux.esBlanca() && this.esBlanca()) return false;
             if (p_aux.esNegra() && this.esNegra()) return false;

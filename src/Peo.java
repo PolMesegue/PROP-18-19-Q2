@@ -1,4 +1,4 @@
-
+import java.util.*;
 
 
 public class Peo extends Peca {
@@ -7,9 +7,7 @@ public class Peo extends Peca {
         super(x,y,es_blanca);
     }
 
-//prova github
-    @Override
-    public boolean moviment_valid(int desti_x, int desti_y) {
+    public boolean moviment_valid(Tauler t, int desti_x, int desti_y) {
         //codi moviment Peo
         return false;
     }
