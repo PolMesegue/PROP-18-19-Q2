@@ -7,7 +7,7 @@ public class Tauler {
     public Peça[16] peces_negres;
     private final int files = 8;
     private final int columnes = 8;
-    private Integer[][] Graella;
+  //  private Integer[][] Graella;
     private Integer nT = 0, nC = 0, nA = 0, nP = 0;
 
 
@@ -21,7 +21,7 @@ public class Tauler {
     public Tauler() {
 
 
-        
+
     }
 
     //mourePeça
@@ -33,8 +33,7 @@ public class Tauler {
         this.y = y;
     }
  */
-    //la graella no és de celes?
-    //private Cela[][] Graella = new Cela[8][8];
+
 
     public void setPeca(Peça p) {
 

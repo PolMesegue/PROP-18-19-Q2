@@ -28,7 +28,7 @@ public abstract class Peça {
     //public bool hihaPeça(int x, int y);
     //Pol: necessito una funció que em retorni si en una posicio X,Y hi ha una peça o no
 
-    //public char getTipus (int x, int y);
+    //public char getTipus (int x, int y); que retorni el tipus (rei, peo...) de la peça
 
 
 

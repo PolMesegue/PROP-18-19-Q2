@@ -12,12 +12,9 @@ public class Problema {
     Problema (char[] FEN){
         this.FEN=FEN;
     }
- //probva
 
     public char whoStarts() {
-
         return FEN[FEN.length - 9];
-
     }
 
 
