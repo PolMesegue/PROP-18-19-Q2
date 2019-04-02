@@ -38,7 +38,7 @@ public class Problema {
                     x = 0;
                 case 'K':
                     Rei R = new Rei(x,y,true);
-                    setPeça(R);
+                    setPeça();
                 case 'k':
                     Rei r = new Rei(x,y,false);
                     setPeça(r);
