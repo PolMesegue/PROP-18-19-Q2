@@ -3,12 +3,12 @@ import java.util.*;
 
 public class Tauler {
     //vector< vector<Cela> > tauler;
-    public Peça[16] peces_blanques; // peces_blanques {p,p,p,p,p,p,p,p,a,a,c,c,t,t,d,r}
-    public Peça[16] peces_negres;
-    private final int files = 8;
-    private final int columnes = 8;
+    public Peça[] peces_blanques; // peces_blanques {p,p,p,p,p,p,p,p,a,a,c,c,t,t,d,r}
+    public Peça[] peces_negres;
+  //  private final int files = 8;
+  //  private final int columnes = 8;
   //  private Integer[][] Graella;
-    private Integer nT = 0, nC = 0, nA = 0, nP = 0;
+    private Integer nT, nC, nA, nP;
 
 
     /*
@@ -20,7 +20,12 @@ public class Tauler {
 
     public Tauler() {
 
-
+        this.peces_blanques = new Peça[16];
+        this.peces_negres = new Peça[16];
+        this.nT = 0;
+        this.nC = 0;
+        this.nA = 0;
+        this.nP = 0;
 
     }
 
@@ -46,7 +51,7 @@ public class Tauler {
                 case 'd': peces_blanques.add(14,p);
 
                 case 't':
-                    if (nT == 0;){
+                    if (nT == 0){
                     peces_blanques.add(12,p);
                     ++nT;
                     }
@@ -55,7 +60,7 @@ public class Tauler {
                     }
 
                 case 'c':;
-                    if (nC == 0;){
+                    if (nC == 0){
                     peces_blanques.add(10,p);
                     ++nC;
                      }
@@ -64,7 +69,7 @@ public class Tauler {
                      }
 
                 case 'a':;
-                    if (nA == 0;){
+                    if (nA == 0){
                     peces_blanques.add(8,p);
                     ++nA;
                      }
