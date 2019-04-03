@@ -3,13 +3,14 @@ import java.util.*;
 
 public abstract class Peca {
     private String id=null;
-    private int x;
-    private int y;
+    private int x; //[0..7]
+    private int y; //[0..7]
     private boolean es_blanca;
 
     class IntPair {
-        final int x;
-        final int y;
+        int x;
+        int y;
+        IntPair(){}
         IntPair(int x, int y) {this.x=x;this.y=y;}
     }
 
@@ -61,7 +62,7 @@ public abstract class Peca {
         return y;
     }
 
-    public abstract ArrayList<IntPair> posibles_moviments(Tauler t, int desti_x, int desti_y);
+    public abstract ArrayList<IntPair> posibles_moviments(Tauler t);
 
 
 }

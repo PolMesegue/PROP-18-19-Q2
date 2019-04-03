@@ -10,9 +10,16 @@ public class Torre extends Peca {
         setColor(color);
     }
 
-    public ArrayList<IntPair> posibles_moviments(Tauler t, int desti_x, int desti_y) {
-        //torre nomes es pot moure horitzontalment
+    public ArrayList<IntPair> posibles_moviments(Tauler t) {
+        //torre nomes es pot moure horitzontal i vertical
         moviments.clear();
+        int tempx =  this.getX();
+        while (tempx >= 0) {
+            if (t.getPeca(this.getX(), this.getY()) == null) {
+                IntPair aux = new IntPair(this.getX(), this.getY());
+                this.moviments.add(aux);
+            }
+        }
 
 
         return null;

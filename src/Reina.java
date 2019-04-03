@@ -10,7 +10,7 @@ public class Reina extends Peca {
         setColor(color);
     }
 
-    public ArrayList<IntPair> posibles_moviments(Tauler t, int desti_x, int desti_y) {
+    public ArrayList<IntPair> posibles_moviments(Tauler t) {
 
 
         return null;
