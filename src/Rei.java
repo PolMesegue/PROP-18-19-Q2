@@ -1,6 +1,6 @@
 import java.util.*;
 
-
+@SuppressWarnings("Duplicates")
 public class Rei extends Peca {
 
     public Rei(String i, int x, int y, boolean color) {

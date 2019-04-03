@@ -1,6 +1,6 @@
 import java.util.*;
 
-
+@SuppressWarnings("Duplicates")
 public class Torre extends Peca {
 
     public Torre(String i, int x, int y, boolean color) {

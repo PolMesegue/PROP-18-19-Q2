@@ -1,6 +1,6 @@
 import java.util.*;
 
-
+@SuppressWarnings("Duplicates")
 public class Alfil extends Peca {
 
 
@@ -49,7 +49,7 @@ public class Alfil extends Peca {
         }
 
         tempx = this.getX() - 1; //moviment
-        tempx = this.getY() - 1; //diagonal esquerra-amunt
+        tempy = this.getY() - 1; //diagonal esquerra-amunt
         while (tempx >= 0 && tempy >= 0) {
             if (t.getPeca(tempx,tempy) == null) {
                 IntPair aux = new IntPair(tempx,tempy);
@@ -66,7 +66,7 @@ public class Alfil extends Peca {
         }
 
         tempx = this.getX() + 1; //moviment
-        tempx = this.getY() + 1; //diagonal esquerra-avall
+        tempy = this.getY() + 1; //diagonal esquerra-avall
         while (tempx < 8 && tempy < 8) {
             if (t.getPeca(tempx,tempy) == null) {
                 IntPair aux = new IntPair(tempx,tempy);
