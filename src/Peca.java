@@ -32,6 +32,9 @@ public abstract class Peca {
         this.es_blanca=color;
     }
 
+    //color getter
+    public boolean getColor() {return this.es_blanca; }
+
     //color getter blanca
     public boolean esBlanca() {
         return es_blanca;

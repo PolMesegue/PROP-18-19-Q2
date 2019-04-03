@@ -15,10 +15,17 @@ public class Torre extends Peca {
         moviments.clear();
         int tempx =  this.getX();
         while (tempx >= 0) {
-            if (t.getPeca(this.getX(), this.getY()) == null) {
-                IntPair aux = new IntPair(this.getX(), this.getY());
+            if (t.getPeca(tempx, this.getY()) == null) {
+                IntPair aux = new IntPair(tempx, this.getY());
                 this.moviments.add(aux);
             }
+            else if (t.getPeca(tempx, this.getY()).getColor() == this.getColor()) break;
+            else {
+                IntPair aux = new IntPair(tempx, this.getY());
+                this.moviments.add(aux);
+                break;
+            }
+            tempx--;
         }
 
 
