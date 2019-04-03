@@ -13,7 +13,7 @@ public class Torre extends Peca {
     public ArrayList<IntPair> posibles_moviments(Tauler t) {
         //torre nomes es pot moure horitzontal i vertical
         moviments.clear();
-        int tempx =  this.getX();
+        int tempx =  this.getX() - 1; //movem a l'esquerra
         while (tempx >= 0) {
             if (t.getPeca(tempx, this.getY()) == null) {
                 IntPair aux = new IntPair(tempx, this.getY());
@@ -27,14 +27,53 @@ public class Torre extends Peca {
             }
             tempx--;
         }
-
-
-        return null;
-
+        tempx =  this.getX() + 1; //movem dreta
+        while (tempx < 8) {
+            if (t.getPeca(tempx, this.getY()) == null) {
+                IntPair aux = new IntPair(tempx, this.getY());
+                this.moviments.add(aux);
+            }
+            else if (t.getPeca(tempx, this.getY()).getColor() == this.getColor()) break;
+            else {
+                IntPair aux = new IntPair(tempx, this.getY());
+                this.moviments.add(aux);
+                break;
+            }
+            tempx++;
+        }
+        int tempy = this.getY() + 1; //movem avall
+        while (tempy >= 0) {
+            if (t.getPeca(this.getX(), tempy) == null) {
+                IntPair aux = new IntPair(this.getY(), tempy);
+                this.moviments.add(aux);
+            }
+            else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
+            else {
+                IntPair aux = new IntPair(this.getX(), tempy);
+                this.moviments.add(aux);
+                break;
+            }
+            tempy--;
+        }
+        tempy = this.getY() - 1; //movem amunt
+        while (tempy < 8) {
+            if (t.getPeca(this.getX(), tempy) == null) {
+                IntPair aux = new IntPair(this.getY(), tempy);
+                this.moviments.add(aux);
+            }
+            else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
+            else {
+                IntPair aux = new IntPair(this.getX(), tempy);
+                this.moviments.add(aux);
+                break;
+            }
+            tempy++;
+        }
+        return this.moviments;
     }
 }
 
-
+//IGNORAR A PARTIR D'AQUI
 /*
 Peca p_aux = t.getPeca(desti_x,desti_y);
         if (p_aux != null) {
