@@ -5,6 +5,8 @@ public class Tauler {
     //vector< vector<Cela> > tauler;
     private Peca[] peces_blanques; // peces_blanques {p,p,p,p,p,p,p,p,a,a,c,c,t,t,d,r}
     private Peca[] peces_negres;
+    private Peca[] peces_blanques_mortes;
+    private Peca[] peces_negres_mortes;
   //  private final int files = 8;
   //  private final int columnes = 8;
   //  private Integer[][] Graella;
@@ -15,6 +17,8 @@ public class Tauler {
 
         peces_blanques = new Peca[16];
         peces_negres = new Peca[16];
+        peces_negres_mortes = new Peca[16];
+        peces_blanques_mortes = new Peca[16];
         BnT = 0;
         BnC = 0;
         BnA = 0;
@@ -26,9 +30,61 @@ public class Tauler {
 
     }
 
+    public Tauler(Peca[] peces_blanques, Peca[] peces_negres) {
+
+        this.peces_blanques = peces_blanques;
+        this.peces_negres = peces_negres;
+        peces_negres_mortes = new Peca[16];
+        peces_blanques_mortes = new Peca[16];
+        BnT = 0;
+        BnC = 0;
+        BnA = 0;
+        BnP = 0;
+        NnT = 0;
+        NnC = 0;
+        NnA = 0;
+        NnP = 0;
+    }
+
+
     //mourePeça
 
 //java overloading function
+
+    private Peca[] matar (Peca[] vector, int x, int y) {
+
+        for (int i = 0; i < 16;++i) {
+            if (vector[i]!=null) {
+
+                if (vector[i].getX() == x && vector[i].getY() == y) {
+                    vector[i] = null;
+                }
+
+            }
+        }
+
+        return ;
+
+    }
+
+    private boolean posinmoviments(IntPair pos, ArrayList<IntPair> moviments) {
+
+
+
+
+    }
+
+    private void actualitzar() {
+
+        for (int i = 0; i < 16; ++i) {
+
+            peces_blanques[i].posibles_moviments(peces_blanques, peces_blanques)
+
+        }
+
+    }
+
+
 
     public void MourePeca(Peo p, int x, int y) {
 
@@ -39,13 +95,30 @@ public class Tauler {
     public void MourePeca(Alfil a, int x, int y) {
 
     }
+
+
+
+
     public boolean MourePeca(Torre t, int newX, int newY) {
 
-        Peca.IntPair Pair = new Peca.IntPair(newX,newY);
-
-        ArrayList<Peca.IntPair> Move = t.posibles_moviments(??)
+        IntPair pos = new IntPair(newX,newY);
 
 
+        if(posinmoviments(pos, t.getMoviments())) {
+
+            if (getPeca(newX, newY) != null) {
+                if (t.esBlanca()) peces_negres = matar(peces_negres, newX,newY);
+                else peces_blanques = matar(peces_blanques,newX,newY);
+            }
+
+            t.setX(newX);
+            t.setY(newY);
+
+            actualitzar();
+
+            return true;
+        }
+        else return false;
 
     }
 
@@ -80,11 +153,11 @@ public class Tauler {
     public void setTorre(Torre To) {
 
         if (To.esBlanca()) {
-            peces_blanques[12+this.BnT] = To;
+            this.peces_blanques[12+this.BnT] = To;
             ++this.BnT;
         }
         else {
-            peces_negres[12+this.NnT] = To;
+            this.peces_negres[12+this.NnT] = To;
             ++this.NnT;
         }
 

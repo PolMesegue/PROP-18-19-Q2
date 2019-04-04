@@ -17,6 +17,9 @@ public class Problema {
         return FEN[FEN.length - 9];
     }
 
+    public void setID(String id) {
+        this.ID = id;
+    }
 
     public String getID() {
         return ID;
