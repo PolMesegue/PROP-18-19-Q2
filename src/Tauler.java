@@ -63,11 +63,12 @@ public class Tauler {
             }
         }
 
-        return ;
+        return vector;
 
     }
 
     private boolean posinmoviments(IntPair pos, ArrayList<IntPair> moviments) {
+
 
 
 
@@ -78,8 +79,8 @@ public class Tauler {
 
         for (int i = 0; i < 16; ++i) {
 
-            peces_blanques[i].posibles_moviments(peces_blanques, peces_blanques);
-            peces_negres[i].posibles_moviments(peces_blanques, peces_negres);
+            if (peces_blanques[i] != null) peces_blanques[i].posibles_moviments(peces_blanques, peces_blanques);
+            if (peces_negres[i] != null) peces_negres[i].posibles_moviments(peces_blanques, peces_negres);
         }
 
     }
