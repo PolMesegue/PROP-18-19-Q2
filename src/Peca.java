@@ -6,14 +6,6 @@ public abstract class Peca {
     private int x; //[0..7]
     private int y; //[0..7]
     private boolean es_blanca;
-
-    class IntPair {
-        int x;
-        int y;
-        IntPair(){}
-        IntPair(int x, int y) {this.x=x;this.y=y;}
-    }
-
     protected ArrayList<IntPair> moviments = new ArrayList<IntPair>();
 
 

@@ -12,7 +12,7 @@ public class Peo extends Peca {
 
     public ArrayList<IntPair> posibles_moviments(Tauler t) {
         //El peo es pot moure nomes una casella endavant, amb algunes excepcions
-        //Excepcio 1: el primer moviment del peó, es pot moure 2 celes <<<<<<<------- PREGUNTAR HORACIO SI AQUESTA EXCEPCIO ES CONTEMMPLA
+        //Excepcio 1: el primer moviment del peó, es pot moure 2 celes
         //Excepcio 2: el peo es pot moure una cela en diagonal si hi ha una peça del equip enemic (ataca)
         this.moviments.clear();
         if (this.esBlanca()) {
