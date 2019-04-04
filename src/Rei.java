@@ -25,16 +25,9 @@ public class Rei extends Peca {
         }
         return this.moviments;
     }
-
-    //Funcio que mira si el Rei esta en perill
-    //Donat un estat del Tauler, mira si hi alguna peça de color contrari que pugui atacar al Rei
-    public boolean en_perill(Tauler t){
-        //en construccio
-        return false;
-    }
 }
 
-//IGNORAR A PARTI D'AQUI
+//IGNORAR A PARTIR D'AQUI
     /*
     public boolean moviment_valid(Tauler t, int desti_x, int desti_y) {
         //El Rei es pot moure a qualsevol cel·la a distancia 1 de la seva posicio actual
