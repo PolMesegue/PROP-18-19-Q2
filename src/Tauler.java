@@ -78,8 +78,8 @@ public class Tauler {
 
         for (int i = 0; i < 16; ++i) {
 
-            peces_blanques[i].posibles_moviments(peces_blanques, peces_blanques)
-
+            peces_blanques[i].posibles_moviments(peces_blanques, peces_blanques);
+            peces_negres[i].posibles_moviments(peces_blanques, peces_negres);
         }
 
     }
