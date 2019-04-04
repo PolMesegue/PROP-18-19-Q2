@@ -27,9 +27,39 @@ public class Tauler {
     }
 
     //mourePeça
+
+//java overloading function
+
+    public void MourePeca(Peo p, int x, int y) {
+
+    }
+    public void MourePeca(Cavall c, int x, int y) {
+
+    }
+    public void MourePeca(Alfil a, int x, int y) {
+
+    }
+    public boolean MourePeca(Torre t, int newX, int newY) {
+
+        Peca.IntPair Pair = new Peca.IntPair(newX,newY);
+
+        ArrayList<Peca.IntPair> Move = t.posibles_moviments(??)
+
+
+
+    }
+
+
+    public void MourePeca(Reina d, int x, int y) {
+
+    }
+    public void MourePeca(Rei r, int x, int y) {
+
+    }
+
     public Tauler getTauler(char[] FEN) {
 
-
+         return  Problema.FENtoHuman(FEN);
 
     }
 
@@ -50,12 +80,12 @@ public class Tauler {
     public void setTorre(Torre To) {
 
         if (To.esBlanca()) {
-            peces_blanques[12+BnT] = To;
-            ++BnT;
+            peces_blanques[12+this.BnT] = To;
+            ++this.BnT;
         }
         else {
-            peces_negres[12+NnT] = To;
-            ++NnT;
+            peces_negres[12+this.NnT] = To;
+            ++this.NnT;
         }
 
     }
@@ -115,8 +145,97 @@ public class Tauler {
     }
 
     public char[] HumantoFEN (Peca[] peces_blanques, Peca[] peces_negres ){
+        int a, b;
+        char[] FEN = new char[64];
+        char[][] mapa = new char[8][8];
 
+        for (int i = 0; i <8; ++i ) {
+            for (int j = 0; j < 8; ++j) {
+                mapa[i][j] = '-';
+            }
+        }
+
+        for (int i = 0; i < 16; ++i ){
+            if (peces_blanques[i] != null) {
+
+                a = peces_blanques[i].getX();
+                b = peces_blanques[i].getY();
+
+                if (i <= 7) {
+
+                    mapa[a][b] = 'p';
+
+                }
+                else if (i <= 9) {
+                    mapa[a][b] = 'c';
+                }
+                else if (i <= 11) {
+                    mapa[a][b] = 'a';
+                }
+                else if (i <= 13) {
+                    mapa[a][b] = 't';
+                }
+                else if (i == 14) {
+                    mapa[a][b] = 'd';
+                }
+                else {
+                    mapa[a][b] = 'r';
+                }
+            }
+
+            if (peces_negres[i] != null) {
+
+                a = peces_negres[i].getX();
+                b = peces_negres[i].getY();
+
+                if (i <= 7) {
+
+                    mapa[a][b] = 'p';
+
+                }
+                else if (i <= 9) {
+                    mapa[a][b] = 'c';
+                }
+                else if (i <= 11) {
+                    mapa[a][b] = 'a';
+                }
+                else if (i <= 13) {
+                    mapa[a][b] = 't';
+                }
+                else if (i == 14) {
+                    mapa[a][b] = 'd';
+                }
+                else {
+                    mapa[a][b] = 'r';
+                }
+            }
+            int iter = 0;
+            for (int i = 0; i < 8; ++i) {
+                int buit = 0;
+                for (int j = 0; j < 8; ++j) {
+                    if (mapa[i][j] == '-') ++buit;
+                    else {
+                        if (buit != 0) {
+                            FEN[iter] = (char) buit;
+                            ++iter;
+                        }
+                        FEN[iter] = mapa[i][j];
+                    }
+                }
+                FEN[iter] = '/';
+            } //falta el i el guionet i bla bla
+            return FEN;
+
+
+
+
+        }
+
+
+        /*
         Peca[][] mapa = new Peca[8][8];
+
+        char[] FEN = new char[64];
 
         int whiteX, whiteY, blackX, blackY;
 
@@ -137,8 +256,8 @@ public class Tauler {
         for (int i = 0; i < 8; ++i) {
             int buit = 0;
             for (int j = 0; j < 8; ++j) {
-
-                if (!mapa[i][j].hihaPeça()) ++buit;
+                //if(getPeça(i,j) is null)
+                if (getPeca(i,j) == null) ++buit;
                 else {
                     if (buit != 0) {
                         FEN[iter] = (char) buit;
@@ -149,9 +268,9 @@ public class Tauler {
             }
             FEN[iter] = '/';
         } //falta el i el guionet i bla bla
-
+        return FEN;
     }
-
+*/
 
 }
 
