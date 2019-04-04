@@ -60,7 +60,7 @@ public abstract class Peca {
         return moviments;
     }
 
-    public abstract ArrayList<IntPair> posibles_moviments(Tauler t);
+    public abstract ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres);
 
 
 }

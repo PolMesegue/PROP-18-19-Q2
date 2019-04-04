@@ -10,8 +10,9 @@ public class Torre extends Peca {
         setColor(color);
     }
 
-    public ArrayList<IntPair> posibles_moviments(Tauler t) {
+    public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
         //torre nomes es pot moure horitzontal i vertical
+        Tauler t = new Tauler(peces_blanques,peces_negres);
         moviments.clear();
         int tempx =  this.getX() - 1; //movem a l'esquerra
         while (tempx >= 0) {

@@ -11,8 +11,9 @@ public class Reina extends Peca {
         setColor(color);
     }
 
-    public ArrayList<IntPair> posibles_moviments(Tauler t) {
+    public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
         //la Reina es pot moure en qualsevol de les direccions ilimitadament
+        Tauler t = new Tauler(peces_blanques,peces_negres);
         this.moviments.clear();
 
         //comprovar posibles moviments en horitzontal

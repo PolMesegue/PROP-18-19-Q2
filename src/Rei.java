@@ -10,8 +10,9 @@ public class Rei extends Peca {
         setColor(color);
     }
 
-    public ArrayList<IntPair> posibles_moviments(Tauler t) {
+    public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
         //el rei es pot moure a qualsevol casella que estigui a 1 de distancia
+        Tauler t = new Tauler(peces_blanques,peces_negres);
         this.moviments.clear();
         int posx[] = {this.getX() - 1, this.getX(), this.getX() + 1, this.getX() - 1, this.getX() + 1, this.getX() - 1, this.getX(), this.getX() + 1};
         int posy[] = {this.getY() - 1, this.getY() - 1, this.getY() - 1, this.getY(), this.getY(), this.getY() + 1, this.getY() + 1, this.getY() + 1};
