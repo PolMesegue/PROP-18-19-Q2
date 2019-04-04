@@ -23,5 +23,5 @@ public class IntPair {
     public void setY(int y) {
         this.y = y;
     }
-    
+
 }

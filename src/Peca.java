@@ -8,7 +8,6 @@ public abstract class Peca {
     private boolean es_blanca;
     protected ArrayList<IntPair> moviments = new ArrayList<IntPair>();
 
-
     //id setter
     public void setId(int id) {
         this.id=id;
@@ -55,6 +54,10 @@ public abstract class Peca {
     //y getter
     public int getY() {
         return y;
+    }
+
+    public ArrayList<IntPair> getMoviments() {
+        return moviments;
     }
 
     public abstract ArrayList<IntPair> posibles_moviments(Tauler t);
