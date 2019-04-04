@@ -4,7 +4,7 @@ import java.util.*;
 public class Cavall extends Peca{
 
 
-    public Cavall(String i, int x, int y, boolean color) {
+    public Cavall(int i, int x, int y, boolean color) {
         setId(i);
         setX(x);
         setY(y);

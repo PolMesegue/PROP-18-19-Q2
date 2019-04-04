@@ -3,7 +3,7 @@ import java.util.*;
 @SuppressWarnings("Duplicates")
 public class Rei extends Peca {
 
-    public Rei(String i, int x, int y, boolean color) {
+    public Rei(int i, int x, int y, boolean color) {
         setId(i);
         setX(x);
         setY(y);

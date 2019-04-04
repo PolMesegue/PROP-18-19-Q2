@@ -4,7 +4,7 @@ import java.util.*;
 public class Reina extends Peca {
 
 
-    public Reina(String i, int x, int y, boolean color) {
+    public Reina(int i, int x, int y, boolean color) {
         setId(i);
         setX(x);
         setY(y);

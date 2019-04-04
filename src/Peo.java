@@ -3,7 +3,7 @@ import java.util.*;
 @SuppressWarnings("Duplicates")
 public class Peo extends Peca {
 
-    public Peo(String i, int x, int y, boolean color) {
+    public Peo(int i, int x, int y, boolean color) {
         setId(i);
         setX(x);
         setY(y);

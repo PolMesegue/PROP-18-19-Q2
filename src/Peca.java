@@ -2,7 +2,7 @@ import java.util.*;
 
 
 public abstract class Peca {
-    private String id=null;
+    private int id;
     private int x; //[0..7]
     private int y; //[0..7]
     private boolean es_blanca;
@@ -18,12 +18,12 @@ public abstract class Peca {
 
 
     //id setter
-    public void setId(String id) {
+    public void setId(int id) {
         this.id=id;
     }
 
     //id getter
-    public String getId() {
+    public int getId() {
         return id;
     }
 
