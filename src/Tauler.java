@@ -5,9 +5,9 @@ public class Tauler {
     //vector< vector<Cela> > tauler;
     private Peca[] peces_blanques; // peces_blanques {p,p,p,p,p,p,p,p,a,a,c,c,t,t,d,r}
     private Peca[] peces_negres;
-  //  private final int files = 8;
-  //  private final int columnes = 8;
-  //  private Integer[][] Graella;
+    //  private final int files = 8;
+    //  private final int columnes = 8;
+    //  private Integer[][] Graella;
     private Integer BnT, BnC, BnA, BnP, NnT, NnC, NnA, NnP;
 
 
@@ -30,7 +30,6 @@ public class Tauler {
     public Tauler getTauler(char[] FEN) {
 
 
-
     }
 
 
@@ -40,6 +39,7 @@ public class Tauler {
         else peces_negres[15] = R;
 
     }
+
     public void setReina(Reina D) {
 
         if (D.esBlanca()) peces_blanques[14] = D;
@@ -50,11 +50,10 @@ public class Tauler {
     public void setTorre(Torre To) {
 
         if (To.esBlanca()) {
-            peces_blanques[12+BnT] = To;
+            peces_blanques[12 + BnT] = To;
             ++BnT;
-        }
-        else {
-            peces_negres[12+NnT] = To;
+        } else {
+            peces_negres[12 + NnT] = To;
             ++NnT;
         }
 
@@ -63,11 +62,10 @@ public class Tauler {
     public void setCavall(Cavall C) {
 
         if (C.esBlanca()) {
-            peces_blanques[10+BnC] = C;
+            peces_blanques[10 + BnC] = C;
             ++BnC;
-        }
-        else{
-            peces_negres[10+NnC] = C;
+        } else {
+            peces_negres[10 + NnC] = C;
             ++NnC;
         }
 
@@ -75,12 +73,11 @@ public class Tauler {
 
     public void setAlfil(Alfil A) {
 
-        if (A.esBlanca()){
-            peces_blanques[8+BnA] = A;
+        if (A.esBlanca()) {
+            peces_blanques[8 + BnA] = A;
             ++BnA;
-        }
-        else {
-            peces_negres[8+NnA] = A;
+        } else {
+            peces_negres[8 + NnA] = A;
             ++NnA;
         }
 
@@ -88,11 +85,10 @@ public class Tauler {
 
     public void setPeo(Peo P) {
 
-        if (P.esBlanca()){
+        if (P.esBlanca()) {
             peces_blanques[BnP] = P;
             ++BnP;
-        }
-        else {
+        } else {
             peces_negres[NnP] = P;
             ++NnP;
         }
@@ -114,7 +110,7 @@ public class Tauler {
         return null;
     }
 
-    public char[] HumantoFEN (Peca[] peces_blanques, Peca[] peces_negres ){
+    public char[] HumantoFEN(Peca[] peces_blanques, Peca[] peces_negres) {
 
         Peca[][] mapa = new Peca[8][8];
 
@@ -131,8 +127,8 @@ public class Tauler {
             mapa[blackX][blackY] = peces_negres[i];
 
 
-        }
 
+/*
         int iter = 0;
         for (int i = 0; i < 8; ++i) {
             int buit = 0;
@@ -154,4 +150,4 @@ public class Tauler {
 
 
 }
-
+*/
