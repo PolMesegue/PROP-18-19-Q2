@@ -135,7 +135,7 @@ public class Tauler {
     public Tauler getTauler(char[] FEN) {
 
          return  Problema.FENtoHuman(FEN);
-         
+
     }
 
 
