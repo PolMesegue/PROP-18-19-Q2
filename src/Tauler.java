@@ -12,7 +12,6 @@ public class Tauler {
   //  private Integer[][] Graella;
     private Integer BnT, BnC, BnA, BnP, NnT, NnC, NnA, NnP;
 
-
     public Tauler() {
 
         peces_blanques = new Peca[16];
@@ -157,12 +156,12 @@ public class Tauler {
 
         if (To.esBlanca()) {
 
-            this.peces_blanques[12+this.BnT] = To;
-            ++this.BnT;
+            this.peces_blanques[12 + BnT] = To;
+            ++BnT;
         }
         else {
-            this.peces_negres[12+this.NnT] = To;
-            ++this.NnT;
+            this.peces_negres[12 + NnT] = To;
+            ++NnT;
         }
 
     }
