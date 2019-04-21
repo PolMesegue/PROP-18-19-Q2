@@ -70,10 +70,10 @@ public class Tauler {
 
         for (int i = 0; i < moviments.size(); ++i) {
 
-            if (moviments[i] == pos)
-
+            if (moviments.get(i) == pos) return true;
         }
 
+        return false;
 
 
     }
