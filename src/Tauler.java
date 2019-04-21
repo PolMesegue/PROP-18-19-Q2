@@ -7,9 +7,9 @@ public class Tauler {
     private Peca[] peces_negres;
     private Peca[] peces_blanques_mortes;
     private Peca[] peces_negres_mortes;
-  //  private final int files = 8;
-  //  private final int columnes = 8;
-  //  private Integer[][] Graella;
+    //  private final int files = 8;
+    //  private final int columnes = 8;
+    //  private Integer[][] Graella;
     private Integer BnT, BnC, BnA, BnP, NnT, NnC, NnA, NnP;
 
     public Tauler() {
@@ -50,10 +50,10 @@ public class Tauler {
 
 //java overloading function
 
-    private Peca[] matar (Peca[] vector, int x, int y) {
+    private Peca[] matar(Peca[] vector, int x, int y) {
 
-        for (int i = 0; i < 16;++i) {
-            if (vector[i]!=null) {
+        for (int i = 0; i < 16; ++i) {
+            if (vector[i] != null) {
 
                 if (vector[i].getX() == x && vector[i].getY() == y) {
                     vector[i] = null;
@@ -68,8 +68,11 @@ public class Tauler {
 
     private boolean posinmoviments(IntPair pos, ArrayList<IntPair> moviments) {
 
+        for (int i = 0; i < moviments.size(); ++i) {
 
+            if (moviments[i] == pos)
 
+        }
 
 
 
@@ -86,30 +89,15 @@ public class Tauler {
     }
 
 
-
-    public void MourePeca(Peo p, int x, int y) {
-
-    }
-    public void MourePeca(Cavall c, int x, int y) {
-
-    }
-    public void MourePeca(Alfil a, int x, int y) {
-
-    }
+    public boolean MourePeca(Peo t, int newX, int newY) {
+        IntPair pos = new IntPair(newX, newY);
 
 
-
-
-    public boolean MourePeca(Torre t, int newX, int newY) {
-
-        IntPair pos = new IntPair(newX,newY);
-
-
-        if(posinmoviments(pos, t.getMoviments())) {
+        if (posinmoviments(pos, t.getMoviments())) {
 
             if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX,newY);
-                else peces_blanques = matar(peces_blanques,newX,newY);
+                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
+                else peces_blanques = matar(peces_blanques, newX, newY);
             }
 
             t.setX(newX);
@@ -118,22 +106,118 @@ public class Tauler {
             actualitzar();
 
             return true;
-        }
-        else return false;
+        } else return false;
+
+    }
+
+    public boolean MourePeca(Cavall t, int newX, int newY) {
+        IntPair pos = new IntPair(newX, newY);
+
+
+        if (posinmoviments(pos, t.getMoviments())) {
+
+            if (getPeca(newX, newY) != null) {
+                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
+                else peces_blanques = matar(peces_blanques, newX, newY);
+            }
+
+            t.setX(newX);
+            t.setY(newY);
+
+            actualitzar();
+
+            return true;
+        } else return false;
+    }
+
+    public boolean MourePeca(Alfil t, int newX, int newY) {
+        IntPair pos = new IntPair(newX, newY);
+
+
+        if (posinmoviments(pos, t.getMoviments())) {
+
+            if (getPeca(newX, newY) != null) {
+                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
+                else peces_blanques = matar(peces_blanques, newX, newY);
+            }
+
+            t.setX(newX);
+            t.setY(newY);
+
+            actualitzar();
+
+            return true;
+        } else return false;
+    }
+
+
+    public boolean MourePeca(Torre t, int newX, int newY) {
+
+        IntPair pos = new IntPair(newX, newY);
+
+
+        if (posinmoviments(pos, t.getMoviments())) {
+
+            if (getPeca(newX, newY) != null) {
+                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
+                else peces_blanques = matar(peces_blanques, newX, newY);
+            }
+
+            t.setX(newX);
+            t.setY(newY);
+
+            actualitzar();
+
+            return true;
+        } else return false;
 
     }
 
 
-    public void MourePeca(Reina d, int x, int y) {
+    public boolean MourePeca(Reina t, int newX, int newY) {
+        IntPair pos = new IntPair(newX, newY);
 
+
+        if (posinmoviments(pos, t.getMoviments())) {
+
+            if (getPeca(newX, newY) != null) {
+                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
+                else peces_blanques = matar(peces_blanques, newX, newY);
+            }
+
+            t.setX(newX);
+            t.setY(newY);
+
+            actualitzar();
+
+            return true;
+        } else return false;
     }
-    public void MourePeca(Rei r, int x, int y) {
+
+    public boolean MourePeca(Rei t, int newX, int newY) {
+        IntPair pos = new IntPair(newX, newY);
+
+
+        if (posinmoviments(pos, t.getMoviments())) {
+
+            if (getPeca(newX, newY) != null) {
+                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
+                else peces_blanques = matar(peces_blanques, newX, newY);
+            }
+
+            t.setX(newX);
+            t.setY(newY);
+
+            actualitzar();
+
+            return true;
+        } else return false;
 
     }
 
     public Tauler getTauler(char[] FEN) {
 
-         return  Problema.FENtoHuman(FEN);
+        return Problema.FENtoHuman(FEN);
 
     }
 
@@ -158,8 +242,7 @@ public class Tauler {
 
             this.peces_blanques[12 + BnT] = To;
             ++BnT;
-        }
-        else {
+        } else {
             this.peces_negres[12 + NnT] = To;
             ++NnT;
         }
@@ -217,18 +300,18 @@ public class Tauler {
         return null;
     }
 
-    public char[] HumantoFEN (Peca[] peces_blanques, Peca[] peces_negres ){
+    public char[] HumantoFEN(Peca[] peces_blanques, Peca[] peces_negres) {
         int a, b;
         char[] FEN = new char[64];
         char[][] mapa = new char[8][8];
 
-        for (int i = 0; i <8; ++i ) {
+        for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
                 mapa[i][j] = '-';
             }
         }
 
-        for (int i = 0; i < 16; ++i ){
+        for (int i = 0; i < 16; ++i) {
             if (peces_blanques[i] != null) {
 
                 a = peces_blanques[i].getX();
@@ -236,23 +319,18 @@ public class Tauler {
 
                 if (i <= 7) {
 
-                    mapa[a][b] = 'p';
+                    mapa[a][b] = 'P';
 
-                }
-                else if (i <= 9) {
-                    mapa[a][b] = 'c';
-                }
-                else if (i <= 11) {
-                    mapa[a][b] = 'a';
-                }
-                else if (i <= 13) {
-                    mapa[a][b] = 't';
-                }
-                else if (i == 14) {
-                    mapa[a][b] = 'd';
-                }
-                else {
-                    mapa[a][b] = 'r';
+                } else if (i <= 9) {
+                    mapa[a][b] = 'C';
+                } else if (i <= 11) {
+                    mapa[a][b] = 'A';
+                } else if (i <= 13) {
+                    mapa[a][b] = 'T';
+                } else if (i == 14) {
+                    mapa[a][b] = 'D';
+                } else {
+                    mapa[a][b] = 'R';
                 }
             }
 
@@ -265,44 +343,37 @@ public class Tauler {
 
                     mapa[a][b] = 'p';
 
-                }
-                else if (i <= 9) {
+                } else if (i <= 9) {
                     mapa[a][b] = 'c';
-                }
-                else if (i <= 11) {
+                } else if (i <= 11) {
                     mapa[a][b] = 'a';
-                }
-                else if (i <= 13) {
+                } else if (i <= 13) {
                     mapa[a][b] = 't';
-                }
-                else if (i == 14) {
+                } else if (i == 14) {
                     mapa[a][b] = 'd';
-                }
-                else {
+                } else {
                     mapa[a][b] = 'r';
                 }
             }
-            int iter = 0;
-            for (int i = 0; i < 8; ++i) {
-                int buit = 0;
-                for (int j = 0; j < 8; ++j) {
-                    if (mapa[i][j] == '-') ++buit;
-                    else {
-                        if (buit != 0) {
-                            FEN[iter] = (char) buit;
-                            ++iter;
-                        }
-                        FEN[iter] = mapa[i][j];
-                    }
-                }
-                FEN[iter] = '/';
-            } //falta el i el guionet i bla bla
-            return FEN;
-
-
-
-
         }
+        int iter = 0;
+        for (int i = 0; i < 8; ++i) {
+            int buit = 0;
+            for (int j = 0; j < 8; ++j) {
+                if (mapa[i][j] == '-') ++buit;
+                else {
+                    if (buit != 0) {
+                        FEN[iter] = (char) buit;
+                        ++iter;
+                    }
+                    FEN[iter] = mapa[i][j];
+                }
+            }
+            FEN[iter] = '/';
+        } //falta el i el guionet i bla bla
+        return FEN;
+    }
+}
 
 
         /*
@@ -345,5 +416,3 @@ public class Tauler {
     }
 */
 
-}
-*/
