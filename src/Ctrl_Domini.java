@@ -12,12 +12,12 @@ public class Ctrl_Domini {
 
     public void AddHuma(String nom,String password){
         Huma h= new Huma(nom,password);
-        if(!bdu.getHuma(nom).equals(h)){
+        //if(!bdu.getHuma(nom).equals(h)){
             bdu.AddHuma(h);
-        }
+       //}
         //imprimir error, ya existeix.
     }
-    public void AddProblem(char[] fen){
+    public void AddProblem(String fen){
         Problema p= new Problema(fen);
         bdp.AddProblem(p);
     }
@@ -25,14 +25,23 @@ public class Ctrl_Domini {
             Usuari a= bdu.getHuma(Atacant);
             Usuari d= bdu.getHuma(defensor);
             Problema p= bdp.getProblema(problema);
-            fa.CrearPartida(a,d,p,p.getTauler());
+            //fa.CrearPartida(a,d,p,p.getTauler());
     }
 
-    public void getProblemas(){
+    public ArrayList<String> getProblemas(){
         ArrayList<String> problemas = new ArrayList<>();
         for(Problema elem : bdp.getCollectionProblems()) {
-            problemas.add(elem.getFen());
+            problemas.add(elem.getFEN());
         }
+        return problemas;
+    }
+
+    public ArrayList<String> getUsuaris(){
+        ArrayList<String> Usuaris = new ArrayList<>();
+        for(Usuari elem : bdu.getCollectionHumans()) {
+            Usuaris.add(elem.getNom());
+        }
+        return Usuaris;
     }
 
 }

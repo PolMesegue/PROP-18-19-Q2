@@ -20,6 +20,7 @@ public class DriverUsuari {
         io = new inout();
         int s = -1;
         io.write("Opcions: \n 1.Constructor \n 2.Getters \n 3.Setters \n 5.Exit \n");
+        s = io.readint();
         while (s != 6) {
             if (s == 1) {
                 io.write("Opcions: 1.Constructora \n ");

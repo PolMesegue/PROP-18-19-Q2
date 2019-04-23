@@ -23,7 +23,7 @@ public class Partida {
 
 
 
-    public void mourePeça(, int x, int y){
+    public void mourePeca(int x, int y, int xnew, int ynew){
         //char whoStarts = p.whoStarts();
 
         //acaba de començar la partida
@@ -33,7 +33,8 @@ public class Partida {
             timer.setFirst(false);
         }
 
-        t.moure(/*necesitara posicions de la peça i el desti*/);
+        t.getPeca(x,y);
+        t.MourePeca(,xnew,ynew);
 
         //modificar el cambii
         t.modificar();
