@@ -67,5 +67,4 @@ public abstract class Peca {
 
     public abstract ArrayList<IntPair> posibles_moviments(Tauler t);
 
-
 }
