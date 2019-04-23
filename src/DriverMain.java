@@ -53,6 +53,7 @@ public class DriverMain {
                 }
                 if (s == 2){
                     io.write("Introdueix FEN");
+                    String bug= io.readline();
                     String stg= io.readline();
                     ctrldom.AddProblem(stg);
                     io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
@@ -62,6 +63,23 @@ public class DriverMain {
 
                 }
 
+            }
+            if(s==3){
+                io.write("Opcions: \n 1.Crear Partida \n 2. ");
+                s = io.readint();
+                if(s==1){
+                    io.write("Usuari Atacant: \n");
+                    String atc= io.readline();
+                    io.write("Usuari Defensor: \n");
+                    String def= io.readline();
+                    io.write("Problema: \n");
+                    String pro= io.readline();
+                    ctrldom.crearPartida(atc,def,pro);
+                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
+                    s = io.readint();
+                }
+                if(s==2);
+                if(s==3);
             }
 
 
