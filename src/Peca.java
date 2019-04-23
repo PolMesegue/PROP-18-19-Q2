@@ -7,6 +7,7 @@ public abstract class Peca {
     private int y; //[0..7]
     private boolean es_blanca;
     protected ArrayList<IntPair> moviments = new ArrayList<IntPair>();
+    private int value;
 
     //creadora
     Peca() {}
@@ -61,6 +62,10 @@ public abstract class Peca {
 
     public ArrayList<IntPair> getMoviments() {
         return moviments;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
     public abstract ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres);

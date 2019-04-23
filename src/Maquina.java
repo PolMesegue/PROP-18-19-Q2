@@ -31,6 +31,8 @@ public class Maquina extends Usuari {
                 }
             }
         }
+        Collections.shuffle(posiblesMoviments);
+
         return null;
     }
 }
