@@ -33,8 +33,8 @@ public class Partida {
             timer.setFirst(false);
         }
 
-        t.getPeca(x,y);
-        t.MourePeca(,xnew,ynew);
+
+        t.MourePeca(t.getPeca(x,y),xnew,ynew);
 
         //modificar el cambii
         t.modificar();
