@@ -130,7 +130,7 @@ public class Tauler {
         } else return false;
     }
 
-    public boolean MourePeca(Peca t, int newX, int newY) {
+    public boolean MourePeca(Alfil t, int newX, int newY) {
         IntPair pos = new IntPair(newX, newY);
 
 
@@ -214,6 +214,26 @@ public class Tauler {
             return true;
         } else return false;
 
+    }
+
+    public boolean MourePeca(Peca t, int newX, int newY) {
+        IntPair pos = new IntPair(newX, newY);
+
+
+        if (posinmoviments(pos, t.getMoviments())) {
+
+            if (getPeca(newX, newY) != null) {
+                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
+                else peces_blanques = matar(peces_blanques, newX, newY);
+            }
+
+            t.setX(newX);
+            t.setY(newY);
+
+            actualitzar();
+
+            return true;
+        } else return false;
     }
 
     public Tauler getTauler(String FEN) {

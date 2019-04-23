@@ -16,6 +16,7 @@ public class Problema {
     public String getFEN() {
         return FEN;
     }
+
 /*
    public char whoStarts() {
         return FEN[FEN.length() - 9];
@@ -28,6 +29,8 @@ public class Problema {
     public String getID() {
         return ID;
     }
+
+
 
 
 
