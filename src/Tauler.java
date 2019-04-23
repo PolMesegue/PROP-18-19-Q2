@@ -46,6 +46,11 @@ public class Tauler {
     }
 
 
+    public Tauler getTauler() {
+
+
+    }
+
     //mourePeça
 
 //java overloading function
