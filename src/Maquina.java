@@ -32,7 +32,7 @@ public class Maquina extends Usuari {
             }
         }
         Collections.shuffle(posiblesMoviments);
-
+        //continua
         return null;
     }
 }
