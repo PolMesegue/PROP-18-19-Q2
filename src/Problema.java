@@ -97,7 +97,7 @@ public class Problema {
                     ++NnP;
 
                 default:
-                    if (FEN[i] == '-') break;
+                    if (FEN[i] == 'w') break;
                     ++x;
 
                     //sha de mirar mes casos
