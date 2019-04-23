@@ -8,6 +8,9 @@ public abstract class Peca {
     private boolean es_blanca;
     protected ArrayList<IntPair> moviments = new ArrayList<IntPair>();
 
+    //creadora
+    Peca() {}
+
     //id setter
     public void setId(int id) {
         this.id=id;

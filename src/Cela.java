@@ -2,7 +2,7 @@
 
 
 public class Cela {
-    public Peça ocupada;
+    public Peca ocupada;
     int x;
     int y;
 }
