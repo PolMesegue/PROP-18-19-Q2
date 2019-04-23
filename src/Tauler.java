@@ -130,7 +130,7 @@ public class Tauler {
         } else return false;
     }
 
-    public boolean MourePeca(Alfil t, int newX, int newY) {
+    public boolean MourePeca(Peca t, int newX, int newY) {
         IntPair pos = new IntPair(newX, newY);
 
 
