@@ -12,7 +12,7 @@ public class Maquina extends Usuari {
 
         //maquina juga amb blanques color = true;
         if (color) {
-            int n = peces_blanques.length();
+            int n = peces_blanques.length;
             for (int i = 0; i < ; ++i) {
 
             }
