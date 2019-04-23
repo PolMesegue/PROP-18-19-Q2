@@ -4,15 +4,16 @@ import java.util.*;
 public class Reina extends Peca {
 
 
-    public Reina(String i, int x, int y, boolean color) {
+    public Reina(int i, int x, int y, boolean color) {
         setId(i);
         setX(x);
         setY(y);
         setColor(color);
     }
 
-    public ArrayList<IntPair> posibles_moviments(Tauler t) {
+    public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
         //la Reina es pot moure en qualsevol de les direccions ilimitadament
+        Tauler t = new Tauler(peces_blanques,peces_negres);
         this.moviments.clear();
 
         //comprovar posibles moviments en horitzontal

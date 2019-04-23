@@ -3,15 +3,16 @@ import java.util.*;
 @SuppressWarnings("Duplicates")
 public class Torre extends Peca {
 
-    public Torre(String i, int x, int y, boolean color) {
+    public Torre(int i, int x, int y, boolean color) {
         setId(i);
         setX(x);
         setY(y);
         setColor(color);
     }
 
-    public ArrayList<IntPair> posibles_moviments(Tauler t) {
+    public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
         //torre nomes es pot moure horitzontal i vertical
+        Tauler t = new Tauler(peces_blanques,peces_negres);
         moviments.clear();
         int tempx =  this.getX() - 1; //movem a l'esquerra
         while (tempx >= 0) {

@@ -4,15 +4,16 @@ import java.util.*;
 public class Cavall extends Peca{
 
 
-    public Cavall(String i, int x, int y, boolean color) {
+    public Cavall(int i, int x, int y, boolean color) {
         setId(i);
         setX(x);
         setY(y);
         setColor(color);
     }
 
-    public ArrayList<IntPair> posibles_moviments(Tauler t) {
+    public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
         //en qualsevol punt del cavall, hi ha maxim 8 punts on es pot moure
+        Tauler t = new Tauler(peces_blanques,peces_negres);
         this.moviments.clear();
         int posx[] = {this.getX() - 2, this.getX() - 1 , this.getX() + 1, this.getX() + 2, this.getX() - 2 , this.getX() - 1, this.getX() + 1, this.getX() - 2};
         int posy[] = {this.getY() - 1, this.getY() - 2, this.getY() - 2, this.getY() - 1, this.getY() + 1, this.getY() + 2, this.getY() + 2, this.getY() + 1};

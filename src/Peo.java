@@ -3,17 +3,18 @@ import java.util.*;
 @SuppressWarnings("Duplicates")
 public class Peo extends Peca {
 
-    public Peo(String i, int x, int y, boolean color) {
+    public Peo(int i, int x, int y, boolean color) {
         setId(i);
         setX(x);
         setY(y);
         setColor(color);
     }
 
-    public ArrayList<IntPair> posibles_moviments(Tauler t) {
+    public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
         //El peo es pot moure nomes una casella endavant, amb algunes excepcions
-        //Excepcio 1: el primer moviment del peó, es pot moure 2 celes <<<<<<<------- PREGUNTAR HORACIO SI AQUESTA EXCEPCIO ES CONTEMMPLA
+        //Excepcio 1: el primer moviment del peó, es pot moure 2 celes
         //Excepcio 2: el peo es pot moure una cela en diagonal si hi ha una peça del equip enemic (ataca)
+        Tauler t = new Tauler(peces_blanques,peces_negres);
         this.moviments.clear();
         if (this.esBlanca()) {
             if (t.getPeca(this.getX(), this.getY() - 1) == null) {

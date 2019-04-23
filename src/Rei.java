@@ -3,15 +3,16 @@ import java.util.*;
 @SuppressWarnings("Duplicates")
 public class Rei extends Peca {
 
-    public Rei(String i, int x, int y, boolean color) {
+    public Rei(int i, int x, int y, boolean color) {
         setId(i);
         setX(x);
         setY(y);
         setColor(color);
     }
 
-    public ArrayList<IntPair> posibles_moviments(Tauler t) {
+    public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
         //el rei es pot moure a qualsevol casella que estigui a 1 de distancia
+        Tauler t = new Tauler(peces_blanques,peces_negres);
         this.moviments.clear();
         int posx[] = {this.getX() - 1, this.getX(), this.getX() + 1, this.getX() - 1, this.getX() + 1, this.getX() - 1, this.getX(), this.getX() + 1};
         int posy[] = {this.getY() - 1, this.getY() - 1, this.getY() - 1, this.getY(), this.getY(), this.getY() + 1, this.getY() + 1, this.getY() + 1};
@@ -25,16 +26,9 @@ public class Rei extends Peca {
         }
         return this.moviments;
     }
-
-    //Funcio que mira si el Rei esta en perill
-    //Donat un estat del Tauler, mira si hi alguna peça de color contrari que pugui atacar al Rei
-    public boolean en_perill(Tauler t){
-        //en construccio
-        return false;
-    }
 }
 
-//IGNORAR A PARTI D'AQUI
+//IGNORAR A PARTIR D'AQUI
     /*
     public boolean moviment_valid(Tauler t, int desti_x, int desti_y) {
         //El Rei es pot moure a qualsevol cel·la a distancia 1 de la seva posicio actual

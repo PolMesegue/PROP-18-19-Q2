@@ -4,7 +4,7 @@ import java.util.*;
 public class Alfil extends Peca {
 
 
-    public Alfil(String i, int x, int y, boolean color) {
+    public Alfil(int i, int x, int y, boolean color) {
         setId(i);
         setX(x);
         setY(y);

@@ -2,28 +2,19 @@ import java.util.*;
 
 
 public abstract class Peca {
-    private String id=null;
+    private int id;
     private int x; //[0..7]
     private int y; //[0..7]
     private boolean es_blanca;
-
-    class IntPair {
-        int x;
-        int y;
-        IntPair(){}
-        IntPair(int x, int y) {this.x=x;this.y=y;}
-    }
-
     protected ArrayList<IntPair> moviments = new ArrayList<IntPair>();
 
-
     //id setter
-    public void setId(String id) {
+    public void setId(int id) {
         this.id=id;
     }
 
     //id getter
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -65,6 +56,10 @@ public abstract class Peca {
         return y;
     }
 
-    public abstract ArrayList<IntPair> posibles_moviments(Tauler t);
+    public ArrayList<IntPair> getMoviments() {
+        return moviments;
+    }
+
+    public abstract ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres);
 
 }
