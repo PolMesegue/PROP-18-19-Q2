@@ -4,19 +4,23 @@ import java.util.ArrayList;
 
 public class Problema {
 
-    private char[] FEN;
+    private String FEN;
     private String ID;
 
     private char whoStarts;
 
-    Problema(char[] FEN) {
+    Problema(String FEN) {
         this.FEN = FEN;
     }
 
-    public char whoStarts() {
-        return FEN[FEN.length - 9];
+    public String getFEN() {
+        return FEN;
     }
-
+/*
+   public char whoStarts() {
+        return FEN[FEN.length() - 9];
+    }
+*/
     public void setID(String id) {
         this.ID = id;
     }
@@ -25,10 +29,14 @@ public class Problema {
         return ID;
     }
 
+
+
     //PeoPeoPeoPeoPeoPeoPeoPeoAlfAlfCavCavTorTorReinaRei;
 
     //aixo passa de FEN a un tauler decente de personas
-    public static Tauler FENtoHuman(char[] FEN) {
+    public static Tauler FENtoHuman(String FENs) {
+
+        char[] FEN = FENs.toCharArray();
 
         int BnP = 0, BnC = 8, BnA = 10, BnT = 12;
         int NnP = 0, NnC = 8, NnA = 10, NnT = 12;

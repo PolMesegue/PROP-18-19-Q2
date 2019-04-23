@@ -177,7 +177,6 @@ public class Tauler {
     public boolean MourePeca(Reina t, int newX, int newY) {
         IntPair pos = new IntPair(newX, newY);
 
-
         if (posinmoviments(pos, t.getMoviments())) {
 
             if (getPeca(newX, newY) != null) {
@@ -192,6 +191,8 @@ public class Tauler {
 
             return true;
         } else return false;
+
+
     }
 
     public boolean MourePeca(Rei t, int newX, int newY) {
@@ -215,7 +216,7 @@ public class Tauler {
 
     }
 
-    public Tauler getTauler(char[] FEN) {
+    public Tauler getTauler(String FEN) {
 
         return Problema.FENtoHuman(FEN);
 
