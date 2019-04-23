@@ -11,8 +11,9 @@ public class Alfil extends Peca {
         setColor(color);
     }
 
-    public ArrayList<IntPair> posibles_moviments(Tauler t) {
+    public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
         //Un alfil es pot moure tantes cel·les com vulgui en les quatre digagonals.
+        Tauler t = new Tauler(peces_blanques,peces_negres);
         moviments.clear();
         int tempx = this.getX() + 1; //moviment
         int tempy = this.getY() - 1; //diagonal dreta-amunt
