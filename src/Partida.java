@@ -11,7 +11,7 @@ public class Partida {
     private Tauler t;
     private Usuari a;
     private Usuari d;
-    Rellotge timer;
+    private Rellotge timer;
 
     Partida(Timestamp f,Problema p, Tauler t, Usuari a, Usuari d){
         fecha=f;

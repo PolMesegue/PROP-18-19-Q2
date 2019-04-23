@@ -1,5 +1,8 @@
 
-
+import java.lang.reflect.Array;
+import java.util.Collection;
+import java.io.*;
+import java.util.*;
 
 public class Ctrl_Domini {
     private Fabrica fa= new Fabrica();
@@ -24,4 +27,12 @@ public class Ctrl_Domini {
             Problema p= bdp.getProblema(problema);
             fa.CrearPartida(a,d,p,p.getTauler());
     }
+
+    public void getProblemas(){
+        ArrayList<String> problemas = new ArrayList<>();
+        for(Problema elem : bdp.getCollectionProblems()) {
+            problemas.add(elem.getFen());
+        }
+    }
+
 }
