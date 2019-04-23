@@ -1,17 +1,82 @@
 import java.util.*;
 
-
+@SuppressWarnings("Duplicates")
 public class Torre extends Peca {
 
-    public Torre(int x, int y, boolean es_blanca) {
-        super(x,y,es_blanca);
+    public Torre(int i, int x, int y, boolean color) {
+        setId(i);
+        setX(x);
+        setY(y);
+        setColor(color);
     }
 
-    public boolean moviment_valid(Tauler t, int desti_x, int desti_y) {
-        //Una torre es pot moure tantes cel·les com vulgui en direcció amunt, avall, dreta o esquerra
+    public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
+        //torre nomes es pot moure horitzontal i vertical
+        Tauler t = new Tauler(peces_blanques,peces_negres);
+        moviments.clear();
+        int tempx =  this.getX() - 1; //movem a l'esquerra
+        while (tempx >= 0) {
+            if (t.getPeca(tempx, this.getY()) == null) {
+                IntPair aux = new IntPair(tempx, this.getY());
+                this.moviments.add(aux);
+            }
+            else if (t.getPeca(tempx, this.getY()).getColor() == this.getColor()) break;
+            else {
+                IntPair aux = new IntPair(tempx, this.getY());
+                this.moviments.add(aux);
+                break;
+            }
+            tempx--;
+        }
+        tempx =  this.getX() + 1; //movem dreta
+        while (tempx < 8) {
+            if (t.getPeca(tempx, this.getY()) == null) {
+                IntPair aux = new IntPair(tempx, this.getY());
+                this.moviments.add(aux);
+            }
+            else if (t.getPeca(tempx, this.getY()).getColor() == this.getColor()) break;
+            else {
+                IntPair aux = new IntPair(tempx, this.getY());
+                this.moviments.add(aux);
+                break;
+            }
+            tempx++;
+        }
+        int tempy = this.getY() + 1; //movem avall
+        while (tempy >= 0) {
+            if (t.getPeca(this.getX(), tempy) == null) {
+                IntPair aux = new IntPair(this.getY(), tempy);
+                this.moviments.add(aux);
+            }
+            else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
+            else {
+                IntPair aux = new IntPair(this.getX(), tempy);
+                this.moviments.add(aux);
+                break;
+            }
+            tempy--;
+        }
+        tempy = this.getY() - 1; //movem amunt
+        while (tempy < 8) {
+            if (t.getPeca(this.getX(), tempy) == null) {
+                IntPair aux = new IntPair(this.getY(), tempy);
+                this.moviments.add(aux);
+            }
+            else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
+            else {
+                IntPair aux = new IntPair(this.getX(), tempy);
+                this.moviments.add(aux);
+                break;
+            }
+            tempy++;
+        }
+        return this.moviments;
+    }
+}
 
-        //Si hi ha una peça aliada a la posició destí, no ens podem moure
-        Peca p_aux = t.getPeca(desti_x,desti_y);
+//IGNORAR A PARTIR D'AQUI
+/*
+Peca p_aux = t.getPeca(desti_x,desti_y);
         if (p_aux != null) {
             if (p_aux.esBlanca() && this.esBlanca()) return false;
             if (p_aux.esNegra() && this.esNegra()) return false;
@@ -52,4 +117,4 @@ public class Torre extends Peca {
 
         return true;
     }
-}
+ */
