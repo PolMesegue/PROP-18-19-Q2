@@ -70,22 +70,5 @@ public class ControladorDades {
         in.close();
         return lineas;
     }
-
-    public String[][][] LlegirMat() throws Exception {
-        if (a == null) throw new Exception("Arxiu no obert");
-        fr = new FileReader(a);
-        BufferedReader in = new BufferedReader(fr);
-        String[][][] hor = new String [5][12][];
-        for (int d = 0; d < hor.length; ++d) { //Days
-            ArrayList<String[]> sessions = new ArrayList<String[]>();
-            String s;
-            s = in.readLine();
-            while (!(s.equals("-----"))) {
-                sessions.add(s.split(";"));
-                s = in.readLine();
-            }
-            hor[d] = sessions.toArray(new String[sessions.size()][]);
-        }
-        return hor;
-    }
+    
 }
