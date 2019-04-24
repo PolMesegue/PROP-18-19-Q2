@@ -37,9 +37,9 @@ public class Problema {
     //PeoPeoPeoPeoPeoPeoPeoPeoAlfAlfCavCavTorTorReinaRei;
 
     //aixo passa de FEN a un tauler decente de personas
-    public static Tauler FENtoHuman(String FENs) {
+    public Tauler FENtoHuman() {
 
-        char[] FEN = FENs.toCharArray();
+        char[] FEN = this.FEN.toCharArray();
 
         int BnP = 0, BnC = 8, BnA = 10, BnT = 12;
         int NnP = 0, NnC = 8, NnA = 10, NnT = 12;

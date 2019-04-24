@@ -44,20 +44,6 @@ public class ControladorDades {
         out.close();
     }
 
-    public void Escriure(String[][] hor) throws Exception {
-        if (a == null) throw new Exception("Arxiu no obert");
-        fw = new FileWriter(a, true);
-        BufferedWriter bw = new BufferedWriter(fw);
-        PrintWriter out = new PrintWriter(bw);
-        for (int d = 0; d < hor.length; ++d) { //Days
-            for (int h = 0; h < hor[d].length; ++h) { //Hours
-                out.print(hor[d][h]);
-            }
-            out.println("-----");
-        }
-        out.close();
-    }
-
     public Vector<String> Llegir() throws Exception {
         if (a == null) throw new Exception("Arxiu no obert");
         fr = new FileReader(a);

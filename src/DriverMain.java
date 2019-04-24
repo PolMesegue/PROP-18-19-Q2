@@ -18,10 +18,9 @@ public class DriverMain {
                 s = io.readint();
                 if (s == 1){
                     io.write("Introdueix nom: \n");
-                    String bug= io.readline();
+                    String stg= io.readname();
                     io.write("Introdueix password: ");
-                    String stg= io.readline();
-                    String stg2= io.readline();
+                    String stg2= io.readname();
                     ctrldom.AddHuma(stg,stg2);
                     io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
                     s = io.readint();
@@ -69,11 +68,11 @@ public class DriverMain {
                 s = io.readint();
                 if(s==1){
                     io.write("Usuari Atacant: \n");
-                    String atc= io.readline();
+                    String atc= io.readname();
                     io.write("Usuari Defensor: \n");
-                    String def= io.readline();
+                    String def= io.readname();
                     io.write("Problema: \n");
-                    String pro= io.readline();
+                    String pro= io.readname();
                     ctrldom.crearPartida(atc,def,pro);
                     io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
                     s = io.readint();

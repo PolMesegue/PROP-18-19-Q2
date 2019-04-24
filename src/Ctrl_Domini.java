@@ -25,7 +25,8 @@ public class Ctrl_Domini {
             Usuari a= bdu.getHuma(Atacant);
             Usuari d= bdu.getHuma(defensor);
             Problema p= bdp.getProblema(problema);
-            fa.CrearPartida(a,d,p,p.FENtoHuman(p.getFEN()));
+            Tauler t= p.FENtoHuman();
+            fa.CrearPartida(a,d,p,t);
     }
 
     public ArrayList<String> getProblemas(){

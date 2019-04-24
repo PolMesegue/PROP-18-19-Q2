@@ -88,7 +88,7 @@ public class Tauler {
 
     }
 
-
+/*
     public boolean MourePeca(Peo t, int newX, int newY) {
         IntPair pos = new IntPair(newX, newY);
 
@@ -214,7 +214,7 @@ public class Tauler {
             return true;
         } else return false;
 
-    }
+    }*/
 
     public boolean MourePeca(Peca t, int newX, int newY) {
         IntPair pos = new IntPair(newX, newY);
@@ -238,7 +238,9 @@ public class Tauler {
 
     public Tauler getTauler(String FEN) {
 
-        return Problema.FENtoHuman(FEN);
+        Problema p = new Problema(FEN);
+
+        return p.FENtoHuman();
 
     }
 
