@@ -33,16 +33,52 @@ public class Maquina extends Usuari {
         }
         Collections.shuffle(posiblesMoviments);
         Jugada jugada = new Jugada();
-        backtracking(jugada,posiblesMoviments,0,n);
+        ArrayList<IntPair> visited = new ArrayList<>();
+        //backtracking(jugada,posiblesMoviments,0,n,visited);
         return null;
     }
 
-    public void backtracking(Jugada jugada, ArrayList<IntPair> moviments, int i, int n) {
-
+    public boolean isvisited(IntPair pos, ArrayList<IntPair> visited) {
+        for (int i = 0; i < visited.size(); ++i) {
+            if (pos == visited.get(i)) return true;
+        }
+        return false;
     }
 
-    public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, boolean color, int n) {
-        return false;
+    //comprova si la peca arriba al rei en n jugades
+    public boolean backtracking(Jugada jugada, IntPair pos_rei, Peca peca, int i, int n, ArrayList<IntPair> visited) {
+        if (i > n) return false;
+        else if (peca.getX() == pos_rei.getX() && peca.getY() == pos_rei.getY()) return true;
+        else {
+            for (int j = 0; j < peca.moviments.size(); ++j) {
+                if (!isvisited(peca.moviments.get(i),visited)) {
+                    visited.add(peca.moviments.get(i));
+                    peca.setX(peca.moviments.get(i).getX());
+                    peca.setY(peca.moviments.get(i).getY());
+                    backtracking(jugada,pos_rei,peca,i+1,n,visited);
+                }
+            }
+            return false;
+        }
+    }
+
+    public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
+
+        IntPair rei_pos = new IntPair();
+        for (int i = 0; i < peces_negres.length; ++i) {
+            if (peces_negres[i] instanceof Rei) {
+                rei_pos.setX(peces_negres[i].getX());
+                rei_pos.setY(peces_negres[i].getY());
+            }
+        }
+        Jugada jugada = new Jugada();
+        ArrayList<IntPair> visited = new ArrayList<>();
+        boolean b = false;
+        for (int i = 0; i < peces_blanques.length; ++i) {
+            Peca peca = peces_blanques[i];
+            if (!b) b = backtracking(jugada,rei_pos,peca,0,n,visited);
+        }
+        return b;
     }
 }
 
