@@ -8,7 +8,7 @@ public class Maquina extends Usuari {
         super(nom);
     }
 
-    public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, boolean color) {
+    public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, boolean color, int n) {
 
         //totes les jugades que pot fer un jugador
         ArrayList<IntPair> posiblesMoviments = new ArrayList<IntPair>();
@@ -32,8 +32,17 @@ public class Maquina extends Usuari {
             }
         }
         Collections.shuffle(posiblesMoviments);
-        //continua
+        Jugada jugada = new Jugada();
+        backtracking(jugada,posiblesMoviments,0,n);
         return null;
+    }
+
+    public void backtracking(Jugada jugada, ArrayList<IntPair> moviments, int i, int n) {
+
+    }
+
+    public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, boolean color, int n) {
+        return false;
     }
 }
 
