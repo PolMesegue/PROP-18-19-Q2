@@ -393,7 +393,7 @@ public class Tauler {
                 }
             }
             FEN[iter] = '/';
-        } //falta el i el guionet i bla bla
+        }
         return FEN;
     }
 }

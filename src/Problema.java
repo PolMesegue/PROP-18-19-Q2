@@ -100,10 +100,9 @@ public class Problema {
                     ++NnP;
 
                 default:
-                    if (FEN[i] == 'w') break;
+                    if (FEN[i] == ' ') break;
                     ++x;
 
-                    //sha de mirar mes casos
             }
         }
 
