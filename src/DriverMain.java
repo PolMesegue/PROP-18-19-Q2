@@ -10,9 +10,9 @@ public class DriverMain {
     public static void main(String[] args) throws Exception {
         io = new inout();
         int s = -1;
-        io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
+        io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
         s = io.readint();
-        while (s != 6) {
+        while (s != 5) {
             if(s == 1){
                 io.write("Opcions: \n 1.Crear Huma \n 2.Borrar Huma \n 3.Consultar Usuaris \n");
                 s = io.readint();
@@ -22,7 +22,7 @@ public class DriverMain {
                     io.write("Introdueix password: ");
                     String stg2= io.readname();
                     ctrldom.AddHuma(stg,stg2);
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
+                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
                     s = io.readint();
                 }
                 if (s == 2){
@@ -33,7 +33,7 @@ public class DriverMain {
                     for(String elem : ctrldom.getUsuaris()){
                         System.out.println(elem);
                     }
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
+                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
                     s = io.readint();
 
                 }
@@ -74,14 +74,12 @@ public class DriverMain {
                     io.write("Problema: \n");
                     String pro= io.readname();
                     ctrldom.crearPartida(atc,def,pro);
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
+                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
                     s = io.readint();
                 }
                 if(s==2);
                 if(s==3);
             }
-
-
 
             
         }
