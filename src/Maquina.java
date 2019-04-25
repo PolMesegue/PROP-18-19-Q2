@@ -49,27 +49,23 @@ public class Maquina extends Usuari {
     private boolean backtracking(Jugada jugada, IntPair pos_rei, Tauler t, int i, int n) {
         if (i > n) return false;
         //MIRAR SI REI ESTA EN MAT
-        /*
-        else if (peca.getX() == pos_rei.getX() && peca.getY() == pos_rei.getY()) {
-            jugada.setPeca(peca);
-            jugada.setPos_fin_x(peca.getX());
-            jugada.setPos_fin_y(peca.getY());
-            return true;
-        }
-        */
+        else if (t.white_king_in_mate()) return true;
         else {
             boolean b = false;
             for (int j = 0; j < t.getPeces_blanques().length; ++j) {
                 ArrayList<IntPair> visited = new ArrayList<>();
                 IntPair actual_pos = new IntPair(t.getPeces_blanques()[i].getX(),t.getPeces_blanques()[i].getY());
                 visited.add(actual_pos);
-                for (int z = 0; z < t.getPeces_blanques()[i].moviments.size(); ++z) {
-                    if (!isvisited(t.getPeces_blanques()[i].moviments.get(i),visited) || !b) {
-                        visited.add(t.getPeces_blanques()[i].moviments.get(i));
-                        t.getPeces_blanques()[i].setX(t.getPeces_blanques()[i].moviments.get(i).getX());
-                        t.getPeces_blanques()[i].setY(t.getPeces_blanques()[i].moviments.get(i).getY());
+                for (int z = 0; z < t.getPeces_blanques()[j].moviments.size(); ++z) {
+                    if (!isvisited(t.getPeces_blanques()[j].moviments.get(z),visited)) {
+                        t.getPeces_blanques()[j].setX(t.getPeces_blanques()[j].moviments.get(z).getX());
+                        t.getPeces_blanques()[j].setY(t.getPeces_blanques()[j].moviments.get(z).getY());
                         t.actualitzar();
+                        jugada.setPeca(t.getPeces_blanques()[j]);
+                        jugada.setPos_fin_x(t.getPeces_blanques()[j].moviments.get(z).getX());
+                        jugada.setPos_fin_y(t.getPeces_blanques()[j].moviments.get(z).getY());
                         b = backtracking(jugada,pos_rei,t,i+1,n);
+                        if (b) break;
                     }
                 }
             }
