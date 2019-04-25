@@ -52,6 +52,11 @@ public class Partida {
         return espotmoure;
     }
 
+    public Jugada moureMaquina(){
+        Jugada j = d.play(t.getPeces_blanques(),t.getPeces_negres(),2);
+        return j;
+    }
+
     public Usuari getA() {
         return a;
     }

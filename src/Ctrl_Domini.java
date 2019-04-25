@@ -13,6 +13,11 @@ public class Ctrl_Domini {
     private BD_Usuaris bdu= new BD_Usuaris();
 
 
+    public void crearMaquina(){
+        Maquina m1= new Maquina("M1");
+        bdu.AddMaquina(m1);
+    }
+
     public void AddHuma(String nom,String password){
         Huma h= new Huma(nom,password);
         //if(!bdu.getHuma(nom).equals(h)){
