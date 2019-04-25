@@ -60,51 +60,63 @@ public class Problema {
                 case 'K':
                     Rei R = new Rei(15,x, y,true);
                     T.setRei(R);
+                    ++x;
                 case 'k':
                     Rei r = new Rei(15,x, y, false);
                     T.setRei(r);
+                    ++x;
                 case 'Q':
                     Reina D = new Reina(14,x, y, true);
                     T.setReina(D);
+                    ++x;
                 case 'q':
                     Reina d = new Reina(14,x, y, false);
                     T.setReina(d);
+                    ++x;
                 case 'R':
                     Torre To = new Torre(BnT,x, y, true);
                     T.setTorre(To);
                     ++BnT;
+                    ++x;
                 case 'r':
                     Torre to = new Torre(NnT, x, y, false);
                     T.setTorre(to);
                     ++NnT;
+                    ++x;
                 case 'B':
                     Alfil A = new Alfil(BnA,x, y, true);
                     T.setAlfil(A);
                     ++BnA;
+                    ++x;
                 case 'b':
                     Alfil a = new Alfil(NnA,x, y, false);
                     T.setAlfil(a);
                     ++NnA;
+                    ++x;
                 case 'N':
                     Cavall C = new Cavall(BnA,x, y, true);
                     T.setCavall(C);
                     ++BnA;
+                    ++x;
                 case 'n':
                     Cavall c = new Cavall(NnA,x, y, false);
                     T.setCavall(c);
                     ++NnA;
+                    ++x;
                 case 'P':
                     Peo P = new Peo(BnP,x, y, true);
                     T.setPeo(P);
                     ++BnP;
+                    ++x;
                 case 'p':
                     Peo p = new Peo(NnP,x, y, false);
                     T.setPeo(p);
                     ++NnP;
+                    ++x;
 
                 default:
                     if (FEN[i] == 'w') break;
-                    ++x;
+                    x += FEN[i];
 
             }
         }
