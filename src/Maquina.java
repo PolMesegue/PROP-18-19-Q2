@@ -33,26 +33,41 @@ public class Maquina extends Usuari {
         else {
             boolean b = false;
             for (int j = 0; j < t.getPeces_negres().length; ++j) {
-                IntPair actual_pos = new IntPair(t.getPeces_negres()[i].getX(),t.getPeces_negres()[i].getY());
-                visited.add(actual_pos);
-                for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); ++z) {
-                    if (!isvisited(t.getPeces_negres()[j].moviments.get(z),visited)) {
-                        int oldX = t.getPeces_negres()[j].getX();
-                        int oldY = t.getPeces_negres()[j].getY();
-                        t.getPeces_negres()[j].setX(t.getPeces_negres()[j].moviments.get(z).getX());
-                        t.getPeces_negres()[j].setY(t.getPeces_negres()[j].moviments.get(z).getY());
-                        t.actualitzar();
-                        jugada.setPeca(t.getPeces_negres()[j]);
-                        jugada.setPos_fin_x(t.getPeces_negres()[j].moviments.get(z).getX());
-                        jugada.setPos_fin_y(t.getPeces_negres()[j].moviments.get(z).getY());
-                        b = backtracking(jugada,t,i+1,n,visited);
-                        t.getPeces_negres()[j].setX(oldX);
-                        t.getPeces_negres()[j].setY(oldY);
-                        t.actualitzar();
-                        if (b) break;
+                if (t.getPeces_negres()[i] != null) {
+                    IntPair actual_pos = new IntPair(t.getPeces_negres()[i].getX(), t.getPeces_negres()[i].getY());
+                    visited.add(actual_pos);
+                    if (t.getPeces_negres()[j] != null) {
+                        for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); ++z) {
+                            if (!isvisited(t.getPeces_negres()[j].moviments.get(z), visited)) {
+
+                                int oldX = t.getPeces_negres()[j].getX();
+                                int oldY = t.getPeces_negres()[j].getY();
+
+                                t.getPeces_negres()[j].setX(t.getPeces_negres()[j].moviments.get(z).getX());
+                                t.getPeces_negres()[j].setY(t.getPeces_negres()[j].moviments.get(z).getY());
+                                t.actualitzar();
+
+                                jugada.setPeca(t.getPeces_negres()[j]);
+
+                                if (t.getPeces_negres()[j].moviments.size() > j) {
+                                    jugada.setPos_fin_x(t.getPeces_negres()[j].moviments.get(z).getX());
+                                    jugada.setPos_fin_y(t.getPeces_negres()[j].moviments.get(z).getY());
+
+                                    b = backtracking(jugada, t, i + 1, n, visited);
+
+                                    t.getPeces_negres()[j].setX(oldX);
+                                    t.getPeces_negres()[j].setY(oldY);
+                                    t.actualitzar();
+                                }
+                                if (b) break;
+                            }
+                        }
+                        visited.clear();
+                    }
+                    else {
+                        ++j;
                     }
                 }
-                visited.clear();
             }
             return b;
         }
