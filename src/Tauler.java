@@ -311,12 +311,9 @@ public class Tauler {
 
     public boolean white_king_in_mate() {
         Peca rei = new Rei();
-        for (int i = 0; i < peces_blanques.length; ++i) {
-            if (peces_blanques[i] instanceof Rei) {
-                rei = peces_blanques[i];
-                break;
-            }
-        }
+
+        rei = peces_blanques[15];
+
         boolean b1,b2,b3,b4,b5,b6,b7,b8,b9;
         b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = false;
         for (int i = 0; i < peces_negres.length; i++) {
@@ -375,7 +372,6 @@ public class Tauler {
         return peces_negres;
     }
 
-    public char[] HumantoFEN(Peca[] peces_blanques, Peca[] peces_negres) {}
     public String HumantoFEN(Peca[] peces_blanques, Peca[] peces_negres) {
         int a, b;
         char[] FEN = new char[64];
