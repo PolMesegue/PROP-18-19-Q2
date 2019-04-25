@@ -9,7 +9,7 @@ public class Rei extends Peca {
         setX(x);
         setY(y);
         setColor(color);
-        setValue(10000);
+        //setValue(10000);
     }
 
     public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {

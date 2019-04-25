@@ -8,7 +8,7 @@ public class Torre extends Peca {
         setX(x);
         setY(y);
         setColor(color);
-        setValue(525);
+        //setValue(525);
     }
 
     public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
