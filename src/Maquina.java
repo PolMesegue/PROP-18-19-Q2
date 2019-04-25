@@ -32,8 +32,8 @@ public class Maquina extends Usuari {
         else if (t.white_king_in_mate()) return true;
         else {
             boolean b = false;
-            for (int j = 0; j < t.getPeces_blanques().length; ++j) {
-                IntPair actual_pos = new IntPair(t.getPeces_blanques()[i].getX(),t.getPeces_blanques()[i].getY());
+            for (int j = 0; j < t.getPeces_negres().length; ++j) {
+                IntPair actual_pos = new IntPair(t.getPeces_negres()[i].getX(),t.getPeces_negres()[i].getY());
                 visited.add(actual_pos);
                 for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); ++z) {
                     if (!isvisited(t.getPeces_negres()[j].moviments.get(z),visited)) {
