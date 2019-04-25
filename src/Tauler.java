@@ -35,6 +35,7 @@ public class Tauler {
         this.peces_negres = peces_negres;
         peces_negres_mortes = new Peca[16];
         peces_blanques_mortes = new Peca[16];
+        actualitzar();
         BnT = 0;
         BnC = 0;
         BnA = 0;
