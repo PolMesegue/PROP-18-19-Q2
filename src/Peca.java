@@ -46,7 +46,7 @@ public abstract class Peca {
     }
 
     //y setter
-    public void setY(int Y) {
+    public void setY(int y) {
         this.y = y;
     }
 

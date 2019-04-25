@@ -33,9 +33,9 @@ public class DriverMain {
                     mapa[a][b] = 'P';
 
                 } else if (i <= 9) {
-                    mapa[a][b] = 'C';
-                } else if (i <= 11) {
                     mapa[a][b] = 'A';
+                } else if (i <= 11) {
+                    mapa[a][b] = 'C';
                 } else if (i <= 13) {
                     mapa[a][b] = 'T';
                 } else if (i == 14) {
@@ -55,9 +55,9 @@ public class DriverMain {
                     mapa[a][b] = 'p';
 
                 } else if (i <= 9) {
-                    mapa[a][b] = 'c';
-                } else if (i <= 11) {
                     mapa[a][b] = 'a';
+                } else if (i <= 11) {
+                    mapa[a][b] = 'c';
                 } else if (i <= 13) {
                     mapa[a][b] = 't';
                 } else if (i == 14) {
@@ -70,7 +70,7 @@ public class DriverMain {
         System.out.print("\n");
         for(int z=0; z<8;++z){
             for(int w=0;w<8;++w){
-                System.out.print(mapa[z][w]);
+                System.out.print(mapa[w][z]);
             }
             System.out.print("\n");
         }
@@ -179,8 +179,9 @@ public class DriverMain {
 
 
 
-                            io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
-                            s = io.readint();
+
+
+                            //s = io.readint();
                         }
                     }
                     else {
