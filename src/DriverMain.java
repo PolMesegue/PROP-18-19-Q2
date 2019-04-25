@@ -70,7 +70,15 @@ public class DriverMain {
             }
         }
         System.out.print("\n");
+
+        for (int xx = 0; xx < 8;++xx){
+            System.out.println(xx);
+        }
+
         for(int z=0; z<8;++z){
+            System.out.print(z);
+            System.out.print(" ");
+
             for(int w=0;w<8;++w){
                 System.out.print(mapa[w][z]);
             }
