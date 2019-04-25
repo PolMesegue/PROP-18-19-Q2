@@ -12,6 +12,7 @@ public class Maquina extends Usuari {
 
         Jugada jugada = new Jugada();
         Tauler t_temp = new Tauler(peces_blanques,peces_negres);
+        t_temp.actualitzar();
         ArrayList<IntPair> visited = new ArrayList<>();
         boolean b = backtracking(jugada,t_temp,0,n,visited);
         if (b) return jugada;
@@ -77,6 +78,7 @@ public class Maquina extends Usuari {
         Jugada jugada = new Jugada();
         Tauler t_temp = new Tauler(peces_negres,peces_blanques); //els aprametres estan girats A PROPOSIT!
         ArrayList<IntPair> visited = new ArrayList<>();
+        t_temp.actualitzar();
         return backtracking(jugada,t_temp,0,n,visited);
     }
 }
