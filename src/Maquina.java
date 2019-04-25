@@ -8,34 +8,13 @@ public class Maquina extends Usuari {
         super(nom);
     }
 
-    public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, boolean color, int n) {
+    public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n) {
 
-        //totes les jugades que pot fer un jugador
-        ArrayList<IntPair> posiblesMoviments = new ArrayList<IntPair>();
-
-        //maquina juga amb blanques color = true;
-        if (color) {
-            for (int i = 0; i < peces_blanques.length; ++i) {
-                ArrayList<IntPair> moviments = peces_blanques[i].getMoviments();
-                for (int j = 0; j < peces_blanques[i].getMoviments().size(); ++j) {
-                    posiblesMoviments.add(moviments.get(j));
-                }
-            }
-        }
-        //maquina juga amb negres color = false
-        else if (!color) {
-            for (int i = 0; i < peces_negres.length; ++i) {
-                ArrayList<IntPair> moviments = peces_negres[i].getMoviments();
-                for (int j = 0; j < peces_negres[i].getMoviments().size(); ++j) {
-                    posiblesMoviments.add(moviments.get(j));
-                }
-            }
-        }
-        Collections.shuffle(posiblesMoviments);
         Jugada jugada = new Jugada();
-        ArrayList<IntPair> visited = new ArrayList<>();
-        //backtracking(jugada,posiblesMoviments,0,n,visited);
-        return null;
+        Tauler t_temp = new Tauler(peces_blanques,peces_negres);
+        boolean b = backtracking(jugada,t_temp,0,n);
+        if (b) return jugada;
+        else return null;
     }
 
     private boolean isvisited(IntPair pos, ArrayList<IntPair> visited) {
@@ -83,7 +62,6 @@ public class Maquina extends Usuari {
         }
         */
         Jugada jugada = new Jugada();
-        boolean b = false;
         Tauler t_temp = new Tauler(peces_blanques,peces_negres);
         return backtracking(jugada,t_temp,0,n);
     }
