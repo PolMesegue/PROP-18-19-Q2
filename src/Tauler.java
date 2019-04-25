@@ -79,7 +79,7 @@ public class Tauler {
 
     }
 
-    private void actualitzar() {
+    public void actualitzar() {
 
         for (int i = 0; i < 16; ++i) {
 
@@ -322,6 +322,14 @@ public class Tauler {
             }
         }
         return null;
+    }
+
+    public Peca[] getPeces_blanques() {
+        return peces_blanques;
+    }
+
+    public Peca[] getPeces_negres() {
+        return peces_negres;
     }
 
     public char[] HumantoFEN(Peca[] peces_blanques, Peca[] peces_negres) {

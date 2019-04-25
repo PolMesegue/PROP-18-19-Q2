@@ -46,22 +46,31 @@ public class Maquina extends Usuari {
     }
 
     //comprova si la peca arriba al rei en n jugades
-    private boolean backtracking(Jugada jugada, IntPair pos_rei, Peca peca, int i, int n, ArrayList<IntPair> visited) {
+    private boolean backtracking(Jugada jugada, IntPair pos_rei, Tauler t, int i, int n) {
         if (i > n) return false;
+        //MIRAR SI REI ESTA EN MAT
+        /*
         else if (peca.getX() == pos_rei.getX() && peca.getY() == pos_rei.getY()) {
             jugada.setPeca(peca);
             jugada.setPos_fin_x(peca.getX());
             jugada.setPos_fin_y(peca.getY());
             return true;
         }
+        */
         else {
             boolean b = false;
-            for (int j = 0; j < peca.moviments.size(); ++j) {
-                if (!isvisited(peca.moviments.get(i),visited) || !b) {
-                    visited.add(peca.moviments.get(i));
-                    peca.setX(peca.moviments.get(i).getX());
-                    peca.setY(peca.moviments.get(i).getY());
-                    b = backtracking(jugada,pos_rei,peca,i+1,n,visited);
+            for (int j = 0; j < t.getPeces_blanques().length; ++j) {
+                ArrayList<IntPair> visited = new ArrayList<>();
+                IntPair actual_pos = new IntPair(t.getPeces_blanques()[i].getX(),t.getPeces_blanques()[i].getY());
+                visited.add(actual_pos);
+                for (int z = 0; z < t.getPeces_blanques()[i].moviments.size(); ++z) {
+                    if (!isvisited(t.getPeces_blanques()[i].moviments.get(i),visited) || !b) {
+                        visited.add(t.getPeces_blanques()[i].moviments.get(i));
+                        t.getPeces_blanques()[i].setX(t.getPeces_blanques()[i].moviments.get(i).getX());
+                        t.getPeces_blanques()[i].setY(t.getPeces_blanques()[i].moviments.get(i).getY());
+                        t.actualitzar();
+                        b = backtracking(jugada,pos_rei,t,i+1,n);
+                    }
                 }
             }
             return b;
@@ -78,13 +87,9 @@ public class Maquina extends Usuari {
             }
         }
         Jugada jugada = new Jugada();
-        ArrayList<IntPair> visited = new ArrayList<>();
         boolean b = false;
-        for (int i = 0; i < peces_blanques.length; ++i) {
-            Peca peca = peces_blanques[i];
-            if (!b) b = backtracking(jugada,rei_pos,peca,0,n,visited);
-        }
-        return b;
+        Tauler t_temp = new Tauler(peces_blanques,peces_negres);
+        return backtracking(jugada,rei_pos,t_temp,0,n);
     }
 }
 
