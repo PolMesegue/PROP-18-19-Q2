@@ -12,7 +12,8 @@ public class Maquina extends Usuari {
 
         Jugada jugada = new Jugada();
         Tauler t_temp = new Tauler(peces_blanques,peces_negres);
-        boolean b = backtracking(jugada,t_temp,0,n);
+        ArrayList<IntPair> visited = new ArrayList<>();
+        boolean b = backtracking(jugada,t_temp,0,n,visited);
         if (b) return jugada;
         else return null;
     }
@@ -25,14 +26,13 @@ public class Maquina extends Usuari {
     }
 
     //comprova si la peca arriba al rei en n jugades
-    private boolean backtracking(Jugada jugada, Tauler t, int i, int n) {
+    private boolean backtracking(Jugada jugada, Tauler t, int i, int n,ArrayList<IntPair> visited) {
         if (i > n) return false;
         //MIRAR SI REI ESTA EN MAT
         else if (t.white_king_in_mate()) return true;
         else {
             boolean b = false;
             for (int j = 0; j < t.getPeces_blanques().length; ++j) {
-                ArrayList<IntPair> visited = new ArrayList<>();
                 IntPair actual_pos = new IntPair(t.getPeces_blanques()[i].getX(),t.getPeces_blanques()[i].getY());
                 visited.add(actual_pos);
                 for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); ++z) {
@@ -43,7 +43,8 @@ public class Maquina extends Usuari {
                         jugada.setPeca(t.getPeces_negres()[j]);
                         jugada.setPos_fin_x(t.getPeces_negres()[j].moviments.get(z).getX());
                         jugada.setPos_fin_y(t.getPeces_negres()[j].moviments.get(z).getY());
-                        b = backtracking(jugada,t,i+1,n);
+                        b = backtracking(jugada,t,i+1,n,visited);
+                        visited.clear();
                         if (b) break;
                     }
                 }
@@ -53,17 +54,10 @@ public class Maquina extends Usuari {
     }
 
     public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
-        /*IntPair rei_pos = new IntPair();
-        for (int i = 0; i < peces_negres.length; ++i) {
-            if (peces_negres[i] instanceof Rei) {
-                rei_pos.setX(peces_negres[i].getX());
-                rei_pos.setY(peces_negres[i].getY());
-            }
-        }
-        */
         Jugada jugada = new Jugada();
         Tauler t_temp = new Tauler(peces_blanques,peces_negres);
-        return backtracking(jugada,t_temp,0,n);
+        ArrayList<IntPair> visited = new ArrayList<>();
+        return backtracking(jugada,t_temp,0,n,visited);
     }
 }
 
