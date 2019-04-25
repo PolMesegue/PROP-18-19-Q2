@@ -2,6 +2,7 @@
 
 import java.util.ArrayList;
 
+
 public class Problema {
 
     private String FEN;
@@ -38,9 +39,9 @@ public class Problema {
 
     //aixo passa de FEN a un tauler decente de personas
     public Tauler FENtoHuman() {
-
+        System.out.println("aylmao");
         char[] FEN = this.FEN.toCharArray();
-
+        System.out.println("afafsf");
         int BnP = 0, BnC = 8, BnA = 10, BnT = 12;
         int NnP = 0, NnC = 8, NnA = 10, NnT = 12;
 
@@ -100,7 +101,7 @@ public class Problema {
                     ++NnP;
 
                 default:
-                    if (FEN[i] == ' ') break;
+                    if (FEN[i] == 'w') break;
                     ++x;
 
             }
