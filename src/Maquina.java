@@ -12,6 +12,7 @@ public class Maquina extends Usuari {
 
         Jugada jugada = new Jugada();
         Tauler t_temp = new Tauler(peces_blanques,peces_negres);
+        t_temp.actualitzar();
         ArrayList<IntPair> visited = new ArrayList<>();
         boolean b = backtracking(jugada,t_temp,0,n,visited);
         if (b) return jugada;
@@ -32,50 +33,64 @@ public class Maquina extends Usuari {
         if (t.white_king_in_mate()) return true;
         else {
             boolean b = false;
+
             for (int j = 0; j < t.getPeces_negres().length; ++j) {
-                if (t.getPeces_negres()[i] != null) {
-                    IntPair actual_pos = new IntPair(t.getPeces_negres()[i].getX(), t.getPeces_negres()[i].getY());
+                if (t.getPeces_negres()[j] != null) {
+                    IntPair actual_pos = new IntPair(t.getPeces_negres()[j].getX(), t.getPeces_negres()[j].getY());
                     visited.add(actual_pos);
-                    if (t.getPeces_negres()[j] != null) {
+                    t.actualitzar();
                         for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); ++z) {
                             if (!isvisited(t.getPeces_negres()[j].moviments.get(z), visited)) {
 
+                                // Save old position to restore it after the recursive call
                                 int oldX = t.getPeces_negres()[j].getX();
                                 int oldY = t.getPeces_negres()[j].getY();
 
-                                t.getPeces_negres()[j].setX(t.getPeces_negres()[j].moviments.get(z).getX());
-                                t.getPeces_negres()[j].setY(t.getPeces_negres()[j].moviments.get(z).getY());
-                                t.actualitzar();
 
+                                // Regenerate possible movements (?)
+                                //t.actualitzar();
+
+                                // Move the piece
                                 jugada.setPeca(t.getPeces_negres()[j]);
 
-                                if (t.getPeces_negres()[j].moviments.size() > j) {
-                                    jugada.setPos_fin_x(t.getPeces_negres()[j].moviments.get(z).getX());
-                                    jugada.setPos_fin_y(t.getPeces_negres()[j].moviments.get(z).getY());
+                                // Check that the play still exists
+                                //if (t.getPeces_negres()[j].moviments.size() > z) {
 
-                                    b = backtracking(jugada, t, i + 1, n, visited);
+                                // Get the movement from the possible movement list
+                                int newX = t.getPeces_negres()[j].moviments.get(z).getX();
+                                int newY = t.getPeces_negres()[j].moviments.get(z).getY();
 
-                                    t.getPeces_negres()[j].setX(oldX);
-                                    t.getPeces_negres()[j].setY(oldY);
-                                    t.actualitzar();
-                                }
+                                // Generate the play and move the pieces
+                                jugada.setPos_fin_x(newX);
+                                jugada.setPos_fin_y(newY);
+
+                                t.getPeces_negres()[j].setX(newX);
+                                t.getPeces_negres()[j].setY(newY);
+
+                                // Recursive call
+                                b = backtracking(jugada, t, i + 1, n, visited);
+
+                                // Get back to the old state
+                                t.getPeces_negres()[j].setX(oldX);
+                                t.getPeces_negres()[j].setY(oldY);
+
+                                //t.actualitzar();
+
                                 if (b) break;
                             }
                         }
                         visited.clear();
                     }
-                    else {
-                        ++j;
-                    }
                 }
+                return b;
             }
-            return b;
-        }
+
     }
 
     public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
         Jugada jugada = new Jugada();
         Tauler t_temp = new Tauler(peces_negres,peces_blanques); //els aprametres estan girats A PROPOSIT!
+        t_temp.actualitzar();
         ArrayList<IntPair> visited = new ArrayList<>();
         return backtracking(jugada,t_temp,0,n,visited);
     }

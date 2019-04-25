@@ -29,6 +29,8 @@ public class Torre extends Peca {
             }
             tempx--;
         }
+
+
         tempx =  this.getX() + 1; //movem dreta
         while (tempx < 8) {
             if (t.getPeca(tempx, this.getY()) == null) {
@@ -43,24 +45,12 @@ public class Torre extends Peca {
             }
             tempx++;
         }
+
+
         int tempy = this.getY() + 1; //movem avall
-        while (tempy >= 0) {
-            if (t.getPeca(this.getX(), tempy) == null) {
-                IntPair aux = new IntPair(this.getY(), tempy);
-                this.moviments.add(aux);
-            }
-            else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
-            else {
-                IntPair aux = new IntPair(this.getX(), tempy);
-                this.moviments.add(aux);
-                break;
-            }
-            tempy--;
-        }
-        tempy = this.getY() - 1; //movem amunt
         while (tempy < 8) {
             if (t.getPeca(this.getX(), tempy) == null) {
-                IntPair aux = new IntPair(this.getY(), tempy);
+                IntPair aux = new IntPair(this.getX(), tempy);
                 this.moviments.add(aux);
             }
             else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
@@ -70,6 +60,23 @@ public class Torre extends Peca {
                 break;
             }
             tempy++;
+        }
+
+
+
+        tempy = this.getY() - 1; //movem amunt
+        while (tempy >= 0) {
+            if (t.getPeca(this.getX(), tempy) == null) {
+                IntPair aux = new IntPair(this.getX(), tempy);
+                this.moviments.add(aux);
+            }
+            else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
+            else {
+                IntPair aux = new IntPair(this.getX(), tempy);
+                this.moviments.add(aux);
+                break;
+            }
+            tempy--;
         }
         return this.moviments;
     }

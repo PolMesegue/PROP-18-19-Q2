@@ -210,11 +210,7 @@ public class DriverMain {
                     ss = io.readint();
                     int count=1;
 
-
                     System.out.println(joc.te_solucio());
-
-
-
 
                     while(ss!=2){
                         if(count %2 !=0) {
