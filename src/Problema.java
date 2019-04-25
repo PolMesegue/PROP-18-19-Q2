@@ -127,9 +127,12 @@ public class Problema {
                     ++x;
                     break;
                 default:
-                    if (FEN[i] == ' ') break;
+                    if (FEN[i] == ' ') {
+                        i = 1000;
+                        break;
+                    }
                     x += FEN[i];
-
+                    break;
             }
         }
 
