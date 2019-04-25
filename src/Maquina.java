@@ -37,6 +37,8 @@ public class Maquina extends Usuari {
                 visited.add(actual_pos);
                 for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); ++z) {
                     if (!isvisited(t.getPeces_negres()[j].moviments.get(z),visited)) {
+                        int oldX = t.getPeces_negres()[j].getX();
+                        int oldY = t.getPeces_negres()[j].getY();
                         t.getPeces_negres()[j].setX(t.getPeces_negres()[j].moviments.get(z).getX());
                         t.getPeces_negres()[j].setY(t.getPeces_negres()[j].moviments.get(z).getY());
                         t.actualitzar();
@@ -44,10 +46,13 @@ public class Maquina extends Usuari {
                         jugada.setPos_fin_x(t.getPeces_negres()[j].moviments.get(z).getX());
                         jugada.setPos_fin_y(t.getPeces_negres()[j].moviments.get(z).getY());
                         b = backtracking(jugada,t,i+1,n,visited);
-                        visited.clear();
+                        t.getPeces_negres()[j].setX(oldX);
+                        t.getPeces_negres()[j].setY(oldY);
+                        t.actualitzar();
                         if (b) break;
                     }
                 }
+                visited.clear();
             }
             return b;
         }
@@ -55,7 +60,7 @@ public class Maquina extends Usuari {
 
     public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
         Jugada jugada = new Jugada();
-        Tauler t_temp = new Tauler(peces_blanques,peces_negres);
+        Tauler t_temp = new Tauler(peces_negres,peces_blanques); //els aprametres estan girats A PROPOSIT!
         ArrayList<IntPair> visited = new ArrayList<>();
         return backtracking(jugada,t_temp,0,n,visited);
     }
