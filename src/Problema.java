@@ -57,65 +57,77 @@ public class Problema {
                 case '/':
                     ++y;
                     x = 0;
+                    break;
                 case 'K':
                     Rei R = new Rei(15,x, y,true);
                     T.setRei(R);
                     ++x;
+                    break;
                 case 'k':
                     Rei r = new Rei(15,x, y, false);
                     T.setRei(r);
                     ++x;
+                    break;
                 case 'Q':
                     Reina D = new Reina(14,x, y, true);
                     T.setReina(D);
                     ++x;
+                    break;
                 case 'q':
                     Reina d = new Reina(14,x, y, false);
                     T.setReina(d);
                     ++x;
+                    break;
                 case 'R':
                     Torre To = new Torre(BnT,x, y, true);
                     T.setTorre(To);
                     ++BnT;
                     ++x;
+                    break;
                 case 'r':
                     Torre to = new Torre(NnT, x, y, false);
                     T.setTorre(to);
                     ++NnT;
                     ++x;
+                    break;
                 case 'B':
                     Alfil A = new Alfil(BnA,x, y, true);
                     T.setAlfil(A);
                     ++BnA;
                     ++x;
+                    break;
                 case 'b':
                     Alfil a = new Alfil(NnA,x, y, false);
                     T.setAlfil(a);
                     ++NnA;
                     ++x;
+                    break;
                 case 'N':
                     Cavall C = new Cavall(BnA,x, y, true);
                     T.setCavall(C);
                     ++BnA;
                     ++x;
+                    break;
                 case 'n':
                     Cavall c = new Cavall(NnA,x, y, false);
                     T.setCavall(c);
                     ++NnA;
                     ++x;
+                    break;
                 case 'P':
                     Peo P = new Peo(BnP,x, y, true);
                     T.setPeo(P);
                     ++BnP;
                     ++x;
+                    break;
                 case 'p':
                     Peo p = new Peo(NnP,x, y, false);
                     T.setPeo(p);
                     ++NnP;
                     ++x;
-
+                    break;
                 default:
-                    if (FEN[i] == 'w') break;
+                    if (FEN[i] == ' ') break;
                     x += FEN[i];
 
             }
