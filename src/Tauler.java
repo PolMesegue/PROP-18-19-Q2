@@ -324,10 +324,11 @@ public class Tauler {
         return null;
     }
 
-    public char[] HumantoFEN(Peca[] peces_blanques, Peca[] peces_negres) {
+    public String HumantoFEN(Peca[] peces_blanques, Peca[] peces_negres) {
         int a, b;
         char[] FEN = new char[64];
         char[][] mapa = new char[8][8];
+
 
         for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
@@ -389,13 +390,20 @@ public class Tauler {
                     if (buit != 0) {
                         FEN[iter] = (char) buit;
                         ++iter;
+
                     }
                     FEN[iter] = mapa[i][j];
+                    ++iter;
                 }
             }
             FEN[iter] = '/';
+            ++iter;
         }
-        return FEN;
+        char[] tmp = new char[iter];
+        tmp = FEN;
+
+        String j = tmp.toString();
+        return j;
     }
 }
 
