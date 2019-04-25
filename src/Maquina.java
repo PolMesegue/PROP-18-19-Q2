@@ -38,7 +38,7 @@ public class Maquina extends Usuari {
         return null;
     }
 
-    public boolean isvisited(IntPair pos, ArrayList<IntPair> visited) {
+    private boolean isvisited(IntPair pos, ArrayList<IntPair> visited) {
         for (int i = 0; i < visited.size(); ++i) {
             if (pos == visited.get(i)) return true;
         }
@@ -46,19 +46,25 @@ public class Maquina extends Usuari {
     }
 
     //comprova si la peca arriba al rei en n jugades
-    public boolean backtracking(Jugada jugada, IntPair pos_rei, Peca peca, int i, int n, ArrayList<IntPair> visited) {
+    private boolean backtracking(Jugada jugada, IntPair pos_rei, Peca peca, int i, int n, ArrayList<IntPair> visited) {
         if (i > n) return false;
-        else if (peca.getX() == pos_rei.getX() && peca.getY() == pos_rei.getY()) return true;
+        else if (peca.getX() == pos_rei.getX() && peca.getY() == pos_rei.getY()) {
+            jugada.setPeca(peca);
+            jugada.setPos_fin_x(peca.getX());
+            jugada.setPos_fin_y(peca.getY());
+            return true;
+        }
         else {
+            boolean b = false;
             for (int j = 0; j < peca.moviments.size(); ++j) {
-                if (!isvisited(peca.moviments.get(i),visited)) {
+                if (!isvisited(peca.moviments.get(i),visited) || !b) {
                     visited.add(peca.moviments.get(i));
                     peca.setX(peca.moviments.get(i).getX());
                     peca.setY(peca.moviments.get(i).getY());
-                    backtracking(jugada,pos_rei,peca,i+1,n,visited);
+                    b = backtracking(jugada,pos_rei,peca,i+1,n,visited);
                 }
             }
-            return false;
+            return b;
         }
     }
 
