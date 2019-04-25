@@ -7,6 +7,7 @@ public class Problema {
 
     private String FEN;
     private String ID;
+    private Integer N;
 
     private char whoStarts;
 
@@ -31,8 +32,9 @@ public class Problema {
         return ID;
     }
 
+    public void setN(Integer n) { this.N = n;}
 
-
+    public Integer getN() {return N;}
 
 
     //PeoPeoPeoPeoPeoPeoPeoPeoAlfAlfCavCavTorTorReinaRei;
