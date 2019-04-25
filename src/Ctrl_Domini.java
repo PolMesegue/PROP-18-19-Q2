@@ -46,4 +46,12 @@ public class Ctrl_Domini {
         return Usuaris;
     }
 
+    public Tauler getTauler(String fen){
+
+        Problema p= bdp.getProblema(fen);
+        Tauler t= p.FENtoHuman();
+        return t;
+
+    }
+
 }

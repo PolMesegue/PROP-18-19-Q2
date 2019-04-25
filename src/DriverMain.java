@@ -8,6 +8,75 @@ public class DriverMain {
     private static Ctrl_Domini ctrldom = new Ctrl_Domini();
 
 
+    private static void pintarTauler(Tauler t){
+        Peca[] peces_blanques = t.getPeces_blanques();
+        Peca[] peces_negres = t.getPeces_negres();
+        int a=0, b=0;
+        char[] FEN = new char[64];
+        char[][] mapa = new char[8][8];
+
+
+        for (int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                mapa[i][j] = '-';
+            }
+        }
+
+        for (int i = 0; i < 16; ++i) {
+            if (peces_blanques[i] != null) {
+
+                a = peces_blanques[i].getX();
+                b = peces_blanques[i].getY();
+
+                if (i <= 7) {
+
+                    mapa[a][b] = 'P';
+
+                } else if (i <= 9) {
+                    mapa[a][b] = 'C';
+                } else if (i <= 11) {
+                    mapa[a][b] = 'A';
+                } else if (i <= 13) {
+                    mapa[a][b] = 'T';
+                } else if (i == 14) {
+                    mapa[a][b] = 'D';
+                } else {
+                    mapa[a][b] = 'R';
+                }
+            }
+
+            if (peces_negres[i] != null) {
+
+                a = peces_negres[i].getX();
+                b = peces_negres[i].getY();
+
+                if (i <= 7) {
+
+                    mapa[a][b] = 'p';
+
+                } else if (i <= 9) {
+                    mapa[a][b] = 'c';
+                } else if (i <= 11) {
+                    mapa[a][b] = 'a';
+                } else if (i <= 13) {
+                    mapa[a][b] = 't';
+                } else if (i == 14) {
+                    mapa[a][b] = 'd';
+                } else {
+                    mapa[a][b] = 'r';
+                }
+            }
+        }
+        System.out.print("\n");
+        for(int z=0; z<8;++z){
+            for(int w=0;w<8;++w){
+                System.out.print(mapa[z][w]);
+            }
+            System.out.print("\n");
+        }
+
+    }
+
 
     public static void main(String[] args) throws Exception {
         io = new inout();
@@ -101,6 +170,15 @@ public class DriverMain {
                         if(c <= ctrldom.getProblemas().size()+1 || c > 0){
                             String pro= ctrldom.getProblemas().get(c-1);
                             ctrldom.crearPartida(atc,def,pro);
+
+                            Tauler t= ctrldom.getTauler(pro);
+
+                            pintarTauler(t);
+
+
+
+
+
                             io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
                             s = io.readint();
                         }
