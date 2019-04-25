@@ -35,7 +35,6 @@ public class Tauler {
         this.peces_negres = peces_negres;
         peces_negres_mortes = new Peca[16];
         peces_blanques_mortes = new Peca[16];
-        actualitzar();
         BnT = 0;
         BnC = 0;
         BnA = 0;
@@ -71,7 +70,7 @@ public class Tauler {
 
         for (int i = 0; i < moviments.size(); ++i) {
 
-            if (moviments.get(i) == pos) return true;
+            if (moviments.get(i).getX() == pos.getX() && moviments.get(i).getY() == pos.getY()) return true;
         }
 
         return false;
@@ -89,135 +88,9 @@ public class Tauler {
 
     }
 
-/*
-    public boolean MourePeca(Peo t, int newX, int newY) {
-        IntPair pos = new IntPair(newX, newY);
-
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-
-    }
-
-    public boolean MourePeca(Cavall t, int newX, int newY) {
-        IntPair pos = new IntPair(newX, newY);
-
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-    }
-
-    public boolean MourePeca(Alfil t, int newX, int newY) {
-        IntPair pos = new IntPair(newX, newY);
-
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-    }
-
-
-    public boolean MourePeca(Torre t, int newX, int newY) {
-
-        IntPair pos = new IntPair(newX, newY);
-
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-
-    }
-
-
-    public boolean MourePeca(Reina t, int newX, int newY) {
-        IntPair pos = new IntPair(newX, newY);
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-
-
-    }
-
-    public boolean MourePeca(Rei t, int newX, int newY) {
-        IntPair pos = new IntPair(newX, newY);
-
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-
-    }*/
 
     public boolean MourePeca(Peca t, int newX, int newY) {
+        actualitzar();
         IntPair pos = new IntPair(newX, newY);
 
 
@@ -352,12 +225,12 @@ public class Tauler {
 
     public Peca getPeca(int x, int y) {
         for (Peca p : peces_blanques) {
-            if (p.getX() == x && p.getY() == y) {
+            if (p != null && p.getX() == x && p.getY() == y) {
                 return p;
             }
         }
         for (Peca p : peces_negres) {
-            if (p.getX() == x && p.getY() == y) {
+            if (p != null && p.getX() == x && p.getY() == y) {
                 return p;
             }
         }

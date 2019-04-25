@@ -1,5 +1,8 @@
 
+import com.sun.xml.internal.ws.model.ParameterImpl;
+
 import java.lang.reflect.Array;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.io.*;
 import java.util.*;
@@ -25,7 +28,6 @@ public class Ctrl_Domini {
             Usuari a= bdu.getHuma(Atacant);
             Usuari d= bdu.getHuma(defensor);
             Problema p= bdp.getProblema(problema);
-            System.out.println(p.getFEN());
             Tauler t= p.FENtoHuman();
             fa.CrearPartida(a,d,p,t);
     }
@@ -46,6 +48,15 @@ public class Ctrl_Domini {
         return Usuaris;
     }
 
+    public ArrayList<Timestamp> getPartidas(){
+        ArrayList<Timestamp> partidas = new ArrayList<>();
+        for(Partida elem : fa.getCollectionPartidas()) {
+            partidas.add(elem.getFecha());
+        }
+        return partidas;
+
+    }
+
     public Tauler getTauler(String fen){
 
         Problema p= bdp.getProblema(fen);
@@ -53,5 +64,13 @@ public class Ctrl_Domini {
         return t;
 
     }
+
+    public Partida getPartida(Timestamp fecha){
+
+        Partida p= fa.getPartida(fecha);
+        return p;
+
+    }
+
 
 }

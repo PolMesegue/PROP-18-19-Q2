@@ -1,6 +1,8 @@
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.*;
 import java.io.*;
+import java.util.regex.Pattern;
 
 public class DriverMain {
 
@@ -142,7 +144,7 @@ public class DriverMain {
 
             }
             else if(s==3){
-                io.write("Opcions: \n 1.Crear Partida \n 2. ");
+                io.write("Opcions: \n 1.Crear Partida \n 2.Jugar Parttida ");
                 s = io.readint();
                 if(s==1){
                     int a, b,c = -1;
@@ -173,13 +175,7 @@ public class DriverMain {
 
                             Tauler t= ctrldom.getTauler(pro);
 
-                            pintarTauler(t);
-
-
-
-
-
-
+                            //pintarTauler(t);
 
                             //s = io.readint();
                         }
@@ -189,10 +185,56 @@ public class DriverMain {
                         // TODO
                     }
 
+                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
+                    s = io.readint();
+
+                }
+                else if(s==2){
+                    int a = -1;
+                    io.write("Seleciona partida: \n");
+                    for(int i=0; i<ctrldom.getPartidas().size(); ++i){
+                        System.out.print(i+1);
+                        System.out.print(".");
+                        System.out.println(ctrldom.getPartidas().get(i));
+                    }
+                    a = io.readint();
+                    Timestamp fecha = ctrldom.getPartidas().get(a-1);
+
+                    Partida joc= ctrldom.getPartida(fecha);
+
+                    pintarTauler(joc.getT());
+
+                    int ss=-1;
+                    io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
+                    ss = io.readint();
+                    while(ss!=2){
+
+                        io.write("Posicio de la peça a moure:  \n");
+                        io.write("X: \n");
+                        int posicio_x = io.readint();
+                        io.write("Y: \n");
+                        int posicio_y = io.readint();
+
+                        io.write("Posicio desti: \n");
+                        io.write("X: \n");
+                        int newposicio_x = io.readint();
+                        io.write("Y: \n");
+                        int newposicio_y = io.readint();
+
+                        if(joc.mourePeca(posicio_x,posicio_y,newposicio_x,newposicio_y)){
+                            pintarTauler(joc.getT());
+                        }
+                        else{
+                            System.out.println("Error al moure");
+                        }
+
+                        io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
+                        ss = io.readint();
+
+                    }
 
 
                 }
-                else if(s==2);
                 else if(s==3);
             }
 
