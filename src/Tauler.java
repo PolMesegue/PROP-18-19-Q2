@@ -323,7 +323,7 @@ public class Tauler {
         }
         return null;
     }
-    
+
     public Peca[] getPeces_blanques() {
         return peces_blanques;
     }
