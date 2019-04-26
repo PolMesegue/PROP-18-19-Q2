@@ -70,10 +70,11 @@ public class DriverMain {
             }
         }
         System.out.print("\n");
-
+        System.out.print("  ");
         for (int xx = 0; xx < 8;++xx){
-            System.out.println(xx);
+            System.out.print(xx);
         }
+        System.out.println();
 
         for(int z=0; z<8;++z){
             System.out.print(z);
@@ -91,14 +92,15 @@ public class DriverMain {
     public static void main(String[] args) throws Exception {
         io = new inout();
         int s = -1;
-        io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
-        s = io.readint();
+
 
         Scanner scanner = new Scanner(System. in);
 
         ctrldom.crearMaquina();
 
-        while (s != 5) {
+        while (s != 4) {
+            io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Gestio partidas \n 4. Exit \n");
+            s = io.readint();
             if(s == 1){
                 io.write("Opcions: \n 1.Crear Huma \n 2.Borrar Huma \n 3.Consultar Usuaris \n");
                 s = io.readint();
@@ -108,8 +110,6 @@ public class DriverMain {
                     //io.write("Introdueix password: ");
                     //String stg2= io.readname();
                     ctrldom.AddHuma(stg);
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
-                    s = io.readint();
                 }
                 else if (s == 2){
 
@@ -119,9 +119,6 @@ public class DriverMain {
                     for(String elem : ctrldom.getUsuaris()){
                         System.out.println(elem);
                     }
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
-                    s = io.readint();
-
                 }
 
             }
@@ -132,18 +129,12 @@ public class DriverMain {
                     io.write("Introdueix FEN: \n");
                     String stg = scanner. nextLine();
                     ctrldom.AddProblem(stg);
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
-                    s = io.readint();
-
                 }
                 else if (s == 2){
                     io.write("Problemas disponibles: \n");
                     for(String elem : ctrldom.getProblemas()){
                         System.out.println(elem);
                     }
-
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
-                    s = io.readint();
                 }
                 else if (s == 3){
 
@@ -192,8 +183,6 @@ public class DriverMain {
                     else {
                         // TODO
                     }
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
-                    s = io.readint();
 
                 }
                 else if(s==2) {
@@ -286,9 +275,11 @@ public class DriverMain {
                         }
 
                     }
+
                 }
 
                 else if(s==3);
+
             }
 
             
