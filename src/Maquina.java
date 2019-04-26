@@ -21,7 +21,7 @@ public class Maquina extends Usuari {
 
     private boolean isvisited(IntPair pos, ArrayList<IntPair> visited) {
         for (int i = 0; i < visited.size(); ++i) {
-            if (pos == visited.get(i)) return true;
+            if (pos.getX() == visited.get(i).getX() && pos.getY() == visited.get(i).getY()) return true;
         }
         return false;
     }
