@@ -30,7 +30,7 @@ public class Maquina extends Usuari {
     private boolean backtracking(Jugada jugada, Tauler t, int i, int n,ArrayList<IntPair> visited) {
         if (i > n) return false;
         //MIRAR SI REI ESTA EN MAT
-        if (t.white_king_in_mate(t)) return true;
+        if (t.white_king_in_mate()) return true;
         else {
             boolean b = false;
 

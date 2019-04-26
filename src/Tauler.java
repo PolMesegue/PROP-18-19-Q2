@@ -182,7 +182,7 @@ public class Tauler {
 
     }
 
-    public boolean white_king_in_mate(Tauler t) {
+    public boolean white_king_in_mate() {
         Peca rei = new Rei();
 
         rei = peces_blanques[15];
@@ -193,64 +193,92 @@ public class Tauler {
         for (int i = 0; i < peces_negres.length; i++) {
 
             if (peces_negres[i] != null ) {
+                //algu pot atacar la posicio actual del rei
                 for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
                     if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getY() == rei.getY())
                         b1 = true;
                 }
 
-                if (rei.getX() + 1 < 8 && t.getPeca(rei.getX() + 1 , rei.getY()) == null) {
-                    for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                        if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getY() == rei.getY())
-                            b2 = true;
+                //comprovar dreta
+                if (rei.getX() + 1 < 8) { //mirar si se surt del tauler
+                    //posicio ocupada per una peça del mateix color
+                    if (getPeca(rei.getX()+1,rei.getY()) != null && getPeca(rei.getX()+1,rei.getY()).getColor() == rei.getColor()) b2 = true;
+                        //si esta lliure, comprovem si algu pot atacar per alla
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getY() == rei.getY())
+                                b2 = true;
+                        }
                     }
-                } else b2 = true;
+                } else b2 = true; //surt del tauler, el rei no pot escapar per dreta
 
-                if (rei.getY() + 1 < 8 && t.getPeca(rei.getX() , rei.getY() + 1) == null) {
-                    for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                        if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getY() == rei.getY() + 1)
-                            b3 = true;
+                if (rei.getY() + 1 < 8) {
+                    if (getPeca(rei.getX(),rei.getY()+1) != null && getPeca(rei.getX(),rei.getY()+1).getColor() == rei.getColor()) b3 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getY() == rei.getY() + 1)
+                                b3 = true;
+                        }
                     }
                 } else b3 = true;
 
-                if (rei.getY() + 1 < 8 && rei.getX() + 1 < 8 && t.getPeca(rei.getX() + 1 , rei.getY() + 1 ) == null) {
-                    for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                        if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() + 1)
-                            b4 = true;
+                if (rei.getY() + 1 < 8 && rei.getX() + 1 < 8) {
+                    if (getPeca(rei.getX()+1,rei.getY()+1) != null && getPeca(rei.getX()+1,rei.getY()+1).getColor() == rei.getColor()) b4 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() + 1)
+                                b4 = true;
+                        }
                     }
                 } else b4 = true;
 
-                if (rei.getX() - 1 >= 0 && t.getPeca(rei.getX() - 1 , rei.getY()) == null) {
-                    for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                        if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getY() == rei.getY())
-                            b5 = true;
+                if (rei.getX() - 1 >= 0) {
+                    if (getPeca(rei.getX()-1,rei.getY()) != null && getPeca(rei.getX()-1,rei.getY()).getColor() == rei.getColor()) b5 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getY() == rei.getY())
+                                b5 = true;
+                        }
                     }
                 } else b5 = true;
 
-                if (rei.getY() - 1 >= 0 && t.getPeca(rei.getX() ,rei.getY() -1 ) == null) {
-                    for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                        if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getY() == rei.getY() - 1)
-                            b6 = true;
+                if (rei.getY() - 1 >= 0) {
+                    if (getPeca(rei.getX(),rei.getY()-1) != null && getPeca(rei.getX(),rei.getY()-1).getColor() == rei.getColor()) b6 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getY() == rei.getY() - 1)
+                                b6 = true;
+                        }
                     }
                 } else b6 = true;
 
-                if (rei.getY() - 1 >= 0 && rei.getX() - 1 >= 0 &&  t.getPeca(rei.getX() - 1 , rei.getY() -1) == null) {
-                    for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                        if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() - 1)
-                            b7 = true;
+                if (rei.getY() - 1 >= 0 && rei.getX() - 1 >= 0) {
+                    if (getPeca(rei.getX()-1,rei.getY()-1) != null && getPeca(rei.getX()-1,rei.getY()-1).getColor() == rei.getColor()) b7 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() - 1)
+                                b7 = true;
+                        }
                     }
                 } else b7 = true;
 
-                if (rei.getX() + 1 < 8 && rei.getY() - 1 >= 0 && t.getPeca(rei.getX() + 1 , rei.getY() - 1) == null) {
-                    for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                        if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() - 1)
-                            b8 = true;
+                if (rei.getX() + 1 < 8 && rei.getY() - 1 >= 0) {
+                    if (getPeca(rei.getX()+1,rei.getY()-1) != null && getPeca(rei.getX()+1,rei.getY()-1).getColor() == rei.getColor()) b8 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() - 1)
+                                b8 = true;
+                        }
                     }
                 } else b8 = true;
 
-                if (rei.getX() - 1 >= 0 && rei.getY() + 1 < 8 && t.getPeca(rei.getX() - 1 , rei.getY() + 1) == null) {
-                    for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                        if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() + 1)
-                            b9 = true;
+                if (rei.getX() - 1 >= 0 && rei.getY() + 1 < 8) {
+                    if (getPeca(rei.getX()-1,rei.getY()+1) != null && getPeca(rei.getX()-1,rei.getY()+1).getColor() == rei.getColor()) b9 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() + 1)
+                                b9 = true;
+                        }
                     }
                 } else b9 = true;
             }
