@@ -18,16 +18,23 @@ public class Ctrl_Domini {
         bdu.AddMaquina(m1);
     }
 
-    public void AddHuma(String nom,String password){
-        Huma h= new Huma(nom,password);
-        //if(!bdu.getHuma(nom).equals(h)){
+    public void AddHuma(String nom){
+        Huma h= new Huma(nom);
+        if(bdu.existsHuma(nom)){
+            System.out.println("Ya existe usuario con el nombre introducido. \n");
+        }
+        else{
             bdu.AddHuma(h);
-       //}
-        //imprimir error, ya existeix.
+        }
     }
     public void AddProblem(String fen){
         Problema p= new Problema(fen);
-        bdp.AddProblem(p);
+        if(bdp.existsProblema(fen)){
+            System.out.println("Ya existe el problema con este FEN \n");
+        }
+        else {
+            bdp.AddProblem(p);
+        }
     }
     public void crearPartida(String Atacant, String defensor,String problema){
             Usuari a= bdu.getHuma(Atacant);

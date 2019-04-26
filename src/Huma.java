@@ -3,18 +3,18 @@ import java.util.*;
 //proba
 public class Huma extends Usuari {
 
-    private String Password;
+    //private String Password;
 
-    public Huma(String nom, String Password){
+    public Huma(String nom /*,String Password*/){
         super(nom);
-        this.Password = Password;
+        //this.Password = Password;
     }
 
-    public void setPassword(String password) {
+    /*public void setPassword(String password) {
         this.Password = password;
-    }
+    }*/
 
-    public String getPassword() {
+    /*public String getPassword() {
         return Password;
-    }
+    }*/
 }
