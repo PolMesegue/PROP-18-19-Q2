@@ -5,19 +5,13 @@ public class Tauler {
     //vector< vector<Cela> > tauler;
     private Peca[] peces_blanques; // peces_blanques {p,p,p,p,p,p,p,p,a,a,c,c,t,t,d,r}
     private Peca[] peces_negres;
-    private Peca[] peces_blanques_mortes;
-    private Peca[] peces_negres_mortes;
-    //  private final int files = 8;
-    //  private final int columnes = 8;
-    //  private Integer[][] Graella;
+
     private Integer BnT, BnC, BnA, BnP, NnT, NnC, NnA, NnP;
 
     public Tauler() {
 
         peces_blanques = new Peca[16];
         peces_negres = new Peca[16];
-        peces_negres_mortes = new Peca[16];
-        peces_blanques_mortes = new Peca[16];
         BnT = 0;
         BnC = 0;
         BnA = 0;
@@ -33,8 +27,6 @@ public class Tauler {
 
         this.peces_blanques = peces_blanques;
         this.peces_negres = peces_negres;
-        peces_negres_mortes = new Peca[16];
-        peces_blanques_mortes = new Peca[16];
         BnT = 0;
         BnC = 0;
         BnA = 0;
@@ -46,9 +38,6 @@ public class Tauler {
     }
 
 
-    //mourePeça
-
-//java overloading function
 
     private Peca[] matar(Peca[] vector, int x, int y) {
 
