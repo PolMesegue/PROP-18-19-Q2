@@ -1,4 +1,3 @@
-
 import com.sun.xml.internal.ws.model.ParameterImpl;
 
 import java.lang.reflect.Array;
@@ -18,23 +17,42 @@ public class Ctrl_Domini {
         bdu.AddMaquina(m1);
     }
 
-    public void AddHuma(String nom,String password){
-        Huma h= new Huma(nom,password);
-        //if(!bdu.getHuma(nom).equals(h)){
+    public void AddHuma(String nom){
+        Huma h= new Huma(nom);
+        if(bdu.existsHuma(nom)){
+            System.out.println("Ya existe usuario con el nombre introducido. \n");
+        }
+        else{
             bdu.AddHuma(h);
-       //}
-        //imprimir error, ya existeix.
+        }
     }
-    public void AddProblem(String fen){
+    public void AddProblem(String fen,int mat){
         Problema p= new Problema(fen);
-        bdp.AddProblem(p);
+        p.setN(mat);
+
+        Maquina virtual = new Maquina("VIRTUAL");
+        if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
+            if(bdp.existsProblema(fen)){
+                System.out.println("Ya existe el problema con este FEN \n");
+            }
+            else {
+                System.out.println("Problema afegit amb exit\n");
+                bdp.AddProblem(p);
+            }
+
+        }
+        else {
+            System.out.println("No es pot assolir el mat indicat \n");
+        }
+
+
     }
     public void crearPartida(String Atacant, String defensor,String problema){
-            Usuari a= bdu.getHuma(Atacant);
-            Usuari d= bdu.getHuma(defensor);
-            Problema p= bdp.getProblema(problema);
-            Tauler t= p.FENtoHuman();
-            fa.CrearPartida(a,d,p,t);
+        Usuari a= bdu.getHuma(Atacant);
+        Usuari d= bdu.getHuma(defensor);
+        Problema p= bdp.getProblema(problema);
+        Tauler t= p.FENtoHuman();
+        fa.CrearPartida(a,d,p,t);
     }
 
     public ArrayList<String> getProblemas(){
