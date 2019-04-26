@@ -27,14 +27,26 @@ public class Ctrl_Domini {
             bdu.AddHuma(h);
         }
     }
-    public void AddProblem(String fen){
+    public void AddProblem(String fen,int mat){
         Problema p= new Problema(fen);
-        if(bdp.existsProblema(fen)){
-            System.out.println("Ya existe el problema con este FEN \n");
+        p.setN(mat);
+
+        Maquina virtual = new Maquina("VIRTUAL");
+        if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
+            if(bdp.existsProblema(fen)){
+                System.out.println("Ya existe el problema con este FEN \n");
+            }
+            else {
+                System.out.println("Problema afegit amb exit\n");
+                bdp.AddProblem(p);
+            }
+
         }
         else {
-            bdp.AddProblem(p);
+            System.out.println("No es pot assolir el mat indicat \n");
         }
+
+
     }
     public void crearPartida(String Atacant, String defensor,String problema){
             Usuari a= bdu.getHuma(Atacant);

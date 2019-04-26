@@ -3,6 +3,8 @@ import java.util.*;
 @SuppressWarnings("Duplicates")
 public class Maquina extends Usuari {
 
+
+
     public Maquina(String nom){
 
         super(nom);

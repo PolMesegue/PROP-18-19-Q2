@@ -128,7 +128,10 @@ public class DriverMain {
                 if (s == 1){
                     io.write("Introdueix FEN: \n");
                     String stg = scanner. nextLine();
-                    ctrldom.AddProblem(stg);
+                    io.write("Introdueix Nºmat: \n");
+                    int mat = scanner.nextInt();
+
+                    ctrldom.AddProblem(stg,mat);
                 }
                 else if (s == 2){
                     io.write("Problemas disponibles: \n");
@@ -231,7 +234,7 @@ public class DriverMain {
                             } else {
                                 System.out.println("Turn de la maquina \n");
                                 //pintarTauler(joc.getT());
-                                Jugada j = joc.moureMaquina();
+                                Jugada j = joc.moureMaquina(joc.getP().getN()+300);
                                 if (j != null) {
                                     joc.mourePeca(j.getPeca().getX(), j.getPeca().getY(), j.getPos_fin_x(), j.getPos_fin_y());
                                 } else {
