@@ -21,7 +21,7 @@ public class Torre extends Peca {
                 IntPair aux = new IntPair(tempx, this.getY());
                 this.moviments.add(aux);
             }
-            else if (t.getPeca(tempx, this.getY()) != null) break;
+            else if (t.getPeca(tempx, this.getY()).getColor() == this.getColor()) break;
             else {
                 IntPair aux = new IntPair(tempx, this.getY());
                 this.moviments.add(aux);
@@ -37,7 +37,7 @@ public class Torre extends Peca {
                 IntPair aux = new IntPair(tempx, this.getY());
                 this.moviments.add(aux);
             }
-            else if (t.getPeca(tempx, this.getY()) != null) break;
+            else if (t.getPeca(tempx, this.getY()).getColor() == this.getColor()) break;
             else {
                 IntPair aux = new IntPair(tempx, this.getY());
                 this.moviments.add(aux);
@@ -53,7 +53,7 @@ public class Torre extends Peca {
                 IntPair aux = new IntPair(this.getX(), tempy);
                 this.moviments.add(aux);
             }
-            else if (t.getPeca(this.getX(), tempy) != null) break;
+            else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
             else {
                 IntPair aux = new IntPair(this.getX(), tempy);
                 this.moviments.add(aux);
@@ -70,7 +70,7 @@ public class Torre extends Peca {
                 IntPair aux = new IntPair(this.getX(), tempy);
                 this.moviments.add(aux);
             }
-            else if (t.getPeca(this.getX(), tempy) != null) break;
+            else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
             else {
                 IntPair aux = new IntPair(this.getX(), tempy);
                 this.moviments.add(aux);
