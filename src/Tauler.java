@@ -190,34 +190,44 @@ public class Tauler {
         boolean b1,b2,b3,b4,b5,b6,b7,b8,b9;
         b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = false;
         for (int i = 0; i < peces_negres.length; i++) {
-            for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getX() == rei.getY()) b1 = true;
+            if (peces_negres[i] != null ) {
+                for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                    if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getX() == rei.getY())
+                        b1 = true;
+                }
+                for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                    if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getX() == rei.getY())
+                        b2 = true;
+                }
+                for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                    if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getX() == rei.getY() + 1)
+                        b3 = true;
+                }
+                for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                    if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getX() == rei.getY() + 1)
+                        b4 = true;
+                }
+                for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                    if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getX() == rei.getY())
+                        b5 = true;
+                }
+                for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                    if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getX() == rei.getY() - 1)
+                        b6 = true;
+                }
+                for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                    if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getX() == rei.getY() - 1)
+                        b7 = true;
+                }
+                for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                    if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getX() == rei.getY() - 1)
+                        b8 = true;
+                }
+                for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                    if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getX() == rei.getY() + 1)
+                        b9 = true;
+                }
             }
-            for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                if (peces_negres[i].moviments.get(j).getX() == rei.getX()+1 && peces_negres[i].moviments.get(j).getX() == rei.getY()) b2 = true;
-            }
-            for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getX() == rei.getY()+1) b3 = true;
-            }
-            for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                if (peces_negres[i].moviments.get(j).getX() == rei.getX()+1 && peces_negres[i].moviments.get(j).getX() == rei.getY()+1) b4 = true;
-            }
-            for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                if (peces_negres[i].moviments.get(j).getX() == rei.getX()-1 && peces_negres[i].moviments.get(j).getX() == rei.getY()) b5 = true;
-            }
-            for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getX() == rei.getY()-1) b6 = true;
-            }
-            for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                if (peces_negres[i].moviments.get(j).getX() == rei.getX()-1 && peces_negres[i].moviments.get(j).getX() == rei.getY()-1) b7 = true;
-            }
-            for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                if (peces_negres[i].moviments.get(j).getX() == rei.getX()+1 && peces_negres[i].moviments.get(j).getX() == rei.getY()-1) b8 = true;
-            }
-            for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
-                if (peces_negres[i].moviments.get(j).getX() == rei.getX()-1 && peces_negres[i].moviments.get(j).getX() == rei.getY()+1) b9 = true;
-            }
-
         }
         return (b1 && b2 && b3 && b4 && b5 && b6 && b7 && b8 && b9);
     }

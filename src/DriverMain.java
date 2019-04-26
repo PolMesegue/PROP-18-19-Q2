@@ -70,7 +70,15 @@ public class DriverMain {
             }
         }
         System.out.print("\n");
+
+        for (int xx = 0; xx < 8;++xx){
+            System.out.println(xx);
+        }
+
         for(int z=0; z<8;++z){
+            System.out.print(z);
+            System.out.print(" ");
+
             for(int w=0;w<8;++w){
                 System.out.print(mapa[w][z]);
             }
@@ -88,7 +96,7 @@ public class DriverMain {
 
         Scanner scanner = new Scanner(System. in);
 
-
+        ctrldom.crearMaquina();
 
         while (s != 5) {
             if(s == 1){
@@ -154,6 +162,7 @@ public class DriverMain {
                         System.out.print(".");
                         System.out.println(ctrldom.getUsuaris().get(i));
                     }
+
                     io.write("Usuari atacant:");
                     a = io.readint();
                     io.write("Usuari defensor:");
@@ -207,29 +216,38 @@ public class DriverMain {
                     int ss=-1;
                     io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
                     ss = io.readint();
+                    int count=1;
                     while(ss!=2){
+                        if(count %2 !=0) {
+                            io.write("Posicio de la peça a moure:  \n");
+                            io.write("X: \n");
+                            int posicio_x = io.readint();
+                            io.write("Y: \n");
+                            int posicio_y = io.readint();
 
-                        io.write("Posicio de la peça a moure:  \n");
-                        io.write("X: \n");
-                        int posicio_x = io.readint();
-                        io.write("Y: \n");
-                        int posicio_y = io.readint();
+                            io.write("Posicio desti: \n");
+                            io.write("X: \n");
+                            int newposicio_x = io.readint();
+                            io.write("Y: \n");
+                            int newposicio_y = io.readint();
 
-                        io.write("Posicio desti: \n");
-                        io.write("X: \n");
-                        int newposicio_x = io.readint();
-                        io.write("Y: \n");
-                        int newposicio_y = io.readint();
-
-                        if(joc.mourePeca(posicio_x,posicio_y,newposicio_x,newposicio_y)){
-                            pintarTauler(joc.getT());
+                            if (joc.mourePeca(posicio_x, posicio_y, newposicio_x, newposicio_y)) {
+                                pintarTauler(joc.getT());
+                            } else {
+                                System.out.println("Error al moure");
+                            }
+                            count++;
                         }
                         else{
-                            System.out.println("Error al moure");
+                            pintarTauler(joc.getT());
+                            Jugada j = joc.moureMaquina();
+                            joc.mourePeca(j.getPeca().getX(),j.getPeca().getY(),j.getPos_fin_x(),j.getPos_fin_y());
+                            pintarTauler(joc.getT());
+                            ++count;
+                            io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
+                            ss = io.readint();
                         }
 
-                        io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
-                        ss = io.readint();
 
                     }
 

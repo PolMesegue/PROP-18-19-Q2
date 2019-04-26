@@ -33,7 +33,7 @@ public class Maquina extends Usuari {
         else {
             boolean b = false;
             for (int j = 0; j < t.getPeces_negres().length; ++j) {
-                IntPair actual_pos = new IntPair(t.getPeces_negres()[i].getX(),t.getPeces_negres()[i].getY());
+                IntPair actual_pos = new IntPair(t.getPeces_negres()[j].getX(),t.getPeces_negres()[j].getY());
                 visited.add(actual_pos);
                 for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); ++z) {
                     if (!isvisited(t.getPeces_negres()[j].moviments.get(z),visited)) {

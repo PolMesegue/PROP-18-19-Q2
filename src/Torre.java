@@ -44,7 +44,7 @@ public class Torre extends Peca {
             tempx++;
         }
         int tempy = this.getY() + 1; //movem avall
-        while (tempy >= 0) {
+        while (tempy >= 0 && tempy < 8) {
             if (t.getPeca(this.getX(), tempy) == null) {
                 IntPair aux = new IntPair(this.getY(), tempy);
                 this.moviments.add(aux);
@@ -58,7 +58,7 @@ public class Torre extends Peca {
             tempy--;
         }
         tempy = this.getY() - 1; //movem amunt
-        while (tempy < 8) {
+        while (tempy < 8 && tempy >= 0) {
             if (t.getPeca(this.getX(), tempy) == null) {
                 IntPair aux = new IntPair(this.getY(), tempy);
                 this.moviments.add(aux);

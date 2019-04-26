@@ -17,4 +17,8 @@ public abstract class Usuari {
     public String getNom() {
         return nom;
     }
+
+    public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n){
+        return null;
+    }
 }
