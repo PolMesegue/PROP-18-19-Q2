@@ -60,7 +60,7 @@ public class Maquina extends Usuari {
 
     public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
         Jugada jugada = new Jugada();
-        Tauler t_temp = new Tauler(peces_negres,peces_blanques); //els aprametres estan girats A PROPOSIT!
+        Tauler t_temp = new Tauler(peces_negres,peces_blanques); //els parametres estan girats A PROPOSIT!
         ArrayList<IntPair> visited = new ArrayList<>();
         return backtracking(jugada,t_temp,0,n,visited);
     }
