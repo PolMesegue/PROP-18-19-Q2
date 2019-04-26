@@ -217,6 +217,9 @@ public class DriverMain {
                     io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
                     ss = io.readint();
                     int count=1;
+
+                    System.out.println(joc.te_solucio());
+
                     while(ss!=2){
                         if(count %2 !=0) {
                             io.write("Posicio de la peça a moure:  \n");
@@ -241,7 +244,12 @@ public class DriverMain {
                         else{
                             pintarTauler(joc.getT());
                             Jugada j = joc.moureMaquina();
-                            joc.mourePeca(j.getPeca().getX(),j.getPeca().getY(),j.getPos_fin_x(),j.getPos_fin_y());
+                            if (j != null) {
+                                joc.mourePeca(j.getPeca().getX(), j.getPeca().getY(), j.getPos_fin_x(), j.getPos_fin_y());
+                            }
+                            else {
+                                System.out.println("No hi ha possibles jugades");
+                            }
                             pintarTauler(joc.getT());
                             ++count;
                             io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");

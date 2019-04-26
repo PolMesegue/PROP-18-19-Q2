@@ -21,6 +21,9 @@ public class Partida {
         this.d=d;
     }
 
+    public boolean te_solucio(){
+        return d.te_solucio(t.getPeces_blanques(),t.getPeces_negres(),2);
+    }
 
 
     public boolean mourePeca(int x, int y, int xnew, int ynew){
