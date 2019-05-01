@@ -16,9 +16,9 @@ public class BD_Problemas {
         CollectionProblems.add(problem);
     }
 
-    public Problema getProblema(String id){
+    public Problema getProblema(String fen){
         for(Problema elem : CollectionProblems){
-            if(elem.getID().equals(id)){
+            if(elem.getFEN().equals(fen)){
                 return elem;
             }
         }

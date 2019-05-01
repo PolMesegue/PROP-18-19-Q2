@@ -18,36 +18,51 @@ public class ControladorPersistencia {
         du = new ControladorDades("./dades/Partides.txt");
 
     }
-/*
-    public void CarregarHorari(String s) {
-        String p = "./dades/Horaris/" + s;
-        dh = new ControladorDades(p);
+
+    public void CarregarPartida(String s) {
+        String p = "./dades/Partides/" + s;
+        dp = new ControladorDades(p);
     }
-*/
+
     //Escritures (String)
 
     public void EscriureProblema(String s) throws Exception{
-        da.ObrirArxiu();
-        da.Escriure(s);
-        da.TancarArxiu();
+        dp.ObrirArxiu();
+        dp.Escriure(s);
+        dp.TancarArxiu();
     }
     public void EscriureUsuari(String s) throws Exception{
-        dassig.ObrirArxiu();
-        dassig.Escriure(s);
-        dassig.TancarArxiu();
+        du.ObrirArxiu();
+        du.Escriure(s);
+        du.TancarArxiu();
     }
     public void EscriurePartida(String s) throws Exception{
-        dg.ObrirArxiu();
-        dg.Escriure(s);
-        dg.TancarArxiu();
+        dpa.ObrirArxiu();
+        dpa.Escriure(s);
+        dpa.TancarArxiu();
     }
 
-    public void EscriureHorari(String s) throws Exception{
-        long test = Instant.now().toEpochMilli();
-        dh = new ControladorDades("./dades/Horaris/horari" + Long.toString(test) + ".txt");
-        dh.ObrirArxiu();
-        dh.Escriure(s);
-        dh.TancarArxiu();
+
+    //Lectures
+    public Vector<String> LlegirProblema() throws Exception{
+        dp.ObrirArxiu();
+        Vector<String> aux = dp.Llegir();
+        dp.TancarArxiu();
+        return aux;
     }
 
+    public Vector<String> LlegirUsuari() throws Exception{
+        du.ObrirArxiu();
+        Vector<String> aux = du.Llegir();
+        du.TancarArxiu();
+        return aux;
+    }
+    public Vector<String> LlegirPartida() throws Exception{
+        dpa.ObrirArxiu();
+        Vector<String> aux = dpa.Llegir();
+        dpa.TancarArxiu();
+        return aux;
+    }
+
+    
 }

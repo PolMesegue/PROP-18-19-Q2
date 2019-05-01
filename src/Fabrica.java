@@ -23,8 +23,13 @@ public class Fabrica {
         CollectionPartidas.add(game);
     }
 
-    public Partida getPartida(String fecha){
+    public Partida getPartida(Timestamp fecha){
 
+        for(Partida elem : CollectionPartidas){
+            if(elem.getFecha().equals(fecha)){
+                return elem;
+            }
+        }
         return null;
     }
 

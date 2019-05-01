@@ -1,5 +1,8 @@
 
+import com.sun.xml.internal.ws.model.ParameterImpl;
+
 import java.lang.reflect.Array;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.io.*;
 import java.util.*;
@@ -9,6 +12,11 @@ public class Ctrl_Domini {
     private BD_Problemas bdp= new BD_Problemas();
     private BD_Usuaris bdu= new BD_Usuaris();
 
+
+    public void crearMaquina(){
+        Maquina m1= new Maquina("M1");
+        bdu.AddMaquina(m1);
+    }
 
     public void AddHuma(String nom,String password){
         Huma h= new Huma(nom,password);
@@ -25,7 +33,8 @@ public class Ctrl_Domini {
             Usuari a= bdu.getHuma(Atacant);
             Usuari d= bdu.getHuma(defensor);
             Problema p= bdp.getProblema(problema);
-            fa.CrearPartida(a,d,p,p.FENtoHuman(p.getFEN()));
+            Tauler t= p.FENtoHuman();
+            fa.CrearPartida(a,d,p,t);
     }
 
     public ArrayList<String> getProblemas(){
@@ -43,5 +52,30 @@ public class Ctrl_Domini {
         }
         return Usuaris;
     }
+
+    public ArrayList<Timestamp> getPartidas(){
+        ArrayList<Timestamp> partidas = new ArrayList<>();
+        for(Partida elem : fa.getCollectionPartidas()) {
+            partidas.add(elem.getFecha());
+        }
+        return partidas;
+
+    }
+
+    public Tauler getTauler(String fen){
+
+        Problema p= bdp.getProblema(fen);
+        Tauler t= p.FENtoHuman();
+        return t;
+
+    }
+
+    public Partida getPartida(Timestamp fecha){
+
+        Partida p= fa.getPartida(fecha);
+        return p;
+
+    }
+
 
 }

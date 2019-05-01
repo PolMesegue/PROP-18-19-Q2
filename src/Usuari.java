@@ -17,4 +17,11 @@ public abstract class Usuari {
     public String getNom() {
         return nom;
     }
+
+    public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n){
+        return null;
+    }
+    public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
+        return false;
+    }
 }

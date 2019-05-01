@@ -5,19 +5,13 @@ public class Tauler {
     //vector< vector<Cela> > tauler;
     private Peca[] peces_blanques; // peces_blanques {p,p,p,p,p,p,p,p,a,a,c,c,t,t,d,r}
     private Peca[] peces_negres;
-    private Peca[] peces_blanques_mortes;
-    private Peca[] peces_negres_mortes;
-    //  private final int files = 8;
-    //  private final int columnes = 8;
-    //  private Integer[][] Graella;
+
     private Integer BnT, BnC, BnA, BnP, NnT, NnC, NnA, NnP;
 
     public Tauler() {
 
         peces_blanques = new Peca[16];
         peces_negres = new Peca[16];
-        peces_negres_mortes = new Peca[16];
-        peces_blanques_mortes = new Peca[16];
         BnT = 0;
         BnC = 0;
         BnA = 0;
@@ -33,8 +27,6 @@ public class Tauler {
 
         this.peces_blanques = peces_blanques;
         this.peces_negres = peces_negres;
-        peces_negres_mortes = new Peca[16];
-        peces_blanques_mortes = new Peca[16];
         BnT = 0;
         BnC = 0;
         BnA = 0;
@@ -46,9 +38,6 @@ public class Tauler {
     }
 
 
-    //mourePeça
-
-//java overloading function
 
     private Peca[] matar(Peca[] vector, int x, int y) {
 
@@ -70,7 +59,7 @@ public class Tauler {
 
         for (int i = 0; i < moviments.size(); ++i) {
 
-            if (moviments.get(i) == pos) return true;
+            if (moviments.get(i).getX() == pos.getX() && moviments.get(i).getY() == pos.getY()) return true;
         }
 
         return false;
@@ -78,7 +67,7 @@ public class Tauler {
 
     }
 
-    private void actualitzar() {
+    public void actualitzar() {
 
         for (int i = 0; i < 16; ++i) {
 
@@ -89,134 +78,8 @@ public class Tauler {
     }
 
 
-    public boolean MourePeca(Peo t, int newX, int newY) {
-        IntPair pos = new IntPair(newX, newY);
-
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-
-    }
-
-    public boolean MourePeca(Cavall t, int newX, int newY) {
-        IntPair pos = new IntPair(newX, newY);
-
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-    }
-
-    public boolean MourePeca(Alfil t, int newX, int newY) {
-        IntPair pos = new IntPair(newX, newY);
-
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-    }
-
-
-    public boolean MourePeca(Torre t, int newX, int newY) {
-
-        IntPair pos = new IntPair(newX, newY);
-
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-
-    }
-
-
-    public boolean MourePeca(Reina t, int newX, int newY) {
-        IntPair pos = new IntPair(newX, newY);
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-
-
-    }
-
-    public boolean MourePeca(Rei t, int newX, int newY) {
-        IntPair pos = new IntPair(newX, newY);
-
-
-        if (posinmoviments(pos, t.getMoviments())) {
-
-            if (getPeca(newX, newY) != null) {
-                if (t.esBlanca()) peces_negres = matar(peces_negres, newX, newY);
-                else peces_blanques = matar(peces_blanques, newX, newY);
-            }
-
-            t.setX(newX);
-            t.setY(newY);
-
-            actualitzar();
-
-            return true;
-        } else return false;
-
-    }
-
     public boolean MourePeca(Peca t, int newX, int newY) {
+        actualitzar();
         IntPair pos = new IntPair(newX, newY);
 
 
@@ -238,7 +101,9 @@ public class Tauler {
 
     public Tauler getTauler(String FEN) {
 
-        return Problema.FENtoHuman(FEN);
+        Problema p = new Problema(FEN);
+
+        return p.FENtoHuman();
 
     }
 
@@ -306,25 +171,138 @@ public class Tauler {
 
     }
 
+    public boolean white_king_in_mate() {
+        Peca rei = new Rei();
+
+        rei = peces_blanques[15];
+
+        boolean b1,b2,b3,b4,b5,b6,b7,b8,b9;
+        b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = false;
+
+        for (int i = 0; i < peces_negres.length; i++) {
+
+            if (peces_negres[i] != null ) {
+                //algu pot atacar la posicio actual del rei
+                for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                    if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getY() == rei.getY())
+                        b1 = true;
+                }
+
+                //comprovar dreta
+                if (rei.getX() + 1 < 8) { //mirar si se surt del tauler
+                    //posicio ocupada per una peça del mateix color
+                    if (getPeca(rei.getX()+1,rei.getY()) != null && getPeca(rei.getX()+1,rei.getY()).getColor() == rei.getColor()) b2 = true;
+                        //si esta lliure, comprovem si algu pot atacar per alla
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getY() == rei.getY())
+                                b2 = true;
+                        }
+                    }
+                } else b2 = true; //surt del tauler, el rei no pot escapar per dreta
+
+                if (rei.getY() + 1 < 8) {
+                    if (getPeca(rei.getX(),rei.getY()+1) != null && getPeca(rei.getX(),rei.getY()+1).getColor() == rei.getColor()) b3 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getY() == rei.getY() + 1)
+                                b3 = true;
+                        }
+                    }
+                } else b3 = true;
+
+                if (rei.getY() + 1 < 8 && rei.getX() + 1 < 8) {
+                    if (getPeca(rei.getX()+1,rei.getY()+1) != null && getPeca(rei.getX()+1,rei.getY()+1).getColor() == rei.getColor()) b4 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() + 1)
+                                b4 = true;
+                        }
+                    }
+                } else b4 = true;
+
+                if (rei.getX() - 1 >= 0) {
+                    if (getPeca(rei.getX()-1,rei.getY()) != null && getPeca(rei.getX()-1,rei.getY()).getColor() == rei.getColor()) b5 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getY() == rei.getY())
+                                b5 = true;
+                        }
+                    }
+                } else b5 = true;
+
+                if (rei.getY() - 1 >= 0) {
+                    if (getPeca(rei.getX(),rei.getY()-1) != null && getPeca(rei.getX(),rei.getY()-1).getColor() == rei.getColor()) b6 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() && peces_negres[i].moviments.get(j).getY() == rei.getY() - 1)
+                                b6 = true;
+                        }
+                    }
+                } else b6 = true;
+
+                if (rei.getY() - 1 >= 0 && rei.getX() - 1 >= 0) {
+                    if (getPeca(rei.getX()-1,rei.getY()-1) != null && getPeca(rei.getX()-1,rei.getY()-1).getColor() == rei.getColor()) b7 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() - 1)
+                                b7 = true;
+                        }
+                    }
+                } else b7 = true;
+
+                if (rei.getX() + 1 < 8 && rei.getY() - 1 >= 0) {
+                    if (getPeca(rei.getX()+1,rei.getY()-1) != null && getPeca(rei.getX()+1,rei.getY()-1).getColor() == rei.getColor()) b8 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() + 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() - 1)
+                                b8 = true;
+                        }
+                    }
+                } else b8 = true;
+
+                if (rei.getX() - 1 >= 0 && rei.getY() + 1 < 8) {
+                    if (getPeca(rei.getX()-1,rei.getY()+1) != null && getPeca(rei.getX()-1,rei.getY()+1).getColor() == rei.getColor()) b9 = true;
+                    else {
+                        for (int j = 0; j < peces_negres[i].moviments.size(); ++j) {
+                            if (peces_negres[i].moviments.get(j).getX() == rei.getX() - 1 && peces_negres[i].moviments.get(j).getY() == rei.getY() + 1)
+                                b9 = true;
+                        }
+                    }
+                } else b9 = true;
+            }
+        }
+        return (b1 && b2 && b3 && b4 && b5 && b6 && b7 && b8 && b9);
+    }
+
 
     public Peca getPeca(int x, int y) {
         for (Peca p : peces_blanques) {
-            if (p.getX() == x && p.getY() == y) {
+            if (p != null && p.getX() == x && p.getY() == y) {
                 return p;
             }
         }
         for (Peca p : peces_negres) {
-            if (p.getX() == x && p.getY() == y) {
+            if (p != null && p.getX() == x && p.getY() == y) {
                 return p;
             }
         }
         return null;
     }
 
-    public char[] HumantoFEN(Peca[] peces_blanques, Peca[] peces_negres) {
+    public Peca[] getPeces_blanques() {
+        return peces_blanques;
+    }
+
+    public Peca[] getPeces_negres() {
+        return peces_negres;
+    }
+
+    public String HumantoFEN(Peca[] peces_blanques, Peca[] peces_negres) {
         int a, b;
         char[] FEN = new char[64];
         char[][] mapa = new char[8][8];
+
 
         for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
@@ -386,13 +364,20 @@ public class Tauler {
                     if (buit != 0) {
                         FEN[iter] = (char) buit;
                         ++iter;
+
                     }
                     FEN[iter] = mapa[i][j];
+                    ++iter;
                 }
             }
             FEN[iter] = '/';
-        } //falta el i el guionet i bla bla
-        return FEN;
+            ++iter;
+        }
+        char[] tmp = new char[iter];
+        tmp = FEN;
+
+        String j = tmp.toString();
+        return j;
     }
 }
 

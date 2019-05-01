@@ -4,18 +4,23 @@ import java.util.Iterator;
 
 public class BD_Usuaris {
 
-    private Collection<Huma> CollectionHumans;
+    private Collection<Usuari> CollectionHumans;
 
     BD_Usuaris(){
         this.CollectionHumans = new ArrayList<>();
     }
+
+
     public void AddHuma(Huma h){
         CollectionHumans.add(h);
 
     }
+    public void AddMaquina(Maquina m){
+        CollectionHumans.add(m);
+    }
 
-    public Huma getHuma(String nom){
-        for(Huma elem : CollectionHumans){
+    public Usuari getHuma(String nom){
+        for(Usuari elem : CollectionHumans){
             if(elem.getNom().equals(nom)){
                 return elem;
             }
@@ -23,7 +28,7 @@ public class BD_Usuaris {
         return null;
     }
     public void delHuma(String nom){
-        Iterator<Huma> itr=this.CollectionHumans.iterator();
+        Iterator<Usuari> itr=this.CollectionHumans.iterator();
         while(itr.hasNext()){
             if(itr.next().getNom().equals(nom)){
                 itr.remove();
@@ -31,7 +36,7 @@ public class BD_Usuaris {
         }
     }
     public boolean existsHuma(String nom){
-        Iterator<Huma> itr=this.CollectionHumans.iterator();
+        Iterator<Usuari> itr=this.CollectionHumans.iterator();
         while(itr.hasNext()){
             if(itr.next().getNom().equals(nom)){
                 return true;
@@ -41,7 +46,7 @@ public class BD_Usuaris {
 
     }
 
-    public Collection<Huma> getCollectionHumans() {
+    public Collection<Usuari> getCollectionHumans() {
         return CollectionHumans;
     }
 }

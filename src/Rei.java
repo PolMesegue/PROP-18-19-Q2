@@ -3,11 +3,13 @@ import java.util.*;
 @SuppressWarnings("Duplicates")
 public class Rei extends Peca {
 
+    Rei () {}
     public Rei(int i, int x, int y, boolean color) {
         setId(i);
         setX(x);
         setY(y);
         setColor(color);
+        //setValue(10000);
     }
 
     public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
