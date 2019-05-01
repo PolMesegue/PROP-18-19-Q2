@@ -49,5 +49,5 @@ public class ControladorPersistencia {
         dh.Escriure(s);
         dh.TancarArxiu();
     }
-    
+
 }
