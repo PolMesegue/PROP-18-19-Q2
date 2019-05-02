@@ -70,10 +70,11 @@ public class DriverMain {
             }
         }
         System.out.print("\n");
-
+        System.out.print("  ");
         for (int xx = 0; xx < 8;++xx){
-            System.out.println(xx);
+            System.out.print(xx);
         }
+        System.out.println();
 
         for(int z=0; z<8;++z){
             System.out.print(z);
@@ -91,25 +92,24 @@ public class DriverMain {
     public static void main(String[] args) throws Exception {
         io = new inout();
         int s = -1;
-        io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
-        s = io.readint();
+
 
         Scanner scanner = new Scanner(System. in);
 
         ctrldom.crearMaquina();
 
-        while (s != 5) {
+        while (s != 4) {
+            io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Gestio partidas \n 4. Exit \n");
+            s = io.readint();
             if(s == 1){
                 io.write("Opcions: \n 1.Crear Huma \n 2.Borrar Huma \n 3.Consultar Usuaris \n");
                 s = io.readint();
                 if (s == 1){
                     io.write("Introdueix nom: \n");
                     String stg= io.readname();
-                    io.write("Introdueix password: ");
-                    String stg2= io.readname();
-                    ctrldom.AddHuma(stg,stg2);
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
-                    s = io.readint();
+                    //io.write("Introdueix password: ");
+                    //String stg2= io.readname();
+                    ctrldom.AddHuma(stg);
                 }
                 else if (s == 2){
 
@@ -119,32 +119,25 @@ public class DriverMain {
                     for(String elem : ctrldom.getUsuaris()){
                         System.out.println(elem);
                     }
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5. Exit \n");
-                    s = io.readint();
-
                 }
 
             }
             else if(s==2){
-                io.write("Opcions: 1.Crear Problema \n 2.Consultar problemas \n 3.Borrar Problema");
+                io.write("Opcions: \n 1.Crear Problema \n 2.Consultar problemas \n 3.Borrar Problema");
                 s = io.readint();
                 if (s == 1){
-
                     io.write("Introdueix FEN: \n");
                     String stg = scanner. nextLine();
-                    ctrldom.AddProblem(stg);
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
-                    s = io.readint();
+                    io.write("Introdueix Nºmat: \n");
+                    int mat = scanner.nextInt();
 
+                    ctrldom.AddProblem(stg,mat);
                 }
                 else if (s == 2){
-
                     io.write("Problemas disponibles: \n");
                     for(String elem : ctrldom.getProblemas()){
                         System.out.println(elem);
                     }
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
-                    s = io.readint();
                 }
                 else if (s == 3){
 
@@ -180,9 +173,10 @@ public class DriverMain {
                         c = io.readint();
                         if(c <= ctrldom.getProblemas().size()+1 || c > 0){
                             String pro= ctrldom.getProblemas().get(c-1);
+
                             ctrldom.crearPartida(atc,def,pro);
 
-                            Tauler t= ctrldom.getTauler(pro);
+                            //Tauler t= ctrldom.getTauler(pro);
 
                             //pintarTauler(t);
 
@@ -190,38 +184,76 @@ public class DriverMain {
                         }
                     }
                     else {
-
                         // TODO
                     }
 
-                    io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Jugar \n 5.Gestio ranking \n 6.exit \n");
-                    s = io.readint();
-
                 }
-                else if(s==2){
+                else if(s==2) {
                     int a = -1;
                     io.write("Seleciona partida: \n");
-                    for(int i=0; i<ctrldom.getPartidas().size(); ++i){
-                        System.out.print(i+1);
+                    for (int i = 0; i < ctrldom.getPartidas().size(); ++i) {
+                        System.out.print(i + 1);
                         System.out.print(".");
                         System.out.println(ctrldom.getPartidas().get(i));
                     }
                     a = io.readint();
-                    Timestamp fecha = ctrldom.getPartidas().get(a-1);
+                    Timestamp fecha = ctrldom.getPartidas().get(a - 1);
 
-                    Partida joc= ctrldom.getPartida(fecha);
+                    Partida joc = ctrldom.getPartida(fecha);
 
-                    pintarTauler(joc.getT());
 
-                    int ss=-1;
-                    io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
-                    ss = io.readint();
-                    int count=1;
+                    //Aqui juga Huma vs Maquina.
+                    if (joc.getD().getNom().equals("M1")) {
 
-                    System.out.println(joc.te_solucio());
+                        pintarTauler(joc.getT());
+                        int ss = -1;
+                        io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
+                        ss = io.readint();
+                        int count = 1;
+                        System.out.println(joc.te_solucio());
+                        while (ss != 2) {
+                            if (count % 2 != 0) {
+                                io.write("Posicio de la peça a moure:  \n");
+                                io.write("X: \n");
+                                int posicio_x = io.readint();
+                                io.write("Y: \n");
+                                int posicio_y = io.readint();
 
-                    while(ss!=2){
-                        if(count %2 !=0) {
+                                io.write("Posicio desti: \n");
+                                io.write("X: \n");
+                                int newposicio_x = io.readint();
+                                io.write("Y: \n");
+                                int newposicio_y = io.readint();
+
+                                if (joc.mourePeca(posicio_x, posicio_y, newposicio_x, newposicio_y)) {
+                                    pintarTauler(joc.getT());
+                                } else {
+                                    System.out.println("Error al moure");
+                                }
+                                count++;
+                            } else {
+                                System.out.println("Turn de la maquina \n");
+                                //pintarTauler(joc.getT());
+                                Jugada j = joc.moureMaquina(joc.getP().getN());
+                                if (j != null) {
+                                    joc.mourePeca(j.getPeca().getX(), j.getPeca().getY(), j.getPos_fin_x(), j.getPos_fin_y());
+                                } else {
+                                    System.out.println("No hi ha possibles jugades");
+                                }
+                                pintarTauler(joc.getT());
+                                ++count;
+                                io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
+                                ss = io.readint();
+                            }
+                        }
+                    }
+                    //Aqui juga HUMA CONTRA HUMA
+                    else {
+                        pintarTauler(joc.getT());
+                        int jj = -1;
+                        io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
+                        jj = io.readint();
+                        while (jj != 2) {
                             io.write("Posicio de la peça a moure:  \n");
                             io.write("X: \n");
                             int posicio_x = io.readint();
@@ -238,33 +270,22 @@ public class DriverMain {
                                 pintarTauler(joc.getT());
                             } else {
                                 System.out.println("Error al moure");
+                                pintarTauler(joc.getT());
                             }
-                            count++;
-                        }
-                        else{
-                            pintarTauler(joc.getT());
-                            Jugada j = joc.moureMaquina();
-                            if (j != null) {
-                                joc.mourePeca(j.getPeca().getX(), j.getPeca().getY(), j.getPos_fin_x(), j.getPos_fin_y());
-                            }
-                            else {
-                                System.out.println("No hi ha possibles jugades");
-                            }
-                            pintarTauler(joc.getT());
-                            ++count;
-                            io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
-                            ss = io.readint();
-                        }
 
+                            io.write("Opcions: \n 1.Moure peça \n 2.Exit \n");
+                            jj = io.readint();
+                        }
 
                     }
 
-
                 }
+
                 else if(s==3);
+
             }
 
-            
+
         }
 
 

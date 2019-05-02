@@ -13,7 +13,7 @@ public class DriverUsuari {
         String id = io.readname();
         io.write("Introdueix PASS (String): \n");
         String id2 = io.readname();
-        r = new Huma(id,id2);
+        r = new Huma(id);
     }
 
     public static void main(String[] args) throws Exception {

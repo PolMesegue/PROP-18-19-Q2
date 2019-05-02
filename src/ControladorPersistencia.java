@@ -50,7 +50,6 @@ public class ControladorPersistencia {
         dp.TancarArxiu();
         return aux;
     }
-
     public Vector<String> LlegirUsuari() throws Exception{
         du.ObrirArxiu();
         Vector<String> aux = du.Llegir();

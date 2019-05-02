@@ -5,9 +5,9 @@ public class Huma extends Usuari {
 
     private String Password;
 
-    public Huma(String nom, String Password){
+    public Huma(String nom){
         super(nom);
-        this.Password = Password;
+        //this.Password = Password;
     }
 
     public void setPassword(String password) {

@@ -33,6 +33,17 @@ public class BD_Problemas {
         }
     }
 
+    public boolean existsProblema(String fen){
+        Iterator<Problema> itr=this.CollectionProblems.iterator();
+        while(itr.hasNext()){
+            if(itr.next().getFEN().equals(fen)){
+                return true;
+            }
+        }
+        return false;
+
+    }
+
     public Collection<Problema> getCollectionProblems() {
         return CollectionProblems;
     }
