@@ -1,9 +1,8 @@
-package grafics;
+package presentacio;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static com.sun.deploy.uitoolkit.ToolkitStore.dispose;
 
 public class GUIMain extends JFrame {
 
@@ -21,7 +20,7 @@ public class GUIMain extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 GUIUsuari user = new GUIUsuari();
                 user.main();
-                MyGUIMain.setVisible(false);
+                GUIMain.this.dispose();
 
 
             }
@@ -30,7 +29,12 @@ public class GUIMain extends JFrame {
         gestióProblemaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"kek2");
+
+                GUIProblema problema = new GUIProblema();
+                problema.main();
+                MyGUIMain.setVisible(false);
+                dispose();
+
             }
         });
 

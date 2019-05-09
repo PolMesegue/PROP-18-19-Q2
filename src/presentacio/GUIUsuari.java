@@ -1,4 +1,4 @@
-package grafics;
+package presentacio;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
