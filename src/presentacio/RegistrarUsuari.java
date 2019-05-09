@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 public class RegistrarUsuari {
     private JTextField textField1;
     private JButton confirmarButton;
+    private JPanel MyRegistrar;
     private CtrlPresentacio ctrlP = new CtrlPresentacio();
 
 
@@ -16,9 +17,13 @@ public class RegistrarUsuari {
             public void actionPerformed(ActionEvent e) {
 
                 ctrlP.afegirUsuari(textField1.getText());
-                
+
             }
         });
+    }
+
+    public JPanel getMyRegistrar() {
+        return MyRegistrar;
     }
 }
 

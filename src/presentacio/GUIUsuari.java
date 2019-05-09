@@ -17,6 +17,14 @@ public class GUIUsuari {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                frame registrar = frame.getInstance();
+                RegistrarUsuari usuari2 = new RegistrarUsuari();
+
+                registrar.setContentPane(usuari2.getMyRegistrar());
+                registrar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                registrar.setBounds(500,300,250,250);
+                registrar.setVisible(true);
+
 
             }
         });
