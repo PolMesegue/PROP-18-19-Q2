@@ -1,6 +1,4 @@
-
-
-
+package domini;
 
 
 public class Atacant extends Usuari {

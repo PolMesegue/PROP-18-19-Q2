@@ -1,8 +1,6 @@
+package domini;
 
-import java.lang.reflect.Array;
 import java.sql.Timestamp;
-import java.util.Collection;
-import java.io.*;
 import java.util.*;
 
 public class Ctrl_Domini {
@@ -35,7 +33,7 @@ public class Ctrl_Domini {
                 System.out.println("Ya existe el problema con este FEN \n");
             }
             else {
-                System.out.println("Problema afegit amb exit\n");
+                System.out.println("domini.Problema afegit amb exit\n");
                 bdp.AddProblem(p);
             }
 

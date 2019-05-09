@@ -45,7 +45,7 @@ public class GUIUsuari extends JFrame {
     }
 
     public void main() {
-        JFrame main = new JFrame("User");
+        frame main = frame.getInstance();
         main.setContentPane(new GUIUsuari().MyGUIUsuari);
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         main.setBounds(500,300,250,250);

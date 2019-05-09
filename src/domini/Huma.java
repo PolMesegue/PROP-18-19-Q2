@@ -1,4 +1,4 @@
-import java.util.*;
+package domini;
 
 //proba
 public class Huma extends Usuari {

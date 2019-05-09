@@ -1,5 +1,4 @@
-
-import java.util.*;
+package domini;
 
 
 public abstract class Usuari {

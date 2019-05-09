@@ -1,3 +1,5 @@
+package domini;
+
 import java.util.*;
 
 
@@ -366,7 +368,7 @@ public class Tauler {
 
 
         /*
-        Peca[][] mapa = new Peca[8][8];
+        domini.Peca[][] mapa = new domini.Peca[8][8];
 
         char[] FEN = new char[64];
 

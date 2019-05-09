@@ -1,4 +1,4 @@
-/* Aquesta es una adaptacio d'un conjunt de classes
+package domini;/* Aquesta es una adaptacio d'un conjunt de classes
    per a fer entrada/sortida de texte amb Java.
    La versio original va ser creada per Per Brinch
    Hansen (s'inclou el copyright de la versio original)

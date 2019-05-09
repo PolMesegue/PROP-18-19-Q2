@@ -1,3 +1,5 @@
+package domini;
+
 import java.util.*;
 
 @SuppressWarnings("Duplicates")
@@ -32,11 +34,11 @@ public class Rei extends Peca {
 
 //IGNORAR A PARTIR D'AQUI
     /*
-    public boolean moviment_valid(Tauler t, int desti_x, int desti_y) {
-        //El Rei es pot moure a qualsevol cel·la a distancia 1 de la seva posicio actual
+    public boolean moviment_valid(domini.Tauler t, int desti_x, int desti_y) {
+        //El domini.Rei es pot moure a qualsevol cel·la a distancia 1 de la seva posicio actual
 
         //Si hi ha una peça aliada a la posició destí, no ens podem moure
-        Peca p_aux = t.getPeca(desti_x,desti_y);
+        domini.Peca p_aux = t.getPeca(desti_x,desti_y);
         if (p_aux != null) {
             if (p_aux.esBlanca() && this.esBlanca()) return false;
             if (p_aux.esNegra() && this.esNegra()) return false;

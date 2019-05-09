@@ -1,8 +1,7 @@
-
-import java.util.*;
+package domini;
 
 import java.lang.Exception;
-import java.util.Vector;
+
 public class DriverUsuari {
 
     private static inout io;

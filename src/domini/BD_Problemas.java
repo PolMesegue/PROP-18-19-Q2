@@ -1,6 +1,6 @@
+package domini;
 
 import java.util.Collection;
-import java.io.*;
 import java.util.*;
 
 public class BD_Problemas {

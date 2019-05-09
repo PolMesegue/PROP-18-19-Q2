@@ -1,3 +1,5 @@
+package domini;
+
 import java.util.*;
 
 @SuppressWarnings("Duplicates")
@@ -84,7 +86,7 @@ public class Torre extends Peca {
 
 //IGNORAR A PARTIR D'AQUI
 /*
-Peca p_aux = t.getPeca(desti_x,desti_y);
+domini.Peca p_aux = t.getPeca(desti_x,desti_y);
         if (p_aux != null) {
             if (p_aux.esBlanca() && this.esBlanca()) return false;
             if (p_aux.esNegra() && this.esNegra()) return false;
@@ -97,28 +99,28 @@ Peca p_aux = t.getPeca(desti_x,desti_y);
         if (desti_y > this.getY()) { //torre es mou avall
             int numero_moviments = Math.abs(desti_y - this.getY());
             for (int i = 0; i < numero_moviments; i++) {
-                Peca p = t.getPeca(this.getX(), this.getY() + i);
+                domini.Peca p = t.getPeca(this.getX(), this.getY() + i);
                 if (p != null) return false;
             }
         }
         if (desti_y < this.getY()) { //torre es mou amunt
             int numero_moviments = Math.abs(desti_y - this.getY());
             for (int i = 0; i < numero_moviments; i++) {
-                Peca p = t.getPeca(this.getX(), this.getY() - i);
+                domini.Peca p = t.getPeca(this.getX(), this.getY() - i);
                 if (p != null) return false;
             }
         }
         if (desti_x > this.getX()) { //torre es mou dreta
             int numero_moviments = Math.abs(desti_x - this.getX());
             for (int i = 0; i < numero_moviments; i++) {
-                Peca p = t.getPeca(this.getX() + i, this.getY());
+                domini.Peca p = t.getPeca(this.getX() + i, this.getY());
                 if (p != null) return false;
             }
         }
         if (desti_x < this.getX()) { //torre es mou esquerra
             int numero_moviments = Math.abs(desti_x - this.getX());
             for (int i = 0; i < numero_moviments; i++) {
-                Peca p = t.getPeca(this.getX() - i, this.getY());
+                domini.Peca p = t.getPeca(this.getX() - i, this.getY());
                 if (p != null) return false;
             }
         }

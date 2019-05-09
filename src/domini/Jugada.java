@@ -1,4 +1,4 @@
-
+package domini;
 
 public class Jugada {
     private Peca peca;

@@ -1,8 +1,7 @@
+package domini;
+
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.*;
-import java.io.*;
-import java.util.regex.Pattern;
 
 public class DriverMain {
 
@@ -102,7 +101,7 @@ public class DriverMain {
             io.write("Opcions: \n 1.Gestio Usuaris \n 2.Gestio problemas  \n 3.Gestio partidas \n 4. Exit \n");
             s = io.readint();
             if(s == 1){
-                io.write("Opcions: \n 1.Crear Huma \n 2.Borrar Huma \n 3.Consultar Usuaris \n");
+                io.write("Opcions: \n 1.Crear domini.Huma \n 2.Borrar domini.Huma \n 3.Consultar Usuaris \n");
                 s = io.readint();
                 if (s == 1){
                     io.write("Introdueix nom: \n");
@@ -123,7 +122,7 @@ public class DriverMain {
 
             }
             else if(s==2){
-                io.write("Opcions: \n 1.Crear Problema \n 2.Consultar problemas \n 3.Borrar Problema");
+                io.write("Opcions: \n 1.Crear domini.Problema \n 2.Consultar problemas \n 3.Borrar domini.Problema");
                 s = io.readint();
                 if (s == 1){
                     io.write("Introdueix FEN: \n");
@@ -145,7 +144,7 @@ public class DriverMain {
 
             }
             else if(s==3){
-                io.write("Opcions: \n 1.Crear Partida \n 2.Jugar Parttida ");
+                io.write("Opcions: \n 1.Crear domini.Partida \n 2.Jugar Parttida ");
                 s = io.readint();
                 if(s==1){
                     int a, b,c = -1;
@@ -156,9 +155,9 @@ public class DriverMain {
                         System.out.println(ctrldom.getUsuaris().get(i));
                     }
 
-                    io.write("Usuari atacant:");
+                    io.write("domini.Usuari atacant:");
                     a = io.readint();
-                    io.write("Usuari defensor:");
+                    io.write("domini.Usuari defensor:");
                     b = io.readint();
                     if (a <= ctrldom.getUsuaris().size()+1 || a > 0) {
                         String atc = ctrldom.getUsuaris().get(a-1);
@@ -176,7 +175,7 @@ public class DriverMain {
 
                             ctrldom.crearPartida(atc,def,pro);
 
-                            //Tauler t= ctrldom.getTauler(pro);
+                            //domini.Tauler t= ctrldom.getTauler(pro);
 
                             //pintarTauler(t);
 
@@ -202,7 +201,7 @@ public class DriverMain {
                     Partida joc = ctrldom.getPartida(fecha);
 
 
-                    //Aqui juga Huma vs Maquina.
+                    //Aqui juga domini.Huma vs domini.Maquina.
                     if (joc.getD().getNom().equals("M1")) {
 
                         pintarTauler(joc.getT());
