@@ -16,7 +16,8 @@ public class GUIUsuari {
         registrarUsuariButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"kek");
+
+
             }
         });
 
@@ -44,12 +45,7 @@ public class GUIUsuari {
 
     }
 
-    public void main() {
-        frame main = frame.getInstance();
-        main.setContentPane(new GUIUsuari().MyGUIUsuari);
-        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        main.setBounds(500,300,250,250);
-        main.setVisible(true);
+    public JPanel getMyGUIUsuari() {
+        return MyGUIUsuari;
     }
-
 }
