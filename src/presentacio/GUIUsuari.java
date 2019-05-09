@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUIUsuari extends JFrame {
+public class GUIUsuari {
     private JPanel MyGUIUsuari;
     private JButton registrarUsuariButton;
     private JButton consultarUsuariButton;

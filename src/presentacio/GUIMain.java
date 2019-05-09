@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUIMain extends JFrame {
+public class GUIMain {
 
 
     private JPanel MyGUIMain;
@@ -45,4 +45,7 @@ public class GUIMain extends JFrame {
 
     }
 
+    public JPanel getMyGUIMain() {
+        return MyGUIMain;
+    }
 }

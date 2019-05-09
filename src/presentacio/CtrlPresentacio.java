@@ -17,7 +17,12 @@ public class CtrlPresentacio {
     public static void main(String[] args){
         CtrlPresentacio CtrlP = new CtrlPresentacio();
 
-        //Aqui ficar el main que obrira la primera pantalla pol
+        frame main = frame.getInstance();
+        main.setContentPane(new GUIMain().getMyGUIMain());
+        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        main.setBounds(500,300,250,250);
+
+        main.setVisible(true);
 
 
     }
