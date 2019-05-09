@@ -13,7 +13,7 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Esborrar Problema"/>
+          <text value="Esborrar domini.Problema"/>
         </properties>
       </component>
       <component id="5eb93" class="javax.swing.JButton" binding="consultarProblemaButton" default-binding="true">
@@ -21,7 +21,7 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Consultar Problema"/>
+          <text value="Consultar domini.Problema"/>
         </properties>
       </component>
       <component id="7f894" class="javax.swing.JButton" binding="afergirProblemaButton" default-binding="true">
@@ -29,7 +29,7 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Afergir Problema"/>
+          <text value="Afergir domini.Problema"/>
         </properties>
       </component>
       <component id="e115e" class="javax.swing.JButton" binding="modificarProblemaButton" default-binding="true">
@@ -37,7 +37,7 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Modificar Problema"/>
+          <text value="Modificar domini.Problema"/>
         </properties>
       </component>
     </children>

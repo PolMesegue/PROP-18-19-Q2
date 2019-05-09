@@ -43,13 +43,7 @@ public class GUIProblema {
 
     }
 
-    public void main() {
-        JFrame main = new JFrame("User");
-        main.setContentPane(new GUIProblema().MyGUIProblema);
-        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        main.setBounds(500,300,250,250);
-        main.setVisible(true);
-    }
+    public
 
 
 }

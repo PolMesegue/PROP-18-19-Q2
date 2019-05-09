@@ -18,10 +18,6 @@ public class GUIMain extends JFrame {
         gestióUsuariButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GUIUsuari user = new GUIUsuari();
-                user.main();
-                GUIMain.this.dispose();
-
 
             }
         });
@@ -30,40 +26,23 @@ public class GUIMain extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                GUIProblema problema = new GUIProblema();
-                problema.main();
-                MyGUIMain.setVisible(false);
-                dispose();
-
             }
         });
 
         jugarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MyGUIMain.setVisible(false);
+
             }
         });
         rankingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"kek4");
+
             }
         });
 
 
     }
-
-    public static void main(String[] args) {
-        JFrame main = new JFrame("Main");
-        main.setContentPane(new GUIMain().MyGUIMain);
-        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        main.setBounds(500,300,250,250);
-
-        main.setVisible(true);
-
-
-    }
-
 
 }
