@@ -10,7 +10,9 @@ public class CtrlPresentacio {
     private Ctrl_Domini ctrldom = new Ctrl_Domini();
 
 
+    public void afegirUsuari(String nom){
 
+    }
 
 
 
