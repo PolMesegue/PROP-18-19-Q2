@@ -10,6 +10,7 @@ public class GUIUsuari {
     private JButton consultarUsuariButton;
     private JButton esborrarUsuariButton;
     private JButton modificarUsuariButton;
+    private JButton tornarEnrereButton;
 
     public GUIUsuari() {
 
@@ -51,6 +52,12 @@ public class GUIUsuari {
         });
 
 
+        tornarEnrereButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
     }
 
     public JPanel getMyGUIUsuari() {

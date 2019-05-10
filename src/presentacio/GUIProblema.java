@@ -10,13 +10,21 @@ public class GUIProblema {
     private JButton consultarProblemaButton;
     private JButton afergirProblemaButton;
     private JButton modificarProblemaButton;
+    private JButton tornarEnrereButton;
 
     public GUIProblema() {
 
         afergirProblemaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"kek");
+
+                frame registrarP = frame.getInstance();
+                RegistrarProblema prob2 = new RegistrarProblema();
+
+                registrarP.setContentPane(prob2.getMyRProblema());
+                registrarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                registrarP.setBounds(500,300,250,250);
+                registrarP.setVisible(true);
             }
         });
 
@@ -41,6 +49,22 @@ public class GUIProblema {
         });
 
 
+        tornarEnrereButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame main = frame.getInstance();
+                main.setContentPane(new GUIMain().getMyGUIMain());
+                main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                main.setBounds(500,300,250,250);
+
+                main.setVisible(true);
+            }
+        });
     }
+
+    public JPanel getMyGUIProblema() {
+        return MyGUIProblema;
+    }
+
 
 }
