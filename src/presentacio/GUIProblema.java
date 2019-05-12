@@ -23,7 +23,7 @@ public class GUIProblema {
 
                 registrarP.setContentPane(prob2.getMyRProblema());
                 registrarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                registrarP.setBounds(500,300,250,250);
+             //   registrarP.setBounds(500,300,250,250);
                 registrarP.setVisible(true);
             }
         });

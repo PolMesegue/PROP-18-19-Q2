@@ -51,6 +51,14 @@ public class GUIMain {
         jugarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame jugar = frame.getInstance();
+
+                GUIJugar jugar1 = new GUIJugar();
+
+                jugar.setContentPane(jugar1.getMyJugar());
+                jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                jugar.setBounds(500,300,250,250);
+                jugar.setVisible(true);
 
             }
         });
