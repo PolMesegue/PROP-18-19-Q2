@@ -37,7 +37,7 @@ public class RegistrarPartida {
             public void actionPerformed(ActionEvent e) {
               //  ctrlP.afegirPartida(list1.getSelectedValue(),list2.getSelectedValue(),list3.getSelectedValue());
 
-                        JOptionPane.showMessageDialog(null,"Afegit correctament");
+                JOptionPane.showMessageDialog(null,"Afegit correctament");
 
                 frame jugar = frame.getInstance();
 
