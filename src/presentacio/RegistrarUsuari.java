@@ -27,7 +27,7 @@ public class RegistrarUsuari {
 
                 user.setContentPane(user1.getMyGUIUsuari());
                 user.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                user.setBounds(500,300,250,250);
+                user.setSize(250,250);
                 user.setVisible(true);
 
 

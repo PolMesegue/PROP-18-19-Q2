@@ -25,7 +25,7 @@ public class GUIMain {
 
                 user.setContentPane(user1.getMyGUIUsuari());
                 user.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                user.setBounds(500,300,250,250);
+                user.setBounds(500,300,500,500);
                 user.setVisible(true);
 
             }
@@ -41,7 +41,7 @@ public class GUIMain {
 
                 prob.setContentPane(prob1.getMyGUIProblema());
                 prob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                prob.setBounds(500,300,250,250);
+                prob.setBounds(500,300,500,500);
                 prob.setVisible(true);
 
 
@@ -57,7 +57,7 @@ public class GUIMain {
 
                 jugar.setContentPane(jugar1.getMyJugar());
                 jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                jugar.setBounds(500,300,250,250);
+                jugar.setBounds(500,300,500,500);
                 jugar.setVisible(true);
 
             }
