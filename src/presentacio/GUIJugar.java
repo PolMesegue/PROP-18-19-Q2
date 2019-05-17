@@ -40,7 +40,7 @@ public class GUIJugar {
         jugarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame jugarP = frame.getInstance();
+               frame jugarP = frame.getInstance();
 
                 GUITaulell jugarP1 = new GUITaulell();
 
@@ -49,6 +49,8 @@ public class GUIJugar {
                 jugarP.setBounds(250,100,725,600);
 
                 jugarP.setVisible(true);
+
+
             }
         });
     }
