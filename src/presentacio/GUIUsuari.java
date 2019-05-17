@@ -23,7 +23,6 @@ public class GUIUsuari {
 
                 registrar.setContentPane(usuari2.getMyRegistrar());
                 registrar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                registrar.setBounds(500,300,250,250);
                 registrar.setVisible(true);
 
 
@@ -59,7 +58,6 @@ public class GUIUsuari {
                 frame main = frame.getInstance();
                 main.setContentPane(new GUIMain().getMyGUIMain());
                 main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                main.setBounds(500,300,250,250);
 
                 main.setVisible(true);
             }

@@ -25,7 +25,6 @@ public class RegistrarProblema {
 
                 prob.setContentPane(prob1.getMyGUIProblema());
                 prob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                prob.setBounds(500,300,250,250);
                 prob.setVisible(true);
 
 
@@ -41,7 +40,6 @@ public class RegistrarProblema {
 
                 prob.setContentPane(prob1.getMyGUIProblema());
                 prob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                prob.setBounds(500,300,250,250);
                 prob.setVisible(true);
             }
         });

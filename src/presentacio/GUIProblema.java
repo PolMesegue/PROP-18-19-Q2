@@ -23,7 +23,6 @@ public class GUIProblema {
 
                 registrarP.setContentPane(prob2.getMyRProblema());
                 registrarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             //   registrarP.setBounds(500,300,250,250);
                 registrarP.setVisible(true);
             }
         });
@@ -41,21 +40,12 @@ public class GUIProblema {
 
             }
         });
-        modificarProblemaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"kek4");
-            }
-        });
-
-
         tornarEnrereButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame main = frame.getInstance();
                 main.setContentPane(new GUIMain().getMyGUIMain());
                 main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                main.setBounds(500,300,250,250);
 
                 main.setVisible(true);
             }

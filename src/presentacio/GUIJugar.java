@@ -8,6 +8,7 @@ public class GUIJugar {
     private JPanel MyJugar;
     private JButton crearPartidaButton;
     private JButton jugarButton;
+    private JButton tornarButton;
 
 
     public GUIJugar() {
@@ -25,6 +26,16 @@ public class GUIJugar {
 
 
         }
+        });
+        tornarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame main = frame.getInstance();
+                main.setContentPane(new GUIMain().getMyGUIMain());
+                main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                main.setVisible(true);
+            }
         });
     }
 
