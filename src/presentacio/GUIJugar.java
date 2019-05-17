@@ -21,7 +21,7 @@ public class GUIJugar {
 
                 registrarP.setContentPane(registrarP1.getMyRegistrarPartida());
                 registrarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                registrarP.setSize(250,250);
+
                 registrarP.setVisible(true);
 
 
@@ -35,6 +35,20 @@ public class GUIJugar {
                 main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
                 main.setVisible(true);
+            }
+        });
+        jugarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame jugarP = frame.getInstance();
+
+                GUITaulell jugarP1 = new GUITaulell();
+
+                jugarP.setContentPane(jugarP1.getMyTaulell());
+                jugarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                jugarP.setBounds(250,100,725,600);
+
+                jugarP.setVisible(true);
             }
         });
     }
