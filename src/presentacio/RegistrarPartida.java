@@ -45,7 +45,7 @@ public class RegistrarPartida {
 
                 jugar.setContentPane(jugar1.getMyJugar());
                 jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                jugar.setSize(250,250);
+
                 jugar.setVisible(true);
 
 
@@ -60,7 +60,7 @@ public class RegistrarPartida {
 
                 jugar.setContentPane(jugar1.getMyJugar());
                 jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                jugar.setBounds(500,300,250,250);
+                
                 jugar.setVisible(true);
             }
         });
