@@ -33,7 +33,6 @@ public class GUITaulell {
     private JButton Button32;
     private JButton Button42;
     private JButton Button52;
-    private JButton Button62;
     private JButton Button72;
     private JButton Button03;
     private JButton Button04;
@@ -45,8 +44,39 @@ public class GUITaulell {
     private JButton Button15;
     private JButton Button16;
     private JButton Button17;
+    private JButton Button23;
+    private JButton Button24;
+    private JButton Button25;
+    private JButton Button26;
+    private JButton Button27;
+    private JButton Button33;
+    private JButton Button34;
+    private JButton Button35;
+    private JButton Button36;
+    private JButton Button37;
+    private JButton Button43;
+    private JButton Button44;
+    private JButton Button45;
+    private JButton Button46;
+    private JButton Button47;
+    private JButton Button53;
+    private JButton Button54;
+    private JButton Button55;
+    private JButton Button56;
+    private JButton Button57;
+    private JButton Button62;
+    private JButton Button63;
+    private JButton Button64;
+    private JButton Button65;
+    private JButton Button66;
+    private JButton Button67;
+    private JButton Button73;
+    private JButton Button74;
+    private JButton Button75;
+    private JButton Button76;
+    private JButton Button77;
     private Boolean first;
-    private Icon lol;
+    private Icon ico;
     private JButton temp;
 
     public GUITaulell() {
@@ -56,15 +86,15 @@ public class GUITaulell {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (first) {
-                    lol = Button00.getIcon();
+                    ico = Button00.getIcon();
 
                     first = false;
                     temp = Button00;
                 }
                 else {
 
-                    Button00.setIcon(lol);
-
+                    Button00.setIcon(ico);
+                    temp.setIcon(null);
                     first = true;
                 }
             }
@@ -73,13 +103,14 @@ public class GUITaulell {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (first) {
-                    lol = Button02.getIcon();
+                    ico = Button02.getIcon();
 
                     first = false;
+                    temp = Button02;
                 }
                 else {
 
-                    Button02.setIcon(lol);
+                    Button02.setIcon(ico);
                     temp.setIcon(null);
                     first = true;
                 }
