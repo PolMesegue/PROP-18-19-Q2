@@ -8,7 +8,12 @@ import java.awt.event.ActionListener;
 /*
 ImageIcon kek = new ImageIcon(this.getClass().getResource("/icons8-bishop-40(1).png"));
                 Button02.setIcon(kek);
+
+  if (ctrlP.turnoMaquina(x,y,z,c)) {
+  if (ctrP.mourePeca(x,y,0,2)) {
  */
+
+
 public class GUITaulell {
     private JPanel MyTaulell;
     private JButton Button00;
@@ -78,6 +83,10 @@ public class GUITaulell {
     private Boolean first;
     private Icon ico;
     private JButton temp;
+    private JButton b;
+    private Color colour;
+    private int x, y;
+    private CtrlPresentacio ctrlP  = new CtrlPresentacio();
 
     public GUITaulell() {
         first = true;
@@ -85,36 +94,110 @@ public class GUITaulell {
         Button00.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                b = (JButton)e.getSource();
                 if (first) {
-                    ico = Button00.getIcon();
+                    if (b.getIcon() != null) {
 
-                    first = false;
-                    temp = Button00;
+                        colour = b.getBackground();
+                        b.setBackground(Color.CYAN);
+
+                        ico = b.getIcon();
+                        first = false;
+                        temp = (JButton)e.getSource();
+                    }
                 }
-                else {
 
-                    Button00.setIcon(ico);
-                    temp.setIcon(null);
-                    first = true;
+                else {
+                    if (temp != b) {
+
+                        b.setIcon(ico);
+
+                        temp.setIcon(null);
+                        temp.setBackground(colour);
+                        first = true;
+                    }
+                    else {
+
+                        temp.setBackground(colour);
+                        first = true;
+
+                    }
+
+
                 }
             }
         });
+
         Button02.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                b = (JButton)e.getSource();
                 if (first) {
-                    ico = Button02.getIcon();
+                    if (b.getIcon() != null) {
 
-                    first = false;
-                    temp = Button02;
+                        colour = b.getBackground();
+                        b.setBackground(Color.CYAN);
+
+                        ico = b.getIcon();
+                        first = false;
+                        temp = (JButton)e.getSource();
+                    }
                 }
+
                 else {
+                    if (temp != b) {
 
-                    Button02.setIcon(ico);
-                    temp.setIcon(null);
-                    first = true;
+                        b.setIcon(ico);
+
+                        temp.setIcon(null);
+                        temp.setBackground(colour);
+                        first = true;
+                    }
+                    else {
+
+                        temp.setBackground(colour);
+                        first = true;
+
+                    }
+
+
+                }
+            }
+        });
+        Button01.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                b = (JButton)e.getSource();
+                if (first) {
+                    if (b.getIcon() != null) {
+
+                        colour = b.getBackground();
+                        b.setBackground(Color.CYAN);
+
+                        ico = b.getIcon();
+                        first = false;
+                        temp = (JButton)e.getSource();
+                    }
                 }
 
+                else {
+                    if (temp != b) {
+
+                        b.setIcon(ico);
+
+                        temp.setIcon(null);
+                        temp.setBackground(colour);
+                        first = true;
+                    }
+                    else {
+
+                        temp.setBackground(colour);
+                        first = true;
+
+                    }
+
+
+                }
             }
         });
     }
@@ -127,5 +210,8 @@ public class GUITaulell {
     public JPanel getMyTaulell() {
         return MyTaulell;
     }
+
+
+
 }
 

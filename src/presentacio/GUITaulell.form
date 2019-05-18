@@ -576,6 +576,8 @@
         </constraints>
         <properties>
           <background color="-2180985"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="true"/>
           <icon value="icons/icons8-rook-40(1).png"/>
           <text value=""/>
         </properties>
