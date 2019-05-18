@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /*
 ImageIcon kek = new ImageIcon(this.getClass().getResource("/icons8-bishop-40(1).png"));
@@ -86,10 +87,20 @@ public class GUITaulell {
     private JButton b;
     private Color colour;
     private int x, y;
+    private ArrayList<Integer> movimentMaquina;
     private CtrlPresentacio ctrlP  = new CtrlPresentacio();
+    private JButton[] matriu;
 
     public GUITaulell() {
         first = true;
+
+        for(int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                matriu[x][y] = Button00;
+            }
+        }
+
+
 
         Button00.addActionListener(new ActionListener() {
             @Override
@@ -97,7 +108,8 @@ public class GUITaulell {
                 b = (JButton)e.getSource();
                 if (first) {
                     if (b.getIcon() != null) {
-
+                        x = 0;
+                        y = 0;
                         colour = b.getBackground();
                         b.setBackground(Color.CYAN);
 
@@ -118,8 +130,15 @@ public class GUITaulell {
                     }
                     else {
 
+                      //  ctrlP.moure(x,y,0,0);
+
                         temp.setBackground(colour);
                         first = true;
+
+
+
+
+
 
                     }
 
@@ -194,12 +213,31 @@ public class GUITaulell {
                         temp.setBackground(colour);
                         first = true;
 
+                        movimentMaquina.set(0,0);
+                        movimentMaquina.set(1,0);
+                        movimentMaquina.set(2,0);
+                        movimentMaquina.set(3,1);
+
+                        mourePecaMaquina(movimentMaquina);
+
                     }
 
 
                 }
             }
         });
+    }
+
+    private void mourePecaMaquina(ArrayList<Integer> moviment) {
+
+        Integer xOrg = moviment.get(0);
+        Integer yOrg = moviment.get(1);
+        Integer xDest = moviment.get(2);
+        Integer yDest = moviment.get(3);
+
+
+
+
     }
 
 
