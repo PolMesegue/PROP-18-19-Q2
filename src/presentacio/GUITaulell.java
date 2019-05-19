@@ -86,7 +86,7 @@ public class GUITaulell {
     private JButton temp;
     private JButton b;
     private Color colour;
-    private int x, y;
+    private int xO, yO, xD, yD;
     private int k, l;
     private ArrayList<Integer> movimentMaquina;
     private CtrlPresentacio ctrlP  = new CtrlPresentacio();
@@ -94,8 +94,10 @@ public class GUITaulell {
 
 
     public GUITaulell() {
+
         first = true;
         matriu = iniciaMatriu(matriu);
+        
         k = 1; l = 2;
         movimentMaquina = new ArrayList<>(4);
 
@@ -108,8 +110,16 @@ public class GUITaulell {
                         b = (JButton)e.getSource();
                         if (first) {
                             if (b.getIcon() != null) {
-                                x = 0;
-                                y = 0;
+
+                                for (int q = 0; q < 8; ++q) {
+                                    for (int w = 0; w < 8; ++w) {
+                                        if (matriu[q][w] == b) {
+                                            xO = q;
+                                            yO = w;
+                                        }
+                                    }
+                                }
+
                                 colour = b.getBackground();
                                 b.setBackground(Color.CYAN);
 
@@ -122,26 +132,39 @@ public class GUITaulell {
                         else {
                             if (temp != b) {
 
-                                b.setIcon(ico);
+                                for (int q = 0; q < 8; ++q) {
+                                    for (int w = 0; w < 8; ++w) {
+                                        if (matriu[q][w] == b) {
+                                            xD = q;
+                                            yD = w;
+                                        }
+                                    }
+                                }
 
-                                temp.setIcon(null);
-                                temp.setBackground(colour);
-                                first = true;
+                             //  JOptionPane.showMessageDialog(null,xO + " " + yO + " " +xD +" " +yD + " ");
 
-                                //mourePecaMaquina(ctrlP.turnoMaquina());
 
-                                movimentMaquina.add(0,0);
-                                movimentMaquina.add(1,k);
-                                movimentMaquina.add(2,0);
-                                movimentMaquina.add(3,l);
-                                ++l;
-                                ++k;
+                                //  if (ctrlP.mourePeca(xO,yO, xD, yD) {
 
-                                mourePecaMaquina(movimentMaquina);
+                                    b.setIcon(ico);
+
+                                    temp.setIcon(null);
+                                    temp.setBackground(colour);
+                                    first = true;
+
+                                    //mourePecaMaquina(ctrlP.turnoMaquina());
+
+                                    movimentMaquina.add(0, 0);
+                                    movimentMaquina.add(1, k);
+                                    movimentMaquina.add(2, 0);
+                                    movimentMaquina.add(3, l);
+                                    ++l;
+                                    ++k;
+
+                                    mourePecaMaquina(movimentMaquina);
+                             //   }
                             }
                             else {
-
-                                //  ctrlP.moure(x,y,0,0);
 
                                 temp.setBackground(colour);
                                 first = true;
@@ -156,8 +179,122 @@ public class GUITaulell {
             }
         }
 
+    }
 
-        /*
+
+
+    private void mourePecaMaquina(ArrayList<Integer> moviment) {
+
+        Integer xOrg = moviment.get(0);
+        Integer yOrg = moviment.get(1);
+        Integer xDest = moviment.get(2);
+        Integer yDest = moviment.get(3);
+
+        matriu[xDest][yDest].setIcon(matriu[xOrg][yOrg].getIcon());
+        matriu[xOrg][yOrg].setIcon(null);
+
+
+    }
+
+    private JButton[][] iniciaMatriu(JButton[][] matriu) {
+
+        matriu[0][0] = Button00;
+        matriu[0][1] = Button01;
+        matriu[0][2] = Button02;
+        matriu[0][3] = Button03;
+        matriu[0][4] = Button04;
+        matriu[0][5] = Button05;
+        matriu[0][6] = Button06;
+        matriu[0][7] = Button07;
+
+        matriu[1][0] = Button10;
+        matriu[1][1] = Button11;
+        matriu[1][2] = Button12;
+        matriu[1][3] = Button13;
+        matriu[1][4] = Button14;
+        matriu[1][5] = Button15;
+        matriu[1][6] = Button16;
+        matriu[1][7] = Button17;
+
+        matriu[2][0] = Button20;
+        matriu[2][1] = Button21;
+        matriu[2][2] = Button22;
+        matriu[2][3] = Button23;
+        matriu[2][4] = Button24;
+        matriu[2][5] = Button25;
+        matriu[2][6] = Button26;
+        matriu[2][7] = Button27;
+
+        matriu[3][0] = Button30;
+        matriu[3][1] = Button31;
+        matriu[3][2] = Button32;
+        matriu[3][3] = Button33;
+        matriu[3][4] = Button34;
+        matriu[3][5] = Button35;
+        matriu[3][6] = Button36;
+        matriu[3][7] = Button37;
+
+        matriu[4][0] = Button40;
+        matriu[4][1] = Button41;
+        matriu[4][2] = Button42;
+        matriu[4][3] = Button43;
+        matriu[4][4] = Button44;
+        matriu[4][5] = Button45;
+        matriu[4][6] = Button46;
+        matriu[4][7] = Button47;
+
+        matriu[5][0] = Button50;
+        matriu[5][1] = Button51;
+        matriu[5][2] = Button52;
+        matriu[5][3] = Button53;
+        matriu[5][4] = Button54;
+        matriu[5][5] = Button55;
+        matriu[5][6] = Button56;
+        matriu[5][7] = Button57;
+
+        matriu[6][0] = Button60;
+        matriu[6][1] = Button61;
+        matriu[6][2] = Button62;
+        matriu[6][3] = Button63;
+        matriu[6][4] = Button64;
+        matriu[6][5] = Button65;
+        matriu[6][6] = Button66;
+        matriu[6][7] = Button67;
+
+        matriu[7][0] = Button70;
+        matriu[7][1] = Button71;
+        matriu[7][2] = Button72;
+        matriu[7][3] = Button73;
+        matriu[7][4] = Button74;
+        matriu[7][5] = Button75;
+        matriu[7][6] = Button76;
+        matriu[7][7] = Button77;
+
+
+        return matriu;
+    }
+
+
+
+
+
+    public JPanel getMyTaulell() {
+        return MyTaulell;
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
 
 
 
@@ -282,111 +419,3 @@ public class GUITaulell {
         });
 
          */
-    }
-
-
-
-    private void mourePecaMaquina(ArrayList<Integer> moviment) {
-
-        Integer xOrg = moviment.get(0);
-        Integer yOrg = moviment.get(1);
-        Integer xDest = moviment.get(2);
-        Integer yDest = moviment.get(3);
-
-        matriu[xDest][yDest].setIcon(matriu[xOrg][yOrg].getIcon());
-        matriu[xOrg][yOrg].setIcon(null);
-
-
-    }
-
-    private JButton[][] iniciaMatriu(JButton[][] matriu) {
-
-        matriu[0][0] = Button00;
-        matriu[0][1] = Button01;
-        matriu[0][2] = Button02;
-        matriu[0][3] = Button03;
-        matriu[0][4] = Button04;
-        matriu[0][5] = Button05;
-        matriu[0][6] = Button06;
-        matriu[0][7] = Button07;
-
-        matriu[1][0] = Button10;
-        matriu[1][1] = Button11;
-        matriu[1][2] = Button12;
-        matriu[1][3] = Button13;
-        matriu[1][4] = Button14;
-        matriu[1][5] = Button15;
-        matriu[1][6] = Button16;
-        matriu[1][7] = Button17;
-
-        matriu[2][0] = Button20;
-        matriu[2][1] = Button21;
-        matriu[2][2] = Button22;
-        matriu[2][3] = Button23;
-        matriu[2][4] = Button24;
-        matriu[2][5] = Button25;
-        matriu[2][6] = Button26;
-        matriu[2][7] = Button27;
-
-        matriu[3][0] = Button30;
-        matriu[3][1] = Button31;
-        matriu[3][2] = Button32;
-        matriu[3][3] = Button33;
-        matriu[3][4] = Button34;
-        matriu[3][5] = Button35;
-        matriu[3][6] = Button36;
-        matriu[3][7] = Button37;
-
-        matriu[4][0] = Button40;
-        matriu[4][1] = Button41;
-        matriu[4][2] = Button42;
-        matriu[4][3] = Button43;
-        matriu[4][4] = Button44;
-        matriu[4][5] = Button45;
-        matriu[4][6] = Button46;
-        matriu[4][7] = Button47;
-
-        matriu[5][0] = Button50;
-        matriu[5][1] = Button51;
-        matriu[5][2] = Button52;
-        matriu[5][3] = Button53;
-        matriu[5][4] = Button54;
-        matriu[5][5] = Button55;
-        matriu[5][6] = Button56;
-        matriu[5][7] = Button57;
-
-        matriu[6][0] = Button60;
-        matriu[6][1] = Button61;
-        matriu[6][2] = Button62;
-        matriu[6][3] = Button63;
-        matriu[6][4] = Button64;
-        matriu[6][5] = Button65;
-        matriu[6][6] = Button66;
-        matriu[6][7] = Button67;
-
-        matriu[7][0] = Button70;
-        matriu[7][1] = Button71;
-        matriu[7][2] = Button72;
-        matriu[7][3] = Button73;
-        matriu[7][4] = Button74;
-        matriu[7][5] = Button75;
-        matriu[7][6] = Button76;
-        matriu[7][7] = Button77;
-
-
-        return matriu;
-    }
-
-
-
-
-
-
-    public JPanel getMyTaulell() {
-        return MyTaulell;
-    }
-
-
-
-}
-
