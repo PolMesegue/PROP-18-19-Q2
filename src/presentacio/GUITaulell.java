@@ -81,6 +81,9 @@ public class GUITaulell {
     private JButton Button75;
     private JButton Button76;
     private JButton Button77;
+    private JLabel nMov;
+    private JLabel nMat;
+    private JButton sortirButton;
     private Boolean first;
     private Icon ico;
     private JButton temp;
@@ -97,6 +100,10 @@ public class GUITaulell {
 
         first = true;
         matriu = iniciaMatriu(matriu);
+
+        nMat.setText("3");
+        nMov.setText("0");
+
 
         k = 1; l = 2;
         movimentMaquina = new ArrayList<>(4);
@@ -151,6 +158,7 @@ public class GUITaulell {
                                     temp.setIcon(null);
                                     temp.setBackground(colour);
                                     first = true;
+                                    nMov.setText(""+k);
 
                                     //mourePecaMaquina(ctrlP.turnoMaquina());
 
@@ -179,6 +187,23 @@ public class GUITaulell {
             }
         }
 
+        sortirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //loqueisgui Guardar
+
+                frame jugar = frame.getInstance();
+
+                GUIJugar jugar1 = new GUIJugar();
+
+                jugar.setContentPane(jugar1.getMyJugar());
+                jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                jugar.setBounds(300,200,600,400);
+                jugar.setVisible(true);
+
+            }
+        });
     }
 
 

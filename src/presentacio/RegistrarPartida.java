@@ -8,12 +8,9 @@ public class RegistrarPartida {
     private JPanel MyRegistrarPartida;
     private JButton acceptarButton;
     private JButton tornarButton;
-    private JScrollPane AtackPane;
-    private JScrollPane DefPane;
-    private JScrollPane ProbPane;
-    private JList list1;
-    private JList list2;
-    private JList list3;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
+    private JComboBox comboBox3;
     private CtrlPresentacio ctrlP = new CtrlPresentacio();
 
 
