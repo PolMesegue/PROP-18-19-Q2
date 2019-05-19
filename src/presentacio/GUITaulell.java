@@ -97,7 +97,7 @@ public class GUITaulell {
 
         first = true;
         matriu = iniciaMatriu(matriu);
-        
+
         k = 1; l = 2;
         movimentMaquina = new ArrayList<>(4);
 
