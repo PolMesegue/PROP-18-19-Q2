@@ -8,7 +8,8 @@ public class Ctrl_Domini {
     private BD_Problemas bdp= new BD_Problemas();
     private BD_Usuaris bdu= new BD_Usuaris();
 
-
+    private Partida joc;
+    
     public void crearMaquina(){
         Maquina m1= new Maquina("M1");
         bdu.AddMaquina(m1);
@@ -78,7 +79,6 @@ public class Ctrl_Domini {
     }
 
     public Tauler getTauler(String fen){
-
         Problema p= bdp.getProblema(fen);
         Tauler t= p.FENtoHuman();
         return t;
@@ -86,11 +86,16 @@ public class Ctrl_Domini {
     }
 
     public Partida getPartida(Timestamp fecha){
-
         Partida p= fa.getPartida(fecha);
         return p;
 
     }
+
+    public boolean mourePeca(int xO,int yO, int xD, int yD){
+
+
+    }
+
 
 
 }
