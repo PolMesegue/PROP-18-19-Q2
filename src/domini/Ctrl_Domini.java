@@ -9,7 +9,7 @@ public class Ctrl_Domini {
     private BD_Usuaris bdu= new BD_Usuaris();
 
     private Partida joc;
-    
+
     public void crearMaquina(){
         Maquina m1= new Maquina("M1");
         bdu.AddMaquina(m1);
@@ -92,7 +92,7 @@ public class Ctrl_Domini {
     }
 
     public boolean mourePeca(int xO,int yO, int xD, int yD){
-
+        return true;
 
     }
 
