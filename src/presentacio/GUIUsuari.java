@@ -32,7 +32,13 @@ public class GUIUsuari {
         consultarUsuariButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"kek2");
+                frame consultar = frame.getInstance();
+                ConsultarUsuari consultar2 = new ConsultarUsuari();
+
+                consultar.setContentPane(consultar2.getMyConsultarUsuari());
+                consultar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                consultar.setVisible(true);
+
             }
         });
 

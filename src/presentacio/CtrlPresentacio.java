@@ -14,8 +14,12 @@ public class CtrlPresentacio {
     public void afegirUsuari(String nom){
         ctrldom.AddHuma(nom);
     }
+
     public ArrayList<String> consultar_usuaris(){
         ArrayList<String> llistaUsuaris = ctrldom.getUsuaris();
+        for(String elem : llistaUsuaris) {
+            JOptionPane.showMessageDialog(null,elem);
+        }
         return llistaUsuaris;
     }
     public void afegirProblema(String problema, int mat ){
@@ -50,8 +54,6 @@ public class CtrlPresentacio {
     public ArrayList<Integer> PosiblesMoviments(int x, int y){
         return ctrldom.PosiblesMoviments(x,y);
     }
-
-
 
     public static void main(String[] args){
         CtrlPresentacio CtrlP = new CtrlPresentacio();
