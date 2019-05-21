@@ -35,15 +35,21 @@ public class CtrlPresentacio {
         return llistaPartides;
     }
 
-    public ArrayList<Integer> get_pecas(String FEN){
-        return null;
+    public ArrayList<Integer> get_pecas(){
+        return ctrldom.getPecas();
     }
-    public boolean mourePeca(int xO,int yO, int xD, int yD){
 
+
+    public boolean mourePeca(int xO,int yO, int xD, int yD){
         return ctrldom.mourePeca(xO,yO, xD, yD);
     }
 
-
+    public void selecionar_Partida(Timestamp fecha){
+        ctrldom.selecionar_Partida(fecha);
+    }
+    public ArrayList<Integer> PosiblesMoviments(int x, int y){
+        return ctrldom.PosiblesMoviments(x,y);
+    }
 
 
 

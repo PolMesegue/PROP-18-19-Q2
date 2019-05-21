@@ -84,16 +84,72 @@ public class Ctrl_Domini {
         return t;
 
     }
-
     public Partida getPartida(Timestamp fecha){
         Partida p= fa.getPartida(fecha);
         return p;
 
     }
+    public void selecionar_Partida(Timestamp fecha){
+        joc=getPartida(fecha);
+    }
 
+    public ArrayList<Integer> getPecas() {
+        Tauler T = joc.getP().FENtoHuman();
+        ArrayList<Integer> peces = new ArrayList<>();
+        Peca[] pecesBlanc = T.getPeces_blanques();
+        Peca[] pecesNegre = T.getPeces_negres();
+        // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
+        for (int i = 0; i < 16; i++) {
+            if (pecesBlanc[i] != null) {
+                peces.add(pecesBlanc[i].getX());
+                peces.add(pecesBlanc[i].getY());
+                if (i < 8) {
+                    peces.add(0);
+                } else if (i == 8 || i == 9) {
+                    peces.add(1);
+                } else if (i == 10 || i == 11) {
+                    peces.add(2);
+                } else if (i == 12 || i == 13) {
+                    peces.add(3);
+                } else if (i == 14) {
+                    peces.add(4);
+                } else if (i == 15) {
+                    peces.add(5);
+                }
+            }
+            // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
+            if (pecesNegre[i] != null) {
+                peces.add(pecesNegre[i].getX());
+                peces.add(pecesNegre[i].getY());
+                if (i < 8) {
+                    peces.add(6);
+                } else if (i == 8 || i == 9) {
+                    peces.add(7);
+                } else if (i == 10 || i == 11) {
+                    peces.add(8);
+                } else if (i == 12 || i == 13) {
+                    peces.add(9);
+                } else if (i == 14) {
+                    peces.add(10);
+                } else if (i == 15) {
+                    peces.add(11);
+                }
+            }
+        }
+        return peces;
+    }
     public boolean mourePeca(int xO,int yO, int xD, int yD){
-        return true;
-
+        return joc.mourePeca(xO, yO, xD, yD);
+    }
+    public ArrayList<Integer> PosiblesMoviments( int x, int y){
+        Peca p= joc.getT().getPeca(x,y);
+        ArrayList<IntPair> aux =p.getMoviments();
+        ArrayList<Integer> moviments= new ArrayList<>();
+        for(int i=0;i<aux.size();i++){
+            moviments.add(aux.get(i).getX());
+            moviments.add(aux.get(i).getY());
+        }
+        return moviments;
     }
 
 
