@@ -8,18 +8,24 @@ import java.util.*;
 
 public class CtrlPresentacio {
 
+    private static CtrlPresentacio pr;
+
     private Ctrl_Domini ctrldom = new Ctrl_Domini();
 
 
-    public void afegirUsuari(String nom){
-        ctrldom.AddHuma(nom);
+    public CtrlPresentacio(){}
+
+    public static CtrlPresentacio getInstance(){
+        if(pr==null) pr= new CtrlPresentacio();
+            return pr;
     }
 
+    public void afegirUsuari(String nom){
+        ctrldom.AddHuma(nom);
+
+    }
     public ArrayList<String> consultar_usuaris(){
         ArrayList<String> llistaUsuaris = ctrldom.getUsuaris();
-        for(String elem : llistaUsuaris) {
-            JOptionPane.showMessageDialog(null,elem);
-        }
         return llistaUsuaris;
     }
     public void afegirProblema(String problema, int mat ){
@@ -56,8 +62,6 @@ public class CtrlPresentacio {
     }
 
     public static void main(String[] args){
-        CtrlPresentacio CtrlP = new CtrlPresentacio();
-
         frame main = frame.getInstance();
         main.setContentPane(new GUIMain().getMyGUIMain());
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

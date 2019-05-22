@@ -9,13 +9,16 @@ public class RegistrarUsuari {
     private JButton confirmarButton;
     private JPanel MyRegistrar;
     private JButton tornarButton;
-    private CtrlPresentacio ctrlP = new CtrlPresentacio();
+    private CtrlPresentacio ctrlP = CtrlPresentacio.getInstance();
 
 
     public RegistrarUsuari() {
         confirmarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                String aux = textField1.getText();
+                JOptionPane.showMessageDialog(null,aux);
 
                 ctrlP.afegirUsuari(textField1.getText());
 

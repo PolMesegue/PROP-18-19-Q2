@@ -11,7 +11,7 @@ public class RegistrarPartida {
     private JComboBox comboBox1;
     private JComboBox comboBox2;
     private JComboBox comboBox3;
-    private CtrlPresentacio ctrlP = new CtrlPresentacio();
+    private CtrlPresentacio ctrlP = CtrlPresentacio.getInstance();
 
 
 

@@ -8,7 +8,7 @@ public class ConsultarUsuari {
     private JComboBox comboBox1;
     private JPanel MyConsultarUsuari;
     private JButton tornarEnrereButton;
-    private CtrlPresentacio CtrlP = new CtrlPresentacio();
+    private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
 
     public ConsultarUsuari() {
 

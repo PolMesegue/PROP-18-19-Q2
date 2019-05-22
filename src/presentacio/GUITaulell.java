@@ -92,7 +92,7 @@ public class GUITaulell {
     private int xO, yO, xD, yD;
     private int k, l;
     private ArrayList<Integer> movimentMaquina;
-    private CtrlPresentacio ctrlP  = new CtrlPresentacio();
+    private CtrlPresentacio ctrlP = CtrlPresentacio.getInstance();
     private JButton[][] matriu = new JButton[8][8];
 
 

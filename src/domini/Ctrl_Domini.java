@@ -21,6 +21,7 @@ public class Ctrl_Domini {
             System.out.println("Ya existe usuario con el nombre introducido. \n");
         }
         else{
+            System.out.println("afegit \n");
             bdu.AddHuma(h);
         }
     }
@@ -65,6 +66,7 @@ public class Ctrl_Domini {
         ArrayList<String> Usuaris = new ArrayList<>();
         for(Usuari elem : bdu.getCollectionHumans()) {
             Usuaris.add(elem.getNom());
+
         }
         return Usuaris;
     }

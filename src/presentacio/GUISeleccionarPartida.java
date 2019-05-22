@@ -9,7 +9,7 @@ public class GUISeleccionarPartida {
     private JPanel MySeleccionarPartida;
     private JButton tornarEnreraButton;
     private JButton jugarButton;
-    private CtrlPresentacio CtrlP = new CtrlPresentacio();
+    private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
 
 
     public GUISeleccionarPartida() {
