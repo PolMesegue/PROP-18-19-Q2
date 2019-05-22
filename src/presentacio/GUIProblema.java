@@ -50,6 +50,14 @@ public class GUIProblema {
                 main.setVisible(true);
             }
         });
+        consultarProblemaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+
+            }
+        });
     }
 
     public JPanel getMyGUIProblema() {

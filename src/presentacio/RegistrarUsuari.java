@@ -18,8 +18,6 @@ public class RegistrarUsuari {
             public void actionPerformed(ActionEvent e) {
 
                 String aux = textField1.getText();
-                JOptionPane.showMessageDialog(null,aux);
-
                 ctrlP.afegirUsuari(textField1.getText());
 
                 JOptionPane.showMessageDialog(null,"Afegit correctament");

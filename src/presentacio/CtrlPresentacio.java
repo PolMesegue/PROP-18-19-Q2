@@ -36,6 +36,7 @@ public class CtrlPresentacio {
         return llistaProblemas;
     }
     public void crearPartida(String atac, String def, String problem){
+
         ctrldom.crearPartida(atac,def,problem);
     }
 

@@ -9,13 +9,16 @@ public class RegistrarProblema {
     private JButton confirmarButton;
     private JPanel MyRProblema;
     private JButton tornarButton;
+    private JTextField Matfield;
+    private CtrlPresentacio ctrlP = CtrlPresentacio.getInstance();
 
     public RegistrarProblema() {
         confirmarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-               // ctrlP.afegirProblema(textField1.getText());
+                int mat = Integer.parseInt(Matfield.getText());
+                ctrlP.afegirProblema(textField1.getText(),mat);
 
                 JOptionPane.showMessageDialog(null,"Afegit correctament");
 

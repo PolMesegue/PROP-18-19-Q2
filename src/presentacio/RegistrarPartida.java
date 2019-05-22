@@ -11,12 +11,7 @@ public class RegistrarPartida {
     private JComboBox comboBox1;
     private JComboBox comboBox2;
     private JComboBox comboBox3;
-    private CtrlPresentacio ctrlP = CtrlPresentacio.getInstance();
-
-
-
-
-
+    private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
 
     public RegistrarPartida() {
 
@@ -28,11 +23,24 @@ public class RegistrarPartida {
         }
         list1.setModel(dlm1);
         */
+        for(int i=0; i<CtrlP.consultar_usuaris().size();i++){
+            String aux= CtrlP.consultar_usuaris().get(i);
+            comboBox1.addItem(aux);
+        }
+        for(int i=0; i<CtrlP.consultar_usuaris().size();i++){
+            String aux= CtrlP.consultar_usuaris().get(i);
+            comboBox2.addItem(aux);
+        }
+        for(int i=0; i<CtrlP.consultar_Problemas().size();i++){
+            String aux= CtrlP.consultar_Problemas().get(i);
+            comboBox3.addItem(aux);
+        }
 
         acceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              //  ctrlP.afegirPartida(list1.getSelectedValue(),list2.getSelectedValue(),list3.getSelectedValue());
+
+                CtrlP.crearPartida((String)comboBox1.getSelectedItem(),(String)comboBox2.getSelectedItem(),(String)comboBox3.getSelectedItem());
 
                 JOptionPane.showMessageDialog(null,"Afegit correctament");
 
@@ -44,7 +52,6 @@ public class RegistrarPartida {
                 jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
                 jugar.setVisible(true);
-
 
             }
         });
