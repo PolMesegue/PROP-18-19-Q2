@@ -3,6 +3,7 @@ package presentacio;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Timestamp;
 
 public class GUISeleccionarPartida {
     private JComboBox comboBox1;
@@ -13,9 +14,11 @@ public class GUISeleccionarPartida {
 
 
     public GUISeleccionarPartida() {
-        comboBox1.addItem(CtrlP.consultar_Partidas());
 
-
+        for(int i=0; i<CtrlP.consultar_Partidas().size();i++){
+            Timestamp aux= CtrlP.consultar_Partidas().get(i);
+            comboBox1.addItem(aux);
+        }
         tornarEnreraButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -35,7 +38,8 @@ public class GUISeleccionarPartida {
         jugarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-             //   CtrlP.selecionar_Partida(comboBox1.getSelectedItem());
+
+                CtrlP.selecionar_Partida((Timestamp)comboBox1.getSelectedItem());
 
                 frame jugarP = frame.getInstance();
 

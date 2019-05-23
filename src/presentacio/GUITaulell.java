@@ -101,6 +101,72 @@ public class GUITaulell {
         first = true;
         matriu = iniciaMatriu(matriu);
 
+        ImageIcon AlfilB = new ImageIcon(this.getClass().getResource("/icons8-bishop-40.png"));
+        ImageIcon ReyB = new ImageIcon(this.getClass().getResource("/icons8-king-40.png"));
+        ImageIcon CavallB = new ImageIcon(this.getClass().getResource("/icons8-knight-40.png"));
+        ImageIcon PeoB = new ImageIcon(this.getClass().getResource("/icons8-pawn-40.png"));
+        ImageIcon ReinaB = new ImageIcon(this.getClass().getResource("/icons8-queen-40.png"));
+        ImageIcon TorreB = new ImageIcon(this.getClass().getResource("/icons8-rook-40.png"));
+
+        ImageIcon AlfilN = new ImageIcon(this.getClass().getResource("/icons8-bishop-40(1).png"));
+        ImageIcon ReyN = new ImageIcon(this.getClass().getResource("/icons8-king-40(1).png"));
+        ImageIcon CavallN = new ImageIcon(this.getClass().getResource("/icons8-knight-40(1).png"));
+        ImageIcon PeoN = new ImageIcon(this.getClass().getResource("/icons8-pawn-40(1).png"));
+        ImageIcon ReinaN = new ImageIcon(this.getClass().getResource("/icons8-queen-40(1).png"));
+        ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons8-rook-40(1).png"));
+
+
+
+
+
+
+        // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
+        // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
+        ArrayList<Integer> pecesTauler = ctrlP.get_pecas();
+
+        for(int i=0;i<pecesTauler.size();i+=3){
+            //blancas
+            if(pecesTauler.get(i+2)==0){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(PeoB);
+            }
+            if(pecesTauler.get(i+2)==1){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(AlfilB);
+            }
+            if(pecesTauler.get(i+2)==2){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(CavallB);
+            }
+            if(pecesTauler.get(i+2)==3){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(TorreB);
+            }
+            if(pecesTauler.get(i+2)==4){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReyB);
+            }
+            if(pecesTauler.get(i+2)==5){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReinaB);
+            }
+            //negres
+            // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
+            if(pecesTauler.get(i+2)==6){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(PeoN);
+            }
+            if(pecesTauler.get(i+2)==7){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(AlfilN);
+            }
+            if(pecesTauler.get(i+2)==8){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(CavallN);
+            }
+            if(pecesTauler.get(i+2)==9){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(TorreN);
+            }
+            if(pecesTauler.get(i+2)==10){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReinaN);
+            }
+            if(pecesTauler.get(i+2)==11){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReyN);
+            }
+
+
+        }
         nMat.setText("3");
         nMov.setText("0");
 

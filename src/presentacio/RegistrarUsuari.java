@@ -20,7 +20,7 @@ public class RegistrarUsuari {
                 String aux = textField1.getText();
                 ctrlP.afegirUsuari(textField1.getText());
 
-                JOptionPane.showMessageDialog(null,"Afegit correctament");
+                //JOptionPane.showMessageDialog(null,"Afegit correctament");
 
                 frame user = frame.getInstance();
 

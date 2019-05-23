@@ -47,6 +47,8 @@ public class CtrlPresentacio {
     }
 
     public ArrayList<Integer> get_pecas(){
+        // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
+        // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
         return ctrldom.getPecas();
     }
 
