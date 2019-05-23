@@ -114,16 +114,9 @@ public class GUITaulell {
         ImageIcon PeoN = new ImageIcon(this.getClass().getResource("/icons8-pawn-40(1).png"));
         ImageIcon ReinaN = new ImageIcon(this.getClass().getResource("/icons8-queen-40(1).png"));
         ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons8-rook-40(1).png"));
-
-
-
-
-
-
         // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
         // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
         ArrayList<Integer> pecesTauler = ctrlP.get_pecas();
-
         for(int i=0;i<pecesTauler.size();i+=3){
             //blancas
             if(pecesTauler.get(i+2)==0){
@@ -139,10 +132,10 @@ public class GUITaulell {
                 matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(TorreB);
             }
             if(pecesTauler.get(i+2)==4){
-                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReyB);
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReinaB);
             }
             if(pecesTauler.get(i+2)==5){
-                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReinaB);
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReyB);
             }
             //negres
             // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
@@ -164,8 +157,6 @@ public class GUITaulell {
             if(pecesTauler.get(i+2)==11){
                 matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReyN);
             }
-
-
         }
         nMat.setText("3");
         nMov.setText("0");
@@ -183,7 +174,6 @@ public class GUITaulell {
                         b = (JButton)e.getSource();
                         if (first) {
                             if (b.getIcon() != null) {
-
                                 for (int q = 0; q < 8; ++q) {
                                     for (int w = 0; w < 8; ++w) {
                                         if (matriu[q][w] == b) {
@@ -192,7 +182,12 @@ public class GUITaulell {
                                         }
                                     }
                                 }
-
+                                //en marca els colors del moviments posibles de la peça
+                                ArrayList<Integer> moviments= ctrlP.PosiblesMoviments(xO,yO);
+                                for(int i=0;i<moviments.size();i+=2){
+                                    matriu[moviments.get(i)][moviments.get(i+1)].setBackground(Color.GREEN);
+                                }
+                                /////////////////////////////////////
                                 colour = b.getBackground();
                                 b.setBackground(Color.CYAN);
 
@@ -201,10 +196,8 @@ public class GUITaulell {
                                 temp = (JButton)e.getSource();
                             }
                         }
-
                         else {
                             if (temp != b) {
-
                                 for (int q = 0; q < 8; ++q) {
                                     for (int w = 0; w < 8; ++w) {
                                         if (matriu[q][w] == b) {
@@ -213,11 +206,7 @@ public class GUITaulell {
                                         }
                                     }
                                 }
-
-                             //  JOptionPane.showMessageDialog(null,xO + " " + yO + " " +xD +" " +yD + " ");
-
-
-                                //  if (ctrlP.mourePeca(xO,yO, xD, yD) {
+                                if (ctrlP.mourePeca(xO,yO, xD, yD)){
 
                                     b.setIcon(ico);
 
@@ -225,18 +214,15 @@ public class GUITaulell {
                                     temp.setBackground(colour);
                                     first = true;
                                     nMov.setText(""+k);
-
                                     //mourePecaMaquina(ctrlP.turnoMaquina());
-
-                                    movimentMaquina.add(0, 0);
+                                    /*movimentMaquina.add(0, 0);
                                     movimentMaquina.add(1, k);
                                     movimentMaquina.add(2, 0);
-                                    movimentMaquina.add(3, l);
+                                    movimentMaquina.add(3, l);*/
                                     ++l;
                                     ++k;
-
-                                    mourePecaMaquina(movimentMaquina);
-                             //   }
+                                    //mourePecaMaquina(movimentMaquina);
+                                }
                             }
                             else {
 
