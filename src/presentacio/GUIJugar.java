@@ -40,15 +40,23 @@ public class GUIJugar {
         jugarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               frame jugarP = frame.getInstance();
 
-                GUITaulell jugarP1 = new GUITaulell();
+                frame seleccionarP = frame.getInstance();
 
-                jugarP.setContentPane(jugarP1.getMyTaulell());
-                jugarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                jugarP.setBounds(250,100,725,600);
+                GUISeleccionarPartida seleccionarP1 = new GUISeleccionarPartida();
 
-                jugarP.setVisible(true);
+                seleccionarP.setContentPane(seleccionarP1.getMySeleccionarPartida());
+                seleccionarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+               // seleccionarP.setBounds(250,100,725,600);
+
+                seleccionarP.setVisible(true);
+
+
+
+/*
+
+
+                */
 
 
             }
