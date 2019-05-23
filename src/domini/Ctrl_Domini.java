@@ -146,6 +146,7 @@ public class Ctrl_Domini {
     public boolean mourePeca(int xO,int yO, int xD, int yD){
         return joc.mourePeca(xO, yO, xD, yD);
     }
+
     public ArrayList<Integer> PosiblesMoviments( int x, int y){
         joc.getT().actualitzar();
         Peca p= joc.getT().getPeca(x,y);
