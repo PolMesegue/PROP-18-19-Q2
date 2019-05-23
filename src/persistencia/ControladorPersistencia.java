@@ -1,12 +1,10 @@
-package domini;
+package persistencia;
 
-import java.util.*;
-import java.io.*;
 
+import java.io.File;
+import java.util.Vector;
 
 public class ControladorPersistencia {
-
-
     private ControladorDades dp, dpa, du;
 
 
@@ -15,18 +13,14 @@ public class ControladorPersistencia {
         File d = new File("./dades/Partides");
         if (!d.exists()) d.mkdirs();
         dp = new ControladorDades("./dades/Problemes.txt");
-        dpa = new ControladorDades("./dades/Usuaris.txt");
-        du = new ControladorDades("./dades/Partides.txt");
-
+        du= new ControladorDades("./dades/Usuaris.txt");
+        dpa = new ControladorDades("./dades/Partides.txt");
     }
-
     public void CarregarPartida(String s) {
         String p = "./dades/Partides/" + s;
         dp = new ControladorDades(p);
     }
-
     //Escritures (String)
-
     public void EscriureProblema(String s) throws Exception{
         dp.ObrirArxiu();
         dp.Escriure(s);
@@ -42,8 +36,6 @@ public class ControladorPersistencia {
         dpa.Escriure(s);
         dpa.TancarArxiu();
     }
-
-
     //Lectures
     public Vector<String> LlegirProblema() throws Exception{
         dp.ObrirArxiu();
@@ -64,5 +56,5 @@ public class ControladorPersistencia {
         return aux;
     }
 
-    
+
 }

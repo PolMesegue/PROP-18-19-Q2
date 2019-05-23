@@ -9,8 +9,9 @@ public class GUIProblema {
     private JButton esborrarProblemaButton;
     private JButton consultarProblemaButton;
     private JButton afergirProblemaButton;
-    private JButton modificarProblemaButton;
+    private JButton CarregarProblemaButton;
     private JButton tornarEnrereButton;
+    private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
 
     public GUIProblema() {
 
@@ -27,10 +28,15 @@ public class GUIProblema {
             }
         });
 
-        modificarProblemaButton.addActionListener(new ActionListener() {
+        CarregarProblemaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"kek2");
+                try {
+                    CtrlP.CarregarProblemas();
+                    JOptionPane.showMessageDialog(null,"Problemas afegits");
+                }catch (Exception B) {
+                    B.printStackTrace();
+                }
             }
         });
 

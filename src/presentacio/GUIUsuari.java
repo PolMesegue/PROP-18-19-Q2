@@ -9,10 +9,11 @@ public class GUIUsuari {
     private JButton registrarUsuariButton;
     private JButton consultarUsuariButton;
     private JButton esborrarUsuariButton;
-    private JButton modificarUsuariButton;
+    private JButton CarregarUsuariButton;
     private JButton tornarEnrereButton;
+    private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
 
-    public GUIUsuari() {
+    public GUIUsuari(){
 
         registrarUsuariButton.addActionListener(new ActionListener() {
             @Override
@@ -49,10 +50,15 @@ public class GUIUsuari {
 
             }
         });
-        modificarUsuariButton.addActionListener(new ActionListener() {
+        CarregarUsuariButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"kek4");
+            public void actionPerformed(ActionEvent e){
+                try {
+                    CtrlP.CarregarUsuaris();
+                    JOptionPane.showMessageDialog(null,"Usuaris afegits");
+                }catch (Exception B) {
+                    B.printStackTrace();
+                }
             }
         });
 
@@ -60,7 +66,6 @@ public class GUIUsuari {
         tornarEnrereButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 frame main = frame.getInstance();
                 main.setContentPane(new GUIMain().getMyGUIMain());
                 main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

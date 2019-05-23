@@ -1,11 +1,10 @@
-package domini;
+package persistencia;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Vector;
 
-
 public class ControladorDades {
+
     protected static File a;
     protected static FileReader fr;
     protected static FileWriter fw;

@@ -2,6 +2,7 @@ package domini;
 
 import java.sql.Timestamp;
 import java.util.*;
+import persistencia.ControladorPersistencia;
 
 public class Ctrl_Domini {
     private Fabrica fa= new Fabrica();
@@ -9,6 +10,8 @@ public class Ctrl_Domini {
     private BD_Usuaris bdu= new BD_Usuaris();
 
     private Partida joc;
+
+    private ControladorPersistencia CtrlPer = new ControladorPersistencia();
 
     public void crearMaquina(){
         Maquina m1= new Maquina("M1");
@@ -155,6 +158,19 @@ public class Ctrl_Domini {
         return moviments;
     }
 
+
+    public void CarregarProblemas() throws Exception{
+        Vector<String> FENS = CtrlPer.LlegirProblema();
+        for(int i=0;i< FENS.size();i+=2){
+            AddProblem(FENS.get(i),Integer.valueOf(FENS.get(i+1)));
+        }
+    }
+    public void CarregarUsuaris() throws Exception{
+        Vector<String> Users =CtrlPer.LlegirUsuari();
+        for(int i=0;i< Users.size();i++) {
+            AddHuma(Users.get(i));
+        }
+    }
 
 
 }
