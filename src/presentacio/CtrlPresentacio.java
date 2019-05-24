@@ -11,7 +11,7 @@ public class CtrlPresentacio {
 
     private static CtrlPresentacio pr;
 
-    private  Ctrl_Domini ctrldom = new Ctrl_Domini();
+    private  static Ctrl_Domini ctrldom = new Ctrl_Domini();
 
 
     public CtrlPresentacio(){}
@@ -67,10 +67,17 @@ public class CtrlPresentacio {
     public void CarregarUsuaris() throws Exception{
         ctrldom.CarregarUsuaris();
     }
+    public ArrayList<Integer> turnMaquina(){
+        return ctrldom.moureMaquina();
+
+    }
+
+
+
 
     public static void main(String[] args){
             frame main = frame.getInstance();
-
+            ctrldom.crearMaquina();
             main.setContentPane(new GUIMain().getMyGUIMain());
             main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             main.setBounds(300, 200, 600, 400);
