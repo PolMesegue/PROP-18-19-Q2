@@ -51,7 +51,7 @@ public class Reina extends Peca {
         int tempy = this.getY() + 1; //movem avall
         while (tempy < 8) {
             if (t.getPeca(this.getX(), tempy) == null) {
-                IntPair aux = new IntPair(this.getY(), tempy);
+                IntPair aux = new IntPair(this.getX(), tempy);
                 this.moviments.add(aux);
             }
             else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
@@ -65,7 +65,7 @@ public class Reina extends Peca {
         tempy = this.getY() - 1; //movem amunt
         while (tempy >= 0) {
             if (t.getPeca(this.getX(), tempy) == null) {
-                IntPair aux = new IntPair(this.getY(), tempy);
+                IntPair aux = new IntPair(this.getX(), tempy);
                 this.moviments.add(aux);
             }
             else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
