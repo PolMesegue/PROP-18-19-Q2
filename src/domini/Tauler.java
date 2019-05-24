@@ -300,15 +300,15 @@ public class Tauler {
                     mapa[a][b] = 'P';
 
                 } else if (i <= 9) {
-                    mapa[a][b] = 'A';
+                    mapa[a][b] = 'B';
                 } else if (i <= 11) {
-                    mapa[a][b] = 'C';
+                    mapa[a][b] = 'N';
                 } else if (i <= 13) {
-                    mapa[a][b] = 'T';
-                } else if (i == 14) {
-                    mapa[a][b] = 'D';
-                } else {
                     mapa[a][b] = 'R';
+                } else if (i == 14) {
+                    mapa[a][b] = 'Q';
+                } else {
+                    mapa[a][b] = 'K';
                 }
             }
 
@@ -322,15 +322,15 @@ public class Tauler {
                     mapa[a][b] = 'p';
 
                 } else if (i <= 9) {
-                    mapa[a][b] = 'a';
+                    mapa[a][b] = 'b';
                 } else if (i <= 11) {
-                    mapa[a][b] = 'c';
+                    mapa[a][b] = 'n';
                 } else if (i <= 13) {
-                    mapa[a][b] = 't';
-                } else if (i == 14) {
-                    mapa[a][b] = 'd';
-                } else {
                     mapa[a][b] = 'r';
+                } else if (i == 14) {
+                    mapa[a][b] = 'q';
+                } else {
+                    mapa[a][b] = 'k';
                 }
             }
         }
@@ -342,6 +342,7 @@ public class Tauler {
                 else {
                     if (buit != 0) {
                         FEN[iter] = (char) (buit +'0');
+                        buit=0;
                         ++iter;
 
                     }
@@ -349,11 +350,15 @@ public class Tauler {
                     ++iter;
                 }
             }
-            FEN[iter] = '/';
+            if(buit!=0) FEN[iter] = (char)(buit +'0');
+            ++iter;
+            if(i!=7) FEN[iter] = '/';
             ++iter;
         }
 
         String res = String.valueOf(FEN);
+        res = res + " ";
+
         return res;
     }
 }
