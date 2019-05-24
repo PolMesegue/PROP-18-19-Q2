@@ -99,7 +99,11 @@ public class Ctrl_Domini {
     }
 
     public ArrayList<Integer> getPecas() {
-        Tauler T = joc.getP().FENtoHuman();
+
+        String aux = joc.getT().HumantoFEN(joc.getT().getPeces_blanques(),joc.getT().getPeces_negres());
+        Problema problemaAuxiliar = new Problema(aux);
+        Tauler T = problemaAuxiliar.FENtoHuman();
+
         ArrayList<Integer> peces = new ArrayList<>();
         Peca[] pecesBlanc = T.getPeces_blanques();
         Peca[] pecesNegre = T.getPeces_negres();

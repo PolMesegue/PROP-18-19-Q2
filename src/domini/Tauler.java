@@ -300,9 +300,9 @@ public class Tauler {
                     mapa[a][b] = 'P';
 
                 } else if (i <= 9) {
-                    mapa[a][b] = 'C';
-                } else if (i <= 11) {
                     mapa[a][b] = 'A';
+                } else if (i <= 11) {
+                    mapa[a][b] = 'C';
                 } else if (i <= 13) {
                     mapa[a][b] = 'T';
                 } else if (i == 14) {
@@ -322,9 +322,9 @@ public class Tauler {
                     mapa[a][b] = 'p';
 
                 } else if (i <= 9) {
-                    mapa[a][b] = 'c';
-                } else if (i <= 11) {
                     mapa[a][b] = 'a';
+                } else if (i <= 11) {
+                    mapa[a][b] = 'c';
                 } else if (i <= 13) {
                     mapa[a][b] = 't';
                 } else if (i == 14) {
@@ -338,25 +338,23 @@ public class Tauler {
         for (int i = 0; i < 8; ++i) {
             int buit = 0;
             for (int j = 0; j < 8; ++j) {
-                if (mapa[i][j] == '-') ++buit;
+                if (mapa[j][i] == '-') ++buit;
                 else {
                     if (buit != 0) {
-                        FEN[iter] = (char) buit;
+                        FEN[iter] = (char) (buit +'0');
                         ++iter;
 
                     }
-                    FEN[iter] = mapa[i][j];
+                    FEN[iter] = mapa[j][i];
                     ++iter;
                 }
             }
             FEN[iter] = '/';
             ++iter;
         }
-        char[] tmp = new char[iter];
-        tmp = FEN;
 
-        String j = tmp.toString();
-        return j;
+        String res = String.valueOf(FEN);
+        return res;
     }
 }
 
