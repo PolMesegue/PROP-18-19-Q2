@@ -46,7 +46,7 @@ public class GUIUsuari {
         esborrarUsuariButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MyGUIUsuari.setVisible(false);
+
 
             }
         });

@@ -60,6 +60,13 @@ public class GUIProblema {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                frame consultarP = frame.getInstance();
+                ConsultarProblema consultarP2 = new ConsultarProblema();
+
+                consultarP.setContentPane(consultarP2.getMyConsultarProblema());
+                consultarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                consultarP.setVisible(true);
+
 
 
             }

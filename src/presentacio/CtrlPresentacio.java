@@ -70,6 +70,7 @@ public class CtrlPresentacio {
 
     public static void main(String[] args){
             frame main = frame.getInstance();
+
             main.setContentPane(new GUIMain().getMyGUIMain());
             main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             main.setBounds(300, 200, 600, 400);
