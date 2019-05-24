@@ -215,7 +215,8 @@ public class GUITaulell {
                                     first = true;
                                     nMov.setText(""+k);
                                     netejaTaulell();
-                                    //mourePecaMaquina(ctrlP.turnoMaquina());
+
+                                    mourePecaMaquina(ctrlP.turnMaquina());
                                     /*movimentMaquina.add(0, 0);
                                     movimentMaquina.add(1, k);
                                     movimentMaquina.add(2, 0);
