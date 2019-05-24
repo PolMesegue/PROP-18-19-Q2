@@ -101,19 +101,19 @@ public class GUITaulell {
         first = true;
         matriu = iniciaMatriu(matriu);
 
-        ImageIcon AlfilB = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-41.png"));
-        ImageIcon ReyB = new ImageIcon(this.getClass().getResource("/icons/icons8-king-41.png"));
-        ImageIcon CavallB = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-41.png"));
-        ImageIcon PeoB = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-41.png"));
-        ImageIcon ReinaB = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-41.png"));
-        ImageIcon TorreB = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-41.png"));
+        ImageIcon AlfilB = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-40.png"));
+        ImageIcon ReyB = new ImageIcon(this.getClass().getResource("/icons/icons8-king-40.png"));
+        ImageIcon CavallB = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-40.png"));
+        ImageIcon PeoB = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-40.png"));
+        ImageIcon ReinaB = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-40.png"));
+        ImageIcon TorreB = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-40.png"));
 
-        ImageIcon AlfilN = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-49.png"));
-        ImageIcon ReyN = new ImageIcon(this.getClass().getResource("/icons/icons8-king-49.png"));
-        ImageIcon CavallN = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-49.png"));
-        ImageIcon PeoN = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-49.png"));
-        ImageIcon ReinaN = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-49.png"));
-        ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-49.png"));
+        ImageIcon AlfilN = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-48.png"));
+        ImageIcon ReyN = new ImageIcon(this.getClass().getResource("/icons/icons8-king-48.png"));
+        ImageIcon CavallN = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-48.png"));
+        ImageIcon PeoN = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-48.png"));
+        ImageIcon ReinaN = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-48.png"));
+        ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-48.png"));
         // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
         // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
 
