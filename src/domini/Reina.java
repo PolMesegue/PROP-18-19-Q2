@@ -49,20 +49,6 @@ public class Reina extends Peca {
             tempx++;
         }
         int tempy = this.getY() + 1; //movem avall
-        while (tempy >= 0) {
-            if (t.getPeca(this.getX(), tempy) == null) {
-                IntPair aux = new IntPair(this.getY(), tempy);
-                this.moviments.add(aux);
-            }
-            else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
-            else {
-                IntPair aux = new IntPair(this.getX(), tempy);
-                this.moviments.add(aux);
-                break;
-            }
-            tempy--;
-        }
-        tempy = this.getY() - 1; //movem amunt
         while (tempy < 8) {
             if (t.getPeca(this.getX(), tempy) == null) {
                 IntPair aux = new IntPair(this.getY(), tempy);
@@ -75,6 +61,20 @@ public class Reina extends Peca {
                 break;
             }
             tempy++;
+        }
+        tempy = this.getY() - 1; //movem amunt
+        while (tempy >= 0) {
+            if (t.getPeca(this.getX(), tempy) == null) {
+                IntPair aux = new IntPair(this.getY(), tempy);
+                this.moviments.add(aux);
+            }
+            else if (t.getPeca(this.getX(), tempy).getColor() == this.getColor()) break;
+            else {
+                IntPair aux = new IntPair(this.getX(), tempy);
+                this.moviments.add(aux);
+                break;
+            }
+            tempy--;
         }
         tempx = this.getX() + 1; //moviment
         tempy = this.getY() - 1; //diagonal dreta-amunt
@@ -94,7 +94,7 @@ public class Reina extends Peca {
         }
 
         tempx = this.getX() - 1; //moviment
-        tempy = this.getY() + 1; //diagonal dreta-avall
+        tempy = this.getY() + 1; //diagonal esquerre-avall
         while (tempx >= 0 && tempy < 8) {
             if (t.getPeca(tempx,tempy) == null) {
                 IntPair aux = new IntPair(tempx,tempy);
@@ -128,7 +128,7 @@ public class Reina extends Peca {
         }
 
         tempx = this.getX() + 1; //moviment
-        tempy = this.getY() + 1; //diagonal esquerra-avall
+        tempy = this.getY() + 1; //diagonal dreta-avall
         while (tempx < 8 && tempy < 8) {
             if (t.getPeca(tempx,tempy) == null) {
                 IntPair aux = new IntPair(tempx,tempy);
