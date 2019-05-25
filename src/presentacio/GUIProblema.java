@@ -20,9 +20,9 @@ public class GUIProblema {
             public void actionPerformed(ActionEvent e) {
 
                 frame registrarP = frame.getInstance();
-                RegistrarProblema prob2 = new RegistrarProblema();
+                GUISeleccionarAfegirProblema prob2 = new GUISeleccionarAfegirProblema();
 
-                registrarP.setContentPane(prob2.getMyRProblema());
+                registrarP.setContentPane(prob2.getMySeleccionarAfegirProblema());
                 registrarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 registrarP.setVisible(true);
             }
