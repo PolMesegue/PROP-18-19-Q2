@@ -361,10 +361,11 @@ public class Tauler {
             }
 
         }
-
+        for(int i= iter;i<64;i++){
+            FEN[iter] = ' ';
+        }
         String res = String.valueOf(FEN);
-        res = res + " ";
-
+        //res = res + " ";
         return res;
     }
 }

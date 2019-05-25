@@ -60,8 +60,8 @@ public class CtrlPresentacio {
     }
 
     //cargar
-    public void CarregarProblemas() throws Exception{
-        ctrldom.CarregarProblemas();
+    public boolean CarregarProblemas() throws Exception{
+        return ctrldom.CarregarProblemas();
     }
     public void CarregarUsuaris() throws Exception{
         ctrldom.CarregarUsuaris();
