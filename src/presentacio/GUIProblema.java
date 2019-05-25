@@ -32,8 +32,13 @@ public class GUIProblema {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    CtrlP.CarregarProblemas();
-                    JOptionPane.showMessageDialog(null,"Problemas afegits");
+                    if (CtrlP.CarregarProblemas()) {
+                        JOptionPane.showMessageDialog(null, "Problemas afegits");
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "Almenys un FEN és incorrente \n Alguns problemes poden no haver-se afegit");
+
+                    }
                 }catch (Exception B) {
                     B.printStackTrace();
                 }

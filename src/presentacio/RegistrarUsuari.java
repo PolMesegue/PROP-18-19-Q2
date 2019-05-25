@@ -18,17 +18,21 @@ public class RegistrarUsuari {
             public void actionPerformed(ActionEvent e) {
 
                 String aux = textField1.getText();
-                ctrlP.afegirUsuari(textField1.getText());
+                if (ctrlP.afegirUsuari(textField1.getText())) {
 
-                //JOptionPane.showMessageDialog(null,"Afegit correctament");
+                    JOptionPane.showMessageDialog(null,"Afegit correctament");
 
-                frame user = frame.getInstance();
+                    frame user = frame.getInstance();
 
-                GUIUsuari user1 = new GUIUsuari();
+                    GUIUsuari user1 = new GUIUsuari();
 
-                user.setContentPane(user1.getMyGUIUsuari());
-                user.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                user.setVisible(true);
+                    user.setContentPane(user1.getMyGUIUsuari());
+                    user.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    user.setVisible(true);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null,"Error al Afergir \n Probablement aquest usuari ja existeix");
+                }
             }
         });
         tornarButton.addActionListener(new ActionListener() {
