@@ -112,7 +112,8 @@ public class GUITaulell {
 
 
     public GUITaulell() {
-        if (ctrlP.getDefensor() == "M1" || ctrlP.getDefensor() == "M2") jugaMaquina = true;
+
+        if (ctrlP.getDefensor().equals("M1") || ctrlP.getDefensor().equals("M2")) jugaMaquina = true;
         else jugaMaquina = false;
 
         tornBlanques = true;

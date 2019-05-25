@@ -19,12 +19,16 @@ public class RegistrarPartida {
 
         for(int i=0; i<CtrlP.consultar_usuaris().size();i++){
             String aux= CtrlP.consultar_usuaris().get(i);
-            comboBox1.addItem(aux);
+            if (!aux.equals("M1") && !aux.equals("M2") )comboBox1.addItem(aux);
         }
+
+
         for(int i=0; i<CtrlP.consultar_usuaris().size();i++){
             String aux= CtrlP.consultar_usuaris().get(i);
             comboBox2.addItem(aux);
         }
+
+
         for(int i=0; i<CtrlP.consultar_Problemas().size();i++){
             String aux= CtrlP.consultar_Problemas().get(i);
             comboBox3.addItem(aux);
@@ -34,18 +38,25 @@ public class RegistrarPartida {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tauler.setVisible(false);
-                CtrlP.crearPartida((String)comboBox1.getSelectedItem(),(String)comboBox2.getSelectedItem(),(String)comboBox3.getSelectedItem());
 
-                JOptionPane.showMessageDialog(null,"Afegit correctament");
+                if (comboBox1.getSelectedItem() != comboBox2.getSelectedItem()) {
 
-                frame jugar = frame.getInstance();
+                    CtrlP.crearPartida((String) comboBox1.getSelectedItem(), (String) comboBox2.getSelectedItem(), (String) comboBox3.getSelectedItem());
 
-                GUIJugar jugar1 = new GUIJugar();
+                    JOptionPane.showMessageDialog(null, "Afegit correctament");
 
-                jugar.setContentPane(jugar1.getMyJugar());
-                jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame jugar = frame.getInstance();
 
-                jugar.setVisible(true);
+                    GUIJugar jugar1 = new GUIJugar();
+
+                    jugar.setContentPane(jugar1.getMyJugar());
+                    jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                    jugar.setVisible(true);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "No pots jugar contra tu mateix!");
+                }
 
 
             }
