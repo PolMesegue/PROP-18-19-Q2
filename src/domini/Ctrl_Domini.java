@@ -21,15 +21,17 @@ public class Ctrl_Domini {
         bdu.AddMaquina(m1);
     }
 
-    public void AddHuma(String nom){
+    public boolean AddHuma(String nom){
         Huma h= new Huma(nom);
         if(bdu.existsHuma(nom)){
             System.out.println("Ya existe usuario con el nombre introducido. \n");
+            return false;
         }
         else{
             System.out.println("afegit \n");
             bdu.AddHuma(h);
         }
+        return true;
     }
     public boolean AddProblem(String fen,int mat){
         Problema p= new Problema(fen);

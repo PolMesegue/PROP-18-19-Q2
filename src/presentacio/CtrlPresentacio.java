@@ -20,8 +20,8 @@ public class CtrlPresentacio {
             return pr;
     }
 
-    public void afegirUsuari(String nom){
-        ctrldom.AddHuma(nom);
+    public boolean afegirUsuari(String nom){
+        return ctrldom.AddHuma(nom);
 
     }
     public ArrayList<String> consultar_usuaris(){
