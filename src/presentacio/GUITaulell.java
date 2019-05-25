@@ -90,32 +90,35 @@ public class GUITaulell {
     private JButton b;
     private Color colour;
     private int xO, yO, xD, yD;
-    private int k, l;
+    private int k;
+    private boolean tornBlanques;
     private ArrayList<Integer> movimentMaquina;
     private CtrlPresentacio ctrlP = CtrlPresentacio.getInstance();
     private JButton[][] matriu = new JButton[8][8];
+    private ImageIcon AlfilB = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-40.png"));
+    private ImageIcon ReyB = new ImageIcon(this.getClass().getResource("/icons/icons8-king-40.png"));
+    private ImageIcon CavallB = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-40.png"));
+    private  ImageIcon PeoB = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-40.png"));
+    private  ImageIcon ReinaB = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-40.png"));
+    private  ImageIcon TorreB = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-40.png"));
+
+    private  ImageIcon AlfilN = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-48.png"));
+    private  ImageIcon ReyN = new ImageIcon(this.getClass().getResource("/icons/icons8-king-48.png"));
+    private  ImageIcon CavallN = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-48.png"));
+    private  ImageIcon PeoN = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-48.png"));
+    private  ImageIcon ReinaN = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-48.png"));
+    private  ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-48.png"));
+    // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
+    // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
 
 
     public GUITaulell() {
-
+        tornBlanques = true;
+        k = 0;
         first = true;
         matriu = iniciaMatriu(matriu);
 
-        ImageIcon AlfilB = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-40.png"));
-        ImageIcon ReyB = new ImageIcon(this.getClass().getResource("/icons/icons8-king-40.png"));
-        ImageIcon CavallB = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-40.png"));
-        ImageIcon PeoB = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-40.png"));
-        ImageIcon ReinaB = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-40.png"));
-        ImageIcon TorreB = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-40.png"));
 
-        ImageIcon AlfilN = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-48.png"));
-        ImageIcon ReyN = new ImageIcon(this.getClass().getResource("/icons/icons8-king-48.png"));
-        ImageIcon CavallN = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-48.png"));
-        ImageIcon PeoN = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-48.png"));
-        ImageIcon ReinaN = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-48.png"));
-        ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-48.png"));
-        // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
-        // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
 
         ArrayList<Integer> pecesTauler = ctrlP.get_pecas();
         for(int i=0;i<pecesTauler.size();i+=3){
@@ -163,7 +166,7 @@ public class GUITaulell {
         nMov.setText("0");
 
 
-        k = 1; l = 2;
+
         movimentMaquina = new ArrayList<>(4);
 
         for(int i = 0; i < 8; ++i) {
@@ -174,15 +177,18 @@ public class GUITaulell {
                     public void actionPerformed(ActionEvent e) {
                         b = (JButton)e.getSource();
                         if (first) {
-                            if (b.getIcon() != null) {
-                                for (int q = 0; q < 8; ++q) {
-                                    for (int w = 0; w < 8; ++w) {
-                                        if (matriu[q][w] == b) {
-                                            xO = q;
-                                            yO = w;
-                                        }
+                            for (int q = 0; q < 8; ++q) {
+                                for (int w = 0; w < 8; ++w) {
+                                    if (matriu[q][w] == b) {
+                                        xO = q;
+                                        yO = w;
                                     }
                                 }
+                            }
+
+                            if (b.getIcon() != null && canMove(tornBlanques, xO,yO)) {
+
+
                                 //en marca els colors del moviments posibles de la peça
                                 ArrayList<Integer> moviments= ctrlP.PosiblesMoviments(xO,yO);
                                 for(int i=0;i<moviments.size();i+=2){
@@ -208,22 +214,54 @@ public class GUITaulell {
                                 }
                                 if (ctrlP.mourePeca(xO,yO, xD, yD)){
 
+                                    tornBlanques = !tornBlanques;
                                     b.setIcon(ico);
 
                                     temp.setIcon(null);
 
                                     first = true;
+                                    ++k;
                                     nMov.setText(""+k);
                                     netejaTaulell();
 
-                                    mourePecaMaquina(ctrlP.turnMaquina());
-                                    /*movimentMaquina.add(0, 0);
-                                    movimentMaquina.add(1, k);
-                                    movimentMaquina.add(2, 0);
-                                    movimentMaquina.add(3, l);*/
-                                    ++l;
-                                    ++k;
-                                    //mourePecaMaquina(movimentMaquina);
+                                    if (ReyNviu(ReyN) && Integer.valueOf(nMov.getText()) >= Integer.valueOf(nMat.getText())) {
+                                        JOptionPane.showMessageDialog(null,"T'has quedat sense Moviments \n Guanyen Negres");
+
+                                        frame jugar = frame.getInstance();
+
+                                        GUIJugar jugar1 = new GUIJugar();
+
+                                        jugar.setContentPane(jugar1.getMyJugar());
+                                        jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+                                        jugar.setVisible(true);
+                                    }
+
+
+                                    else if(ReyNviu(ReyN) && Integer.valueOf(nMov.getText()) < Integer.valueOf(nMat.getText())) {
+
+                                        mourePecaMaquina(ctrlP.turnMaquina());
+
+                                        if (!ReyBviu(ReyB)) JOptionPane.showMessageDialog(null,"Guanyen Negres");
+
+
+                                    }
+                                    else {
+
+                                        JOptionPane.showMessageDialog(null,"Guanyen Blanques");
+
+                                        frame jugar = frame.getInstance();
+
+                                        GUIJugar jugar1 = new GUIJugar();
+
+                                        jugar.setContentPane(jugar1.getMyJugar());
+                                        jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+                                        jugar.setVisible(true);
+
+                                    }
                                 }
                             }
                             else {
@@ -284,6 +322,43 @@ public class GUITaulell {
                 else matriu[i][j].setBackground(new Color(139, 69, 19));
             }
         }
+    }
+
+    private boolean ReyNviu(ImageIcon ReyN) {
+
+        for(int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+
+                    if (matriu[i][j].getIcon() == ReyN) return true;
+            }
+        }
+        return false;
+
+    }
+
+    private boolean ReyBviu(ImageIcon ReyB) {
+
+        for(int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+
+                if (matriu[i][j].getIcon() == ReyB) return true;
+            }
+        }
+        return false;
+
+    }
+
+
+    private boolean canMove(boolean tornBlanques, int x, int y) {
+        if (tornBlanques) {
+            if (matriu[x][y].getIcon() == ReyB || matriu[x][y].getIcon() == ReinaB || matriu[x][y].getIcon() == AlfilB || matriu[x][y].getIcon() == CavallB || matriu[x][y].getIcon() == TorreB || matriu[x][y].getIcon() == PeoB) return true;
+        }
+        else {
+            if (matriu[x][y].getIcon() == ReyN || matriu[x][y].getIcon() == ReinaN || matriu[x][y].getIcon() == AlfilN || matriu[x][y].getIcon() == CavallN || matriu[x][y].getIcon() == TorreN || matriu[x][y].getIcon() == PeoN) return true;
+
+        }
+
+        return false;
     }
 
 
@@ -366,9 +441,6 @@ public class GUITaulell {
     }
 
 
-
-
-
     public JPanel getMyTaulell() {
         return MyTaulell;
     }
@@ -378,135 +450,3 @@ public class GUITaulell {
 }
 
 
-
-
-
-
-
-
-
-/*
-
-
-
-        Button00.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                b = (JButton)e.getSource();
-                if (first) {
-                    if (b.getIcon() != null) {
-                        x = 0;
-                        y = 0;
-                        colour = b.getBackground();
-                        b.setBackground(Color.CYAN);
-
-                        ico = b.getIcon();
-                        first = false;
-                        temp = (JButton)e.getSource();
-                    }
-                }
-
-                else {
-                    if (temp != b) {
-
-                        b.setIcon(ico);
-
-                        temp.setIcon(null);
-                        temp.setBackground(colour);
-                        first = true;
-                    }
-                    else {
-
-                      //  ctrlP.moure(x,y,0,0);
-
-                        temp.setBackground(colour);
-                        first = true;
-
-
-
-
-
-
-                    }
-
-
-                }
-            }
-        });
-
-        Button02.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                b = (JButton)e.getSource();
-                if (first) {
-                    if (b.getIcon() != null) {
-
-                        colour = b.getBackground();
-                        b.setBackground(Color.CYAN);
-
-                        ico = b.getIcon();
-                        first = false;
-                        temp = (JButton)e.getSource();
-                    }
-                }
-
-                else {
-                    if (temp != b) {
-
-                        b.setIcon(ico);
-
-                        temp.setIcon(null);
-                        temp.setBackground(colour);
-                        first = true;
-                    }
-                    else {
-
-                        temp.setBackground(colour);
-                        first = true;
-
-                    }
-
-
-                }
-            }
-        });
-        Button01.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                b = (JButton)e.getSource();
-                if (first) {
-                    if (b.getIcon() != null) {
-
-                        colour = b.getBackground();
-                        b.setBackground(Color.CYAN);
-
-                        ico = b.getIcon();
-                        first = false;
-                        temp = (JButton)e.getSource();
-                    }
-                }
-
-                else {
-                    if (temp != b) {
-
-                        b.setIcon(ico);
-
-                        temp.setIcon(null);
-                        temp.setBackground(colour);
-                        first = true;
-                    }
-                    else {
-
-                        temp.setBackground(colour);
-                        first = true;
-
-
-
-                    }
-
-
-                }
-            }
-        });
-
-         */
