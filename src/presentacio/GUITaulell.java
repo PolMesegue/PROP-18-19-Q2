@@ -10,8 +10,7 @@ import java.util.ArrayList;
 ImageIcon kek = new ImageIcon(this.getClass().getResource("/icons8-bishop-40(1).png"));
                 Button02.setIcon(kek);
 
-  if (ctrlP.turnoMaquina(x,y,z,c)) {
-  if (ctrP.mourePeca(x,y,0,2)) {
+
  */
 
 
@@ -88,11 +87,9 @@ public class GUITaulell {
     private Icon ico;
     private JButton temp;
     private JButton b;
-    private Color colour;
     private int xO, yO, xD, yD;
     private int k = 0;
     private boolean tornBlanques;
-    private ArrayList<Integer> movimentMaquina;
     private CtrlPresentacio ctrlP = CtrlPresentacio.getInstance();
     private JButton[][] matriu = new JButton[8][8];
     private ImageIcon AlfilB = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-40.png"));
@@ -123,11 +120,7 @@ public class GUITaulell {
         iniciaMatriu();
 
         nMat.setText(String.valueOf(ctrlP.getN()));
-        nMov.setText("0");
-
-
-
-        movimentMaquina = new ArrayList<>(4);
+        nMov.setText(String.valueOf(k));
 
         for(int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
