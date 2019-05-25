@@ -11,7 +11,9 @@ public class RegistrarPartida {
     private JComboBox comboBox1;
     private JComboBox comboBox2;
     private JComboBox comboBox3;
+    private JButton veureTaulellButton;
     private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
+    private JFrame tauler;
 
     public RegistrarPartida() {
 
@@ -45,11 +47,14 @@ public class RegistrarPartida {
 
                 jugar.setVisible(true);
 
+
             }
         });
         tornarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                tauler.setVisible(false);
+
                 frame jugar = frame.getInstance();
 
                 GUIJugar jugar1 = new GUIJugar();
@@ -58,6 +63,18 @@ public class RegistrarPartida {
                 jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
                 jugar.setVisible(true);
+            }
+        });
+        veureTaulellButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                tauler = new JFrame();
+                GUIVeureTauler tauler2 = new GUIVeureTauler((String) comboBox3.getSelectedItem());
+                tauler.setBounds(250,100,525,500);
+                tauler.setContentPane(tauler2.getMyTaulellPreview());
+                tauler.setVisible(true);
+
             }
         });
     }
