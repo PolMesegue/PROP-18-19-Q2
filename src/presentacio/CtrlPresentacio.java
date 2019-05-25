@@ -73,6 +73,9 @@ public class CtrlPresentacio {
     public String getDefensor(){
         return ctrldom.getDefensor();
     }
+    public String getAtacant(){
+        return ctrldom.getAtacant();
+    }
     public int getN(){
         return ctrldom.getN();
 

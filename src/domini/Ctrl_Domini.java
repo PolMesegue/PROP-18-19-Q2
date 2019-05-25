@@ -241,6 +241,9 @@ public class Ctrl_Domini {
     public String getDefensor(){
         return joc.getD().getNom();
     }
+    public String getAtacant(){
+        return joc.getA().getNom();
+    }
     public int getN(){
         return joc.getN();
     }
