@@ -33,7 +33,7 @@ public class RegistrarPartida {
         acceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                tauler.setVisible(false);
                 CtrlP.crearPartida((String)comboBox1.getSelectedItem(),(String)comboBox2.getSelectedItem(),(String)comboBox3.getSelectedItem());
 
                 JOptionPane.showMessageDialog(null,"Afegit correctament");
@@ -53,7 +53,7 @@ public class RegistrarPartida {
         tornarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tauler.setVisible(false);
+
 
                 frame jugar = frame.getInstance();
 

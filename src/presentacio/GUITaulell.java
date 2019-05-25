@@ -212,6 +212,9 @@ public class GUITaulell {
 
                                         JOptionPane.showMessageDialog(null,"Guanyen Blanques");
 
+                                        ctrlP.addtoranking(ctrlP.getAtacant());
+                                        ctrlP.deleteParidaActual();
+
                                         frame jugar = frame.getInstance();
 
                                         GUIJugar jugar1 = new GUIJugar();
