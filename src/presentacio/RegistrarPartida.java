@@ -13,7 +13,7 @@ public class RegistrarPartida {
     private JComboBox comboBox3;
     private JButton veureTaulellButton;
     private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
-    private JFrame tauler;
+    private JFrame tauler = new JFrame();;
 
     public RegistrarPartida() {
 
@@ -69,7 +69,7 @@ public class RegistrarPartida {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                tauler = new JFrame();
+
                 GUIVeureTauler tauler2 = new GUIVeureTauler((String) comboBox3.getSelectedItem());
                 tauler.setBounds(250,100,525,500);
                 tauler.setContentPane(tauler2.getMyTaulellPreview());
