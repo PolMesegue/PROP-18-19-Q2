@@ -36,7 +36,7 @@ public class Ctrl_Domini {
         p.setN(mat);
 
         Maquina virtual = new Maquina("VIRTUAL");
-        if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
+        //if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
             if(bdp.existsProblema(fen)){
                 System.out.println("Ya existe el problema con este FEN \n");
             }
@@ -45,10 +45,10 @@ public class Ctrl_Domini {
                 bdp.AddProblem(p);
             }
 
-        }
-        else {
+        //}
+        /*else {
             System.out.println("No es pot assolir el mat indicat \n");
-        }
+        }*/
 
 
     }
@@ -231,11 +231,11 @@ public class Ctrl_Domini {
         Maquina M1 = new Maquina("M1");
         for(int i=0;i< FENS.size();i+=2){
             Problema aux = new Problema(FENS.get(i));
-            if(M1.te_solucio(aux.FENtoHuman().getPeces_blanques(),aux.FENtoHuman().getPeces_negres(),Integer.valueOf(FENS.get(i+1)))){
+            //if(M1.te_solucio(aux.FENtoHuman().getPeces_blanques(),aux.FENtoHuman().getPeces_negres(),Integer.valueOf(FENS.get(i+1)))){
                 AddProblem(FENS.get(i),Integer.valueOf(FENS.get(i+1)));
             }
-        }
     }
+
     public void CarregarUsuaris() throws Exception{
         Vector<String> Users =CtrlPer.LlegirUsuari();
         for(int i=0;i< Users.size();i++) {
