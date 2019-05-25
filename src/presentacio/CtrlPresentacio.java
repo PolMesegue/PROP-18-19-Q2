@@ -76,6 +76,10 @@ public class CtrlPresentacio {
     }
     public int getN(){
         return ctrldom.getN();
+
+    }
+    public ArrayList<Integer> mostrarTaulell(String FEN){
+        return ctrldom.mostrarTaulell(FEN);
     }
 
     public static void main(String[] args){
