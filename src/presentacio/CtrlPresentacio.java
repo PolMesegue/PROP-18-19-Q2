@@ -13,7 +13,6 @@ public class CtrlPresentacio {
 
     private  static Ctrl_Domini ctrldom = new Ctrl_Domini();
 
-
     public CtrlPresentacio(){}
 
     public static CtrlPresentacio getInstance(){
@@ -81,6 +80,10 @@ public class CtrlPresentacio {
     public ArrayList<Integer> mostrarTaulell(String FEN){
         return ctrldom.mostrarTaulell(FEN);
     }
+    
+
+
+
 
     public static void main(String[] args){
             frame main = frame.getInstance();
