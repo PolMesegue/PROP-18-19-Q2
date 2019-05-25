@@ -14,15 +14,7 @@ public class RegistrarPartida {
     private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
 
     public RegistrarPartida() {
-
-        /*
-        DefaultListModel dlm1 = new DefaultListModel();
-
-        for (int i = o; i < ctrlP.numUsers; ++i) {
-            dlm1.addElement(ctrlP.getUser(i));
-        }
-        list1.setModel(dlm1);
-        */
+        
         for(int i=0; i<CtrlP.consultar_usuaris().size();i++){
             String aux= CtrlP.consultar_usuaris().get(i);
             comboBox1.addItem(aux);

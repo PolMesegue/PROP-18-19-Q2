@@ -71,9 +71,9 @@ public class CtrlPresentacio {
         return ctrldom.moureMaquina();
 
     }
-
-
-
+    public String getDefensor(){
+        return ctrldom.getDefensor();
+    }
 
     public static void main(String[] args){
             frame main = frame.getInstance();

@@ -151,11 +151,11 @@ public class Ctrl_Domini {
         Jugada j = joc.moureMaquina(joc.getP().getN());
         ArrayList<Integer> aux = new ArrayList<>();
         if (j != null) {
-            joc.mourePeca(j.getPeca().getX(), j.getPeca().getY(), j.getPos_fin_x(), j.getPos_fin_y());
             aux.add(j.getPeca().getX());
             aux.add(j.getPeca().getY());
             aux.add(j.getPos_fin_x());
             aux.add(j.getPos_fin_y());
+            joc.mourePeca(j.getPeca().getX(), j.getPeca().getY(), j.getPos_fin_x(), j.getPos_fin_y());
         }
         else {
             System.out.println("La Maquina no mou");
@@ -193,6 +193,10 @@ public class Ctrl_Domini {
         for(int i=0;i< Users.size();i++) {
             AddHuma(Users.get(i));
         }
+    }
+
+    public String getDefensor(){
+        return joc.getD().getNom();
     }
 
 
