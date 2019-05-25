@@ -199,6 +199,10 @@ public class Ctrl_Domini {
         return joc.getD().getNom();
     }
 
+    public int getN(){
+        return joc.getN();
+    }
+
 
 
 

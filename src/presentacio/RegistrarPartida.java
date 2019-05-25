@@ -14,7 +14,7 @@ public class RegistrarPartida {
     private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
 
     public RegistrarPartida() {
-        
+
         for(int i=0; i<CtrlP.consultar_usuaris().size();i++){
             String aux= CtrlP.consultar_usuaris().get(i);
             comboBox1.addItem(aux);

@@ -23,6 +23,10 @@ public class Partida {
         return d.te_solucio(t.getPeces_blanques(),t.getPeces_negres(),2);
     }
 
+    public int getN(){
+        return p.getN();
+    }
+
 
     public boolean mourePeca(int x, int y, int xnew, int ynew){
         //char whoStarts = p.whoStarts();
