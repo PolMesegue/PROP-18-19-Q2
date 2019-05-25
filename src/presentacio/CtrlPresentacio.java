@@ -28,8 +28,8 @@ public class CtrlPresentacio {
         ArrayList<String> llistaUsuaris = ctrldom.getUsuaris();
         return llistaUsuaris;
     }
-    public void afegirProblema(String problema, int mat ){
-        ctrldom.AddProblem(problema,mat);
+    public boolean afegirProblema(String problema, int mat ){
+        return ctrldom.AddProblem(problema,mat);
     }
     public ArrayList<String> consultar_Problemas(){
         ArrayList<String> llistaProblemas = ctrldom.getProblemas();
