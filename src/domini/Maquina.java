@@ -33,6 +33,7 @@ public class Maquina extends Usuari {
         if (i > n) return false;
         //MIRAR SI REI ESTA EN MAT
         if (t.white_king_in_mate(t)) return true;
+        //jugada.getPeca().getX() == t.getPeces_blanques()[15].getX() && jugada.getPeca().getY() == t.getPeces_blanques()[15].getY()
         else {
             boolean b = false;
 
@@ -48,25 +49,24 @@ public class Maquina extends Usuari {
                                 int oldX = t.getPeces_negres()[j].getX();
                                 int oldY = t.getPeces_negres()[j].getY();
 
-                                // Regenerate possible movements (?)
-                                //t.actualitzar();
-
-                                // Move the piece
-                                jugada.setPeca(t.getPeces_negres()[j]);
-
-                                // Check that the play still exists
-                                //if (t.getPeces_negres()[j].moviments.size() > z) {
-
                                 // Get the movement from the possible movement list
                                 int newX = t.getPeces_negres()[j].moviments.get(z).getX();
                                 int newY = t.getPeces_negres()[j].moviments.get(z).getY();
 
                                 // Generate the play and move the pieces
+                                jugada.setPeca(t.getPeces_negres()[j]);
                                 jugada.setPos_fin_x(newX);
                                 jugada.setPos_fin_y(newY);
 
+                                //actualitzar visited
+                                actual_pos.setX(newX);
+                                actual_pos.setY(newY);
+                                visited.add(actual_pos);
+
+                                //mou la peça
                                 t.getPeces_negres()[j].setX(newX);
                                 t.getPeces_negres()[j].setY(newY);
+                                t.actualitzar();
 
                                 // Recursive call
                                 b = backtracking(jugada, t, i + 1, n, visited);
@@ -74,9 +74,7 @@ public class Maquina extends Usuari {
                                 // Get back to the old state
                                 t.getPeces_negres()[j].setX(oldX);
                                 t.getPeces_negres()[j].setY(oldY);
-
-                                //t.actualitzar();
-
+                                t.actualitzar();
                                 if (b) break;
                             }
                         }
@@ -91,7 +89,7 @@ public class Maquina extends Usuari {
 
     public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
         Jugada jugada = new Jugada();
-        Tauler t_temp = new Tauler(peces_negres,peces_blanques); //els aprametres estan girats A PROPOSIT!
+        Tauler t_temp = new Tauler(peces_negres,peces_blanques); //els parametres estan girats A PROPOSIT!
         t_temp.actualitzar();
         ArrayList<IntPair> visited = new ArrayList<>();
         return backtracking(jugada,t_temp,0,n,visited);
