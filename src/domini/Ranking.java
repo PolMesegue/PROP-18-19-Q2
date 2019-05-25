@@ -11,8 +11,8 @@ public class Ranking {
 
 
     public void addUsuariGuanyador(String nom){
-        if(map.get(nom)==null){
-
+        if(!map.containsKey(nom)){
+            
         }
 
 
