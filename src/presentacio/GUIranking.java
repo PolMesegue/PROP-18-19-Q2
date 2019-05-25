@@ -10,11 +10,20 @@ public class GUIranking {
     private JButton tornarEnrerraButton;
     private JPanel MyRankingPanel;
 
+    private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
+
     public JPanel getMyRankingPanel() {
         return MyRankingPanel;
     }
 
     public GUIranking() {
+
+        for(int i=0; i<CtrlP.getUsersRanking().size();i++){
+            JugadorsArea.append(CtrlP.getUsersRanking().get(i));
+        }
+        for(int i=0; i<CtrlP.getUsersRankingPoints().size();i++) {
+            PuntsArea.append(CtrlP.getUsersRankingPoints().get(i).toString());
+        }
         tornarEnrerraButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
