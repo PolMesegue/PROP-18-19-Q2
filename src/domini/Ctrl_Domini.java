@@ -256,6 +256,9 @@ public class Ctrl_Domini {
     public void addtoranking(String nom){
         rank.addUsuariGuanyador(nom);
     }
+    public void deletePartidaActual(){
+        fa.borrarPartida(joc.getFecha());
+    }
 
 
 

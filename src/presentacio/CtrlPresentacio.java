@@ -80,6 +80,9 @@ public class CtrlPresentacio {
         return ctrldom.getN();
 
     }
+    public void deleteParidaActual(){
+        ctrldom.deletePartidaActual();
+    }
     public ArrayList<Integer> mostrarTaulell(String FEN){
         return ctrldom.mostrarTaulell(FEN);
     }

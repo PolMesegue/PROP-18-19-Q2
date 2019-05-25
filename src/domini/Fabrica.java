@@ -35,4 +35,11 @@ public class Fabrica {
         return CollectionPartidas;
     }
 
+    public void borrarPartida(Timestamp fecha){
+        for(Partida elem : CollectionPartidas){
+            if(elem.getFecha().equals(fecha)){
+                CollectionPartidas.remove(elem);
+            }
+        }
+    }
 }
