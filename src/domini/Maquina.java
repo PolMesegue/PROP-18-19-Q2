@@ -48,7 +48,6 @@ public class Maquina extends Usuari {
                                 int oldX = t.getPeces_negres()[j].getX();
                                 int oldY = t.getPeces_negres()[j].getY();
 
-
                                 // Regenerate possible movements (?)
                                 //t.actualitzar();
 

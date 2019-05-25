@@ -228,8 +228,12 @@ public class Ctrl_Domini {
     }
     public void CarregarProblemas() throws Exception{
         Vector<String> FENS = CtrlPer.LlegirProblema();
+        Maquina M1 = new Maquina("M1");
         for(int i=0;i< FENS.size();i+=2){
-            AddProblem(FENS.get(i),Integer.valueOf(FENS.get(i+1)));
+            Problema aux = new Problema(FENS.get(i));
+            if(M1.te_solucio(aux.FENtoHuman().getPeces_blanques(),aux.FENtoHuman().getPeces_negres(),Integer.valueOf(FENS.get(i+1)))){
+                AddProblem(FENS.get(i),Integer.valueOf(FENS.get(i+1)));
+            }
         }
     }
     public void CarregarUsuaris() throws Exception{
