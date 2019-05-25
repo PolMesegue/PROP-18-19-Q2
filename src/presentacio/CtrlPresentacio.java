@@ -80,10 +80,16 @@ public class CtrlPresentacio {
     public ArrayList<Integer> mostrarTaulell(String FEN){
         return ctrldom.mostrarTaulell(FEN);
     }
-    
 
-
-
+    public ArrayList<String> getUsersRanking(){
+        return ctrldom.getUsersRanking();
+    }
+    public ArrayList<Integer> getUsersRankingPoints(){
+        return ctrldom.getUsersRankingPoints();
+    }
+    public void addtoranking(String nom){
+        ctrldom.addtoranking(nom);
+    }
 
     public static void main(String[] args){
             frame main = frame.getInstance();

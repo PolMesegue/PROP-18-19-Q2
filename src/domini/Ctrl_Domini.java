@@ -2,12 +2,15 @@ package domini;
 
 import java.sql.Timestamp;
 import java.util.*;
+import java.util.function.IntToDoubleFunction;
+
 import persistencia.ControladorPersistencia;
 
 public class Ctrl_Domini {
     private Fabrica fa= new Fabrica();
     private BD_Problemas bdp= new BD_Problemas();
     private BD_Usuaris bdu= new BD_Usuaris();
+    private Ranking rank = new Ranking();
 
     private Partida joc;
 
@@ -143,7 +146,6 @@ public class Ctrl_Domini {
         }
         return peces;
     }
-
     public ArrayList<Integer> getPecas() {
 
         String aux = joc.getT().HumantoFEN(joc.getT().getPeces_blanques(),joc.getT().getPeces_negres());
@@ -209,8 +211,6 @@ public class Ctrl_Domini {
         return aux;
 
     }
-
-
     public boolean mourePeca(int xO,int yO, int xD, int yD){
         return joc.mourePeca(xO, yO, xD, yD);
     }
@@ -226,8 +226,6 @@ public class Ctrl_Domini {
         }
         return moviments;
     }
-
-
     public void CarregarProblemas() throws Exception{
         Vector<String> FENS = CtrlPer.LlegirProblema();
         for(int i=0;i< FENS.size();i+=2){
@@ -240,15 +238,21 @@ public class Ctrl_Domini {
             AddHuma(Users.get(i));
         }
     }
-
     public String getDefensor(){
         return joc.getD().getNom();
     }
-
     public int getN(){
         return joc.getN();
     }
-
+    public ArrayList<String> getUsersRanking(){
+        return rank.getUsuarisRanking();
+    }
+    public ArrayList<Integer> getUsersRankingPoints(){
+        return rank.getGuanyadasRanking();
+    }
+    public void addtoranking(String nom){
+        rank.addUsuariGuanyador(nom);
+    }
 
 
 
