@@ -213,8 +213,7 @@ public class GUITaulell {
 
                                         JOptionPane.showMessageDialog(null,"Guanyen Blanques");
 
-                                        ctrlP.addtoranking(ctrlP.getAtacant());
-                                        ctrlP.deleteParidaActual();
+
 
                                         frame jugar = frame.getInstance();
 
@@ -223,8 +222,10 @@ public class GUITaulell {
                                         jugar.setContentPane(jugar1.getMyJugar());
                                         jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
                                         jugar.setVisible(true);
+
+                                        ctrlP.addtoranking(ctrlP.getAtacant());
+                                        ctrlP.deleteParidaActual();
 
                                     }
                                 }

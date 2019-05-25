@@ -39,6 +39,7 @@ public class Fabrica {
         for(Partida elem : CollectionPartidas){
             if(elem.getFecha().equals(fecha)){
                 CollectionPartidas.remove(elem);
+                break;
             }
         }
     }
