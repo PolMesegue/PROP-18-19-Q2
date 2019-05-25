@@ -67,6 +67,14 @@ public class GUIMain {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                frame jugar = frame.getInstance();
+
+                GUIranking ranking1 = new GUIranking();
+
+                jugar.setContentPane(ranking1.getMyRankingPanel());
+                jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                jugar.setVisible(true);
             }
         });
 

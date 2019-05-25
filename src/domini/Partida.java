@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Partida {
 
-    private static Timestamp fecha;
+    private Timestamp fecha;
     private Problema p;
     private Tauler t;
     private Usuari a;
@@ -12,7 +12,7 @@ public class Partida {
     private Rellotge timer;
 
     Partida(Timestamp f,Problema p, Tauler t, Usuari a, Usuari d){
-        fecha=f;
+        this.fecha=f;
         this.p=p;
         this.t=t;
         this.a=a;
