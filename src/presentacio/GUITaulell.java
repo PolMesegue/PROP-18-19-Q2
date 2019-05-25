@@ -90,7 +90,7 @@ public class GUITaulell {
     private JButton b;
     private Color colour;
     private int xO, yO, xD, yD;
-    private int k;
+    private int k = 0;
     private boolean tornBlanques;
     private ArrayList<Integer> movimentMaquina;
     private CtrlPresentacio ctrlP = CtrlPresentacio.getInstance();
@@ -111,18 +111,18 @@ public class GUITaulell {
     // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
     // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
 
+    private boolean jugaMaquina;
+
 
     public GUITaulell() {
+        if (ctrlP.getDefensor() == "M1" || ctrlP.getDefensor() == "M2") jugaMaquina = true;
+        else jugaMaquina = false;
+
         tornBlanques = true;
-        k = 0;
         first = true;
         iniciaMatriu();
 
-        
-
-
-
-        nMat.setText("3");
+        nMat.setText(String.valueOf(ctrlP.getN()));
         nMov.setText("0");
 
 
@@ -174,14 +174,19 @@ public class GUITaulell {
                                 }
                                 if (ctrlP.mourePeca(xO,yO, xD, yD)){
 
-                                    tornBlanques = !tornBlanques;
+
                                     b.setIcon(ico);
 
                                     temp.setIcon(null);
 
                                     first = true;
-                                    ++k;
-                                    nMov.setText(""+k);
+                                    if (tornBlanques)  {
+                                        ++k;
+                                        nMov.setText(""+k);
+                                    }
+
+                                    tornBlanques = !tornBlanques;
+
                                     netejaTaulell();
 
                                     if (ReyNviu(ReyN) && Integer.valueOf(nMov.getText()) >= Integer.valueOf(nMat.getText())) {
@@ -201,7 +206,10 @@ public class GUITaulell {
 
                                     else if(ReyNviu(ReyN) && Integer.valueOf(nMov.getText()) < Integer.valueOf(nMat.getText())) {
 
-                                        mourePecaMaquina(ctrlP.turnMaquina());
+                                        if (jugaMaquina) {
+                                            mourePecaMaquina(ctrlP.turnMaquina());
+                                            tornBlanques = !tornBlanques;
+                                        }
 
                                         if (!ReyBviu(ReyB)) JOptionPane.showMessageDialog(null,"Guanyen Negres");
 
