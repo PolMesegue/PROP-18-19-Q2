@@ -69,9 +69,8 @@ public class Maquina extends Usuari {
                             jugada.setPos_fin_y(newY);
 
                             //actualitzar visited
-                            actual_pos.setX(oldX);
-                            actual_pos.setY(oldY);
-                            visited.add(actual_pos);
+                            IntPair aux_pos = new IntPair(oldX,oldY);
+                            visited.add(aux_pos);
 
                             //mou la peça
                             t.getPeces_negres()[j].setX(newX);
@@ -79,7 +78,7 @@ public class Maquina extends Usuari {
                             t.actualitzar();
 
                             // Recursive call
-                            b = backtracking(jugada, t, i + 1, n - 1, visited);
+                            b = backtracking(jugada, t, i + 1, n, visited);
 
                             // Get back to the old state
                             jugada.setPos_fin_x(jugada_old.getPos_fin_x());
