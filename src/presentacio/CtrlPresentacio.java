@@ -49,6 +49,10 @@ public class CtrlPresentacio {
         return ctrldom.getPecas();
     }
 
+    public void delProblema(String FEN) {
+        ctrldom.delProblema(FEN);
+    }
+
     public boolean addTaulell(ArrayList<Integer> peces, int n) {
 
         return ctrldom.addTaulell(peces,n);

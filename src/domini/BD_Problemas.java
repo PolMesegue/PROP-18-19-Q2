@@ -24,11 +24,12 @@ public class BD_Problemas {
         }
         return null;
     }
-    public void delProblem(String id){
+    public void delProblem(String FEN){
         Iterator<Problema> itr=this.CollectionProblems.iterator();
         while(itr.hasNext()){
-            if(itr.next().getID().equals(id)){
+            if(itr.next().getFEN().equals(FEN)){
                 itr.remove();
+                break;
             }
         }
     }

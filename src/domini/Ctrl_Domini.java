@@ -173,6 +173,10 @@ public class Ctrl_Domini {
 
     }
 
+    public void delProblema(String FEN) {
+        bdp.delProblem(FEN);
+    }
+
     public Tauler getTauler(String fen){
         Problema p= bdp.getProblema(fen);
         Tauler t= p.FENtoHuman();
