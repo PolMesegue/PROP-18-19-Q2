@@ -92,6 +92,7 @@ public class GUICreaProblema {
     private JButton[] selector = new JButton[12];
 
     private JPanel MyPanel;
+    private JButton sortirSenseGuardarButton;
 
     private  JButton bSelec;
     private JButton bMat;
@@ -185,6 +186,13 @@ public class GUICreaProblema {
                }
             }
         });
+        sortirSenseGuardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame f1 = (JFrame) SwingUtilities.windowForComponent(MyTaulell);
+                f1.dispose();
+            }
+        });
     }
 
 
@@ -255,6 +263,15 @@ public class GUICreaProblema {
                 }
             }
         });
+        sortirSenseGuardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame f1 = (JFrame) SwingUtilities.windowForComponent(MyTaulell);
+                f1.dispose();
+            }
+        });
+
+
     }
 
     private ArrayList<Integer> llegeixTauler() {

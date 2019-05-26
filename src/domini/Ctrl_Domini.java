@@ -103,11 +103,41 @@ public class Ctrl_Domini {
             }
         }
         String fen = T.HumantoFEN(T.getPeces_blanques(),T.getPeces_negres());
-        Problema p = new Problema(fen);
+
+        ArrayList<Character> noufen = new ArrayList<>();
+        boolean espaiBlanc = false;
+        for (int i = 0; i < fen.length();++i) {
+            if (!espaiBlanc) {
+                if (fen.charAt(i) == ' ')  {
+                    espaiBlanc = true;
+                }
+                noufen.add(fen.charAt(i));
+            }
+            else {
+                noufen.add('M');
+                noufen.add('a');
+                noufen.add('t');
+                noufen.add(':');
+                noufen.add(' ');
+                noufen.add((char) (nMat+'0'));
+                break;
+            }
+        }
+
+        StringBuilder builder = new StringBuilder(noufen.size());
+        for(Character ch: noufen)
+        {
+            builder.append(ch);
+        }
+
+
+
+
+        Problema p = new Problema(builder.toString());
         p.setN(nMat);
         Maquina virtual = new Maquina("VIRTUAL");
         //if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
-        if(bdp.existsProblema(fen)){
+        if(bdp.existsProblema(builder.toString())){
             return false;
         }
         else {
@@ -122,12 +152,39 @@ public class Ctrl_Domini {
     }
 
     public boolean AddProblem(String fen,int mat){
-        Problema p= new Problema(fen);
+
+        ArrayList<Character> noufen = new ArrayList<>();
+        boolean espaiBlanc = false;
+        for (int i = 0; i < fen.length();++i) {
+            if (!espaiBlanc) {
+                if (fen.charAt(i) == ' ')  {
+                    espaiBlanc = true;
+                }
+                noufen.add(fen.charAt(i));
+            }
+            else {
+                noufen.add('M');
+                noufen.add('a');
+                noufen.add('t');
+                noufen.add(':');
+                noufen.add(' ');
+                noufen.add((char) (mat +'0'));
+                break;
+            }
+        }
+
+        StringBuilder builder = new StringBuilder(noufen.size());
+        for(Character ch: noufen)
+        {
+            builder.append(ch);
+        }
+
+        Problema p= new Problema(builder.toString());
         p.setN(mat);
 
         Maquina virtual = new Maquina("VIRTUAL");
         //if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
-            if(bdp.existsProblema(fen)){
+            if(bdp.existsProblema(builder.toString())){
                 return false;
             }
             else {
