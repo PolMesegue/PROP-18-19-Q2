@@ -119,7 +119,7 @@ public class CtrlPresentacio {
             ctrldom.crearMaquina();
             main.setContentPane(new GUIMain().getMyGUIMain());
             main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            main.setBounds(300, 200, 400, 400);
+            main.setBounds(300, 200, 600, 400);
 
             main.setVisible(true);
     }

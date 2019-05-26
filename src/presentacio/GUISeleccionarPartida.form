@@ -19,6 +19,7 @@
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-10354692"/>
           <text value="Jugar"/>
         </properties>
       </component>
@@ -27,6 +28,7 @@
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-4513280"/>
           <text value="Tornar Enrera"/>
         </properties>
       </component>
