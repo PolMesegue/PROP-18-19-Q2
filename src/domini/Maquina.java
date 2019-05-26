@@ -5,10 +5,29 @@ import java.util.*;
 @SuppressWarnings("Duplicates")
 public class Maquina extends Usuari {
 
+    private ArrayList<ArrayList<IntPair>> matriu_camins = new ArrayList<ArrayList<IntPair>>();
+
     public Maquina(String nom){
 
         super(nom);
     }
+
+    /*public Jugada condicio(Tauler jaume_diarrea){
+        for(int i=0; i<16;i++){
+            if(jaume_diarrea.getPeces_blanques()[i] != null){
+                for(int j=0;j<matriu_camins.size();j++){
+                    ArrayList<IntPair> aux = matriu_camins.get(j);
+                    Jugada whataplay = new Jugada();
+                    Peca whatapiece = jaume_diarrea.getPeces_blanques()[i];
+                    whataplay.setPeca();
+
+
+                }
+
+            }
+        }
+    }*/
+
 
     public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n) {
 
@@ -23,9 +42,13 @@ public class Maquina extends Usuari {
         }
         Tauler t_temp = new Tauler(peces_blanques,peces_negres);
         t_temp.actualitzar();
-        ArrayList<IntPair> visited = new ArrayList<>();
+        ArrayList<IntPair> camins = new ArrayList<>();
         int turn =1;
-        boolean b = backtracking(jugada,t_temp,0,n,visited,turn);
+        boolean b = backtracking(jugada,t_temp,1,n,camins,turn);
+
+
+
+
         if (b) return jugada;
         else return null;
     }
@@ -38,62 +61,85 @@ public class Maquina extends Usuari {
     }
 
     //comprova si la peca arriba al rei en n jugades
-    private boolean backtracking(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> visited, int turn) {
+    private boolean backtracking(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn) {
         Jugada jugada_old = new Jugada();
-
-        if(jugada.getPeca().getX() == t.getPeces_blanques()[15].getX() && jugada.getPeca().getY() == t.getPeces_blanques()[15].getY()) return true;
-        else {
+        if(i >= n){
+            if(!matriu_camins.contains(cami)) {
+                ArrayList<IntPair> cami_aux = new ArrayList<>();
+                cami_aux = (ArrayList<IntPair>) cami.clone();
+                matriu_camins.add(cami_aux);
+            }
+            return true;
+        }
+        if(turn ==1) {
             for (int j = 0; j < 16; j++) {
-                if (turn == 1) {
-                    if (t.getPeces_negres()[j] != null) {
-                        int X_piece = t.getPeces_negres()[j].getX();
-                        int Y_piece = t.getPeces_negres()[j].getY();
-                        jugada_old.setPos_fin_x(X_piece);
-                        jugada_old.setPos_fin_y(Y_piece);
+                if (t.getPeces_negres()[j] != null) {
+                    int X_piece = t.getPeces_negres()[j].getX(); // old X
+                    int Y_piece = t.getPeces_negres()[j].getY(); // old Y
+                    //guardar antiga
+                    jugada_old.setPos_fin_x(X_piece);
+                    jugada_old.setPos_fin_y(Y_piece);
+                    // peça que tractem
+                    jugada.setPeca(t.getPeces_negres()[j]);
 
-                        for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); z++) {
-                            int newX = t.getPeces_negres()[j].moviments.get(z).getX();
-                            int newY = t.getPeces_negres()[j].moviments.get(z).getY();
+                    for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); z++) {
+                        //torre al 0 0
+                        int newX = t.getPeces_negres()[j].moviments.get(z).getX();
+                        int newY = t.getPeces_negres()[j].moviments.get(z).getY();
+                        // 01 02 03 04 05 06 07
+                        //set new posicio
+                        jugada.setPos_fin_x(newX); //posicio nova peça
+                        jugada.setPos_fin_y(newY);
+                        //gaurdem la jugada
+                        IntPair aux = new IntPair();
+                        aux.setX(X_piece);
+                        aux.setY(Y_piece);
 
-                            //set new posicio
-                            jugada.setPos_fin_x(newX);
-                            jugada.setPos_fin_y(newY);
+                        IntPair aux2 = new IntPair();
+                        aux2.setX(newX);
+                        aux2.setY(newY);
 
-                            //mou peça
-                            t.getPeces_negres()[j].setX(newX);
-                            t.getPeces_negres()[j].setY(newY);
-                            t.actualitzar();
+                        cami.add(aux);
+                        cami.add(aux2);
 
-                            backtracking(jugada,t,i+1,n,visited,turn=0);
+                        //mou peça i actualitzem tauler
+                        t.getPeces_negres()[j].setX(newX);
+                        t.getPeces_negres()[j].setY(newY);
+                        t.actualitzar();
 
-                            jugada.setPos_fin_x(jugada_old.getPos_fin_x());
-                            jugada.setPos_fin_y(jugada_old.getPos_fin_y());
-                            t.getPeces_negres()[j].setX(X_piece);
-                            t.getPeces_negres()[j].setY(Y_piece);
-                            t.actualitzar();
-                            if (true) break;
-                        }
+                        backtracking(jugada, t, i, n, cami, turn = 0);
+                        //tornem a enrere
+                        cami.remove(cami.size()-1);
+                        cami.remove(cami.size()-1);
+                        t.getPeces_negres()[j].setX(X_piece);
+                        t.getPeces_negres()[j].setY(Y_piece);
+                        t.actualitzar();
+
+
                     }
                 }
-                if (turn == 0) {
-                    if (t.getPeces_blanques()[j] != null) {
-                        int X_piece = t.getPeces_blanques()[j].getX();
-                        int Y_piece = t.getPeces_blanques()[j].getY();
-                        jugada_old.setPos_fin_x(X_piece);
-                        jugada_old.setPos_fin_y(Y_piece);
+            }
 
-                        for (int z = 0; z < t.getPeces_blanques()[j].moviments.size(); z++) {
-                            int newX = t.getPeces_negres()[j].moviments.get(z).getX();
-                            int newY = t.getPeces_negres()[j].moviments.get(z).getY();
-                            //aqui no actualitzo la jugada, nomes el taulell pq el que mou la maquina son les negres.
+        }
+        if(turn ==0) {
+            for (int j = 0; j < 16; j++) {
+                if (t.getPeces_blanques()[j] != null) {
+                    int X_piece = t.getPeces_blanques()[j].getX(); // old X
+                    int Y_piece = t.getPeces_blanques()[j].getY(); // old Y
+                    for (int z = 0; z < t.getPeces_blanques()[j].moviments.size(); z++) {
 
-                            //mou peça
-                            t.getPeces_negres()[j].setX(newX);
-                            t.getPeces_negres()[j].setY(newY);
-                            t.actualitzar();
-                            backtracking(jugada,t,i,n,visited,turn=1);
-                        }
+                        int newX = t.getPeces_blanques()[j].moviments.get(z).getX();
+                        int newY = t.getPeces_blanques()[j].moviments.get(z).getY();
 
+                        t.getPeces_blanques()[j].setX(newX);
+                        t.getPeces_blanques()[j].setY(newY);
+                        t.actualitzar();
+
+                        backtracking(jugada, t, i+1, n, cami, turn = 1);
+
+                        t.getPeces_blanques()[j].setX(X_piece);
+                        t.getPeces_blanques()[j].setY(Y_piece);
+                        t.actualitzar();
                     }
                 }
             }
@@ -113,8 +159,8 @@ public class Maquina extends Usuari {
         }
         Tauler t_temp = new Tauler(peces_negres,peces_blanques); //els parametres estan girats A PROPOSIT!
         t_temp.actualitzar();
-        ArrayList<IntPair> visited = new ArrayList<>();
-        return backtracking(jugada,t_temp,0,n,visited,0);
+        ArrayList<IntPair> camins = new ArrayList<>();
+        return backtracking(jugada,t_temp,0,n,camins,0);
     }
 }
 
