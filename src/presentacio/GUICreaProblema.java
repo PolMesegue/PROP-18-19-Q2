@@ -1,6 +1,7 @@
 package presentacio;
 
 import domini.Torre;
+import oracle.jrockit.jfr.JFR;
 
 import javax.swing.*;
 import java.awt.*;
@@ -89,6 +90,7 @@ public class GUICreaProblema {
     private JButton ButtonReinaNegre;
     private JButton ButtonReiNegre;
     private JTextField textField1;
+    private JPanel MyPanel;
     private JButton[][] matriu = new JButton[8][8];
     private JButton[] selector = new JButton[12];
     private  JButton bSelec;
@@ -154,9 +156,18 @@ public class GUICreaProblema {
 
                 ArrayList<Integer> peces = llegeixTauler();
                 int mat = Integer.parseInt(textField1.getText());
-               // ctrlP.enviaTaulell(peces,mat);
+             //  if (ctrlP.enviaTaulell(peces,mat)) {
+
+                   JOptionPane.showMessageDialog(null, "Afegit correctament");
 
 
+                   JFrame f1 = (JFrame) SwingUtilities.windowForComponent(MyTaulell);
+                   f1.dispose();
+              // }
+             //  else {
+              //     JOptionPane.showMessageDialog(null, "El taulell no és correcte o no te solució");
+
+             //  }
             }
         });
     }
