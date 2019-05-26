@@ -195,6 +195,8 @@ public class GUITaulell {
 
 
                                         jugar.setVisible(true);
+                                        ctrlP.deleteParidaActual();
+
                                     }
 
 
@@ -205,7 +207,22 @@ public class GUITaulell {
                                             tornBlanques = !tornBlanques;
                                         }
 
-                                        if (!ReyBviu(ReyB)) JOptionPane.showMessageDialog(null,"Guanyen Negres");
+                                        if (!ReyBviu(ReyB)) {
+                                            JOptionPane.showMessageDialog(null,"Guanyen Negres");
+
+                                            frame jugar = frame.getInstance();
+
+                                            GUIJugar jugar1 = new GUIJugar();
+
+                                            jugar.setContentPane(jugar1.getMyJugar());
+                                            jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                                            jugar.setVisible(true);
+
+
+                                            ctrlP.deleteParidaActual();
+
+                                        }
 
 
                                     }

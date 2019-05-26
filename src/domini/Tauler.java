@@ -350,15 +350,22 @@ public class Tauler {
                     ++iter;
                 }
             }
-            if(buit!=0) FEN[iter] = (char)(buit +'0');
-            ++iter;
-            if(i!=7) FEN[iter] = '/';
-            ++iter;
+            if(buit!=0) {
+                FEN[iter] = (char)(buit +'0');
+                ++iter;
+            }
+
+            if(i!=7) {
+                FEN[iter] = '/';
+                ++iter;
+            }
+
         }
-
+        for(int i= iter;i<64;i++){
+            FEN[iter] = ' ';
+        }
         String res = String.valueOf(FEN);
-        res = res + " ";
-
+        //res = res + " ";
         return res;
     }
 }

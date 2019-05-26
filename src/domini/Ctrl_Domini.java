@@ -21,36 +21,35 @@ public class Ctrl_Domini {
         bdu.AddMaquina(m1);
     }
 
-    public void AddHuma(String nom){
+    public boolean AddHuma(String nom){
         Huma h= new Huma(nom);
         if(bdu.existsHuma(nom)){
             System.out.println("Ya existe usuario con el nombre introducido. \n");
+            return false;
         }
         else{
             System.out.println("afegit \n");
             bdu.AddHuma(h);
         }
+        return true;
     }
-    public void AddProblem(String fen,int mat){
+    public boolean AddProblem(String fen,int mat){
         Problema p= new Problema(fen);
         p.setN(mat);
 
         Maquina virtual = new Maquina("VIRTUAL");
-        if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
+        //if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
             if(bdp.existsProblema(fen)){
-                System.out.println("Ya existe el problema con este FEN \n");
+                return false;
             }
             else {
-                System.out.println("domini.Problema afegit amb exit\n");
-                bdp.AddProblem(p);
+                if(p.FENtoHuman() != null) {
+                    System.out.println("domini.Problema afegit amb exit\n");
+                    bdp.AddProblem(p);
+                }
+                else return false;
             }
-
-        }
-        else {
-            System.out.println("No es pot assolir el mat indicat \n");
-        }
-
-
+            return true;
     }
     public void crearPartida(String Atacant, String defensor,String problema){
         Usuari a= bdu.getHuma(Atacant);
@@ -226,16 +225,20 @@ public class Ctrl_Domini {
         }
         return moviments;
     }
-    public void CarregarProblemas() throws Exception{
+    public boolean CarregarProblemas() throws Exception{
         Vector<String> FENS = CtrlPer.LlegirProblema();
         Maquina M1 = new Maquina("M1");
         for(int i=0;i< FENS.size();i+=2){
             Problema aux = new Problema(FENS.get(i));
-            if(M1.te_solucio(aux.FENtoHuman().getPeces_blanques(),aux.FENtoHuman().getPeces_negres(),Integer.valueOf(FENS.get(i+1)))){
+            if(aux.FENtoHuman() != null){
+                //if(M1.te_solucio(aux.FENtoHuman().getPeces_blanques(),aux.FENtoHuman().getPeces_negres(),Integer.valueOf(FENS.get(i+1)))){
                 AddProblem(FENS.get(i),Integer.valueOf(FENS.get(i+1)));
             }
+            else return false;
         }
+        return true;
     }
+
     public void CarregarUsuaris() throws Exception{
         Vector<String> Users =CtrlPer.LlegirUsuari();
         for(int i=0;i< Users.size();i++) {

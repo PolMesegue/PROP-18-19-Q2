@@ -20,16 +20,16 @@ public class CtrlPresentacio {
             return pr;
     }
 
-    public void afegirUsuari(String nom){
-        ctrldom.AddHuma(nom);
+    public boolean afegirUsuari(String nom){
+        return ctrldom.AddHuma(nom);
 
     }
     public ArrayList<String> consultar_usuaris(){
         ArrayList<String> llistaUsuaris = ctrldom.getUsuaris();
         return llistaUsuaris;
     }
-    public void afegirProblema(String problema, int mat ){
-        ctrldom.AddProblem(problema,mat);
+    public boolean afegirProblema(String problema, int mat ){
+        return ctrldom.AddProblem(problema,mat);
     }
     public ArrayList<String> consultar_Problemas(){
         ArrayList<String> llistaProblemas = ctrldom.getProblemas();
@@ -60,8 +60,8 @@ public class CtrlPresentacio {
     }
 
     //cargar
-    public void CarregarProblemas() throws Exception{
-        ctrldom.CarregarProblemas();
+    public boolean CarregarProblemas() throws Exception{
+        return ctrldom.CarregarProblemas();
     }
     public void CarregarUsuaris() throws Exception{
         ctrldom.CarregarUsuaris();

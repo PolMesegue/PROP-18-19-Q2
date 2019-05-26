@@ -20,9 +20,9 @@ public class GUIProblema {
             public void actionPerformed(ActionEvent e) {
 
                 frame registrarP = frame.getInstance();
-                RegistrarProblema prob2 = new RegistrarProblema();
+                GUISeleccionarAfegirProblema prob2 = new GUISeleccionarAfegirProblema();
 
-                registrarP.setContentPane(prob2.getMyRProblema());
+                registrarP.setContentPane(prob2.getMySeleccionarAfegirProblema());
                 registrarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 registrarP.setVisible(true);
             }
@@ -32,8 +32,13 @@ public class GUIProblema {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    CtrlP.CarregarProblemas();
-                    JOptionPane.showMessageDialog(null,"Problemas afegits");
+                    if (CtrlP.CarregarProblemas()) {
+                        JOptionPane.showMessageDialog(null, "Problemas afegits");
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "Almenys un FEN és incorrente \n Alguns problemes poden no haver-se afegit");
+
+                    }
                 }catch (Exception B) {
                     B.printStackTrace();
                 }

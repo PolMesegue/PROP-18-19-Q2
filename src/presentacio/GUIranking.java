@@ -19,10 +19,10 @@ public class GUIranking {
     public GUIranking() {
 
         for(int i=0; i<CtrlP.getUsersRanking().size();i++){
-            JugadorsArea.append(CtrlP.getUsersRanking().get(i));
+            JugadorsArea.append(CtrlP.getUsersRanking().get(i)+"\n");
         }
         for(int i=0; i<CtrlP.getUsersRankingPoints().size();i++) {
-            PuntsArea.append(CtrlP.getUsersRankingPoints().get(i).toString());
+            PuntsArea.append(CtrlP.getUsersRankingPoints().get(i).toString()+ "\n");
         }
         tornarEnrerraButton.addActionListener(new ActionListener() {
             @Override

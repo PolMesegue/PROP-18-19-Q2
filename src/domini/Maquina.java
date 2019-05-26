@@ -50,52 +50,51 @@ public class Maquina extends Usuari {
                     visited.add(actual_pos);
                     t.actualitzar();
                     jugada.setPeca(t.getPeces_negres()[j]);
-                        for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); ++z) {
-                            if (!isvisited(t.getPeces_negres()[j].moviments.get(z), visited)) {
+                    for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); ++z) {
+                        if (!isvisited(t.getPeces_negres()[j].moviments.get(z), visited)) {
 
-                                // Save old position to restore it after the recursive call
-                                int oldX = t.getPeces_negres()[j].getX();
-                                int oldY = t.getPeces_negres()[j].getY();
-                                jugada_old.setPos_fin_x(oldX);
-                                jugada_old.setPos_fin_y(oldY);
+                            // Save old position to restore it after the recursive call
+                            int oldX = t.getPeces_negres()[j].getX();
+                            int oldY = t.getPeces_negres()[j].getY();
+                            jugada_old.setPos_fin_x(oldX);
+                            jugada_old.setPos_fin_y(oldY);
 
-                                // Get the movement from the possible movement list
-                                int newX = t.getPeces_negres()[j].moviments.get(z).getX();
-                                int newY = t.getPeces_negres()[j].moviments.get(z).getY();
+                            // Get the movement from the possible movement list
+                            int newX = t.getPeces_negres()[j].moviments.get(z).getX();
+                            int newY = t.getPeces_negres()[j].moviments.get(z).getY();
 
-                                // Generate the play and move the pieces
-                                //jugada.setPeca(t.getPeces_negres()[j]);
-                                jugada.setPos_fin_x(newX);
-                                jugada.setPos_fin_y(newY);
+                            // Generate the play and move the pieces
+                            //jugada.setPeca(t.getPeces_negres()[j]);
+                            jugada.setPos_fin_x(newX);
+                            jugada.setPos_fin_y(newY);
 
-                                //actualitzar visited
-                                actual_pos.setX(oldX);
-                                actual_pos.setY(oldY);
-                                visited.add(actual_pos);
+                            //actualitzar visited
+                            IntPair aux_pos = new IntPair(oldX,oldY);
+                            visited.add(aux_pos);
 
-                                //mou la peça
-                                t.getPeces_negres()[j].setX(newX);
-                                t.getPeces_negres()[j].setY(newY);
-                                t.actualitzar();
+                            //mou la peça
+                            t.getPeces_negres()[j].setX(newX);
+                            t.getPeces_negres()[j].setY(newY);
+                            t.actualitzar();
 
-                                // Recursive call
-                                b = backtracking(jugada, t, i + 1, n - 1, visited);
+                            // Recursive call
+                            b = backtracking(jugada, t, i + 1, n, visited);
 
-                                // Get back to the old state
-                                jugada.setPos_fin_x(jugada_old.getPos_fin_x());
-                                jugada.setPos_fin_y(jugada_old.getPos_fin_y());
-                                t.getPeces_negres()[j].setX(oldX);
-                                t.getPeces_negres()[j].setY(oldY);
-                                t.actualitzar();
-                                if (b) break;
-                            }
+                            // Get back to the old state
+                            jugada.setPos_fin_x(jugada_old.getPos_fin_x());
+                            jugada.setPos_fin_y(jugada_old.getPos_fin_y());
+                            t.getPeces_negres()[j].setX(oldX);
+                            t.getPeces_negres()[j].setY(oldY);
+                            t.actualitzar();
+                            if (b) break;
                         }
-                        if (b) break;
-                        visited.clear();
                     }
+                    if (b) break;
+                    visited.clear();
                 }
-                return b;
             }
+            return b;
+        }
 
     }
 

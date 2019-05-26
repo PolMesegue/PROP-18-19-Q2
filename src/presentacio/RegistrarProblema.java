@@ -18,17 +18,21 @@ public class RegistrarProblema {
             public void actionPerformed(ActionEvent e) {
 
                 int mat = Integer.parseInt(Matfield.getText());
-                ctrlP.afegirProblema(textField1.getText(),mat);
+                if(ctrlP.afegirProblema(textField1.getText(),mat)) {
 
-                JOptionPane.showMessageDialog(null,"Afegit correctament");
+                    JOptionPane.showMessageDialog(null, "Afegit correctament");
 
-                frame prob = frame.getInstance();
+                    frame prob = frame.getInstance();
 
-                GUIProblema prob1 = new GUIProblema();
+                    GUIProblema prob1 = new GUIProblema();
 
-                prob.setContentPane(prob1.getMyGUIProblema());
-                prob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                prob.setVisible(true);
+                    prob.setContentPane(prob1.getMyGUIProblema());
+                    prob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    prob.setVisible(true);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Error al afegir problema \n Revisa el FEN");
+                }
 
 
 
