@@ -48,6 +48,13 @@ public class CtrlPresentacio {
         // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
         return ctrldom.getPecas();
     }
+
+    public boolean addTaulell(ArrayList<Integer> peces, int n) {
+
+        return ctrldom.addTaulell(peces,n);
+
+    }
+
     public boolean mourePeca(int xO,int yO, int xD, int yD){
         return ctrldom.mourePeca(xO,yO, xD, yD);
     }

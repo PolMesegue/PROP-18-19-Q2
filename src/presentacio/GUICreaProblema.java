@@ -90,11 +90,30 @@ public class GUICreaProblema {
     private JButton ButtonReinaNegre;
     private JButton ButtonReiNegre;
     private JTextField textField1;
-    private JPanel MyPanel;
+
     private JButton[][] matriu = new JButton[8][8];
     private JButton[] selector = new JButton[12];
+
+    private JPanel MyPanel;
+
     private  JButton bSelec;
     private JButton bMat;
+
+    private ImageIcon AlfilB = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-40.png"));
+    private ImageIcon ReyB = new ImageIcon(this.getClass().getResource("/icons/icons8-king-40.png"));
+    private ImageIcon CavallB = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-40.png"));
+    private  ImageIcon PeoB = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-40.png"));
+    private  ImageIcon ReinaB = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-40.png"));
+    private  ImageIcon TorreB = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-40.png"));
+
+    private  ImageIcon AlfilN = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-48.png"));
+    private  ImageIcon ReyN = new ImageIcon(this.getClass().getResource("/icons/icons8-king-48.png"));
+    private  ImageIcon CavallN = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-48.png"));
+    private  ImageIcon PeoN = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-48.png"));
+    private  ImageIcon ReinaN = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-48.png"));
+    private  ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-48.png"));
+    // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
+    // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
 
     private CtrlPresentacio ctrlP = CtrlPresentacio.getInstance();
 
@@ -156,39 +175,23 @@ public class GUICreaProblema {
 
                 ArrayList<Integer> peces = llegeixTauler();
                 int mat = Integer.parseInt(textField1.getText());
-             //  if (ctrlP.enviaTaulell(peces,mat)) {
+               if (ctrlP.addTaulell(peces,mat)) {
 
                    JOptionPane.showMessageDialog(null, "Afegit correctament");
 
 
                    JFrame f1 = (JFrame) SwingUtilities.windowForComponent(MyTaulell);
                    f1.dispose();
-              // }
-             //  else {
-              //     JOptionPane.showMessageDialog(null, "El taulell no és correcte o no te solució");
-
-             //  }
+               }
+               else {
+                   JOptionPane.showMessageDialog(null, "El taulell no és correcte o no te solució");
+               }
             }
         });
     }
 
     private ArrayList<Integer> llegeixTauler() {
 
-         ImageIcon AlfilB = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-40.png"));
-         ImageIcon ReyB = new ImageIcon(this.getClass().getResource("/icons/icons8-king-40.png"));
-         ImageIcon CavallB = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-40.png"));
-         ImageIcon PeoB = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-40.png"));
-         ImageIcon ReinaB = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-40.png"));
-         ImageIcon TorreB = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-40.png"));
-
-         ImageIcon AlfilN = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-48.png"));
-         ImageIcon ReyN = new ImageIcon(this.getClass().getResource("/icons/icons8-king-48.png"));
-         ImageIcon CavallN = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-48.png"));
-         ImageIcon PeoN = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-48.png"));
-         ImageIcon ReinaN = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-48.png"));
-         ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-48.png"));
-        // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
-        // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
 
         ArrayList<Integer> peces = new ArrayList<>();
 
@@ -199,19 +202,19 @@ public class GUICreaProblema {
                     peces.add(i);
                     peces.add(j);
 
-                    if (matriu[i][j].getIcon().equals(PeoB)) peces.add(0);
-                    else if (matriu[i][j].getIcon().equals(AlfilB)) peces.add(1);
-                    else if (matriu[i][j].getIcon().equals(CavallB)) peces.add(2);
-                    else if (matriu[i][j].getIcon().equals(TorreB)) peces.add(3);
-                    else if (matriu[i][j].getIcon().equals(ReinaB)) peces.add(4);
-                    else if (matriu[i][j].getIcon().equals(ReyB)) peces.add(5);
+                    if (matriu[i][j].getIcon() == PeoB) peces.add(0);
+                    else if (matriu[i][j].getIcon() == AlfilB) peces.add(1);
+                    else if (matriu[i][j].getIcon() == CavallB) peces.add(2);
+                    else if (matriu[i][j].getIcon() == TorreB) peces.add(3);
+                    else if (matriu[i][j].getIcon() == ReinaB) peces.add(4);
+                    else if (matriu[i][j].getIcon() == ReyB) peces.add(5);
 
-                    else if (matriu[i][j].getIcon().equals(PeoN)) peces.add(6);
-                    else if (matriu[i][j].getIcon().equals(AlfilN)) peces.add(7);
-                    else if (matriu[i][j].getIcon().equals(CavallN)) peces.add(8);
-                    else if (matriu[i][j].getIcon().equals(TorreN)) peces.add(9);
-                    else if (matriu[i][j].getIcon().equals(ReinaN)) peces.add(10);
-                    else if (matriu[i][j].getIcon().equals(ReyN)) peces.add(11);
+                    else if (matriu[i][j].getIcon() == PeoN) peces.add(6);
+                    else if (matriu[i][j].getIcon() == AlfilN) peces.add(7);
+                    else if (matriu[i][j].getIcon() == CavallN) peces.add(8);
+                    else if (matriu[i][j].getIcon() == TorreN) peces.add(9);
+                    else if (matriu[i][j].getIcon() == ReinaN) peces.add(10);
+                    else if (matriu[i][j].getIcon() == ReyN) peces.add(11);
 
 
                 }
@@ -250,18 +253,40 @@ public class GUICreaProblema {
 
     private void iniciaSelector() {
         selector[0] = ButtonPeoBlanc;
+        selector[0].setIcon(PeoB);
+
         selector[1] = ButtonAlfilBlanc;
+        selector[1].setIcon(AlfilB);
+
         selector[2] = ButtonCavallBlanc;
+        selector[2].setIcon(CavallB);
+
         selector[3] = ButtonTorreBlanca;
+        selector[3].setIcon(TorreB);
+
         selector[4] = ButtonReinaBlanca;
+        selector[4].setIcon(ReinaB);
+
         selector[5] = ButtonReiBlanc;
+        selector[5].setIcon(ReyB);
 
         selector[6] = ButtonPeoNegre;
+        selector[6].setIcon(PeoN);
+
         selector[7] = ButtonAlfilNegre;
+        selector[7].setIcon(AlfilN);
+
         selector[8] = ButtonCavallNegre;
+        selector[8].setIcon(CavallN);
+
         selector[9] = ButtonTorreNegre;
+        selector[9].setIcon(TorreN);
+
         selector[10] = ButtonReinaNegre;
+        selector[10].setIcon(ReinaN);
+
         selector[11] = ButtonReiNegre;
+        selector[11].setIcon(ReyN);
 
 
 

@@ -1026,7 +1026,6 @@
             </constraints>
             <properties>
               <background color="-7650029"/>
-              <icon value="icons/icons8-king-40.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -1042,7 +1041,6 @@
               <background color="-2180985"/>
               <contentAreaFilled value="true"/>
               <focusable value="true"/>
-              <icon value="icons/icons8-queen-40.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -1056,7 +1054,7 @@
             </constraints>
             <properties>
               <background color="-2180985"/>
-              <icon value="icons/icons8-king-48.png"/>
+              <horizontalTextPosition value="2"/>
               <text value=""/>
             </properties>
           </component>
@@ -1070,7 +1068,6 @@
             </constraints>
             <properties>
               <background color="-7650029"/>
-              <icon value="icons/icons8-queen-48.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -1084,7 +1081,6 @@
             </constraints>
             <properties>
               <background color="-2180985"/>
-              <icon value="icons/icons8-rook-48.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -1098,7 +1094,6 @@
             </constraints>
             <properties>
               <background color="-2180985"/>
-              <icon value="icons/icons8-bishop-48.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -1112,7 +1107,6 @@
             </constraints>
             <properties>
               <background color="-7650029"/>
-              <icon value="icons/icons8-pawn-48.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -1126,7 +1120,6 @@
             </constraints>
             <properties>
               <background color="-7650029"/>
-              <icon value="icons/icons8-bishop-40.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -1140,7 +1133,6 @@
             </constraints>
             <properties>
               <background color="-7650029"/>
-              <icon value="icons/icons8-knight-48.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -1154,7 +1146,6 @@
             </constraints>
             <properties>
               <background color="-7650029"/>
-              <icon value="icons/icons8-rook-40.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -1170,7 +1161,6 @@
               <background color="-2180985"/>
               <contentAreaFilled value="true"/>
               <focusable value="true"/>
-              <icon value="icons/icons8-pawn-40.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -1186,7 +1176,6 @@
               <background color="-2180985"/>
               <contentAreaFilled value="true"/>
               <focusable value="true"/>
-              <icon value="icons/icons8-knight-40.png"/>
               <text value=""/>
             </properties>
           </component>
