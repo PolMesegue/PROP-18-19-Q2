@@ -35,14 +35,6 @@ public class Maquina extends Usuari {
     public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n) {
 
         Jugada jugada = new Jugada();
-        for (int i = 0; i < 16; ++i) {
-            if (peces_negres[i] != null) {
-                jugada.setPeca(peces_negres[i]);
-                jugada.setPos_fin_x(peces_negres[i].getX());
-                jugada.setPos_fin_y(peces_negres[i].getY());
-                break;
-            }
-        }
         Tauler t_temp = new Tauler(peces_blanques,peces_negres);
         t_temp.actualitzar();
         ArrayList<IntPair> camins = new ArrayList<>();
