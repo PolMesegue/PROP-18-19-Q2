@@ -41,13 +41,12 @@ public class RegistrarProblema {
         tornarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame prob = frame.getInstance();
+                frame registrarP = frame.getInstance();
+                GUISeleccionarAfegirProblema prob2 = new GUISeleccionarAfegirProblema();
 
-                GUIProblema prob1 = new GUIProblema();
-
-                prob.setContentPane(prob1.getMyGUIProblema());
-                prob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                prob.setVisible(true);
+                registrarP.setContentPane(prob2.getMySeleccionarAfegirProblema());
+                registrarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                registrarP.setVisible(true);
             }
         });
     }

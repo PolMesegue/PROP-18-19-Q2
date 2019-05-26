@@ -74,9 +74,10 @@ public class CtrlPresentacio {
     public boolean CarregarProblemas() throws Exception{
         return ctrldom.CarregarProblemas();
     }
-    public void CarregarUsuaris() throws Exception{
-        ctrldom.CarregarUsuaris();
+    public boolean CarregarUsuaris() throws Exception{
+        return ctrldom.CarregarUsuaris();
     }
+
     public ArrayList<Integer> turnMaquina(){
         return ctrldom.moureMaquina();
 
@@ -91,6 +92,11 @@ public class CtrlPresentacio {
         return ctrldom.getN();
 
     }
+
+    public void delUsuari(String nom) {
+        ctrldom.delUsuari(nom);
+    }
+
     public void deleteParidaActual(){
         ctrldom.deletePartidaActual();
     }
@@ -113,7 +119,7 @@ public class CtrlPresentacio {
             ctrldom.crearMaquina();
             main.setContentPane(new GUIMain().getMyGUIMain());
             main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            main.setBounds(300, 200, 600, 400);
+            main.setBounds(300, 200, 400, 400);
 
             main.setVisible(true);
     }

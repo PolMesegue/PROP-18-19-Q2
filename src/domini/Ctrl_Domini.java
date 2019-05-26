@@ -173,6 +173,10 @@ public class Ctrl_Domini {
 
     }
 
+    public void delUsuari(String nom) {
+        bdu.delHuma(nom);
+    }
+
     public void delProblema(String FEN) {
         bdp.delProblem(FEN);
     }
@@ -331,11 +335,12 @@ public class Ctrl_Domini {
         return true;
     }
 
-    public void CarregarUsuaris() throws Exception{
+    public boolean CarregarUsuaris() throws Exception{
         Vector<String> Users =CtrlPer.LlegirUsuari();
         for(int i=0;i< Users.size();i++) {
-            AddHuma(Users.get(i));
+            if (!AddHuma(Users.get(i))) return false;
         }
+        return true;
     }
     public String getDefensor(){
         return joc.getD().getNom();

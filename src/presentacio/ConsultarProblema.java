@@ -52,6 +52,7 @@ public class ConsultarProblema {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
                 GUICreaProblema tauler2 = new GUICreaProblema((String) comboBox1.getSelectedItem());
 
                 taulerMod.setBounds(250,100,700,500);
@@ -72,10 +73,11 @@ public class ConsultarProblema {
                 }
             }
         });
-        
+
         esborrarTaulellButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                taulerMod.setVisible(false);
                 CtrlP.delProblema((String)comboBox1.getSelectedItem());
                 comboBox1.removeAllItems();
                 for(int i=0; i<CtrlP.consultar_Problemas().size();i++){
