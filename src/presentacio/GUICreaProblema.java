@@ -1,9 +1,12 @@
 package presentacio;
 
+import domini.Torre;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class GUICreaProblema {
     private JPanel MyTaulell;
@@ -91,6 +94,8 @@ public class GUICreaProblema {
     private  JButton bSelec;
     private JButton bMat;
 
+    private CtrlPresentacio ctrlP = CtrlPresentacio.getInstance();
+
     private boolean basuraPressed;
     private boolean selectorPressed;
 
@@ -146,10 +151,65 @@ public class GUICreaProblema {
         sortirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
+                ArrayList<String> peces = llegeixTauler();
+                int mat = Integer.parseInt(textField1.getText());
+               // ctrlP.enviaTaulell(peces,mat);
+
 
             }
         });
+    }
+
+    private ArrayList<Integer> llegeixTauler() {
+
+         ImageIcon AlfilB = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-40.png"));
+         ImageIcon ReyB = new ImageIcon(this.getClass().getResource("/icons/icons8-king-40.png"));
+         ImageIcon CavallB = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-40.png"));
+         ImageIcon PeoB = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-40.png"));
+         ImageIcon ReinaB = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-40.png"));
+         ImageIcon TorreB = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-40.png"));
+
+         ImageIcon AlfilN = new ImageIcon(this.getClass().getResource("/icons/icons8-bishop-48.png"));
+         ImageIcon ReyN = new ImageIcon(this.getClass().getResource("/icons/icons8-king-48.png"));
+         ImageIcon CavallN = new ImageIcon(this.getClass().getResource("/icons/icons8-knight-48.png"));
+         ImageIcon PeoN = new ImageIcon(this.getClass().getResource("/icons/icons8-pawn-48.png"));
+         ImageIcon ReinaN = new ImageIcon(this.getClass().getResource("/icons/icons8-queen-48.png"));
+         ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-48.png"));
+        // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
+        // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
+
+        ArrayList<Integer> peces = new ArrayList<>();
+
+        for (int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+
+                if (matriu[i][j].getIcon() != null) {
+                    peces.add(i);
+                    peces.add(j);
+
+                    if (matriu[i][j].getIcon().equals(PeoB)) peces.add(0);
+                    else if (matriu[i][j].getIcon().equals(AlfilB)) peces.add(1);
+                    else if (matriu[i][j].getIcon().equals(CavallB)) peces.add(2);
+                    else if (matriu[i][j].getIcon().equals(TorreB)) peces.add(3);
+                    else if (matriu[i][j].getIcon().equals(ReinaB)) peces.add(4);
+                    else if (matriu[i][j].getIcon().equals(ReyB)) peces.add(5);
+
+                    else if (matriu[i][j].getIcon().equals(PeoN)) peces.add(6);
+                    else if (matriu[i][j].getIcon().equals(AlfilN)) peces.add(7);
+                    else if (matriu[i][j].getIcon().equals(CavallN)) peces.add(8);
+                    else if (matriu[i][j].getIcon().equals(TorreN)) peces.add(9);
+                    else if (matriu[i][j].getIcon().equals(ReinaN)) peces.add(10);
+                    else if (matriu[i][j].getIcon().equals(ReyN)) peces.add(11);
+
+
+                }
+
+            }
+        }
+
+        return peces;
+
     }
 
     private void netejaSelector() {
