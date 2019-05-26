@@ -130,6 +130,10 @@ public class CtrlPresentacio {
         ctrldom.addtoranking(nom);
     }
 
+    public void deletePartida(Timestamp fecha) {
+        ctrldom.deletePartida(fecha);
+    }
+
     public static void main(String[] args){
             frame main = frame.getInstance();
             ctrldom.crearMaquina();

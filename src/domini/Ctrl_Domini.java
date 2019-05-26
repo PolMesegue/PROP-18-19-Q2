@@ -1,5 +1,6 @@
 package domini;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.*;
 import java.util.function.IntToDoubleFunction;
@@ -377,6 +378,9 @@ public class Ctrl_Domini {
     }
     public void deletePartidaActual(){
         fa.borrarPartida(joc.getFecha());
+    }
+    public void deletePartida(Timestamp fecha) {
+        fa.borrarPartida(fecha);
     }
 
 
