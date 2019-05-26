@@ -23,8 +23,7 @@ public class Maquina extends Usuari {
         }
         Tauler t_temp = new Tauler(peces_blanques,peces_negres);
         t_temp.actualitzar();
-        ArrayList<IntPair> visited = new ArrayList<>();
-        boolean b = backtracking(jugada,t_temp,0,n,visited);
+        boolean b = backtracking(jugada,t_temp,0,n);
         if (b) return jugada;
         else return null;
     }
@@ -37,7 +36,7 @@ public class Maquina extends Usuari {
     }
 
     //comprova si la peca arriba al rei en n jugades
-    private boolean backtracking(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> visited) {
+    private boolean backtracking(Jugada jugada, Tauler t, int i, int n) {
         Jugada jugada_old = new Jugada();
         if (i > n) return false;
         //MIRAR SI REI ESTA EN MAT
@@ -47,12 +46,9 @@ public class Maquina extends Usuari {
             for (int j = 0; j < t.getPeces_negres().length; ++j) {
                 if (t.getPeces_negres()[j] != null) {
                     IntPair actual_pos = new IntPair(t.getPeces_negres()[j].getX(), t.getPeces_negres()[j].getY());
-                    visited.add(actual_pos);
                     t.actualitzar();
                     jugada.setPeca(t.getPeces_negres()[j]);
                     for (int z = 0; z < t.getPeces_negres()[j].moviments.size(); ++z) {
-                        if (!isvisited(t.getPeces_negres()[j].moviments.get(z), visited)) {
-
                             // Save old position to restore it after the recursive call
                             int oldX = t.getPeces_negres()[j].getX();
                             int oldY = t.getPeces_negres()[j].getY();
@@ -68,17 +64,13 @@ public class Maquina extends Usuari {
                             jugada.setPos_fin_x(newX);
                             jugada.setPos_fin_y(newY);
 
-                            //actualitzar visited
-                            IntPair aux_pos = new IntPair(oldX,oldY);
-                            visited.add(aux_pos);
-
                             //mou la peça
                             t.getPeces_negres()[j].setX(newX);
                             t.getPeces_negres()[j].setY(newY);
                             t.actualitzar();
 
                             // Recursive call
-                            b = backtracking(jugada, t, i + 1, n, visited);
+                            b = backtracking(jugada, t, i + 1, n);
 
                             // Get back to the old state
                             jugada.setPos_fin_x(jugada_old.getPos_fin_x());
@@ -87,10 +79,8 @@ public class Maquina extends Usuari {
                             t.getPeces_negres()[j].setY(oldY);
                             t.actualitzar();
                             if (b) break;
-                        }
                     }
                     if (b) break;
-                    visited.clear();
                 }
             }
             return b;
@@ -111,7 +101,7 @@ public class Maquina extends Usuari {
         Tauler t_temp = new Tauler(peces_negres,peces_blanques); //els parametres estan girats A PROPOSIT!
         t_temp.actualitzar();
         ArrayList<IntPair> visited = new ArrayList<>();
-        return backtracking(jugada,t_temp,0,n,visited);
+        return backtracking(jugada,t_temp,0,n);
     }
 }
 
