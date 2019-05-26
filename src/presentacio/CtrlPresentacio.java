@@ -78,6 +78,10 @@ public class CtrlPresentacio {
         return ctrldom.CarregarUsuaris();
     }
 
+    public int getMov() {
+        return ctrldom.getMov();
+    }
+
     public ArrayList<Integer> turnMaquina(){
         return ctrldom.moureMaquina();
 
@@ -91,6 +95,9 @@ public class CtrlPresentacio {
     public int getN(){
         return ctrldom.getN();
 
+    }
+    public void setMov(int mov) {
+        ctrldom.setMov(mov);
     }
 
     public void delUsuari(String nom) {

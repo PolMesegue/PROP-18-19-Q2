@@ -120,6 +120,8 @@ public class GUITaulell {
         first = true;
         iniciaMatriu();
 
+        k = ctrlP.getMov();
+
         nMat.setText(String.valueOf(ctrlP.getN()));
         nMov.setText(String.valueOf(k));
 
@@ -266,7 +268,7 @@ public class GUITaulell {
             public void actionPerformed(ActionEvent e) {
 
                 //loqueisgui Guardar
-
+                ctrlP.setMov(k);
                 frame jugar = frame.getInstance();
 
                 GUIJugar jugar1 = new GUIJugar();

@@ -173,6 +173,10 @@ public class Ctrl_Domini {
 
     }
 
+    public void setMov(int mov) {
+        joc.setMov(mov);
+    }
+
     public void delUsuari(String nom) {
         bdu.delHuma(nom);
     }
@@ -350,6 +354,9 @@ public class Ctrl_Domini {
     }
     public int getN(){
         return joc.getN();
+    }
+    public int getMov() {
+        return joc.getMov();
     }
     public ArrayList<String> getUsersRanking(){
         return rank.getUsuarisRanking();
