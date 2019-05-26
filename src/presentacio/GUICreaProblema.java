@@ -152,7 +152,7 @@ public class GUICreaProblema {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ArrayList<String> peces = llegeixTauler();
+                ArrayList<Integer> peces = llegeixTauler();
                 int mat = Integer.parseInt(textField1.getText());
                // ctrlP.enviaTaulell(peces,mat);
 
