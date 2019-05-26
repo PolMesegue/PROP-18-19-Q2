@@ -1,8 +1,5 @@
 package presentacio;
 
-import domini.Torre;
-import oracle.jrockit.jfr.JFR;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
