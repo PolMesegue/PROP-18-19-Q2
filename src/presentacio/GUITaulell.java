@@ -116,7 +116,7 @@ public class GUITaulell {
         if (ctrlP.getDefensor().equals("M1") || ctrlP.getDefensor().equals("M2")) jugaMaquina = true;
         else jugaMaquina = false;
 
-        tornBlanques = true;
+        tornBlanques = ctrlP.getTorn();
         first = true;
         iniciaMatriu();
 
@@ -269,6 +269,7 @@ public class GUITaulell {
 
                 //loqueisgui Guardar
                 ctrlP.setMov(k);
+                ctrlP.setTorn(tornBlanques);
                 frame jugar = frame.getInstance();
 
                 GUIJugar jugar1 = new GUIJugar();

@@ -10,6 +10,7 @@ public class Partida {
     private Usuari a;
     private Usuari d;
     private Integer Mov;
+    private boolean tornBlanques;
     private Rellotge timer;
 
     Partida(Timestamp f,Problema p, Tauler t, Usuari a, Usuari d){
@@ -19,6 +20,14 @@ public class Partida {
         this.a=a;
         this.d=d;
         this.Mov = 0;
+        this.tornBlanques = true;
+    }
+
+    public boolean getTorn() {
+        return tornBlanques;
+    }
+    public void setTorn(boolean torn) {
+        this.tornBlanques = torn;
     }
 
     public boolean te_solucio(){

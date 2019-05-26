@@ -173,6 +173,14 @@ public class Ctrl_Domini {
 
     }
 
+    public boolean getTorn() {
+        return joc.getTorn();
+    }
+
+    public void setTorn (boolean torn) {
+        joc.setTorn(torn);
+    }
+
     public void setMov(int mov) {
         joc.setMov(mov);
     }

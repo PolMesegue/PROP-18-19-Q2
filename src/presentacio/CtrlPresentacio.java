@@ -96,6 +96,15 @@ public class CtrlPresentacio {
         return ctrldom.getN();
 
     }
+
+    public boolean getTorn() {
+        return ctrldom.getTorn();
+    }
+
+    public void setTorn(boolean torn) {
+        ctrldom.setTorn(torn);
+    }
+
     public void setMov(int mov) {
         ctrldom.setMov(mov);
     }
