@@ -33,6 +33,93 @@ public class Ctrl_Domini {
         }
         return true;
     }
+    // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
+    // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
+    public boolean addTaulell(ArrayList<Integer> peces, int nMat) {
+            Tauler T = new Tauler();
+            int BnT=0, BnC=0, BnA=0, BnP=0, BnD = 0, BnR = 0, NnT=0, NnC=0, NnA=0, NnP=0, NnD =0, NnR =0;
+
+        for(int i = 0; i < peces.size(); i+=3) {
+            if (peces.get(i+2) == 0) {
+                if(BnP >= 8) return false;
+                T.setPeo(new Peo(BnP,peces.get(i),peces.get(i+1),true));
+                ++BnP;
+            }
+            if (peces.get(i+2) == 1) {
+                if(BnA >= 2) return false;
+                T.setAlfil(new Alfil(8+BnA,peces.get(i),peces.get(i+1),true));
+                ++BnA;
+            }
+            if (peces.get(i+2) == 2) {
+                if(BnC >= 2) return false;
+                T.setCavall(new Cavall(10+BnC,peces.get(i),peces.get(i+1),true));
+                ++BnC;
+            }
+            if (peces.get(i+2) == 3) {
+                if(BnT >= 2) return false;
+                T.setTorre(new Torre(12+BnT,peces.get(i),peces.get(i+1),true));
+                ++BnT;
+            }
+            if (peces.get(i+2) == 4) {
+                if(BnD >= 1) return false;
+                T.setReina(new Reina(14,peces.get(i),peces.get(i+1),true));
+                ++BnD;
+            }
+            if (peces.get(i+2) == 5) {
+                if(BnR >= 1) return false;
+                T.setRei(new Rei(15,peces.get(i),peces.get(i+1),true));
+                ++BnR;
+            }
+            if (peces.get(i+2) == 6) {
+                if(NnP >= 8) return false;
+                T.setPeo(new Peo(NnP,peces.get(i),peces.get(i+1),false));
+                ++NnP;
+            }
+            if (peces.get(i+2) == 7) {
+                if(NnA >= 2) return false;
+                T.setAlfil(new Alfil(8+NnA,peces.get(i),peces.get(i+1),false));
+                ++NnA;
+            }
+            if (peces.get(i+2) == 8) {
+                if(NnC >= 2) return false;
+                T.setCavall(new Cavall(10+NnC,peces.get(i),peces.get(i+1),false));
+                ++NnC;
+            }
+            if (peces.get(i+2) == 9) {
+                if(NnT >= 2) return false;
+                T.setTorre(new Torre(12+NnT,peces.get(i),peces.get(i+1),false));
+                ++NnT;
+            }
+            if (peces.get(i+2) == 10) {
+                if(NnD >= 1) return false;
+                T.setReina(new Reina(14,peces.get(i),peces.get(i+1),false));
+                ++NnD;
+            }
+            if (peces.get(i+2) == 11) {
+                if(NnR >= 1) return false;
+                T.setRei(new Rei(15,peces.get(i),peces.get(i+1),false));
+                ++NnR;
+            }
+        }
+        String fen = T.HumantoFEN(T.getPeces_blanques(),T.getPeces_negres());
+        Problema p = new Problema(fen);
+        p.setN(nMat);
+        Maquina virtual = new Maquina("VIRTUAL");
+        //if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
+        if(bdp.existsProblema(fen)){
+            return false;
+        }
+        else {
+            if(p.FENtoHuman() != null) {
+                System.out.println("domini.Problema afegit amb exit\n");
+                bdp.AddProblem(p);
+            }
+            else return false;
+        }
+        return true;
+
+    }
+
     public boolean AddProblem(String fen,int mat){
         Problema p= new Problema(fen);
         p.setN(mat);
@@ -51,6 +138,7 @@ public class Ctrl_Domini {
             }
             return true;
     }
+
     public void crearPartida(String Atacant, String defensor,String problema){
         Usuari a= bdu.getHuma(Atacant);
         Usuari d= bdu.getHuma(defensor);

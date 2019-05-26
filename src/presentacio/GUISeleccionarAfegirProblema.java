@@ -9,7 +9,7 @@ public class GUISeleccionarAfegirProblema {
     private JPanel MySeleccionarAfegirProblema;
     private JButton interactiuButton;
     private JButton tornarEnrereButton;
-    private JFrame prob = new JFrame();
+    private JFrame interact = new JFrame();
 
     public GUISeleccionarAfegirProblema() {
         manualButton.addActionListener(new ActionListener() {
@@ -47,10 +47,12 @@ public class GUISeleccionarAfegirProblema {
 
 
                 GUICreaProblema prob1 = new GUICreaProblema();
-                prob.setBounds(250,100,700,500);
-                prob.setContentPane(prob1.getMyTaulell());
+                interact.setBounds(250,100,700,500);
+                interact.setContentPane(prob1.getMyTaulell());
 
-                prob.setVisible(true);
+                interact.setVisible(true);
+
+
 
 
             }
