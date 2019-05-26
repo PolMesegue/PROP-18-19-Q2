@@ -12,21 +12,24 @@ public class Maquina extends Usuari {
         super(nom);
     }
 
-    /*public Jugada condicio(Tauler jaume_diarrea){
-        for(int i=0; i<16;i++){
-            if(jaume_diarrea.getPeces_blanques()[i] != null){
-                for(int j=0;j<matriu_camins.size();j++){
-                    ArrayList<IntPair> aux = matriu_camins.get(j);
-                    Jugada whataplay = new Jugada();
-                    Peca whatapiece = jaume_diarrea.getPeces_blanques()[i];
-                    whataplay.setPeca();
-
-
+    public Jugada condicio(Tauler jaume_diarrea) {
+        for (int j = 0; j < matriu_camins.size(); j++) {
+            ArrayList<IntPair> aux = matriu_camins.get(j); // 34 35, 35 36
+            Peca whatapiece = jaume_diarrea.getPeca(aux.get(0).getX(), aux.get(0).getY());
+            for (int z = 1; z < aux.size(); z++) {
+                if (jaume_diarrea.getPeca(aux.get(z).getX(), aux.get(z).getY()) != null) {
+                    if (jaume_diarrea.getPeca(aux.get(z).getX(), aux.get(z).getY()).getColor() != whatapiece.getColor()) {
+                        Jugada whataplay = new Jugada();
+                        whataplay.setPeca(whatapiece);
+                        whataplay.setPos_fin_x(aux.get(1).getX());
+                        whataplay.setPos_fin_y(aux.get(1).getY());
+                        return whataplay;
+                    }
                 }
-
             }
         }
-    }*/
+        return null;
+    }
 
 
     public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n) {
@@ -46,10 +49,8 @@ public class Maquina extends Usuari {
         int turn =1;
         boolean b = backtracking(jugada,t_temp,1,n,camins,turn);
 
-
-
-
-        if (b) return jugada;
+        Jugada amazingplay = condicio(t_temp);
+        if (b) return amazingplay;
         else return null;
     }
 
