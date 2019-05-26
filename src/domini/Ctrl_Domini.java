@@ -1,5 +1,6 @@
 package domini;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.*;
 import java.util.function.IntToDoubleFunction;
@@ -173,6 +174,26 @@ public class Ctrl_Domini {
 
     }
 
+    public boolean getTorn() {
+        return joc.getTorn();
+    }
+
+    public void setTorn (boolean torn) {
+        joc.setTorn(torn);
+    }
+
+    public void setMov(int mov) {
+        joc.setMov(mov);
+    }
+
+    public void delUsuari(String nom) {
+        bdu.delHuma(nom);
+    }
+
+    public void delProblema(String FEN) {
+        bdp.delProblem(FEN);
+    }
+
     public Tauler getTauler(String fen){
         Problema p= bdp.getProblema(fen);
         Tauler t= p.FENtoHuman();
@@ -327,11 +348,12 @@ public class Ctrl_Domini {
         return true;
     }
 
-    public void CarregarUsuaris() throws Exception{
+    public boolean CarregarUsuaris() throws Exception{
         Vector<String> Users =CtrlPer.LlegirUsuari();
         for(int i=0;i< Users.size();i++) {
-            AddHuma(Users.get(i));
+            if (!AddHuma(Users.get(i))) return false;
         }
+        return true;
     }
     public String getDefensor(){
         return joc.getD().getNom();
@@ -341,6 +363,9 @@ public class Ctrl_Domini {
     }
     public int getN(){
         return joc.getN();
+    }
+    public int getMov() {
+        return joc.getMov();
     }
     public ArrayList<String> getUsersRanking(){
         return rank.getUsuarisRanking();
@@ -353,6 +378,9 @@ public class Ctrl_Domini {
     }
     public void deletePartidaActual(){
         fa.borrarPartida(joc.getFecha());
+    }
+    public void deletePartida(Timestamp fecha) {
+        fa.borrarPartida(fecha);
     }
 
 

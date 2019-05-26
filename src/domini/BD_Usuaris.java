@@ -48,6 +48,7 @@ public class BD_Usuaris {
 
     }
 
+
     public Collection<Usuari> getCollectionHumans() {
         return CollectionHumans;
     }

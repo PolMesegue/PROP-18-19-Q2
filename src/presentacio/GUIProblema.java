@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 public class GUIProblema {
     private JPanel MyGUIProblema;
-    private JButton esborrarProblemaButton;
     private JButton consultarProblemaButton;
     private JButton afergirProblemaButton;
     private JButton CarregarProblemaButton;
@@ -45,12 +44,7 @@ public class GUIProblema {
             }
         });
 
-        esborrarProblemaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
         tornarEnrereButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

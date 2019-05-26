@@ -9,6 +9,7 @@ public class GUIJugar {
     private JButton crearPartidaButton;
     private JButton jugarButton;
     private JButton tornarButton;
+    private JButton esborrarPartidaButton;
 
 
     public GUIJugar() {
@@ -58,6 +59,20 @@ public class GUIJugar {
 
                 */
 
+
+            }
+        });
+        esborrarPartidaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                frame esborrar = frame.getInstance();
+                GUIEsborrarPartida part = new GUIEsborrarPartida();
+
+                esborrar.setContentPane(part.getMyGUIEsborrarPartida());
+                esborrar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                esborrar.setVisible(true);
 
             }
         });

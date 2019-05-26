@@ -190,6 +190,76 @@ public class GUICreaProblema {
         });
     }
 
+
+    public GUICreaProblema(String FEN) {
+        iniciaMatriu();
+        colocarPeces(FEN);
+        iniciaSelector();
+
+
+
+
+        for(int f = 0; f < 12; ++f) {
+            selector[f].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    bSelec = (JButton)e.getSource();
+
+                    netejaSelector();
+                    bSelec.setBackground(Color.CYAN);
+                    icon = bSelec.getIcon();
+
+                }
+            });
+        }
+
+        for(int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+
+                matriu[i][j].addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        bMat = (JButton) e.getSource();
+
+                        bMat.setIcon(icon);
+
+                    }
+                });
+            }
+        }
+
+        ButtonBasura.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                netejaSelector();
+                ButtonBasura.setBackground(Color.cyan);
+                icon = null;
+            }
+        });
+
+
+        sortirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                ArrayList<Integer> peces = llegeixTauler();
+                int mat = Integer.parseInt(textField1.getText());
+                if (ctrlP.addTaulell(peces,mat)) {
+
+                    JOptionPane.showMessageDialog(null, "Afegit correctament");
+                    ctrlP.delProblema(FEN);
+
+                    JFrame f1 = (JFrame) SwingUtilities.windowForComponent(MyTaulell);
+                    f1.dispose();
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "El taulell no és correcte o no te solució");
+                }
+            }
+        });
+    }
+
     private ArrayList<Integer> llegeixTauler() {
 
 
@@ -367,6 +437,55 @@ public class GUICreaProblema {
         matriu[7][5] = Button75;
         matriu[7][6] = Button76;
         matriu[7][7] = Button77;
+    }
+
+    private void colocarPeces(String FEN) {
+
+
+        ArrayList<Integer> pecesTauler = ctrlP.mostrarTaulell(FEN);
+
+        for(int i=0;i<pecesTauler.size();i+=3){
+            //blancas
+            if(pecesTauler.get(i+2)==0){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(PeoB);
+            }
+            if(pecesTauler.get(i+2)==1){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(AlfilB);
+            }
+            if(pecesTauler.get(i+2)==2){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(CavallB);
+            }
+            if(pecesTauler.get(i+2)==3){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(TorreB);
+            }
+            if(pecesTauler.get(i+2)==4){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReinaB);
+            }
+            if(pecesTauler.get(i+2)==5){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReyB);
+            }
+            //negres
+            // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
+            if(pecesTauler.get(i+2)==6){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(PeoN);
+            }
+            if(pecesTauler.get(i+2)==7){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(AlfilN);
+            }
+            if(pecesTauler.get(i+2)==8){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(CavallN);
+            }
+            if(pecesTauler.get(i+2)==9){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(TorreN);
+            }
+            if(pecesTauler.get(i+2)==10){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReinaN);
+            }
+            if(pecesTauler.get(i+2)==11){
+                matriu[pecesTauler.get(i)][pecesTauler.get(i+1)].setIcon(ReyN);
+            }
+        }
+
     }
 
     public JPanel getMyTaulell() {

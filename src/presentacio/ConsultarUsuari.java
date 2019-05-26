@@ -8,13 +8,19 @@ public class ConsultarUsuari {
     private JComboBox comboBox1;
     private JPanel MyConsultarUsuari;
     private JButton tornarEnrereButton;
+    private JButton esborrarUsuariButton;
+    private JButton modificarUsuariButton;
+    private JButton refrescaLlistaButton;
     private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
+
+    private JFrame modi = new JFrame();
 
     public ConsultarUsuari() {
 
         for(int i=0; i<CtrlP.consultar_usuaris().size();i++){
             String aux= CtrlP.consultar_usuaris().get(i);
-            comboBox1.addItem(aux);
+
+            if (!aux.equals("M1") && !aux.equals("M2"))comboBox1.addItem(aux);
         }
         tornarEnrereButton.addActionListener(new ActionListener() {
             @Override
@@ -31,6 +37,20 @@ public class ConsultarUsuari {
 
             }
         });
+        esborrarUsuariButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                modi.setVisible(false);
+                CtrlP.delUsuari((String)comboBox1.getSelectedItem());
+                comboBox1.removeAllItems();
+                for(int i=0; i<CtrlP.consultar_usuaris().size();i++){
+                    String aux= CtrlP.consultar_usuaris().get(i);
+                    comboBox1.addItem(aux);
+                }
+            }
+        });
+
+
     }
 
     public JPanel getMyConsultarUsuari() {

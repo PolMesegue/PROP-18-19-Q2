@@ -8,7 +8,6 @@ public class GUIUsuari {
     private JPanel MyGUIUsuari;
     private JButton registrarUsuariButton;
     private JButton consultarUsuariButton;
-    private JButton esborrarUsuariButton;
     private JButton CarregarUsuariButton;
     private JButton tornarEnrereButton;
     private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
@@ -43,19 +42,16 @@ public class GUIUsuari {
             }
         });
 
-        esborrarUsuariButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-
-            }
-        });
         CarregarUsuariButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
                 try {
-                    CtrlP.CarregarUsuaris();
-                    JOptionPane.showMessageDialog(null,"Usuaris afegits");
+                    if (CtrlP.CarregarUsuaris()) {
+                        JOptionPane.showMessageDialog(null, "Usuaris afegits");
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "Error al Aafegir \n Almenys 1 usuari repetit \n Alguns usuaris poden no haver-se afegir");
+                    }
                 }catch (Exception B) {
                     B.printStackTrace();
                 }

@@ -60,6 +60,8 @@ public class GUISeleccionarAfegirProblema {
     }
 
 
+
+
     public JPanel getMySeleccionarAfegirProblema() {
         return MySeleccionarAfegirProblema;
     }

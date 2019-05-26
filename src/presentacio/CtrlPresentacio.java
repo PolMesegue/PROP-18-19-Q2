@@ -49,6 +49,10 @@ public class CtrlPresentacio {
         return ctrldom.getPecas();
     }
 
+    public void delProblema(String FEN) {
+        ctrldom.delProblema(FEN);
+    }
+
     public boolean addTaulell(ArrayList<Integer> peces, int n) {
 
         return ctrldom.addTaulell(peces,n);
@@ -70,9 +74,14 @@ public class CtrlPresentacio {
     public boolean CarregarProblemas() throws Exception{
         return ctrldom.CarregarProblemas();
     }
-    public void CarregarUsuaris() throws Exception{
-        ctrldom.CarregarUsuaris();
+    public boolean CarregarUsuaris() throws Exception{
+        return ctrldom.CarregarUsuaris();
     }
+
+    public int getMov() {
+        return ctrldom.getMov();
+    }
+
     public ArrayList<Integer> turnMaquina(){
         return ctrldom.moureMaquina();
 
@@ -87,6 +96,23 @@ public class CtrlPresentacio {
         return ctrldom.getN();
 
     }
+
+    public boolean getTorn() {
+        return ctrldom.getTorn();
+    }
+
+    public void setTorn(boolean torn) {
+        ctrldom.setTorn(torn);
+    }
+
+    public void setMov(int mov) {
+        ctrldom.setMov(mov);
+    }
+
+    public void delUsuari(String nom) {
+        ctrldom.delUsuari(nom);
+    }
+
     public void deleteParidaActual(){
         ctrldom.deletePartidaActual();
     }
@@ -102,6 +128,10 @@ public class CtrlPresentacio {
     }
     public void addtoranking(String nom){
         ctrldom.addtoranking(nom);
+    }
+
+    public void deletePartida(Timestamp fecha) {
+        ctrldom.deletePartida(fecha);
     }
 
     public static void main(String[] args){
