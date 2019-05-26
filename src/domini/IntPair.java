@@ -2,7 +2,7 @@ package domini;
 
 import java.util.*;
 
-public class IntPair {
+public class IntPair implements Cloneable{
     private int x;
     private int y;
 
