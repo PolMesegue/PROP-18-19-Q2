@@ -130,9 +130,6 @@ public class Ctrl_Domini {
             builder.append(ch);
         }
 
-
-
-
         Problema p = new Problema(builder.toString());
         p.setN(nMat);
         Maquina virtual = new Maquina("VIRTUAL");
@@ -144,6 +141,14 @@ public class Ctrl_Domini {
             if(p.FENtoHuman() != null) {
                 System.out.println("domini.Problema afegit amb exit\n");
                 bdp.AddProblem(p);
+
+                /*String aux = p.getFEN();
+                aux = "\n" + aux + "\n" + p.getN();
+                try {
+                    CtrlPer.EscriureProblema(aux);
+                } catch (Exception B) {
+                    B.printStackTrace();
+                }*/
             }
             else return false;
         }

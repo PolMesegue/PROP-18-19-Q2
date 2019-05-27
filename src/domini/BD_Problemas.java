@@ -14,6 +14,7 @@ public class BD_Problemas {
     public void AddProblem(Problema problem) {
 
         CollectionProblems.add(problem);
+
     }
 
     public Problema getProblema(String fen){
