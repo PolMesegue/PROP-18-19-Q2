@@ -142,13 +142,13 @@ public class Ctrl_Domini {
                 System.out.println("domini.Problema afegit amb exit\n");
                 bdp.AddProblem(p);
 
-                /*String aux = p.getFEN();
-                aux = "\n" + aux + "\n" + p.getN();
+                String aux = p.getFEN();
+                aux =  aux + "\n" + p.getN();
                 try {
                     CtrlPer.EscriureProblema(aux);
                 } catch (Exception B) {
                     B.printStackTrace();
-                }*/
+                }
             }
             else return false;
         }
