@@ -398,7 +398,7 @@ public class Ctrl_Domini {
             Problema aux = new Problema(FENS.get(i));
             if(aux.FENtoHuman() != null){
                 //if(M1.te_solucio(aux.FENtoHuman().getPeces_blanques(),aux.FENtoHuman().getPeces_negres(),Integer.valueOf(FENS.get(i+1)))){
-                AddProblem(FENS.get(i),Integer.valueOf(FENS.get(i+1)));
+                if(!AddProblem(FENS.get(i),Integer.valueOf(FENS.get(i+1)))) return false;
             }
             else return false;
         }
