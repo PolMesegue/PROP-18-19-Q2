@@ -135,6 +135,7 @@ public class CtrlPresentacio {
     }
 
     public static void main(String[] args){
+
             frame main = frame.getInstance();
             ctrldom.crearMaquina();
             main.setContentPane(new GUIMain().getMyGUIMain());
@@ -142,6 +143,20 @@ public class CtrlPresentacio {
             main.setBounds(300, 200, 600, 400);
 
             main.setVisible(true);
+
+            CtrlPresentacio ctrl = CtrlPresentacio.getInstance();
+            try{
+                ctrl.CarregarProblemas();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            try{
+                ctrl.CarregarUsuaris();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
     }
 
 }
