@@ -15,25 +15,39 @@ public class Maquina extends Usuari {
     public Jugada condicio(Tauler jaume_diarrea) {
         for (int j = 0; j < matriu_camins.size(); j++) {
             ArrayList<IntPair> aux = matriu_camins.get(j); // 34 35, 35 36
-            Peca whatapiece = jaume_diarrea.getPeca(aux.get(0).getX(), aux.get(0).getY());
-            for (int z = 1; z < aux.size(); z++) {
-                if (jaume_diarrea.getPeca(aux.get(z).getX(), aux.get(z).getY()) != null) {
-                    if (jaume_diarrea.getPeca(aux.get(z).getX(), aux.get(z).getY()).getColor() != whatapiece.getColor()) {
-                        Jugada whataplay = new Jugada();
-                        whataplay.setPeca(whatapiece);
-                        whataplay.setPos_fin_x(aux.get(1).getX());
-                        whataplay.setPos_fin_y(aux.get(1).getY());
-                        return whataplay;
+            if(aux.size() == 0){
+
+            }
+            else {
+                Peca whatapiece = jaume_diarrea.getPeca(aux.get(0).getX(), aux.get(0).getY());
+                for (int z = 1; z < aux.size(); z++) {
+                    if (jaume_diarrea.getPeca(aux.get(z).getX(), aux.get(z).getY()) != null) {
+                        if (jaume_diarrea.getPeca(aux.get(z).getX(), aux.get(z).getY()).getColor() != whatapiece.getColor()) {
+                            Jugada whataplay = new Jugada();
+                            whataplay.setPeca(whatapiece);
+                            whataplay.setPos_fin_x(aux.get(1).getX());
+                            whataplay.setPos_fin_y(aux.get(1).getY());
+                            return whataplay;
+                        }
                     }
                 }
             }
         }
+        if(matriu_camins.size() > 0) {
+            Peca whatapiece = jaume_diarrea.getPeca(matriu_camins.get(0).get(0).getX(), matriu_camins.get(0).get(0).getY());
+            Jugada play = new Jugada();
+            play.setPeca(whatapiece);
+            play.setPos_fin_x(matriu_camins.get(1).get(1).getX());
+            play.setPos_fin_y(matriu_camins.get(1).get(1).getY());
+            return play;
+        }
+
         return null;
     }
 
 
     public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n) {
-
+        matriu_camins.clear();
         Jugada jugada = new Jugada();
         Tauler t_temp = new Tauler(peces_blanques,peces_negres);
         t_temp.actualitzar();
@@ -42,6 +56,7 @@ public class Maquina extends Usuari {
         boolean b = backtracking(jugada,t_temp,1,n,camins,turn);
 
         Jugada amazingplay = condicio(t_temp);
+
         if (b) return amazingplay;
         else return null;
     }
