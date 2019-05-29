@@ -116,11 +116,13 @@ public class GUITaulell {
 
     public GUITaulell() {
         temps = ctrlP.getTemps();
-        Timer t = new Timer(1000, new ActionListener() {
+        Rellotge.setText(String.format("%.1f",temps));
+
+        Timer t = new Timer(10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Rellotge.setText(String.valueOf(temps));
-                temps--;
+                Rellotge.setText(String.format("%.1f",temps));
+                temps = temps - 0.01f;
                 if (temps == 0) {
                     JOptionPane.showMessageDialog(null,"T'has quedat sense Temps \n Guanyen Negres");
 
@@ -307,7 +309,7 @@ public class GUITaulell {
         sortirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                t.stop();
                 //loqueisgui Guardar
                 ctrlP.setMov(k);
                 ctrlP.setTorn(tornBlanques);
