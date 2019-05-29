@@ -42,24 +42,27 @@ public class ConsultarProblema {
         veureTaulellButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (comboBox1.getSelectedItem() != null) {
+                    GUIVeureTauler tauler2 = new GUIVeureTauler((String) comboBox1.getSelectedItem());
+                    taulerCons.setBounds(250, 100, 525, 500);
+                    taulerCons.setContentPane(tauler2.getMyTaulellPreview());
 
-                GUIVeureTauler tauler2 = new GUIVeureTauler((String) comboBox1.getSelectedItem());
-                taulerCons.setBounds(250,100,525,500);
-                taulerCons.setContentPane(tauler2.getMyTaulellPreview());
-
-                taulerCons.setVisible(true);
+                    taulerCons.setVisible(true);
+                }
             }
         });
         modificarTaulellButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if (comboBox1.getSelectedItem() != null) {
 
-                GUICreaProblema tauler2 = new GUICreaProblema((String) comboBox1.getSelectedItem());
+                    GUICreaProblema tauler2 = new GUICreaProblema((String) comboBox1.getSelectedItem());
 
-                taulerMod.setBounds(250,100,700,500);
-                taulerMod.setContentPane(tauler2.getMyTaulell());
-                taulerMod.setVisible(true);
+                    taulerMod.setBounds(250, 100, 700, 500);
+                    taulerMod.setContentPane(tauler2.getMyTaulell());
+                    taulerMod.setVisible(true);
+                }
 
             }
         });

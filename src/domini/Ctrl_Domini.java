@@ -197,7 +197,6 @@ public class Ctrl_Domini {
 
                 if (virtual.te_solucio(temp.getPeces_blanques(), p.FENtoHuman().getPeces_negres(), mat)) {
 
-
                     System.out.println("domini.Problema afegit amb exit\n");
                     bdp.AddProblem(p);
 
@@ -215,7 +214,7 @@ public class Ctrl_Domini {
             else {
                 System.out.println("domini.Problema afegit amb exit\n");
                 bdp.AddProblem(p);
-
+                /*
                 String aux = p.getFEN();
                 aux = aux + "\n" + p.getN();
                 try {
@@ -223,6 +222,7 @@ public class Ctrl_Domini {
                 } catch (Exception B) {
                     B.printStackTrace();
                 }
+                */
             }
 
         } else return false;
