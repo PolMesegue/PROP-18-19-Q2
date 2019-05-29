@@ -109,8 +109,8 @@ public class GUITaulell {
     private  ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-48.png"));
     // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
     // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
-    float temps;
-    Timer t;
+    private float temps;
+    private Timer t;
 
     private boolean jugaMaquina;
 
