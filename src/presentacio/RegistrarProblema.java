@@ -31,7 +31,7 @@ public class RegistrarProblema {
                     prob.setVisible(true);
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "Error al afegir problema \n Revisa el FEN");
+                    JOptionPane.showMessageDialog(null, "Error al afegir problema \n Revisa el FEN \n Revisa que no existeixi un problema igual \n");
                 }
 
 

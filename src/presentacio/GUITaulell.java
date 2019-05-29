@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+
 /*
 ImageIcon kek = new ImageIcon(this.getClass().getResource("/icons8-bishop-40(1).png"));
                 Button02.setIcon(kek);
@@ -83,6 +84,7 @@ public class GUITaulell {
     private JLabel nMov;
     private JLabel nMat;
     private JButton sortirButton;
+    private JLabel Rellotge;
     private Boolean first;
     private Icon ico;
     private JButton temp;
@@ -107,16 +109,43 @@ public class GUITaulell {
     private  ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-48.png"));
     // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
     // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
+    float temps;
 
     private boolean jugaMaquina;
 
 
     public GUITaulell() {
+        temps = ctrlP.getTemps();
+        Timer t = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Rellotge.setText(String.valueOf(temps));
+                temps--;
+                if (temps == 0) {
+                    JOptionPane.showMessageDialog(null,"T'has quedat sense Temps \n Guanyen Negres");
+
+                    frame jugar = frame.getInstance();
+
+                    GUIJugar jugar1 = new GUIJugar();
+
+                    jugar.setContentPane(jugar1.getMyJugar());
+                    jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+                    jugar.setVisible(true);
+                    ctrlP.deleteParidaActual();
+
+                }
+            }
+        });
+
 
         if (ctrlP.getDefensor().equals("M1") || ctrlP.getDefensor().equals("M2")) jugaMaquina = true;
         else jugaMaquina = false;
 
         tornBlanques = ctrlP.getTorn();
+        if (tornBlanques) t.start();
+
         first = true;
         iniciaMatriu();
 
@@ -177,8 +206,12 @@ public class GUITaulell {
 
                                     first = true;
                                     if (tornBlanques)  {
+                                        t.stop();
                                         ++k;
                                         nMov.setText(""+k);
+                                    }
+                                    else {
+                                        t.start();
                                     }
 
                                     tornBlanques = !tornBlanques;
@@ -186,6 +219,8 @@ public class GUITaulell {
                                     netejaTaulell();
 
                                     if (ReyNviu(ReyN) && Integer.valueOf(nMov.getText()) >= Integer.valueOf(nMat.getText())) {
+                                        t.stop();
+
                                         JOptionPane.showMessageDialog(null,"T'has quedat sense Moviments \n Guanyen Negres");
 
                                         frame jugar = frame.getInstance();
@@ -205,11 +240,15 @@ public class GUITaulell {
                                     else if(ReyNviu(ReyN) && Integer.valueOf(nMov.getText()) < Integer.valueOf(nMat.getText())) {
 
                                         if (jugaMaquina) {
+                                            t.stop();
                                             mourePecaMaquina(ctrlP.turnMaquina());
                                             tornBlanques = !tornBlanques;
+                                            t.start();
                                         }
 
                                         if (!ReyBviu(ReyB)) {
+                                            t.stop();
+
                                             JOptionPane.showMessageDialog(null,"Guanyen Negres");
 
                                             frame jugar = frame.getInstance();
@@ -229,6 +268,7 @@ public class GUITaulell {
 
                                     }
                                     else {
+                                        t.stop();
 
                                         JOptionPane.showMessageDialog(null,"Guanyen Blanques");
 
@@ -258,6 +298,7 @@ public class GUITaulell {
 
                         }
                     }
+
                 });
 
             }
@@ -270,6 +311,7 @@ public class GUITaulell {
                 //loqueisgui Guardar
                 ctrlP.setMov(k);
                 ctrlP.setTorn(tornBlanques);
+                ctrlP.setTemps(temps);
                 frame jugar = frame.getInstance();
 
                 GUIJugar jugar1 = new GUIJugar();

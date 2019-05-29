@@ -11,7 +11,8 @@ public class Partida {
     private Usuari d;
     private Integer Mov;
     private boolean tornBlanques;
-    private Rellotge timer;
+    //private Rellotge timer;
+    private float temps;
 
     Partida(Timestamp f,Problema p, Tauler t, Usuari a, Usuari d){
         this.fecha=f;
@@ -21,6 +22,7 @@ public class Partida {
         this.d=d;
         this.Mov = 0;
         this.tornBlanques = true;
+        this.temps = 180;
     }
 
     public boolean getTorn() {
@@ -39,6 +41,14 @@ public class Partida {
     }
 
     public int getMov() {return Mov;}
+
+    public void setTemps(float temps) {
+        this.temps = temps;
+    }
+
+    public float getTemps() {
+        return this.temps;
+    }
 
     public void setMov(int mov) {
         this.Mov = mov;

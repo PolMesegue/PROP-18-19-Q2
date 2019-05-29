@@ -35,6 +35,7 @@ public class ControladorDades {
         bw.write("");
         TancarArxiu();
     }
+
     public void Escriure(String s) throws Exception {
         if (a == null) throw new Exception("Arxiu no obert");
 

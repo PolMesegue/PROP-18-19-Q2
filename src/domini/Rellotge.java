@@ -2,6 +2,7 @@ package domini;
 
 
 import java.util.concurrent.TimeUnit;
+import javax.swing.Timer;
 
 public class Rellotge {
 
@@ -11,6 +12,9 @@ public class Rellotge {
 
         Boolean player=false;
         Boolean	first=true;
+
+        Timer t;
+
 
         /*public static void main(String[] args) throws InterruptedException {
 
