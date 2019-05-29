@@ -54,9 +54,7 @@ public class CtrlPresentacio {
     }
 
     public boolean addTaulell(ArrayList<Integer> peces, int n) {
-
         return ctrldom.addTaulell(peces,n);
-
     }
 
     public boolean mourePeca(int xO,int yO, int xD, int yD){
