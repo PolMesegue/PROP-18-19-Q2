@@ -73,17 +73,20 @@ public class Maquina extends Usuari {
             }
 
         }
+        Iterator it2 = map.keySet().iterator();
+        while(it2.hasNext()) {
+            ArrayList<IntPair> key = (ArrayList<IntPair>) it2.next();
+            if(key.size() != 0){
+                Peca whatapiece = T.getPeca(key.get(0).getX(), key.get(0).getY());
+                Jugada whataplay = new Jugada();
+                whataplay.setPeca(whatapiece);
+                whataplay.setPos_fin_x(key.get(1).getX());
+                whataplay.setPos_fin_y(key.get(1).getY());
+                return whataplay;
+            }
 
-        Map.Entry<ArrayList<IntPair>,Integer> entry = map.entrySet().iterator().next();
-        ArrayList<IntPair> jugadaaux= entry.getKey();
-
-        Peca whatapiece = T.getPeca(jugadaaux.get(0).getX(), jugadaaux.get(0).getY());
-        Jugada whataplay = new Jugada();
-        whataplay.setPeca(whatapiece);
-        whataplay.setPos_fin_x(jugadaaux.get(1).getX());
-        whataplay.setPos_fin_y(jugadaaux.get(1).getY());
-        return whataplay;
-
+        }
+        return null;
     }
 
     public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
