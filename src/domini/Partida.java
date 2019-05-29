@@ -54,6 +54,10 @@ public class Partida {
         this.Mov = mov;
     }
 
+    public Problema getProblema() {
+        return this.p;
+    }
+
 
     public boolean mourePeca(int x, int y, int xnew, int ynew){
         //char whoStarts = p.whoStarts();

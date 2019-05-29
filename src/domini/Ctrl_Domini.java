@@ -286,6 +286,10 @@ public class Ctrl_Domini {
         return joc.getTorn();
     }
 
+    public String getFen() {
+        return joc.getProblema().getFEN();
+    }
+
     public void setTorn (boolean torn) {
         joc.setTorn(torn);
     }
@@ -506,11 +510,16 @@ public class Ctrl_Domini {
     public ArrayList<String> getUsersRanking(){
         return rank.getUsuarisRanking();
     }
-    public ArrayList<Integer> getUsersRankingPoints(){
-        return rank.getGuanyadasRanking();
+    public ArrayList<String> getFensRaning(){
+        return rank.getFenRanking();
     }
-    public void addtoranking(String nom){
-        rank.addUsuariGuanyador(nom);
+
+    public ArrayList<Float> getSegons() {
+        return rank.getTempsRanking();
+    }
+
+    public void addtoranking(String fen, String atacant, float temps){
+        rank.addUsuariGuanyador(fen, atacant, temps);
     }
     public void deletePartidaActual(){
         fa.borrarPartida(joc.getFecha());

@@ -96,6 +96,10 @@ public class CtrlPresentacio {
 
     }
 
+    public String getFen() {
+        return ctrldom.getFen();
+    }
+
     public boolean getTorn() {
         return ctrldom.getTorn();
     }
@@ -126,11 +130,17 @@ public class CtrlPresentacio {
     public ArrayList<String> getUsersRanking(){
         return ctrldom.getUsersRanking();
     }
-    public ArrayList<Integer> getUsersRankingPoints(){
-        return ctrldom.getUsersRankingPoints();
+    public ArrayList<String> getFensRanking(){
+        return ctrldom.getFensRaning();
     }
-    public void addtoranking(String nom){
-        ctrldom.addtoranking(nom);
+
+    public ArrayList<Float> getSegons(){
+        return ctrldom.getSegons();
+    }
+
+
+    public void addtoranking(String fen,String atacant, float temps){
+        ctrldom.addtoranking(fen, atacant, temps);
     }
 
     public void deletePartida(Timestamp fecha) {

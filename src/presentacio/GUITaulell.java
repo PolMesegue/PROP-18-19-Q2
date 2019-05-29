@@ -289,7 +289,8 @@ public class GUITaulell {
 
                                         jugar.setVisible(true);
 
-                                        ctrlP.addtoranking(ctrlP.getAtacant());
+                                        ctrlP.addtoranking(ctrlP.getFen(), ctrlP.getAtacant(), temps);
+                                        //ctrlP.addtoranking(ctrlP.getAtacant());
                                         ctrlP.deleteParidaActual();
 
                                     }

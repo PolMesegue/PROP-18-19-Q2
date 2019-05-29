@@ -6,9 +6,10 @@ import java.awt.event.ActionListener;
 
 public class GUIranking {
     private JTextArea JugadorsArea;
-    private JTextArea PuntsArea;
     private JButton tornarEnrerraButton;
     private JPanel MyRankingPanel;
+    private JTextArea TempsArea;
+    private JTextArea ProblemesArea;
 
     private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
 
@@ -18,12 +19,20 @@ public class GUIranking {
 
     public GUIranking() {
 
+        for(int i=0; i<CtrlP.getSegons().size();i++){
+            TempsArea.append(CtrlP.getSegons().get(i)+"\n");
+        }
+
         for(int i=0; i<CtrlP.getUsersRanking().size();i++){
             JugadorsArea.append(CtrlP.getUsersRanking().get(i)+"\n");
         }
-        for(int i=0; i<CtrlP.getUsersRankingPoints().size();i++) {
-            PuntsArea.append(CtrlP.getUsersRankingPoints().get(i).toString()+ "\n");
+
+        for(int i=0; i<CtrlP.getFensRanking().size();i++) {
+            ProblemesArea.append(CtrlP.getFensRanking().get(i).toString()+ "\n");
         }
+
+
+
         tornarEnrerraButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

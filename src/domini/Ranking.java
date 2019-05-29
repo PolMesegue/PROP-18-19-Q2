@@ -1,42 +1,54 @@
 package domini;
 
+import javafx.util.Pair;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.*;
 
+
+
 public class Ranking {
-    Map<String,Integer> map = new HashMap<String,Integer>();
+    Map<String,Pair> map = new HashMap<String,Pair>();
+    Pair<String, Float> res;
 
 
+    public void addUsuariGuanyador(String fen, String atacant, float temps){
+        res = new Pair<String, Float>(atacant,temps);
 
-    public void addUsuariGuanyador(String nom){
-        if(!map.containsKey(nom)){
-            map.put(nom,1);
-        }
-        else{
-            int aux = map.get(nom);
-            aux++;
-            map.put(nom,aux);
-        }
+        map.put(fen,res);
+
     }
+
+    public ArrayList<Float> getTempsRanking() {
+        ArrayList<Float> segons = new ArrayList<>();
+        Iterator it = map.keySet().iterator();
+        while(it.hasNext()){
+            String key = (String)it.next();
+            segons.add((float)map.get(key).getValue());
+        }
+        return segons;
+    }
+
+
     public ArrayList<String> getUsuarisRanking(){
-        ArrayList<String> noms = new ArrayList<>();
+        ArrayList<String> users = new ArrayList<>();
         Iterator it = map.keySet().iterator();
         while(it.hasNext()){
             String key = (String)it.next();
-            noms.add(key);
+            users.add((String)map.get(key).getKey());
         }
-        return noms;
+        return users;
     }
-    public ArrayList<Integer> getGuanyadasRanking(){
-        ArrayList<Integer> punts = new ArrayList<>();
+    public ArrayList<String> getFenRanking(){
+        ArrayList<String> fens = new ArrayList<>();
         Iterator it = map.keySet().iterator();
         while(it.hasNext()){
             String key = (String)it.next();
-            punts.add(map.get(key));
+            fens.add(key);
         }
-        return punts;
+        return fens;
     }
 
 }
