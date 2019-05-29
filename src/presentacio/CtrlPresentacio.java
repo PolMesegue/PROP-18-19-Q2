@@ -21,7 +21,7 @@ public class CtrlPresentacio {
     }
 
     public boolean afegirUsuari(String nom){
-        return ctrldom.AddHuma(nom);
+        return ctrldom.AddHuma(nom,true);
 
     }
     public ArrayList<String> consultar_usuaris(){
@@ -108,6 +108,10 @@ public class CtrlPresentacio {
     public void setMov(int mov) {
         ctrldom.setMov(mov);
     }
+
+    public void setTemps(float temps) { ctrldom.setTemps(temps);}
+
+    public float getTemps() { return ctrldom.getTemps();}
 
     public void delUsuari(String nom) {
         ctrldom.delUsuari(nom);

@@ -22,18 +22,7 @@ public class Ctrl_Domini {
         bdu.AddMaquina(m1);
     }
 
-    public boolean AddHuma(String nom){
-        Huma h= new Huma(nom);
-        if(bdu.existsHuma(nom)){
-            System.out.println("Ya existe usuario con el nombre introducido. \n");
-            return false;
-        }
-        else{
-            System.out.println("afegit \n");
-            bdu.AddHuma(h);
-        }
-        return true;
-    }
+
     // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
     // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
     public boolean addTaulell(ArrayList<Integer> peces, int nMat) {
@@ -248,6 +237,13 @@ public class Ctrl_Domini {
         joc.setMov(mov);
     }
 
+    public void setTemps(float temps) {joc.setTemps(temps);}
+
+    public float getTemps() {
+
+        return joc.getTemps();
+    }
+
     public void delUsuari(String nom) {
         bdu.delHuma(nom);
     }
@@ -413,10 +409,32 @@ public class Ctrl_Domini {
     public boolean CarregarUsuaris() throws Exception{
         Vector<String> Users =CtrlPer.LlegirUsuari();
         for(int i=0;i< Users.size();i++) {
-            if (!AddHuma(Users.get(i))) return false;
+            if (!AddHuma(Users.get(i), false)) return false;
         }
         return true;
     }
+
+    public boolean AddHuma(String nom, boolean escriure){
+        Huma h= new Huma(nom);
+        if(bdu.existsHuma(nom)){
+            System.out.println("Ya existe usuario con el nombre introducido. \n");
+            return false;
+        }
+        else{
+            System.out.println("afegit \n");
+            bdu.AddHuma(h);
+            if (escriure) {
+                try {
+                    CtrlPer.EscriureUsuari(nom);
+                } catch (Exception B) {
+                    B.printStackTrace();
+                }
+            }
+        }
+        return true;
+    }
+
+
     public String getDefensor(){
         return joc.getD().getNom();
     }

@@ -108,7 +108,7 @@ public class DriverMain {
                     String stg= io.readname();
                     //io.write("Introdueix password: ");
                     //String stg2= io.readname();
-                    ctrldom.AddHuma(stg);
+                    ctrldom.AddHuma(stg,true);
                 }
                 else if (s == 2){
 

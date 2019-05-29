@@ -6,7 +6,6 @@ public class Problema {
     private String FEN;
     private String ID;
     private Integer N;
-
     private char whoStarts;
 
     Problema(String FEN) {
@@ -59,6 +58,7 @@ public class Problema {
 
                 case '/':
                     ++y;
+                    if ( y > 7) return null;
                     x = 0;
                     numero = false;
                     break;
