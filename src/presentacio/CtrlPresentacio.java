@@ -29,7 +29,6 @@ public class CtrlPresentacio {
         return llistaUsuaris;
     }
     public boolean afegirProblema(String problema, int mat ){
-
         return ctrldom.AddProblem(problema,mat);
     }
     public ArrayList<String> consultar_Problemas(){
@@ -55,9 +54,7 @@ public class CtrlPresentacio {
     }
 
     public boolean addTaulell(ArrayList<Integer> peces, int n) {
-
         return ctrldom.addTaulell(peces,n);
-
     }
 
     public boolean mourePeca(int xO,int yO, int xD, int yD){
