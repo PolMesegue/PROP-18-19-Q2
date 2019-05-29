@@ -41,18 +41,21 @@ public class RegistrarPartida {
 
                 if (comboBox1.getSelectedItem() != comboBox2.getSelectedItem()) {
 
-                    CtrlP.crearPartida((String) comboBox1.getSelectedItem(), (String) comboBox2.getSelectedItem(), (String) comboBox3.getSelectedItem());
+                    if (comboBox1.getSelectedItem() != null && comboBox2.getSelectedItem() != null && comboBox3.getSelectedItem() != null) {
 
-                    JOptionPane.showMessageDialog(null, "Afegit correctament");
+                        CtrlP.crearPartida((String) comboBox1.getSelectedItem(), (String) comboBox2.getSelectedItem(), (String) comboBox3.getSelectedItem());
 
-                    frame jugar = frame.getInstance();
+                        JOptionPane.showMessageDialog(null, "Afegit correctament");
 
-                    GUIJugar jugar1 = new GUIJugar();
+                        frame jugar = frame.getInstance();
 
-                    jugar.setContentPane(jugar1.getMyJugar());
-                    jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        GUIJugar jugar1 = new GUIJugar();
 
-                    jugar.setVisible(true);
+                        jugar.setContentPane(jugar1.getMyJugar());
+                        jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                        jugar.setVisible(true);
+                    }
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "No pots jugar contra tu mateix!");
@@ -80,12 +83,14 @@ public class RegistrarPartida {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if (comboBox3.getSelectedItem() != null) {
 
-                GUIVeureTauler tauler2 = new GUIVeureTauler((String) comboBox3.getSelectedItem());
-                tauler.setBounds(250,100,525,500);
-                tauler.setContentPane(tauler2.getMyTaulellPreview());
-                tauler.setVisible(true);
+                    GUIVeureTauler tauler2 = new GUIVeureTauler((String) comboBox3.getSelectedItem());
+                    tauler.setBounds(250, 100, 525, 500);
+                    tauler.setContentPane(tauler2.getMyTaulellPreview());
+                    tauler.setVisible(true);
 
+                }
             }
         });
     }

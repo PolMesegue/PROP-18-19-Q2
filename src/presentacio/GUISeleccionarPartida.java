@@ -39,17 +39,19 @@ public class GUISeleccionarPartida {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                CtrlP.selecionar_Partida((Timestamp)comboBox1.getSelectedItem());
+                if (comboBox1.getSelectedItem() != null) {
+                    CtrlP.selecionar_Partida((Timestamp) comboBox1.getSelectedItem());
 
-                frame jugarP = frame.getInstance();
+                    frame jugarP = frame.getInstance();
 
-                GUITaulell jugarP1 = new GUITaulell();
+                    GUITaulell jugarP1 = new GUITaulell();
 
-                jugarP.setContentPane(jugarP1.getMyTaulell());
-                jugarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                jugarP.setBounds(250,100,725,600);
+                    jugarP.setContentPane(jugarP1.getMyTaulell());
+                    jugarP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    jugarP.setBounds(250, 100, 725, 600);
 
-                jugarP.setVisible(true);
+                    jugarP.setVisible(true);
+                }
             }
         });
     }
