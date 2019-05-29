@@ -164,7 +164,7 @@ public class Maquina extends Usuari {
                         t.getPeces_negres()[j].setY(newY);
                         t.actualitzar();
 
-                        backtracking(jugada, t, i + 1, n, cami, turn = 0);
+                        backtracking(jugada, t, i, n, cami, turn = 0);
                         //tornem a enrere
                         cami.remove(cami.size() - 1);
                         cami.remove(cami.size() - 1);
@@ -192,7 +192,7 @@ public class Maquina extends Usuari {
                         t.getPeces_blanques()[j].setY(newY);
                         t.actualitzar();
 
-                        backtracking(jugada, t, i + 1, n, cami, turn = 1);
+                        backtracking(jugada, t, i+1, n, cami, turn = 1);
 
                         t.getPeces_blanques()[j].setX(X_piece);
                         t.getPeces_blanques()[j].setY(Y_piece);
@@ -225,7 +225,7 @@ public class Maquina extends Usuari {
         t_temp.actualitzar();
         ArrayList<IntPair> camins = new ArrayList<>();
         int turn = 1;
-        boolean b = backtracking(jugada, t_temp, 1, n+3, camins, turn);
+        boolean b = backtracking(jugada, t_temp, 0, n, camins, turn);
 
         ArrayList<IntPair> aux;
         Iterator it = map.keySet().iterator();
