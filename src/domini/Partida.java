@@ -84,8 +84,8 @@ public class Partida {
         return espotmoure;
     }
 
-    public Jugada moureMaquina(int mat){
-        Jugada j = d.play(t.getPeces_blanques(),t.getPeces_negres(),mat);
+    public Jugada moureMaquina(int mat,int i){
+        Jugada j = d.play(t.getPeces_blanques(),t.getPeces_negres(),mat,i);
         return j;
     }
 

@@ -233,7 +233,7 @@ public class DriverMain {
                             } else {
                                 System.out.println("Turn de la maquina \n");
                                 //pintarTauler(joc.getT());
-                                Jugada j = joc.moureMaquina(joc.getP().getN());
+                                Jugada j = new Jugada();
                                 if (j != null) {
                                     joc.mourePeca(j.getPeca().getX(), j.getPeca().getY(), j.getPos_fin_x(), j.getPos_fin_y());
                                 } else {

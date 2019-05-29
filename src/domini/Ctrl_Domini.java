@@ -361,8 +361,8 @@ public class Ctrl_Domini {
         }
         return peces;
     }
-    public ArrayList<Integer> moureMaquina(){
-        Jugada j = joc.moureMaquina(joc.getP().getN());
+    public ArrayList<Integer> moureMaquina(int i){
+        Jugada j = joc.moureMaquina(joc.getP().getN(),i);
         ArrayList<Integer> aux = new ArrayList<>();
         if (j != null) {
             aux.add(j.getPeca().getX());

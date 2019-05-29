@@ -82,8 +82,8 @@ public class CtrlPresentacio {
         return ctrldom.getMov();
     }
 
-    public ArrayList<Integer> turnMaquina(){
-        return ctrldom.moureMaquina();
+    public ArrayList<Integer> turnMaquina(int i){
+        return ctrldom.moureMaquina(i);
 
     }
     public String getDefensor(){

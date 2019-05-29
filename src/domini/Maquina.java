@@ -86,14 +86,14 @@ public class Maquina extends Usuari {
 
     }
 
-    public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n) {
+    public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
         map.clear();
         Jugada jugada = new Jugada();
         Tauler t_temp = new Tauler(peces_blanques,peces_negres);
         t_temp.actualitzar();
         ArrayList<IntPair> camins = new ArrayList<>();
         int turn =1;
-        boolean b = backtracking(jugada,t_temp,1,n,camins,turn);
+        boolean b = backtracking(jugada,t_temp,i,n,camins,turn);
 
         Jugada amazingplay = condicioMap(t_temp);
 

@@ -241,7 +241,7 @@ public class GUITaulell {
 
                                         if (jugaMaquina) {
                                             t.stop();
-                                            mourePecaMaquina(ctrlP.turnMaquina());
+                                            mourePecaMaquina(ctrlP.turnMaquina(k));
                                             tornBlanques = !tornBlanques;
                                             t.start();
                                         }
