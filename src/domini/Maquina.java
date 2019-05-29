@@ -96,7 +96,8 @@ public class Maquina extends Usuari {
         t_temp.actualitzar();
         ArrayList<IntPair> camins = new ArrayList<>();
         int turn = 1;
-        boolean b = backtracking(jugada, t_temp, i, n, camins, turn);
+        boolean b = backtracking(jugada, t_temp, i, n, camins, turn,true);
+
 
         Jugada amazingplay = condicioMap(t_temp);
 
@@ -112,7 +113,7 @@ public class Maquina extends Usuari {
     }
 
     //comprova si la peca arriba al rei en n jugades
-    private boolean backtracking(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn) {
+    private boolean backtracking(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn, boolean seguirBacktrack) {
         Jugada jugada_old = new Jugada();
         if (i >= n) {
             /*if(!matriu_camins.contains(cami)) {
@@ -127,6 +128,9 @@ public class Maquina extends Usuari {
             map.put(cami_aux, 0);
             return true;
 
+        }
+        if(!seguirBacktrack){
+            return true;
         }
         if (turn == 1) {
             for (int j = 0; j < 16; j++) {
@@ -159,12 +163,19 @@ public class Maquina extends Usuari {
                         cami.add(aux);
                         cami.add(aux2);
 
+                        Peca isRey = t.getPeca(newX,newY);
+                        if(isRey != null){
+                            if(isRey.getColor() == false && isRey.getId()==15){
+                                seguirBacktrack =false;
+                                i=100;
+                            }
+                        }
                         //mou peça i actualitzem tauler
                         t.getPeces_negres()[j].setX(newX);
                         t.getPeces_negres()[j].setY(newY);
                         t.actualitzar();
 
-                        backtracking(jugada, t, i, n, cami, turn = 0);
+                        backtracking(jugada, t, i, n, cami, turn = 0,seguirBacktrack);
                         //tornem a enrere
                         cami.remove(cami.size() - 1);
                         cami.remove(cami.size() - 1);
@@ -192,7 +203,7 @@ public class Maquina extends Usuari {
                         t.getPeces_blanques()[j].setY(newY);
                         t.actualitzar();
 
-                        backtracking(jugada, t, i+1, n, cami, turn = 1);
+                        backtracking(jugada, t, i+1, n, cami, turn = 1,seguirBacktrack);
 
                         t.getPeces_blanques()[j].setX(X_piece);
                         t.getPeces_blanques()[j].setY(Y_piece);
@@ -225,7 +236,7 @@ public class Maquina extends Usuari {
         t_temp.actualitzar();
         ArrayList<IntPair> camins = new ArrayList<>();
         int turn = 1;
-        boolean b = backtracking(jugada, t_temp, 0, n, camins, turn);
+        boolean b = backtracking(jugada, t_temp, 0, n, camins, turn,true);
 
         ArrayList<IntPair> aux;
         Iterator it = map.keySet().iterator();
