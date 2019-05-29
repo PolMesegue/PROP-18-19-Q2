@@ -29,7 +29,7 @@ public class CtrlPresentacio {
         return llistaUsuaris;
     }
     public boolean afegirProblema(String problema, int mat ){
-        return ctrldom.AddProblem(problema,mat,true);
+        return ctrldom.AddProblem(problema,mat,false);
     }
     public ArrayList<String> consultar_Problemas(){
         ArrayList<String> llistaProblemas = ctrldom.getProblemas();
