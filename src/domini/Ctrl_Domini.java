@@ -155,7 +155,7 @@ public class Ctrl_Domini {
 
     }
 
-    public boolean AddProblem(String fen,int mat) {
+    public boolean AddProblem(String fen,int mat,boolean carregat) {
 
         ArrayList<Character> noufen = new ArrayList<>();
         boolean espaiBlanc = false;
@@ -193,9 +193,26 @@ public class Ctrl_Domini {
 
         if (temp != null) {
 
-            if (virtual.te_solucio(temp.getPeces_blanques(), p.FENtoHuman().getPeces_negres(), mat)) {
+            if (!carregat) {
+
+                if (virtual.te_solucio(temp.getPeces_blanques(), p.FENtoHuman().getPeces_negres(), mat)) {
 
 
+                    System.out.println("domini.Problema afegit amb exit\n");
+                    bdp.AddProblem(p);
+
+                    String aux = p.getFEN();
+                    aux = aux + "\n" + p.getN();
+                    try {
+                        CtrlPer.EscriureProblema(aux);
+                    } catch (Exception B) {
+                        B.printStackTrace();
+                    }
+
+
+                } else return false;
+            }
+            else {
                 System.out.println("domini.Problema afegit amb exit\n");
                 bdp.AddProblem(p);
 
@@ -206,9 +223,8 @@ public class Ctrl_Domini {
                 } catch (Exception B) {
                     B.printStackTrace();
                 }
+            }
 
-
-            } else return false;
         } else return false;
 
         return true;
@@ -439,8 +455,7 @@ public class Ctrl_Domini {
         for(int i=0;i< FENS.size();i+=2){
             Problema aux = new Problema(FENS.get(i));
             if(aux.FENtoHuman() != null){
-                //if(M1.te_solucio(aux.FENtoHuman().getPeces_blanques(),aux.FENtoHuman().getPeces_negres(),Integer.valueOf(FENS.get(i+1)))){
-                if(!AddProblem(FENS.get(i),Integer.valueOf(FENS.get(i+1)))) return false;
+                if(!AddProblem(FENS.get(i),Integer.valueOf(FENS.get(i+1)),true)) return false;
             }
             else return false;
         }
