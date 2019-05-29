@@ -225,7 +225,7 @@ public class Maquina extends Usuari {
         t_temp.actualitzar();
         ArrayList<IntPair> camins = new ArrayList<>();
         int turn = 1;
-        boolean b = backtracking(jugada, t_temp, 1, n, camins, turn);
+        boolean b = backtracking(jugada, t_temp, 0, n+1, camins, turn);
 
         ArrayList<IntPair> aux;
         Iterator it = map.keySet().iterator();
