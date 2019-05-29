@@ -221,6 +221,7 @@ public class GUITaulell {
                                     tornBlanques = !tornBlanques;
 
                                     netejaTaulell();
+                                    netejaBorders();
 
                                     if (ReyNviu(ReyN) && Integer.valueOf(nMov.getText()) >= Integer.valueOf(nMat.getText())) {
                                         t.stop();
@@ -351,10 +352,19 @@ public class GUITaulell {
 
     }
 
+    private  void netejaBorders() {
+        for (int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                matriu[i][j].setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+            }
+        }
+    }
+
     private void netejaTaulell() {
 
         for(int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
+
 
                 if ((i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0))
                     matriu[i][j].setBackground(new Color(222, 184, 135));
