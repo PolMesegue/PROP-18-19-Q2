@@ -225,7 +225,7 @@ public class Maquina extends Usuari {
         t_temp.actualitzar();
         ArrayList<IntPair> camins = new ArrayList<>();
         int turn = 1;
-        boolean b = backtracking(jugada, t_temp, 0, n+1, camins, turn);
+        boolean b = backtracking(jugada, t_temp, 1, n, camins, turn);
 
         ArrayList<IntPair> aux;
         Iterator it = map.keySet().iterator();
@@ -233,11 +233,12 @@ public class Maquina extends Usuari {
             ArrayList<IntPair> key = (ArrayList<IntPair>) it.next();
             aux = key;
             if (aux.size() == 0) {
-            } else {
+            }
+            else {
                 Peca whatapiece = t_temp.getPeca(aux.get(0).getX(), aux.get(0).getY());
                 for (int z = 1; z < aux.size(); z += 2) {
                     if (t_temp.getPeca(aux.get(z).getX(), aux.get(z).getY()) != null) {
-                        if (t_temp.getPeca(aux.get(z).getX(), aux.get(z).getY()).getId() == 15) {
+                        if (t_temp.getPeca(aux.get(z).getX(), aux.get(z).getY()).getId() == 15 && t_temp.getPeca(aux.get(z).getX(),aux.get(z).getY()).getColor() == false) {
                             return true;
                         }
                     }
