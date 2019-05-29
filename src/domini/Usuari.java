@@ -20,6 +20,7 @@ public abstract class Usuari {
     public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n,int i){
         return null;
     }
+
     public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
         return false;
     }

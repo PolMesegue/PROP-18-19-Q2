@@ -204,7 +204,7 @@ public class Maquina extends Usuari {
         return true;
     }
 
-    public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
+    public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
         /*Jugada jugada = new Jugada();
         for (int i = 0; i < 16; ++i) {
             if (peces_negres[i] != null) {
@@ -225,7 +225,7 @@ public class Maquina extends Usuari {
         t_temp.actualitzar();
         ArrayList<IntPair> camins = new ArrayList<>();
         int turn = 1;
-        boolean b = backtracking(jugada, t_temp, i, n+1, camins, turn);
+        boolean b = backtracking(jugada, t_temp, 1, n+1, camins, turn);
 
         ArrayList<IntPair> aux;
         Iterator it = map.keySet().iterator();

@@ -140,6 +140,8 @@ public class Ctrl_Domini {
                 } else return false;
             }
         }
+        else return false;
+
         return true;
 
     }
