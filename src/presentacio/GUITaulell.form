@@ -554,8 +554,12 @@
         </constraints>
         <properties>
           <background color="-2180985"/>
+          <borderPainted value="true"/>
           <contentAreaFilled value="true"/>
+          <focusPainted value="true"/>
           <focusable value="true"/>
+          <foreground color="-4473925"/>
+          <hideActionText value="false"/>
           <text value=""/>
         </properties>
       </component>

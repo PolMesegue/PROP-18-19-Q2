@@ -157,6 +157,7 @@ public class GUITaulell {
         nMat.setText(String.valueOf(ctrlP.getN()));
         nMov.setText(String.valueOf(k));
 
+
         for(int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
 
@@ -245,6 +246,7 @@ public class GUITaulell {
                                         if (jugaMaquina) {
                                             t.stop();
                                             mourePecaMaquina(ctrlP.turnMaquina(k));
+
                                             tornBlanques = !tornBlanques;
                                             t.start();
                                         }
@@ -336,6 +338,12 @@ public class GUITaulell {
         Integer yOrg = moviment.get(1);
         Integer xDest = moviment.get(2);
         Integer yDest = moviment.get(3);
+
+        //Button00.setBorder(BorderFactory.createLineBorder(Color.green,5));
+
+
+        matriu[xDest][yDest].setBorder(BorderFactory.createLineBorder(Color.green,5));
+        matriu[xOrg][yOrg].setBorder(BorderFactory.createLineBorder(Color.green,5));
 
         matriu[xDest][yDest].setIcon(matriu[xOrg][yOrg].getIcon());
         matriu[xOrg][yOrg].setIcon(null);
