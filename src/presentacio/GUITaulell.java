@@ -110,6 +110,7 @@ public class GUITaulell {
     // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
     // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
     float temps;
+    Timer t;
 
     private boolean jugaMaquina;
 
@@ -117,13 +118,13 @@ public class GUITaulell {
     public GUITaulell() {
         temps = ctrlP.getTemps();
         Rellotge.setText(String.format("%.1f",temps));
-
-        Timer t = new Timer(10, new ActionListener() {
+        t = new Timer(10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Rellotge.setText(String.format("%.1f",temps));
                 temps = temps - 0.01f;
-                if (temps == 0) {
+                if (temps < 0) {
+                    t.stop();
                     JOptionPane.showMessageDialog(null,"T'has quedat sense Temps \n Guanyen Negres");
 
                     frame jugar = frame.getInstance();
