@@ -324,7 +324,7 @@ public class GUITaulell {
 
                 jugar.setContentPane(jugar1.getMyJugar());
                 jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                jugar.setBounds(300,200,600,400);
+                jugar.setBounds(300,200,700,400);
                 jugar.setVisible(true);
 
             }
