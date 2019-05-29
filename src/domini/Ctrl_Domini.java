@@ -122,24 +122,23 @@ public class Ctrl_Domini {
         Problema p = new Problema(builder.toString());
         p.setN(nMat);
         Maquina virtual = new Maquina("VIRTUAL");
-        //if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
-        if(bdp.existsProblema(builder.toString())){
-            return false;
-        }
-        else {
-            if(p.FENtoHuman() != null) {
-                System.out.println("domini.Problema afegit amb exit\n");
-                bdp.AddProblem(p);
+        if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),nMat)) {
+            if (bdp.existsProblema(builder.toString())) {
+                return false;
+            } else {
+                if (p.FENtoHuman() != null) {
+                    System.out.println("domini.Problema afegit amb exit\n");
+                    bdp.AddProblem(p);
 
-                String aux = p.getFEN();
-                aux =  aux + "\n" + p.getN();
-                try {
-                    CtrlPer.EscriureProblema(aux);
-                } catch (Exception B) {
-                    B.printStackTrace();
-                }
+                    String aux = p.getFEN();
+                    aux = aux + "\n" + p.getN();
+                    try {
+                        CtrlPer.EscriureProblema(aux);
+                    } catch (Exception B) {
+                        B.printStackTrace();
+                    }
+                } else return false;
             }
-            else return false;
         }
         return true;
 
