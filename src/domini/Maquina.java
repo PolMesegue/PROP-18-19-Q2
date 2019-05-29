@@ -7,12 +7,14 @@ public class Maquina extends Usuari {
 
     private ArrayList<ArrayList<IntPair>> matriu_camins = new ArrayList<ArrayList<IntPair>>();
 
+    Map<ArrayList<IntPair>,Integer> map = new HashMap<ArrayList<IntPair>,Integer>();
+
     public Maquina(String nom){
 
         super(nom);
     }
 
-    public Jugada condicio(Tauler jaume_diarrea) {
+    /*public Jugada condicio(Tauler jaume_diarrea) {
         for (int j = 0; j < matriu_camins.size(); j++) {
             ArrayList<IntPair> aux = matriu_camins.get(j); // 34 35, 35 36
             if(aux.size() == 0){
@@ -41,13 +43,51 @@ public class Maquina extends Usuari {
             play.setPos_fin_y(matriu_camins.get(1).get(1).getY());
             return play;
         }
-
         return null;
+    }*/
+
+    public Jugada condicioMap(Tauler T){
+        Jugada play= new Jugada();
+        ArrayList<IntPair> aux = new ArrayList<>();
+        Iterator it = map.keySet().iterator();
+        while(it.hasNext()) {
+            ArrayList<IntPair> key = (ArrayList<IntPair>) it.next();
+            aux =key;
+            if(aux.size() == 0){ }
+            else{
+                Peca whatapiece = T.getPeca(aux.get(0).getX(), aux.get(0).getY());
+                for (int z = 1; z < aux.size(); z+=2) {
+                    if(T.getPeca(aux.get(z).getX(),aux.get(z).getY())!=null){
+                            if (T.getPeca(aux.get(z).getX(), aux.get(z).getY()).getColor() != whatapiece.getColor()) {
+                                map.put(key,1);
+                                Jugada whataplay = new Jugada();
+                                whataplay.setPeca(whatapiece);
+                                whataplay.setPos_fin_x(aux.get(z).getX());
+                                whataplay.setPos_fin_y(aux.get(z).getY());
+                                return whataplay;
+                            }
+                    }
+
+                }
+
+            }
+
+        }
+
+        Map.Entry<ArrayList<IntPair>,Integer> entry = map.entrySet().iterator().next();
+        ArrayList<IntPair> jugadaaux= entry.getKey();
+
+        Peca whatapiece = T.getPeca(jugadaaux.get(0).getX(), jugadaaux.get(0).getY());
+        Jugada whataplay = new Jugada();
+        whataplay.setPeca(whatapiece);
+        whataplay.setPos_fin_x(jugadaaux.get(1).getX());
+        whataplay.setPos_fin_y(jugadaaux.get(1).getY());
+        return whataplay;
+
     }
 
-
     public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n) {
-        matriu_camins.clear();
+        map.clear();
         Jugada jugada = new Jugada();
         Tauler t_temp = new Tauler(peces_blanques,peces_negres);
         t_temp.actualitzar();
@@ -55,7 +95,7 @@ public class Maquina extends Usuari {
         int turn =1;
         boolean b = backtracking(jugada,t_temp,1,n,camins,turn);
 
-        Jugada amazingplay = condicio(t_temp);
+        Jugada amazingplay = condicioMap(t_temp);
 
         if (b) return amazingplay;
         else return null;
@@ -72,12 +112,18 @@ public class Maquina extends Usuari {
     private boolean backtracking(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn) {
         Jugada jugada_old = new Jugada();
         if(i >= n){
-            if(!matriu_camins.contains(cami)) {
+            /*if(!matriu_camins.contains(cami)) {
                 ArrayList<IntPair> cami_aux = new ArrayList<>();
                 cami_aux = (ArrayList<IntPair>) cami.clone();
                 matriu_camins.add(cami_aux);
             }
             return true;
+            */
+            ArrayList<IntPair> cami_aux = new ArrayList<>();
+            cami_aux = (ArrayList<IntPair>) cami.clone();
+            map.put(cami_aux,0);
+            return true;
+
         }
         if(turn ==1) {
             for (int j = 0; j < 16; j++) {
@@ -115,7 +161,7 @@ public class Maquina extends Usuari {
                         t.getPeces_negres()[j].setY(newY);
                         t.actualitzar();
 
-                        backtracking(jugada, t, i, n, cami, turn = 0);
+                        backtracking(jugada, t, i+1, n, cami, turn = 0);
                         //tornem a enrere
                         cami.remove(cami.size()-1);
                         cami.remove(cami.size()-1);
