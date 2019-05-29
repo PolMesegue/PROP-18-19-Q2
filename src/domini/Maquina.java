@@ -62,8 +62,8 @@ public class Maquina extends Usuari {
                                 map.put(key,1);
                                 Jugada whataplay = new Jugada();
                                 whataplay.setPeca(whatapiece);
-                                whataplay.setPos_fin_x(aux.get(z).getX());
-                                whataplay.setPos_fin_y(aux.get(z).getY());
+                                whataplay.setPos_fin_x(aux.get(1).getX());
+                                whataplay.setPos_fin_y(aux.get(1).getY());
                                 return whataplay;
                             }
                     }
