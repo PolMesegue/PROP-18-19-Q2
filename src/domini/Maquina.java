@@ -92,12 +92,12 @@ public class Maquina extends Usuari {
         int turn = 1;
         int puntuacio = 0;
         boolean b = backtrackingHeuristic(jugada, t_temp, i, n, camins, turn, puntuacio);
+
+
         Jugada amazingplay = new Jugada();
         //ordenar map per value mes gran
         //map.entrySet().stream().sorted(comparingByValue()).collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
         //Map<ArrayList<IntPair>, Integer> sorted = map.entrySet().stream().sorted(comparingByValue()).collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
-
-
         Map<ArrayList<IntPair>, Integer> sorted = map.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue())).collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 
         //amazingplay = primera posicio del map
@@ -105,7 +105,7 @@ public class Maquina extends Usuari {
         while (it2.hasNext()) {
             ArrayList<IntPair> key = (ArrayList<IntPair>) it2.next();
             if (key.size() != 0) {
-                if(t_temp.getPeca(key.get(1).getX(), key.get(1).getY())!=null){
+                if(t_temp.getPeca(key.get(key.size()-1).getX(), key.get(key.size()-1).getY())!=null){
                     Peca whatapiece = t_temp.getPeca(key.get(0).getX(), key.get(0).getY());
                     amazingplay.setPeca(whatapiece);
                     amazingplay.setPos_fin_x(key.get(1).getX());
@@ -114,6 +114,20 @@ public class Maquina extends Usuari {
                 }
             }
         }
+        if(amazingplay == null){
+            Iterator it3 = sorted.keySet().iterator();
+            while (it3.hasNext()) {
+                ArrayList<IntPair> key = (ArrayList<IntPair>) it3.next();
+                if (key.size() != 0) {
+                    Peca whatapiece = t_temp.getPeca(key.get(0).getX(), key.get(0).getY());
+                    amazingplay.setPeca(whatapiece);
+                    amazingplay.setPos_fin_x(key.get(1).getX());
+                    amazingplay.setPos_fin_y(key.get(1).getY());
+                    break;
+                }
+            }
+        }
+
         if (b) return amazingplay;
         else return null;
     }
