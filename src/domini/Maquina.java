@@ -65,7 +65,7 @@ public class Maquina extends Usuari {
         }
         return null;
     }
-/*
+
     public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
         map.clear();
         Jugada jugada = new Jugada();
@@ -82,8 +82,8 @@ public class Maquina extends Usuari {
         if (b) return amazingplay;
         else return null;
     }
-*/
-    public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
+
+    public Jugada playPRO(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
         map.clear();
         Jugada jugada = new Jugada();
         Tauler t_temp = new Tauler(peces_blanques, peces_negres);
