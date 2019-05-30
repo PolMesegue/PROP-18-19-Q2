@@ -63,7 +63,7 @@
         </constraints>
         <properties>
           <background color="-42147"/>
-          <text value="Tornar Enrera"/>
+          <text value="Tornar Enrere"/>
         </properties>
       </component>
       <component id="286a7" class="javax.swing.JLabel">

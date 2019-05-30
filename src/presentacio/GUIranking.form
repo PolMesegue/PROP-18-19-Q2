@@ -63,7 +63,7 @@
         </constraints>
         <properties>
           <background color="-42147"/>
-          <text value="Tornar enrerra"/>
+          <text value="Tornar enrerre"/>
         </properties>
       </component>
       <component id="86661" class="javax.swing.JTextArea" binding="JugadorsArea">
