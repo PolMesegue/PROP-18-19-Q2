@@ -65,7 +65,7 @@ public class Maquina extends Usuari {
         }
         return null;
     }
-
+/*
     public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
         map.clear();
         Jugada jugada = new Jugada();
@@ -82,8 +82,8 @@ public class Maquina extends Usuari {
         if (b) return amazingplay;
         else return null;
     }
-
-    public Jugada playPRO(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
+*/
+    public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
         map.clear();
         Jugada jugada = new Jugada();
         Tauler t_temp = new Tauler(peces_blanques, peces_negres);
@@ -94,9 +94,12 @@ public class Maquina extends Usuari {
         boolean b = backtrackingHeuristic(jugada, t_temp, i, n, camins, turn, puntuacio);
         Jugada amazingplay = new Jugada();
         //ordenar map per value mes gran
-        map.entrySet().stream().sorted(comparingByValue()).collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
+        //map.entrySet().stream().sorted(comparingByValue()).collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
+        //Map<ArrayList<IntPair>, Integer> sorted = map.entrySet().stream().sorted(comparingByValue()).collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
+        Map<ArrayList<IntPair>, Integer> sorted = map.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue())).collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+
         //amazingplay = primera posicio del map
-        Iterator it = map.keySet().iterator();
+        Iterator it = sorted.keySet().iterator();
         while (it.hasNext()) {
             ArrayList<IntPair> key = (ArrayList<IntPair>) it.next();
             if (key.size() != 0) {
