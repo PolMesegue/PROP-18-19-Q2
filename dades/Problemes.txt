@@ -16,3 +16,11 @@ P7/P7/P5K1/P7/P7/P7/P7/P6k Mat: 5
 5
 8/4p3/8/6K1/8/8/8/k7 Mat: 3
 3
+1N1b4/6nr/R5n1/2Ppk2r/K2p2qR/8/2N1PQ2/B6B Mat: 3
+3
+1N1b4/6nr/R5n1/2Ppk2r/K2p2qR/8/2N1PQ2/B6B Mat: 2
+2
+8/3p4/8/4K3/8/8/8/k7 Mat: 2
+2
+8/8/3p4/8/4K3/8/8/k7 Mat: 2
+2
