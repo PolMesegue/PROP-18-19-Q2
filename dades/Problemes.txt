@@ -18,3 +18,7 @@ P7/P7/P5K1/P7/P7/P7/P7/P6k Mat: 5
 2
 8/8/8/8/8/7k/8/7K Mat: 2
 2
+7k/8/8/8/6R1/8/5R2/4K3 Mat: 3
+3
+1r2k1r1/pbppnp1p/1b3P2/8/Q7/B1PB1q2/P4PPP/3R2K1 Mat: 4
+4

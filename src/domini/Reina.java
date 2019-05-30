@@ -11,7 +11,7 @@ public class Reina extends Peca {
         setX(x);
         setY(y);
         setColor(color);
-        //setValue(1000);
+        setPunts(1000);
     }
 
     public ArrayList<IntPair> posibles_moviments(Peca[] peces_blanques, Peca[] peces_negres) {
