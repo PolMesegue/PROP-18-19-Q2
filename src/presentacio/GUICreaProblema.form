@@ -1194,14 +1194,6 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="afc6b" class="javax.swing.JTextField" binding="textField1" default-binding="true">
-            <constraints>
-              <grid row="8" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
           <component id="e2252" class="javax.swing.JLabel">
             <constraints>
               <grid row="8" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -1217,6 +1209,16 @@
             <properties>
               <background color="-42147"/>
               <text value="Sortir sense guardar"/>
+            </properties>
+          </component>
+          <component id="afc6b" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+            <constraints>
+              <grid row="8" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <toolTipText value=""/>
             </properties>
           </component>
         </children>
