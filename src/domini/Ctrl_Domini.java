@@ -20,6 +20,8 @@ public class Ctrl_Domini {
     public void crearMaquina(){
         Maquina m1= new Maquina("M1");
         bdu.AddMaquina(m1);
+        Maquina m2= new Maquina("M2");
+        bdu.AddMaquina(m2);
     }
 
 
@@ -420,7 +422,10 @@ public class Ctrl_Domini {
         return peces;
     }
     public ArrayList<Integer> moureMaquina(int i){
-        Jugada j = joc.moureMaquina(joc.getP().getN(),i);
+        Jugada j;
+        if(getDefensor() == "M1") j= joc.moureMaquina(joc.getP().getN(),i);
+        else j= joc.moureMaquina2(joc.getP().getN(),i);
+        
         ArrayList<Integer> aux = new ArrayList<>();
         if (j != null) {
             aux.add(j.getPeca().getX());

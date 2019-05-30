@@ -24,4 +24,6 @@ public abstract class Usuari {
     public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
         return false;
     }
+
+    public Jugada playPRO(Peca[] peces_blanques, Peca[] peces_negres, int n, int i){return null;}
 }

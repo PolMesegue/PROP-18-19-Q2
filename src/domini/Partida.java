@@ -92,6 +92,10 @@ public class Partida {
         Jugada j = d.play(t.getPeces_blanques(),t.getPeces_negres(),mat,i);
         return j;
     }
+    public Jugada moureMaquina2(int mat,int i){
+        Jugada j= d.playPRO(t.getPeces_blanques(),t.getPeces_negres(),mat,i);
+        return j;
+    }
 
     public Usuari getA() {
         return a;

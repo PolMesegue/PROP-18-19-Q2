@@ -96,30 +96,28 @@ public class Maquina extends Usuari {
         //ordenar map per value mes gran
         //map.entrySet().stream().sorted(comparingByValue()).collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
         //Map<ArrayList<IntPair>, Integer> sorted = map.entrySet().stream().sorted(comparingByValue()).collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
+
+
         Map<ArrayList<IntPair>, Integer> sorted = map.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue())).collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 
         //amazingplay = primera posicio del map
-        Iterator it = sorted.keySet().iterator();
-        while (it.hasNext()) {
-            ArrayList<IntPair> key = (ArrayList<IntPair>) it.next();
+        Iterator it2 = sorted.keySet().iterator();
+        while (it2.hasNext()) {
+            ArrayList<IntPair> key = (ArrayList<IntPair>) it2.next();
             if (key.size() != 0) {
-                Peca whatapiece = t_temp.getPeca(key.get(0).getX(), key.get(0).getY());
-                amazingplay.setPeca(whatapiece);
-                amazingplay.setPos_fin_x(key.get(1).getX());
-                amazingplay.setPos_fin_y(key.get(1).getY());
+                if(t_temp.getPeca(key.get(1).getX(), key.get(1).getY())!=null){
+                    Peca whatapiece = t_temp.getPeca(key.get(0).getX(), key.get(0).getY());
+                    amazingplay.setPeca(whatapiece);
+                    amazingplay.setPos_fin_x(key.get(1).getX());
+                    amazingplay.setPos_fin_y(key.get(1).getY());
+                    break;
+                }
             }
         }
         if (b) return amazingplay;
         else return null;
     }
-/*
-    private boolean isvisited(IntPair pos, ArrayList<IntPair> visited) {
-        for (int i = 0; i < visited.size(); ++i) {
-            if (pos.getX() == visited.get(i).getX() && pos.getY() == visited.get(i).getY()) return true;
-        }
-        return false;
-    }
-*/
+
     //comprova si la peca arriba al rei en n jugades
     private boolean backtracking(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn, boolean seguirBacktrack) {
         Jugada jugada_old = new Jugada();
@@ -315,8 +313,18 @@ public class Maquina extends Usuari {
         Jugada jugada_old = new Jugada();
         if (i >= n) {
             ArrayList<IntPair> cami_aux = new ArrayList<>();
-            cami_aux = (ArrayList<IntPair>) cami.clone();
-            map.put(cami_aux, puntuacio);
+            int puntuacioAux=0;
+            cami_aux = (ArrayList<IntPair>) cami.clone();;
+            for (int z = 1; z < cami_aux.size(); z += 2) {
+                if (t.getPeca(cami_aux.get(z).getX(), cami_aux.get(z).getY()) != null) {
+                    Peca isPeca = t.getPeca(cami_aux.get(z).getX(),cami_aux.get(z).getY());
+                        if (isPeca.getColor() == true) {
+                            puntuacioAux+=isPeca.getPunts();
+                            map.put(cami_aux, puntuacioAux);
+                        }
+                }
+
+            }
             return true;
         }
         if (turn == 1) {
@@ -353,7 +361,7 @@ public class Maquina extends Usuari {
                         Peca isPeca = t.getPeca(newX,newY);
                         //sumem la puntuacio d'aquest cami si la aux2
                         if(isPeca != null){
-                            if (isPeca.getColor() != jugada.getPeca().getColor()) {
+                            if (isPeca.getColor() == true) {
                                 puntuacio += isPeca.getPunts();
                             }
                         }
@@ -363,7 +371,7 @@ public class Maquina extends Usuari {
                         t.getPeces_negres()[j].setY(newY);
                         t.actualitzar();
 
-                        backtrackingHeuristic(jugada, t, i, n, cami, turn = 0,puntuacio);
+                        backtrackingHeuristic(jugada, t, i, n, cami, turn = 0, puntuacio);
                         //tornem a enrere
                         cami.remove(cami.size() - 1);
                         cami.remove(cami.size() - 1);
@@ -400,20 +408,6 @@ public class Maquina extends Usuari {
     }
 
     public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
-        /*Jugada jugada = new Jugada();
-        for (int i = 0; i < 16; ++i) {
-            if (peces_negres[i] != null) {
-                jugada.setPeca(peces_negres[i]);
-                jugada.setPos_fin_x(peces_negres[i].getX());
-                jugada.setPos_fin_y(peces_negres[i].getY());
-                break;
-            }
-        }
-        Tauler t_temp = new Tauler(peces_negres,peces_blanques); //els parametres estan girats A PROPOSIT!
-        t_temp.actualitzar();
-        ArrayList<IntPair> camins = new ArrayList<>();
-        return backtracking(jugada,t_temp,0,n,camins,0);*/
-
         map.clear();
         mapSolucio.clear();
         Jugada jugada = new Jugada();
