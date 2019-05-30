@@ -115,9 +115,6 @@ public class GUICreaProblema {
 
     private CtrlPresentacio ctrlP = CtrlPresentacio.getInstance();
 
-    private boolean basuraPressed;
-    private boolean selectorPressed;
-
     private Icon icon = null;
 
     public GUICreaProblema() {
@@ -201,6 +198,7 @@ public class GUICreaProblema {
         colocarPeces(FEN);
         iniciaSelector();
 
+        textField1.setText(String.valueOf(FEN.charAt(FEN.length()-1)));
 
 
 
