@@ -1,6 +1,13 @@
 package domini;
 
 import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import static java.util.stream.Collectors.*;
+import static java.util.Map.Entry.*;
 
 @SuppressWarnings("Duplicates")
 public class Maquina extends Usuari {
@@ -82,13 +89,23 @@ public class Maquina extends Usuari {
         Tauler t_temp = new Tauler(peces_blanques, peces_negres);
         t_temp.actualitzar();
         ArrayList<IntPair> camins = new ArrayList<>();
-        int turn = 1;i, n, camins, turn,true);
+        int turn = 1;
         int puntuacio = 0;
         boolean b = backtrackingHeuristic(jugada, t_temp, i, n, camins, turn, puntuacio);
         Jugada amazingplay = new Jugada();
         //ordenar map per value mes gran
+        map.entrySet().stream().sorted(comparingByValue()).collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
         //amazingplay = primera posicio del map
-
+        Iterator it = map.keySet().iterator();
+        while (it.hasNext()) {
+            ArrayList<IntPair> key = (ArrayList<IntPair>) it.next();
+            if (key.size() != 0) {
+                Peca whatapiece = t_temp.getPeca(key.get(0).getX(), key.get(0).getY());
+                amazingplay.setPeca(whatapiece);
+                amazingplay.setPos_fin_x(key.get(1).getX());
+                amazingplay.setPos_fin_y(key.get(1).getY());
+            }
+        }
         if (b) return amazingplay;
         else return null;
     }
