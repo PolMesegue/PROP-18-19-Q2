@@ -16,38 +16,6 @@ public class Maquina extends Usuari {
         super(nom);
     }
 
-    /*public Jugada condicio(Tauler jaume_diarrea) {
-        for (int j = 0; j < matriu_camins.size(); j++) {
-            ArrayList<IntPair> aux = matriu_camins.get(j); // 34 35, 35 36
-            if(aux.size() == 0){
-
-            }
-            else {
-                Peca whatapiece = jaume_diarrea.getPeca(aux.get(0).getX(), aux.get(0).getY());
-                for (int z = 1; z < aux.size(); z++) {
-                    if (jaume_diarrea.getPeca(aux.get(z).getX(), aux.get(z).getY()) != null) {
-                        if (jaume_diarrea.getPeca(aux.get(z).getX(), aux.get(z).getY()).getColor() != whatapiece.getColor()) {
-                            Jugada whataplay = new Jugada();
-                            whataplay.setPeca(whatapiece);
-                            whataplay.setPos_fin_x(aux.get(1).getX());
-                            whataplay.setPos_fin_y(aux.get(1).getY());
-                            return whataplay;
-                        }
-                    }
-                }
-            }
-        }
-        if(matriu_camins.size() > 0) {
-            Peca whatapiece = jaume_diarrea.getPeca(matriu_camins.get(0).get(0).getX(), matriu_camins.get(0).get(0).getY());
-            Jugada play = new Jugada();
-            play.setPeca(whatapiece);
-            play.setPos_fin_x(matriu_camins.get(1).get(1).getX());
-            play.setPos_fin_y(matriu_camins.get(1).get(1).getY());
-            return play;
-        }
-        return null;
-    }*/
-
     public Jugada condicioMap(Tauler T) {
         Jugada play = new Jugada();
         ArrayList<IntPair> aux = new ArrayList<>();
@@ -99,7 +67,8 @@ public class Maquina extends Usuari {
         ArrayList<IntPair> camins = new ArrayList<>();
         int turn = 1;
         boolean b = backtrackingJugar(jugada, t_temp, i, n, camins, turn,true);
-
+        //int puntuacio = 0;
+        //boolean b = backtrackingHeuristic(jugada, t_temp, i, n, camins, turn, puntuacio);
 
         Jugada amazingplay = condicioMap(t_temp);
 
@@ -107,13 +76,30 @@ public class Maquina extends Usuari {
         else return null;
     }
 
+    public Jugada playPRO(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
+        map.clear();
+        Jugada jugada = new Jugada();
+        Tauler t_temp = new Tauler(peces_blanques, peces_negres);
+        t_temp.actualitzar();
+        ArrayList<IntPair> camins = new ArrayList<>();
+        int turn = 1;i, n, camins, turn,true);
+        int puntuacio = 0;
+        boolean b = backtrackingHeuristic(jugada, t_temp, i, n, camins, turn, puntuacio);
+        Jugada amazingplay = new Jugada();
+        //ordenar map per value mes gran
+        //amazingplay = primera posicio del map
+
+        if (b) return amazingplay;
+        else return null;
+    }
+/*
     private boolean isvisited(IntPair pos, ArrayList<IntPair> visited) {
         for (int i = 0; i < visited.size(); ++i) {
             if (pos.getX() == visited.get(i).getX() && pos.getY() == visited.get(i).getY()) return true;
         }
         return false;
     }
-
+*/
     //comprova si la peca arriba al rei en n jugades
     private boolean backtracking(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn, boolean seguirBacktrack) {
         Jugada jugada_old = new Jugada();
@@ -305,7 +291,7 @@ public class Maquina extends Usuari {
         return true;
     }
     //
-    private boolean backtrackingHeuristic(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn, boolean seguirBacktrack,int puntuacio) {
+    private boolean backtrackingHeuristic(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn,int puntuacio) {
         Jugada jugada_old = new Jugada();
         if (i >= n) {
             ArrayList<IntPair> cami_aux = new ArrayList<>();
@@ -347,7 +333,7 @@ public class Maquina extends Usuari {
                         Peca isPeca = t.getPeca(newX,newY);
                         //sumem la puntuacio d'aquest cami si la aux2
                         if(isPeca != null){
-                            if (isPeca.getColor() != jugada_old.getPeca().getColor()) {
+                            if (isPeca.getColor() != jugada.getPeca().getColor()) {
                                 puntuacio += isPeca.getPunts();
                             }
                         }
@@ -357,7 +343,7 @@ public class Maquina extends Usuari {
                         t.getPeces_negres()[j].setY(newY);
                         t.actualitzar();
 
-                        backtracking(jugada, t, i, n, cami, turn = 0,seguirBacktrack);
+                        backtrackingHeuristic(jugada, t, i, n, cami, turn = 0,puntuacio);
                         //tornem a enrere
                         cami.remove(cami.size() - 1);
                         cami.remove(cami.size() - 1);
@@ -367,7 +353,6 @@ public class Maquina extends Usuari {
                     }
                 }
             }
-
         }
         if (turn == 0) {
             for (int j = 0; j < 16; j++) {
@@ -375,9 +360,6 @@ public class Maquina extends Usuari {
                     int X_piece = t.getPeces_blanques()[j].getX(); // old X
                     int Y_piece = t.getPeces_blanques()[j].getY(); // old Y
                     for (int z = 0; z < t.getPeces_blanques()[j].moviments.size(); z++) {
-                        if (seguirBacktrack == false){
-                            break;
-                        }
                         int newX = t.getPeces_blanques()[j].moviments.get(z).getX();
                         int newY = t.getPeces_blanques()[j].moviments.get(z).getY();
 
@@ -385,14 +367,11 @@ public class Maquina extends Usuari {
                         t.getPeces_blanques()[j].setY(newY);
                         t.actualitzar();
 
-                        backtracking(jugada, t, i+1, n, cami, turn = 1,seguirBacktrack);
+                        backtrackingHeuristic(jugada, t, i+1, n, cami, turn = 1,puntuacio);
 
                         t.getPeces_blanques()[j].setX(X_piece);
                         t.getPeces_blanques()[j].setY(Y_piece);
                         t.actualitzar();
-                    }
-                    if(mapSolucio.get(1)!= null){
-                        break;
                     }
                 }
             }
