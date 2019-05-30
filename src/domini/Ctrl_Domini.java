@@ -131,7 +131,7 @@ public class Ctrl_Domini {
 
         if (temp != null) {
 
-            if (virtual.te_solucio(temp.getPeces_blanques(), p.FENtoHuman().getPeces_negres(), nMat)) {
+            //if (virtual.te_solucio(temp.getPeces_blanques(), p.FENtoHuman().getPeces_negres(), nMat)) {
 
 
                 System.out.println("domini.Problema afegit amb exit\n");
@@ -146,8 +146,7 @@ public class Ctrl_Domini {
                 }
 
 
-            }
-            else return false;
+            //} else return false;
         }
         else return false;
 
@@ -195,7 +194,7 @@ public class Ctrl_Domini {
 
             if (!carregat) {
 
-                if (virtual.te_solucio(temp.getPeces_blanques(), p.FENtoHuman().getPeces_negres(), mat)) {
+                //if (virtual.te_solucio(temp.getPeces_blanques(), p.FENtoHuman().getPeces_negres(), mat)) {
 
                     System.out.println("domini.Problema afegit amb exit\n");
                     bdp.AddProblem(p);
@@ -209,7 +208,7 @@ public class Ctrl_Domini {
                     }
 
 
-                } else return false;
+                //} else return false;
             }
             else {
                 System.out.println("domini.Problema afegit amb exit\n");

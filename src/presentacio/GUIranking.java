@@ -28,7 +28,7 @@ public class GUIranking {
         }
 
         for(int i=0; i<CtrlP.getFensRanking().size();i++) {
-            ProblemesArea.append(CtrlP.getFensRanking().get(i).toString()+ "\n");
+            ProblemesArea.append(CtrlP.getFensRanking().get(i)+ "\n");
         }
 
 
