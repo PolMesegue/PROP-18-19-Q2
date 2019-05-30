@@ -325,7 +325,7 @@ public class Maquina extends Usuari {
     //
     private boolean backtrackingHeuristic(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn,int puntuacio) {
         Jugada jugada_old = new Jugada();
-        Boolean pecamorta = false;
+
         if (i == n || puntuacio >= 10000) {
             ArrayList<IntPair> cami_aux = new ArrayList<>();
             cami_aux = (ArrayList<IntPair>) cami.clone();;
@@ -336,7 +336,7 @@ public class Maquina extends Usuari {
                     Peca isPeca = t.getPeca(cami_aux.get(z).getX(),cami_aux.get(z).getY());
                         if (isPeca.getColor() == true) {
                             puntuacioAux+=isPeca.getPunts();
-                            map.put(cami_aux, puntuacioAux);
+                            map.put(cami_aux, puntuacioAux/i);
                         }
                 }
             }
