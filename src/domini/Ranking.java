@@ -17,8 +17,20 @@ public class Ranking {
     public void addUsuariGuanyador(String fen, String atacant, float temps){
         res = new Pair<String, Float>(atacant,temps);
 
-        map.put(fen,res);
+        if (!map.containsKey(fen)) {
 
+            map.put(fen, res);
+        }
+
+
+
+        else {
+
+            if ((float) map.get(fen).getValue() < temps){
+                map.remove(fen);
+                map.put(fen,res);
+            }
+        }
     }
 
     public ArrayList<Float> getTempsRanking() {
