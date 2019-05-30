@@ -105,7 +105,7 @@ public class Maquina extends Usuari {
         while (it2.hasNext()) {
             ArrayList<IntPair> key = (ArrayList<IntPair>) it2.next();
             if (key.size() != 0) {
-                if(t_temp.getPeca(key.get(key.size()-1).getX(), key.get(key.size()-1).getY())!=null){
+                if(t_temp.getPeca(key.get(1).getX(), key.get(1).getY()) !=null){
                     Peca whatapiece = t_temp.getPeca(key.get(0).getX(), key.get(0).getY());
                     amazingplay.setPeca(whatapiece);
                     amazingplay.setPos_fin_x(key.get(1).getX());
