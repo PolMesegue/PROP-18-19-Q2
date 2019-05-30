@@ -114,7 +114,7 @@ public class Maquina extends Usuari {
                 }
             }
         }
-        if(amazingplay == null){
+        if(amazingplay.getPeca() == null){
             Iterator it3 = sorted.keySet().iterator();
             while (it3.hasNext()) {
                 ArrayList<IntPair> key = (ArrayList<IntPair>) it3.next();
@@ -327,8 +327,9 @@ public class Maquina extends Usuari {
         Jugada jugada_old = new Jugada();
         if (i >= n) {
             ArrayList<IntPair> cami_aux = new ArrayList<>();
-            int puntuacioAux=0;
             cami_aux = (ArrayList<IntPair>) cami.clone();;
+
+            int puntuacioAux=0;
             for (int z = 1; z < cami_aux.size(); z += 2) {
                 if (t.getPeca(cami_aux.get(z).getX(), cami_aux.get(z).getY()) != null) {
                     Peca isPeca = t.getPeca(cami_aux.get(z).getX(),cami_aux.get(z).getY());
@@ -337,8 +338,8 @@ public class Maquina extends Usuari {
                             map.put(cami_aux, puntuacioAux);
                         }
                 }
-
             }
+
             return true;
         }
         if (turn == 1) {
@@ -386,6 +387,7 @@ public class Maquina extends Usuari {
                         t.actualitzar();
 
                         backtrackingHeuristic(jugada, t, i, n, cami, turn = 0, puntuacio);
+
                         //tornem a enrere
                         cami.remove(cami.size() - 1);
                         cami.remove(cami.size() - 1);
@@ -400,7 +402,10 @@ public class Maquina extends Usuari {
             for (int j = 0; j < 16; j++) {
                 if (t.getPeces_blanques()[j] != null) {
                     int X_piece = t.getPeces_blanques()[j].getX(); // old X
-                    int Y_piece = t.getPeces_blanques()[j].getY(); // old Y
+                    int Y_piece = t.getPeces_blanques()[j].getY(); // old y
+
+                    IntPair onestic = new IntPair(X_piece,Y_piece);
+                    t.getPeces_blanques()[j].moviments.add(onestic);
                     for (int z = 0; z < t.getPeces_blanques()[j].moviments.size(); z++) {
                         int newX = t.getPeces_blanques()[j].moviments.get(z).getX();
                         int newY = t.getPeces_blanques()[j].moviments.get(z).getY();
