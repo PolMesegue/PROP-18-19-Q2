@@ -7,9 +7,9 @@ public class Maquina extends Usuari {
 
     private ArrayList<ArrayList<IntPair>> matriu_camins = new ArrayList<ArrayList<IntPair>>();
 
-    Map<ArrayList<IntPair>,Integer> map = new HashMap<ArrayList<IntPair>,Integer>();
+    Map<ArrayList<IntPair>, Integer> map = new HashMap<ArrayList<IntPair>, Integer>();
 
-    public Maquina(String nom){
+    public Maquina(String nom) {
 
         super(nom);
     }
@@ -46,26 +46,26 @@ public class Maquina extends Usuari {
         return null;
     }*/
 
-    public Jugada condicioMap(Tauler T){
-        Jugada play= new Jugada();
+    public Jugada condicioMap(Tauler T) {
+        Jugada play = new Jugada();
         ArrayList<IntPair> aux = new ArrayList<>();
         Iterator it = map.keySet().iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             ArrayList<IntPair> key = (ArrayList<IntPair>) it.next();
-            aux =key;
-            if(aux.size() == 0){ }
-            else{
+            aux = key;
+            if (aux.size() == 0) {
+            } else {
                 Peca whatapiece = T.getPeca(aux.get(0).getX(), aux.get(0).getY());
-                for (int z = 1; z < aux.size(); z+=2) {
-                    if(T.getPeca(aux.get(z).getX(),aux.get(z).getY())!=null){
-                            if (T.getPeca(aux.get(z).getX(), aux.get(z).getY()).getColor() != whatapiece.getColor()) {
-                                map.put(key,1);
-                                Jugada whataplay = new Jugada();
-                                whataplay.setPeca(whatapiece);
-                                whataplay.setPos_fin_x(aux.get(z).getX());
-                                whataplay.setPos_fin_y(aux.get(z).getY());
-                                return whataplay;
-                            }
+                for (int z = 1; z < aux.size(); z += 2) {
+                    if (T.getPeca(aux.get(z).getX(), aux.get(z).getY()) != null) {
+                        if (T.getPeca(aux.get(z).getX(), aux.get(z).getY()).getColor() != whatapiece.getColor()) {
+                            map.put(key, 1);
+                            Jugada whataplay = new Jugada();
+                            whataplay.setPeca(whatapiece);
+                            whataplay.setPos_fin_x(aux.get(1).getX());
+                            whataplay.setPos_fin_y(aux.get(1).getY());
+                            return whataplay;
+                        }
                     }
 
                 }
@@ -74,9 +74,9 @@ public class Maquina extends Usuari {
 
         }
         Iterator it2 = map.keySet().iterator();
-        while(it2.hasNext()) {
+        while (it2.hasNext()) {
             ArrayList<IntPair> key = (ArrayList<IntPair>) it2.next();
-            if(key.size() != 0){
+            if (key.size() != 0) {
                 Peca whatapiece = T.getPeca(key.get(0).getX(), key.get(0).getY());
                 Jugada whataplay = new Jugada();
                 whataplay.setPeca(whatapiece);
@@ -92,11 +92,12 @@ public class Maquina extends Usuari {
     public Jugada play(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
         map.clear();
         Jugada jugada = new Jugada();
-        Tauler t_temp = new Tauler(peces_blanques,peces_negres);
+        Tauler t_temp = new Tauler(peces_blanques, peces_negres);
         t_temp.actualitzar();
         ArrayList<IntPair> camins = new ArrayList<>();
-        int turn =1;
-        boolean b = backtracking(jugada,t_temp,i,n,camins,turn);
+        int turn = 1;
+        boolean b = backtracking(jugada, t_temp, i, n, camins, turn,true);
+
 
         Jugada amazingplay = condicioMap(t_temp);
 
@@ -112,9 +113,9 @@ public class Maquina extends Usuari {
     }
 
     //comprova si la peca arriba al rei en n jugades
-    private boolean backtracking(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn) {
+    private boolean backtracking(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn, boolean seguirBacktrack) {
         Jugada jugada_old = new Jugada();
-        if(i >= n){
+        if (i >= n) {
             /*if(!matriu_camins.contains(cami)) {
                 ArrayList<IntPair> cami_aux = new ArrayList<>();
                 cami_aux = (ArrayList<IntPair>) cami.clone();
@@ -124,11 +125,14 @@ public class Maquina extends Usuari {
             */
             ArrayList<IntPair> cami_aux = new ArrayList<>();
             cami_aux = (ArrayList<IntPair>) cami.clone();
-            map.put(cami_aux,0);
+            map.put(cami_aux, 0);
             return true;
 
         }
-        if(turn ==1) {
+        if(!seguirBacktrack){
+            return true;
+        }
+        if (turn == 1) {
             for (int j = 0; j < 16; j++) {
                 if (t.getPeces_negres()[j] != null) {
                     int X_piece = t.getPeces_negres()[j].getX(); // old X
@@ -159,15 +163,22 @@ public class Maquina extends Usuari {
                         cami.add(aux);
                         cami.add(aux2);
 
+                        Peca isRey = t.getPeca(newX,newY);
+                        if(isRey != null){
+                            if(isRey.getColor() == false && isRey.getId()==15){
+                                seguirBacktrack =false;
+                                i=100;
+                            }
+                        }
                         //mou peça i actualitzem tauler
                         t.getPeces_negres()[j].setX(newX);
                         t.getPeces_negres()[j].setY(newY);
                         t.actualitzar();
 
-                        backtracking(jugada, t, i+1, n, cami, turn = 0);
+                        backtracking(jugada, t, i, n, cami, turn = 0,seguirBacktrack);
                         //tornem a enrere
-                        cami.remove(cami.size()-1);
-                        cami.remove(cami.size()-1);
+                        cami.remove(cami.size() - 1);
+                        cami.remove(cami.size() - 1);
                         t.getPeces_negres()[j].setX(X_piece);
                         t.getPeces_negres()[j].setY(Y_piece);
                         t.actualitzar();
@@ -178,7 +189,7 @@ public class Maquina extends Usuari {
             }
 
         }
-        if(turn ==0) {
+        if (turn == 0) {
             for (int j = 0; j < 16; j++) {
                 if (t.getPeces_blanques()[j] != null) {
                     int X_piece = t.getPeces_blanques()[j].getX(); // old X
@@ -192,7 +203,7 @@ public class Maquina extends Usuari {
                         t.getPeces_blanques()[j].setY(newY);
                         t.actualitzar();
 
-                        backtracking(jugada, t, i+1, n, cami, turn = 1);
+                        backtracking(jugada, t, i+1, n, cami, turn = 1,seguirBacktrack);
 
                         t.getPeces_blanques()[j].setX(X_piece);
                         t.getPeces_blanques()[j].setY(Y_piece);
@@ -205,7 +216,7 @@ public class Maquina extends Usuari {
     }
 
     public boolean te_solucio(Peca[] peces_blanques, Peca[] peces_negres, int n) {
-        Jugada jugada = new Jugada();
+        /*Jugada jugada = new Jugada();
         for (int i = 0; i < 16; ++i) {
             if (peces_negres[i] != null) {
                 jugada.setPeca(peces_negres[i]);
@@ -217,7 +228,39 @@ public class Maquina extends Usuari {
         Tauler t_temp = new Tauler(peces_negres,peces_blanques); //els parametres estan girats A PROPOSIT!
         t_temp.actualitzar();
         ArrayList<IntPair> camins = new ArrayList<>();
-        return backtracking(jugada,t_temp,0,n,camins,0);
+        return backtracking(jugada,t_temp,0,n,camins,0);*/
+
+        map.clear();
+        Jugada jugada = new Jugada();
+        Tauler t_temp = new Tauler(peces_negres, peces_blanques);
+        t_temp.actualitzar();
+        ArrayList<IntPair> camins = new ArrayList<>();
+        int turn = 1;
+        boolean b = backtracking(jugada, t_temp, 0, n, camins, turn,true);
+
+        ArrayList<IntPair> aux;
+        Iterator it = map.keySet().iterator();
+        while (it.hasNext()) {
+            ArrayList<IntPair> key = (ArrayList<IntPair>) it.next();
+            aux = key;
+            if (aux.size() == 0) {
+            }
+            else {
+                Peca whatapiece = t_temp.getPeca(aux.get(0).getX(), aux.get(0).getY());
+                for (int z = 1; z < aux.size(); z += 2) {
+                    if (t_temp.getPeca(aux.get(z).getX(), aux.get(z).getY()) != null) {
+                        if (t_temp.getPeca(aux.get(z).getX(), aux.get(z).getY()).getId() == 15 && t_temp.getPeca(aux.get(z).getX(),aux.get(z).getY()).getColor() == false) {
+                            return true;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+        return false;
+
     }
 }
 

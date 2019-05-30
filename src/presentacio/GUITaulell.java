@@ -109,8 +109,8 @@ public class GUITaulell {
     private  ImageIcon TorreN = new ImageIcon(this.getClass().getResource("/icons/icons8-rook-48.png"));
     // 0 1 2 3 4 5 peces blancas: peon alfil cavall torre reina rey
     // 6 7 8 9 10 11 peces negres: peon alfil cavall torre reina rey
-    float temps;
-    Timer t;
+    private float temps;
+    private Timer t;
 
     private boolean jugaMaquina;
 
@@ -156,6 +156,7 @@ public class GUITaulell {
 
         nMat.setText(String.valueOf(ctrlP.getN()));
         nMov.setText(String.valueOf(k));
+
 
         for(int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
@@ -220,6 +221,7 @@ public class GUITaulell {
                                     tornBlanques = !tornBlanques;
 
                                     netejaTaulell();
+                                    netejaBorders();
 
                                     if (ReyNviu(ReyN) && Integer.valueOf(nMov.getText()) >= Integer.valueOf(nMat.getText())) {
                                         t.stop();
@@ -245,6 +247,7 @@ public class GUITaulell {
                                         if (jugaMaquina) {
                                             t.stop();
                                             mourePecaMaquina(ctrlP.turnMaquina(k));
+
                                             tornBlanques = !tornBlanques;
                                             t.start();
                                         }
@@ -286,7 +289,8 @@ public class GUITaulell {
 
                                         jugar.setVisible(true);
 
-                                        ctrlP.addtoranking(ctrlP.getAtacant());
+                                        ctrlP.addtoranking(ctrlP.getFen(), ctrlP.getAtacant(), temps);
+                                        //ctrlP.addtoranking(ctrlP.getAtacant());
                                         ctrlP.deleteParidaActual();
 
                                     }
@@ -321,7 +325,7 @@ public class GUITaulell {
 
                 jugar.setContentPane(jugar1.getMyJugar());
                 jugar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                jugar.setBounds(300,200,600,400);
+                jugar.setBounds(300,200,700,400);
                 jugar.setVisible(true);
 
             }
@@ -337,16 +341,31 @@ public class GUITaulell {
         Integer xDest = moviment.get(2);
         Integer yDest = moviment.get(3);
 
+        //Button00.setBorder(BorderFactory.createLineBorder(Color.green,5));
+
+
+        matriu[xDest][yDest].setBorder(BorderFactory.createLineBorder(Color.green,5));
+        matriu[xOrg][yOrg].setBorder(BorderFactory.createLineBorder(Color.green,5));
+
         matriu[xDest][yDest].setIcon(matriu[xOrg][yOrg].getIcon());
         matriu[xOrg][yOrg].setIcon(null);
 
 
     }
 
+    private  void netejaBorders() {
+        for (int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                matriu[i][j].setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+            }
+        }
+    }
+
     private void netejaTaulell() {
 
         for(int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
+
 
                 if ((i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0))
                     matriu[i][j].setBackground(new Color(222, 184, 135));

@@ -29,12 +29,13 @@ public class CtrlPresentacio {
         return llistaUsuaris;
     }
     public boolean afegirProblema(String problema, int mat ){
-        return ctrldom.AddProblem(problema,mat);
+        return ctrldom.AddProblem(problema,mat,false);
     }
     public ArrayList<String> consultar_Problemas(){
         ArrayList<String> llistaProblemas = ctrldom.getProblemas();
         return llistaProblemas;
     }
+
     public void crearPartida(String atac, String def, String problem){
 
         ctrldom.crearPartida(atac,def,problem);
@@ -54,9 +55,7 @@ public class CtrlPresentacio {
     }
 
     public boolean addTaulell(ArrayList<Integer> peces, int n) {
-
         return ctrldom.addTaulell(peces,n);
-
     }
 
     public boolean mourePeca(int xO,int yO, int xD, int yD){
@@ -97,6 +96,10 @@ public class CtrlPresentacio {
 
     }
 
+    public String getFen() {
+        return ctrldom.getFen();
+    }
+
     public boolean getTorn() {
         return ctrldom.getTorn();
     }
@@ -127,11 +130,17 @@ public class CtrlPresentacio {
     public ArrayList<String> getUsersRanking(){
         return ctrldom.getUsersRanking();
     }
-    public ArrayList<Integer> getUsersRankingPoints(){
-        return ctrldom.getUsersRankingPoints();
+    public ArrayList<String> getFensRanking(){
+        return ctrldom.getFensRaning();
     }
-    public void addtoranking(String nom){
-        ctrldom.addtoranking(nom);
+
+    public ArrayList<Float> getSegons(){
+        return ctrldom.getSegons();
+    }
+
+
+    public void addtoranking(String fen,String atacant, float temps){
+        ctrldom.addtoranking(fen, atacant, temps);
     }
 
     public void deletePartida(Timestamp fecha) {
@@ -144,7 +153,7 @@ public class CtrlPresentacio {
             ctrldom.crearMaquina();
             main.setContentPane(new GUIMain().getMyGUIMain());
             main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            main.setBounds(300, 200, 600, 400);
+            main.setBounds(300, 200, 700, 400);
 
             main.setVisible(true);
 

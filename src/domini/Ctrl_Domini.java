@@ -122,60 +122,116 @@ public class Ctrl_Domini {
         Problema p = new Problema(builder.toString());
         p.setN(nMat);
         Maquina virtual = new Maquina("VIRTUAL");
-        //if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
-        if(bdp.existsProblema(builder.toString())){
+
+        if (bdp.existsProblema(builder.toString())) {
             return false;
         }
-        else {
-            if(p.FENtoHuman() != null) {
+
+        Tauler temp = p.FENtoHuman();
+
+        if (temp != null) {
+
+            if (virtual.te_solucio(temp.getPeces_blanques(), p.FENtoHuman().getPeces_negres(), nMat)) {
+
+
                 System.out.println("domini.Problema afegit amb exit\n");
                 bdp.AddProblem(p);
 
                 String aux = p.getFEN();
-                aux =  aux + "\n" + p.getN();
+                aux = aux + "\n" + p.getN();
                 try {
                     CtrlPer.EscriureProblema(aux);
                 } catch (Exception B) {
                     B.printStackTrace();
                 }
+
+
             }
             else return false;
         }
+        else return false;
+
         return true;
 
     }
 
-    public boolean AddProblem(String fen,int mat){
+    public boolean AddProblem(String fen,int mat,boolean carregat) {
 
         ArrayList<Character> noufen = new ArrayList<>();
         boolean espaiBlanc = false;
-        for (int i = 0; i < fen.length();++i) {
+        for (int i = 0; i < fen.length(); ++i) {
             if (!espaiBlanc) {
-                if (fen.charAt(i) == ' ')  {
+                if (fen.charAt(i) == ' ') {
                     espaiBlanc = true;
                 }
                 noufen.add(fen.charAt(i));
-            }
-            else {
+            } else {
                 noufen.add('M');
                 noufen.add('a');
                 noufen.add('t');
                 noufen.add(':');
                 noufen.add(' ');
-                noufen.add((char) (mat +'0'));
+                noufen.add((char) (mat + '0'));
                 break;
             }
         }
 
         StringBuilder builder = new StringBuilder(noufen.size());
-        for(Character ch: noufen)
-        {
+        for (Character ch : noufen) {
             builder.append(ch);
         }
 
-        Problema p= new Problema(builder.toString());
+        Problema p = new Problema(builder.toString());
         p.setN(mat);
 
+        if (bdp.existsProblema(builder.toString())) {
+            return false;
+        }
+
+        Tauler temp = p.FENtoHuman();
+        Maquina virtual = new Maquina("VIRTUAL");
+
+        if (temp != null) {
+
+            if (!carregat) {
+
+                if (virtual.te_solucio(temp.getPeces_blanques(), p.FENtoHuman().getPeces_negres(), mat)) {
+
+                    System.out.println("domini.Problema afegit amb exit\n");
+                    bdp.AddProblem(p);
+
+                    String aux = p.getFEN();
+                    aux = aux + "\n" + p.getN();
+                    try {
+                        CtrlPer.EscriureProblema(aux);
+                    } catch (Exception B) {
+                        B.printStackTrace();
+                    }
+
+
+                } else return false;
+            }
+            else {
+                System.out.println("domini.Problema afegit amb exit\n");
+                bdp.AddProblem(p);
+                /*
+                String aux = p.getFEN();
+                aux = aux + "\n" + p.getN();
+                try {
+                    CtrlPer.EscriureProblema(aux);
+                } catch (Exception B) {
+                    B.printStackTrace();
+                }
+                */
+            }
+
+        } else return false;
+
+        return true;
+    }
+
+
+/*
         Maquina virtual = new Maquina("VIRTUAL");
         //if(virtual.te_solucio(p.FENtoHuman().getPeces_blanques(), p.FENtoHuman().getPeces_negres(),mat)){
             if(bdp.existsProblema(builder.toString())){
@@ -190,6 +246,7 @@ public class Ctrl_Domini {
             }
             return true;
     }
+    */
 
     public void crearPartida(String Atacant, String defensor,String problema){
         Usuari a= bdu.getHuma(Atacant);
@@ -227,6 +284,10 @@ public class Ctrl_Domini {
 
     public boolean getTorn() {
         return joc.getTorn();
+    }
+
+    public String getFen() {
+        return joc.getProblema().getFEN();
     }
 
     public void setTorn (boolean torn) {
@@ -398,8 +459,7 @@ public class Ctrl_Domini {
         for(int i=0;i< FENS.size();i+=2){
             Problema aux = new Problema(FENS.get(i));
             if(aux.FENtoHuman() != null){
-                //if(M1.te_solucio(aux.FENtoHuman().getPeces_blanques(),aux.FENtoHuman().getPeces_negres(),Integer.valueOf(FENS.get(i+1)))){
-                if(!AddProblem(FENS.get(i),Integer.valueOf(FENS.get(i+1)))) return false;
+                if(!AddProblem(FENS.get(i),Integer.valueOf(FENS.get(i+1)),true)) return false;
             }
             else return false;
         }
@@ -450,11 +510,16 @@ public class Ctrl_Domini {
     public ArrayList<String> getUsersRanking(){
         return rank.getUsuarisRanking();
     }
-    public ArrayList<Integer> getUsersRankingPoints(){
-        return rank.getGuanyadasRanking();
+    public ArrayList<String> getFensRaning(){
+        return rank.getFenRanking();
     }
-    public void addtoranking(String nom){
-        rank.addUsuariGuanyador(nom);
+
+    public ArrayList<Float> getSegons() {
+        return rank.getTempsRanking();
+    }
+
+    public void addtoranking(String fen, String atacant, float temps){
+        rank.addUsuariGuanyador(fen, atacant, temps);
     }
     public void deletePartidaActual(){
         fa.borrarPartida(joc.getFecha());
