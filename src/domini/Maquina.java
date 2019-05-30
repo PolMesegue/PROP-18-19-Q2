@@ -325,7 +325,8 @@ public class Maquina extends Usuari {
     //
     private boolean backtrackingHeuristic(Jugada jugada, Tauler t, int i, int n, ArrayList<IntPair> cami, int turn,int puntuacio) {
         Jugada jugada_old = new Jugada();
-        if (i >= n) {
+        Boolean pecamorta = false;
+        if (i == n || puntuacio >= 10000) {
             ArrayList<IntPair> cami_aux = new ArrayList<>();
             cami_aux = (ArrayList<IntPair>) cami.clone();;
 
@@ -342,6 +343,7 @@ public class Maquina extends Usuari {
 
             return true;
         }
+
         if (turn == 1) {
             for (int j = 0; j < 16; j++) {
                 if (t.getPeces_negres()[j] != null) {
@@ -359,6 +361,7 @@ public class Maquina extends Usuari {
                         int newY = t.getPeces_negres()[j].moviments.get(z).getY();
                         // 01 02 03 04 05 06 07
                         //set new posicio
+
                         jugada.setPos_fin_x(newX); //posicio nova peça
                         jugada.setPos_fin_y(newY);
                         //gaurdem la jugada
@@ -404,14 +407,13 @@ public class Maquina extends Usuari {
                     int X_piece = t.getPeces_blanques()[j].getX(); // old X
                     int Y_piece = t.getPeces_blanques()[j].getY(); // old y
 
-                    IntPair onestic = new IntPair(X_piece,Y_piece);
-                    t.getPeces_blanques()[j].moviments.add(onestic);
                     for (int z = 0; z < t.getPeces_blanques()[j].moviments.size(); z++) {
                         int newX = t.getPeces_blanques()[j].moviments.get(z).getX();
                         int newY = t.getPeces_blanques()[j].moviments.get(z).getY();
 
                         t.getPeces_blanques()[j].setX(newX);
                         t.getPeces_blanques()[j].setY(newY);
+
                         t.actualitzar();
 
                         backtrackingHeuristic(jugada, t, i+1, n, cami, turn = 1,puntuacio);
