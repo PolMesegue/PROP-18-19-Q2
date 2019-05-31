@@ -10,6 +10,7 @@ public class GUIJugar {
     private JButton jugarButton;
     private JButton tornarButton;
     private JButton esborrarPartidaButton;
+    private JButton MvsMButton;
 
 
     public GUIJugar() {
@@ -73,6 +74,22 @@ public class GUIJugar {
                 esborrar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
                 esborrar.setVisible(true);
+
+            }
+        });
+
+        MvsMButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                frame mvm = frame.getInstance();
+                GUIMvsM part = new GUIMvsM();
+
+                mvm.setContentPane(part.getMyGUIMvsM());
+                mvm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                mvm.setVisible(true);
+
 
             }
         });
