@@ -34,7 +34,7 @@
         </constraints>
         <properties>
           <font size="28"/>
-          <text value="Afergir Problema"/>
+          <text value="Afegir Problema"/>
         </properties>
       </component>
       <hspacer id="7a429">
