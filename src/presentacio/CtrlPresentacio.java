@@ -24,6 +24,11 @@ public class CtrlPresentacio {
         return ctrldom.AddHuma(nom,true);
 
     }
+
+    public boolean jugarMVM(String Atacant, String Defensor, String Fen) {
+        return true;
+    }
+
     public ArrayList<String> consultar_usuaris(){
         ArrayList<String> llistaUsuaris = ctrldom.getUsuaris();
         return llistaUsuaris;

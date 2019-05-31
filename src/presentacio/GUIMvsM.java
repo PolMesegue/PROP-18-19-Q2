@@ -23,6 +23,10 @@ public class GUIMvsM {
     private JFrame taulerCons = new JFrame();
     private CtrlPresentacio CtrlP = CtrlPresentacio.getInstance();
 
+    private int guanyaAtac = 0;
+    private int guanyaDef = 0;
+    private boolean guanyPrimer, guanyaSegon,guanyaTercer,guanyaQuart,guanyaCinque;
+
 
     public GUIMvsM() {
 
@@ -145,7 +149,76 @@ public class GUIMvsM {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                
+                if (comboBox1.getSelectedItem() != null) {
+
+                    if (CtrlP.jugarMVM((String) comboBoxAtac.getSelectedItem(), (String) comboBoxDef.getSelectedItem(),(String) comboBox1.getSelectedItem())) {
+                        ++guanyaAtac;
+                        guanyPrimer = true;
+                    }
+                    else {
+                        ++guanyaDef;
+                        guanyPrimer = false;
+                    }
+
+                }
+                if (comboBox2.getSelectedItem() != null) {
+                    if (CtrlP.jugarMVM((String) comboBoxAtac.getSelectedItem(), (String) comboBoxDef.getSelectedItem(),(String) comboBox2.getSelectedItem())) {
+                        ++guanyaAtac;
+                        guanyaSegon = true;
+                    }
+                    else {
+                        ++guanyaDef;
+                        guanyaSegon = false;
+                    }
+
+
+                }
+                if (comboBox3.getSelectedItem() != null) {
+                    if (CtrlP.jugarMVM((String) comboBoxAtac.getSelectedItem(), (String) comboBoxDef.getSelectedItem(),(String) comboBox3.getSelectedItem())) {
+                        ++guanyaAtac;
+                        guanyaTercer = true;
+
+                    }
+                    else {
+                        ++guanyaDef;
+                        guanyaTercer = false;
+
+                    }
+
+                }
+                if (comboBox4.getSelectedItem() != null) {
+                    if (CtrlP.jugarMVM((String) comboBoxAtac.getSelectedItem(), (String) comboBoxDef.getSelectedItem(),(String) comboBox4.getSelectedItem())) {
+                        ++guanyaAtac;
+                        guanyaQuart = true;
+
+                    }
+                    else {
+                        ++guanyaDef;
+                        guanyaQuart = false;
+
+                    }
+
+                }
+
+                if (comboBox5.getSelectedItem() != null) {
+                    if (CtrlP.jugarMVM((String) comboBoxAtac.getSelectedItem(), (String) comboBoxDef.getSelectedItem(),(String) comboBox5.getSelectedItem())) {
+                        ++guanyaAtac;
+                        guanyaCinque = true;
+
+
+                    }
+                    else {
+                        ++guanyaDef;
+                        guanyaCinque = false;
+
+                    }
+
+
+                }
+
+                JOptionPane.showMessageDialog(null, "Resultats: \n guanya blanques");
+
+
 
             }
         });
