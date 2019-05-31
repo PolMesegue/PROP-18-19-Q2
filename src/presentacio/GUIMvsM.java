@@ -216,7 +216,7 @@ public class GUIMvsM {
 
                 }
 
-                JOptionPane.showMessageDialog(null, "Resultats: \n guanya blanques");
+                JOptionPane.showMessageDialog(null, "Resultats:\n Atacant: " + guanyaDef + "\n Defensor " + guanyaAtac + "\n");
 
 
 
