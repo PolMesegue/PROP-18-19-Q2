@@ -152,22 +152,18 @@ public class GUIMvsM {
                 if (comboBox1.getSelectedItem() != null) {
 
                     if (CtrlP.jugarMVM((String) comboBoxAtac.getSelectedItem(), (String) comboBoxDef.getSelectedItem(),(String) comboBox1.getSelectedItem())) {
-                        ++guanyaAtac;
                         guanyPrimer = true;
                     }
                     else {
-                        ++guanyaDef;
                         guanyPrimer = false;
                     }
 
                 }
                 if (comboBox2.getSelectedItem() != null) {
                     if (CtrlP.jugarMVM((String) comboBoxAtac.getSelectedItem(), (String) comboBoxDef.getSelectedItem(),(String) comboBox2.getSelectedItem())) {
-                        ++guanyaAtac;
                         guanyaSegon = true;
                     }
                     else {
-                        ++guanyaDef;
                         guanyaSegon = false;
                     }
 
@@ -175,12 +171,11 @@ public class GUIMvsM {
                 }
                 if (comboBox3.getSelectedItem() != null) {
                     if (CtrlP.jugarMVM((String) comboBoxAtac.getSelectedItem(), (String) comboBoxDef.getSelectedItem(),(String) comboBox3.getSelectedItem())) {
-                        ++guanyaAtac;
                         guanyaTercer = true;
 
                     }
                     else {
-                        ++guanyaDef;
+
                         guanyaTercer = false;
 
                     }
@@ -188,12 +183,10 @@ public class GUIMvsM {
                 }
                 if (comboBox4.getSelectedItem() != null) {
                     if (CtrlP.jugarMVM((String) comboBoxAtac.getSelectedItem(), (String) comboBoxDef.getSelectedItem(),(String) comboBox4.getSelectedItem())) {
-                        ++guanyaAtac;
                         guanyaQuart = true;
 
                     }
                     else {
-                        ++guanyaDef;
                         guanyaQuart = false;
 
                     }
@@ -202,13 +195,11 @@ public class GUIMvsM {
 
                 if (comboBox5.getSelectedItem() != null) {
                     if (CtrlP.jugarMVM((String) comboBoxAtac.getSelectedItem(), (String) comboBoxDef.getSelectedItem(),(String) comboBox5.getSelectedItem())) {
-                        ++guanyaAtac;
                         guanyaCinque = true;
 
 
                     }
                     else {
-                        ++guanyaDef;
                         guanyaCinque = false;
 
                     }
@@ -216,7 +207,6 @@ public class GUIMvsM {
                 }
 
                 StringBuilder result = new StringBuilder();
-                result.append("Resultats: \n Atacant: " + guanyaAtac + "\n Defensor " + guanyaDef + "\n");
 
                 if (comboBox1.getSelectedItem() != null) {
                     if (guanyPrimer) result.append("Partida 1: Guanya Atacant \n");
@@ -241,10 +231,6 @@ public class GUIMvsM {
                 }
 
                 JOptionPane.showMessageDialog(null, result);
-
-
-                guanyaDef = 0;
-                guanyaAtac = 0;
 
 
             }
