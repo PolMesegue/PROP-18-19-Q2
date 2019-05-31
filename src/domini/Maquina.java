@@ -83,6 +83,22 @@ public class Maquina extends Usuari {
         else return null;
     }
 
+    public Boolean Jaque(Tauler t){
+        Peca rei = new Rei();
+        rei = t.getPeces_negres()[15];
+        boolean b1 =false;
+        for (int y = 0; y < t.getPeces_blanques().length; y++) {
+            if (t.getPeces_blanques()[y] != null) {
+                for (int j = 0; j < t.getPeces_blanques()[y].moviments.size(); ++j) {
+                    if (t.getPeces_blanques()[y].moviments.get(j).getX() == rei.getX() && t.getPeces_blanques()[y].moviments.get(j).getY() == rei.getY())
+                        return b1 = true;
+                }
+            }
+        }
+        return b1;
+    }
+
+
     public Jugada playPRO(Peca[] peces_blanques, Peca[] peces_negres, int n, int i) {
         map.clear();
         Jugada jugada = new Jugada();
@@ -93,12 +109,33 @@ public class Maquina extends Usuari {
         int puntuacio = 0;
         boolean b = backtrackingHeuristic(jugada, t_temp, i, n, camins, turn, puntuacio);
 
-
         Jugada amazingplay = new Jugada();
         //ordenar map per value mes gran
         //map.entrySet().stream().sorted(comparingByValue()).collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
         //Map<ArrayList<IntPair>, Integer> sorted = map.entrySet().stream().sorted(comparingByValue()).collect(toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
         Map<ArrayList<IntPair>, Integer> sorted = map.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue())).collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+
+
+       Peca rei;
+        rei = peces_negres[15];
+        int oldX =rei.getX();
+        int oldY =rei.getY();
+        if(Jaque(t_temp)){
+            for(int x=0;x<rei.moviments.size();i++){
+                Tauler comprobacio = new Tauler(peces_blanques, peces_negres);
+                comprobacio.getPeces_negres()[15].setX(rei.moviments.get(x).getX());
+                comprobacio.getPeces_negres()[15].setY(rei.moviments.get(x).getY());
+                if(!Jaque(comprobacio)){
+                    Jugada salvarrey = new Jugada();
+                    rei.setX(oldX);
+                    rei.setY(oldY);
+                    salvarrey.setPeca(rei);
+                    salvarrey.setPos_fin_x(rei.moviments.get(x).getX());
+                    salvarrey.setPos_fin_y(rei.moviments.get(x).getY());
+                    return salvarrey;
+                }
+            }
+        }
 
         //amazingplay = primera posicio del map
         Iterator it2 = sorted.keySet().iterator();
