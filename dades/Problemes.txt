@@ -1,40 +1,10 @@
-1N1b4/6nr/R5n1/2Ppk2r/K2p2qR/8/2N1PQ2/B6B w - - 0 1
+1N1b4/6nr/R5n1/2Ppk2r/K2p2qR/8/2N1PQ2/B6B Mat: 2
 2
-7k/3R4/8/7R/5Q2/8/8/7K w - - 0 1
+K7/8/1R1P4/7B/8/7R/1p1k4/2n1r1b1 Mat: 2
 2
-7k/3R4/8/4Q2R/8/8/8/7K w - - 0 1
-1
-4k3/8/8/8/8/K7/8/5P2 w KQkq -
+K3R3/8/3ppp2/3pkp1R/4pp2/2n5/8/B7 Mat: 2
 2
-bqpnkrpp/3pp3/8/8/2BN4/1PPPP3/1B1KP1Q1/R2N4 w KQkq -
-5
-3pk3/8/8/8/4KP2/8/8/8 w
-3
-7k/8/8/6R1/8/8/6R1/3K4 Mat: 5
-5
-P7/P7/P5K1/P7/P7/P7/P7/P6k Mat: 5
-5
-8/4R3/8/8/4k3/8/6K1/8 Mat: 2
+8/4ppp1/4pkp1/4q3/8/8/8/KR6 Mat: 2
 2
-8/8/8/8/8/7k/8/7K Mat: 2
-2
-7k/8/8/8/6R1/8/5R2/4K3 Mat: 3
-3
-1r2k1r1/pbppnp1p/1b3P2/8/Q7/B1PB1q2/P4PPP/3R2K1 Mat: 4
-4
-4k3/4b3/8/8/7P/K7/8/6R1 Mat: 2
-2
-1r2k1r1/pbppnp1p/1b3P2/8/Q7/B1PB1q2/P4PPP/3R2K1 Mat: 3
-3
-5b2/2n5/3k4/8/8/3N4/3K4/7R Mat: 2
-2
-8/8/8/3k4/8/2R1P3/8/3K3P Mat: 3
-3
-8/2p3N1/6p1/5PB1/pp2Rn2/7k/P1p2K1P/3r4 Mat: 3
-3
-8/2p3N1/6p1/5PB1/pp2Rn2/7k/P1p2K1P/3r4 Mat: 3
-3
-k7/8/8/8/8/8/8/7K Mat: 4
-4
-8/6k1/5q2/8/8/8/8/KR6 Mat: 2
+8/4ppp1/4pkp1/N3q3/5p2/2P5/8/K3RR2 Mat: 2
 2
