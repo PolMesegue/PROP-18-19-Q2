@@ -257,8 +257,9 @@ public class Ctrl_Domini {
 
     public boolean jugarMVM(String Atacant, String defensor,String problema) {
 
-        Usuari a= bdu.getHuma(Atacant);
-        Usuari d= bdu.getHuma(defensor);
+        Maquina a = new Maquina(Atacant);
+        Maquina d= new Maquina(defensor);
+
         Problema p= bdp.getProblema(problema);
         Tauler t= p.FENtoHuman();
 

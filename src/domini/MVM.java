@@ -23,11 +23,18 @@ public class MVM {
         Jugada JAtac;
         Jugada JDef;
         int n = p.getN();
+        String nomA = a.getNom(), nomD = d.getNom();
+
         Peca blanques[] = t.getPeces_blanques();
         Peca negres[] = t.getPeces_negres();
 
         while (negres[15] != null && blanques[15] != null && movs < n) {
-            JAtac = a.play(t.getPeces_blanques(), t.getPeces_negres(), movs, n);
+            if (nomA == "M1") {
+                JAtac = a.play(t.getPeces_blanques(), t.getPeces_negres(), n, movs);
+            }
+            else {
+                JAtac = a.playPRO(t.getPeces_blanques(), t.getPeces_negres(), n, movs);
+            }
 
             ArrayList<Integer> aux = new ArrayList<>();
             if (JAtac != null) {
@@ -42,7 +49,13 @@ public class MVM {
                 return false;
             }
 
-            JDef = d.play(t.getPeces_blanques(), t.getPeces_negres(), movs, n);
+            if (nomD == "M1") {
+               JDef  = a.play(t.getPeces_blanques(), t.getPeces_negres(), n, movs);
+            }
+            else {
+                JDef = a.playPRO(t.getPeces_blanques(), t.getPeces_negres(), n, movs);
+            }
+
             ArrayList<Integer> aux2 = new ArrayList<>();
             if (JDef != null) {
                 aux2.add(JAtac.getPeca().getX());
@@ -59,7 +72,7 @@ public class MVM {
         if (negres[15] == null) return true;
         if (blanques[15] == null) return false;
         if (movs >= n) return false;
-        
+
         return false;
 
 
