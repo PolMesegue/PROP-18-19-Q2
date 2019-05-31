@@ -19,21 +19,19 @@ public class MVM {
 
 
     public boolean PlayMaquines() {
+
         int movs = 0;
         Jugada JAtac;
         Jugada JDef;
         int n = p.getN();
         String nomA = a.getNom(), nomD = d.getNom();
 
-        Peca blanques[] = t.getPeces_blanques();
-        Peca negres[] = t.getPeces_negres();
-
-        while (negres[15] != null && blanques[15] != null && movs < n) {
+        while (t.getPeces_negres()[15] != null && t.getPeces_blanques()[15] != null && movs < n) {
             if (nomA == "M1") {
-                JAtac = a.play(t.getPeces_blanques(), t.getPeces_negres(), n, movs);
+                JAtac = a.play(t.getPeces_negres(),t.getPeces_blanques() , n, movs);
             }
             else {
-                JAtac = a.playPRO(t.getPeces_blanques(), t.getPeces_negres(), n, movs);
+                JAtac = a.playPRO( t.getPeces_negres(),t.getPeces_blanques(), n, movs);
             }
 
             ArrayList<Integer> aux = new ArrayList<>();
@@ -48,6 +46,8 @@ public class MVM {
             else {
                 return false;
             }
+
+            if(t.getPeces_negres()[15]==null) return true;
 
             if (nomD == "M1") {
                JDef  = a.play(t.getPeces_blanques(), t.getPeces_negres(), n, movs);
@@ -69,8 +69,8 @@ public class MVM {
             }
         }
 
-        if (negres[15] == null) return true;
-        if (blanques[15] == null) return false;
+        if (t.getPeces_negres()[15] == null) return true;
+        if (t.getPeces_blanques()[15] == null) return false;
         if (movs >= n) return false;
 
         return false;

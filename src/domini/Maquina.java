@@ -380,7 +380,6 @@ public class Maquina extends Usuari {
 
             return true;
         }
-
         if (turn == 1) {
             for (int j = 0; j < 16; j++) {
                 if (t.getPeces_negres()[j] != null) {
