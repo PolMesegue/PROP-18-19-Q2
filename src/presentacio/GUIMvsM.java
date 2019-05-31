@@ -213,10 +213,34 @@ public class GUIMvsM {
 
                     }
 
-
                 }
 
-                JOptionPane.showMessageDialog(null, "Resultats:\n Atacant: " + guanyaDef + "\n Defensor " + guanyaAtac + "\n");
+                StringBuilder result = new StringBuilder();
+                result.append("Resultats: \n Atacant: " + guanyaAtac + "\n Defensor " + guanyaDef + "\n");
+
+                if (comboBox1.getSelectedItem() != null) {
+                    if (guanyPrimer) result.append("Partida 1: Guanya Atacant \n");
+                    else  result.append("Partida 1: Guanya Defensor \n");
+                }
+
+                if (comboBox2.getSelectedItem() != null) {
+                    if (guanyaSegon) result.append("Partida 2: Guanya Atacant \n");
+                    else  result.append("Partida 2: Guanya Defensor \n");
+                }
+                if (comboBox3.getSelectedItem() != null) {
+                    if (guanyaTercer) result.append("Partida 3: Guanya Atacant \n");
+                    else  result.append("Partida 3: Guanya Defensor \n");
+                }
+                if (comboBox4.getSelectedItem() != null) {
+                    if (guanyaQuart) result.append("Partida 4: Guanya Atacant \n");
+                    else  result.append("Partida 4: Guanya Defensor \n");
+                }
+                if (comboBox5.getSelectedItem() != null) {
+                    if (guanyaCinque) result.append("Partida 5: Guanya Atacant \n");
+                    else  result.append("Partida 5: Guanya Defensor \n");
+                }
+
+                JOptionPane.showMessageDialog(null, result);
 
                 guanyaDef = 0;
                 guanyaAtac = 0;

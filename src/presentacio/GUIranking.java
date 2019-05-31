@@ -20,7 +20,10 @@ public class GUIranking {
     public GUIranking() {
 
         for(int i=0; i<CtrlP.getSegons().size();i++){
-            TempsArea.append(CtrlP.getSegons().get(i)+"\n");
+            Float a = 180f - CtrlP.getSegons().get(i) ;
+
+            TempsArea.append(a+"\n");
+
         }
 
         for(int i=0; i<CtrlP.getUsersRanking().size();i++){
