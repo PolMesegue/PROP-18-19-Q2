@@ -242,6 +242,7 @@ public class GUIMvsM {
 
                 JOptionPane.showMessageDialog(null, result);
 
+
                 guanyaDef = 0;
                 guanyaAtac = 0;
 
