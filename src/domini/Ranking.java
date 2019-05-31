@@ -10,6 +10,7 @@ import java.util.*;
 
 
 public class Ranking {
+
     Map<String,Pair> map = new HashMap<String,Pair>();
     Pair<String, Float> res;
 

@@ -12,8 +12,6 @@ import static java.util.Map.Entry.*;
 @SuppressWarnings("Duplicates")
 public class Maquina extends Usuari {
 
-    private ArrayList<ArrayList<IntPair>> matriu_camins = new ArrayList<ArrayList<IntPair>>();
-
     Map<ArrayList<IntPair>, Integer> map = new HashMap<ArrayList<IntPair>, Integer>();
 
     Map<Integer,Boolean> mapSolucio = new HashMap<Integer, Boolean>();

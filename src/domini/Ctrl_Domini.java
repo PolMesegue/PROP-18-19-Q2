@@ -337,9 +337,11 @@ public class Ctrl_Domini {
         return p;
 
     }
+
     public void selecionar_Partida(Timestamp fecha){
         joc=getPartida(fecha);
     }
+
     public ArrayList<Integer> mostrarTaulell(String FEN){
         Problema p = new Problema(FEN);
         Tauler T = p.FENtoHuman();
@@ -386,6 +388,7 @@ public class Ctrl_Domini {
         }
         return peces;
     }
+
     public ArrayList<Integer> getPecas() {
 
         String aux = joc.getT().HumantoFEN(joc.getT().getPeces_blanques(),joc.getT().getPeces_negres());
@@ -435,6 +438,7 @@ public class Ctrl_Domini {
         }
         return peces;
     }
+
     public ArrayList<Integer> moureMaquina(int i){
         Jugada j;
         if(getDefensor() == "M1") j= joc.moureMaquina(joc.getP().getN(),i);
@@ -454,6 +458,7 @@ public class Ctrl_Domini {
         return aux;
 
     }
+
     public boolean mourePeca(int xO,int yO, int xD, int yD){
         return joc.mourePeca(xO, yO, xD, yD);
     }
@@ -469,6 +474,7 @@ public class Ctrl_Domini {
         }
         return moviments;
     }
+
     public boolean CarregarProblemas() throws Exception{
         Vector<String> FENS = CtrlPer.LlegirProblema();
         Maquina M1 = new Maquina("M1");
