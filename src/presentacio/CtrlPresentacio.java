@@ -26,7 +26,9 @@ public class CtrlPresentacio {
     }
 
     public boolean jugarMVM(String Atacant, String Defensor, String Fen) {
-        return true;
+
+        return ctrldom.jugarMVM(Atacant,Defensor,Fen);
+
     }
 
     public ArrayList<String> consultar_usuaris(){

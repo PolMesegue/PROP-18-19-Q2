@@ -60,30 +60,8 @@ public class Partida {
 
 
     public boolean mourePeca(int x, int y, int xnew, int ynew){
-        //char whoStarts = p.whoStarts();
-
-        //acaba de començar la partida
-        /*if(timer.getfirst()){
-            timer.startTimer();
-            timer.changePlayer();
-            timer.setFirst(false);
-        }*/
 
         boolean espotmoure = t.MourePeca(t.getPeca(x,y),xnew,ynew);
-
-
-        /*long test = timer.stopTimer();
-        test = test/1000;
-        if (timer.getPlayer()) {
-            timer.decreaseCounterT1((int) test);
-            System.out.println(timer.getT1());
-        }
-        else {
-            timer.decreaseCounterT2((int) test);
-            timer.getT2();
-        }
-        timer.startTimer();
-        timer.changePlayer();*/
 
         return espotmoure;
     }

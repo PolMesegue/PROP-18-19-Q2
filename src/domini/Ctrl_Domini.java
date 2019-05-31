@@ -255,6 +255,19 @@ public class Ctrl_Domini {
         fa.CrearPartida(a,d,p,t);
     }
 
+    public boolean jugarMVM(String Atacant, String defensor,String problema) {
+
+        Usuari a= bdu.getHuma(Atacant);
+        Usuari d= bdu.getHuma(defensor);
+        Problema p= bdp.getProblema(problema);
+        Tauler t= p.FENtoHuman();
+
+        MVM maquinavsmaquina = new MVM(p,t,a,d);
+
+        return maquinavsmaquina.PlayMaquines();
+
+    }
+
     public ArrayList<String> getProblemas(){
         ArrayList<String> problemas = new ArrayList<>();
         for(Problema elem : bdp.getCollectionProblems()) {
