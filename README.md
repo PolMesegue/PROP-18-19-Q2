@@ -1,1 +1,3 @@
-# learning
+Projecte PROP
+
+Solucionador partides d'escac
